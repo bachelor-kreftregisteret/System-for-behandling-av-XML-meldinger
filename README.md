@@ -2,6 +2,7 @@
 
 
 FRONTEND 
+
 For å starte react dev server:
 1. Du trenger Node version >14
 
@@ -13,7 +14,8 @@ Hvis alt fungerer som det skal vil browseren åpne localhost:3000 og vise React 
 
 
 BACKEND
-For å starte spring boot 
+
+For å starte spring boot:
 1. Du trenger Java JDK 17
 
 2. Bygg prosjektet i Intellij ved å velge Build-> Build project
