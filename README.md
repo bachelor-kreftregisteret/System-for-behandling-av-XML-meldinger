@@ -19,7 +19,9 @@ For å starte spring boot
 2. Bygg prosjektet i Intellij ved å velge Build-> Build project
 
 3a. Kjør appen ved å starte KreftregisteretAppApplication fra intellij
+
 eller fra kommandolinje:
+
 3b. cd inn til mappen der “pom.xml” ligger og kjør
 
 ´mvn spring-boot:run´
