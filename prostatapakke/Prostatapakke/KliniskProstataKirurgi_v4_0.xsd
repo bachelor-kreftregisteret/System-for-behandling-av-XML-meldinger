@@ -1,0 +1,892 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<xs:schema targetNamespace="http://www.kreftregisteret.no/kremt/KliniskProstataKirurgi/v4_0" elementFormDefault="qualified" attributeFormDefault="unqualified" xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:ns1="http://www.kreftregisteret.no/kremt/KliniskProstataKirurgi/v4_0" xmlns:altova="http://www.altova.com/xml-schema-extensions">
+	<xs:element name="KliniskProstataKirurgi">
+		<xs:annotation>
+			<xs:documentation>Rotelement</xs:documentation>
+		</xs:annotation>
+		<xs:complexType>
+			<xs:sequence>
+				<xs:element ref="ns1:Meldingsinformasjon"/>
+				<xs:element ref="ns1:Navigering"/>
+				<xs:element ref="ns1:StdInfo"/>
+				<xs:element ref="ns1:Laboratorium"/>
+				<xs:element ref="ns1:Behandling"/>
+			</xs:sequence>
+		</xs:complexType>
+	</xs:element>
+	<xs:element name="Meldingsinformasjon">
+		<xs:annotation>
+			<xs:documentation>Inneholder administrative data for KRG</xs:documentation>
+		</xs:annotation>
+		<xs:complexType>
+			<xs:sequence>
+				<xs:element name="Skjema" fixed="KliniskProstataKirurgi">
+					<xs:simpleType>
+						<xs:restriction base="xs:string">
+							<xs:enumeration value="KliniskProstataKirurgi"/>
+						</xs:restriction>
+					</xs:simpleType>
+				</xs:element>
+				<xs:element name="VersjonsNr" type="xs:string" default="4.0"/>
+				<xs:element name="VersjonsNrOriginal" type="xs:string"/>
+				<xs:element name="KRG_GUID" type="xs:string" default=""/>
+				<xs:element name="VersjonIP" type="xs:integer" default="0"/>
+				<xs:element name="VersjonBT" type="xs:integer" default="0"/>
+				<xs:element name="TidspunktSubmit">
+					<xs:simpleType>
+						<xs:union memberTypes="xs:dateTime">
+							<xs:simpleType>
+								<xs:restriction base="xs:string">
+									<xs:pattern value=""/>
+								</xs:restriction>
+							</xs:simpleType>
+						</xs:union>
+					</xs:simpleType>
+				</xs:element>
+				<xs:element name="Brukernavn" type="xs:string" default=""/>
+				<xs:element name="Filnavn" type="xs:string" default=""/>
+				<xs:element name="VersjonInternEkstern" default="0">
+					<xs:simpleType>
+						<xs:restriction base="xs:string">
+							<xs:enumeration value="0"/>
+							<xs:enumeration value="1"/>
+							<xs:enumeration value="2"/>
+						</xs:restriction>
+					</xs:simpleType>
+				</xs:element>
+				<xs:element name="FeilSkjema" minOccurs="0">
+					<xs:simpleType>
+						<xs:restriction base="xs:boolean">
+							<xs:pattern value="true|false"/>
+						</xs:restriction>
+					</xs:simpleType>
+				</xs:element>
+			</xs:sequence>
+		</xs:complexType>
+	</xs:element>
+	<xs:element name="Navigering">
+		<xs:annotation>
+			<xs:documentation>Inneholder navigering av meldingstyper og meldingsnummer</xs:documentation>
+		</xs:annotation>
+		<xs:complexType>
+			<xs:sequence>
+				<xs:element name="Meldingstittel" type="xs:string" default=""/>
+				<xs:element name="MeldingsNr">
+					<xs:simpleType>
+						<xs:restriction base="xs:string">
+							<xs:pattern value="(200)?"/>
+						</xs:restriction>
+					</xs:simpleType>
+				</xs:element>
+			</xs:sequence>
+		</xs:complexType>
+	</xs:element>
+	<xs:element name="StdInfo">
+		<xs:complexType>
+			<xs:sequence>
+				<xs:element name="PasientInstitusjon">
+					<xs:complexType>
+						<xs:sequence>
+							
+							<xs:element name="FodselsnummerKRG" type="xs:string" default=""/>
+							<xs:element name="FodselsnummerHF" default="">
+								<xs:simpleType>
+									<xs:restriction base="xs:string">
+										<xs:pattern value="((0[1-9]|[1-2]\d|3[0-1])(0[1-9]|1[0-2])\d{7})?"/>
+									</xs:restriction>
+								</xs:simpleType>
+							</xs:element>
+							
+							
+							<xs:element name="FodselnummerUtland">
+								<xs:simpleType>
+									<xs:restriction base="xs:boolean">
+										<xs:pattern value="true|false"/>
+									</xs:restriction>
+								</xs:simpleType>
+							</xs:element>
+							<xs:element name="FodselsnummerUtlandSpesifiser" type="xs:string"/>
+							<xs:element name="NavnPasient" type="xs:string" default=""/>
+							<xs:element name="Sykehuskode" type="xs:string" default=""/>
+							<xs:element name="SykehusnavnRHF" default="">
+								<xs:simpleType>
+									<xs:restriction base="xs:string">
+										<xs:enumeration value=""/>
+										<xs:enumeration value="1"/>
+										<xs:enumeration value="2"/>
+										<xs:enumeration value="3"/>
+										<xs:enumeration value="4"/>
+										<xs:enumeration value="5"/>
+										<xs:enumeration value="6"/>
+									</xs:restriction>
+								</xs:simpleType>
+							</xs:element>
+							<xs:element name="SykehusnavnHFSorOst" default="">
+								<xs:simpleType>
+									<xs:restriction base="xs:string">
+										<xs:enumeration value=""/>
+										<xs:enumeration value="0101"/>
+										<xs:enumeration value="0103"/>
+										<xs:enumeration value="0104"/>
+										<xs:enumeration value="0105"/>
+										<xs:enumeration value="0202"/>
+										<xs:enumeration value="0208"/>
+										<xs:enumeration value="0301"/>
+										<xs:enumeration value="0304"/>
+										<xs:enumeration value="0305"/>
+										<xs:enumeration value="0306"/>
+										<xs:enumeration value="0316"/>
+										<xs:enumeration value="0320"/>
+										<xs:enumeration value="0402"/>
+										<xs:enumeration value="0403"/>
+										<xs:enumeration value="0404"/>
+										<xs:enumeration value="0405"/>
+										<xs:enumeration value="0501"/>
+										<xs:enumeration value="0502"/>
+										<xs:enumeration value="0601"/>
+										<xs:enumeration value="0602"/>
+										<xs:enumeration value="0605"/>
+										<xs:enumeration value="0703"/>
+										<xs:enumeration value="0705"/>
+										<xs:enumeration value="0707"/>
+										<xs:enumeration value="0804"/>
+										<xs:enumeration value="0805"/>
+										<xs:enumeration value="0806"/>
+										<xs:enumeration value="0807"/>
+										<xs:enumeration value="0808"/>
+										<xs:enumeration value="0904"/>
+										<xs:enumeration value="1003"/>
+										<xs:enumeration value="1005"/>
+										<xs:enumeration value="1"/>
+									</xs:restriction>
+								</xs:simpleType>
+							</xs:element>
+							<xs:element name="SykehusnavnHFVest" default="">
+								<xs:simpleType>
+									<xs:restriction base="xs:string">
+										<xs:enumeration value=""/>
+										<xs:enumeration value="1101"/>
+										<xs:enumeration value="1107"/>
+										<xs:enumeration value="1201"/>
+										<xs:enumeration value="1202"/>
+										<xs:enumeration value="1302"/>
+										<xs:enumeration value="1203"/>
+										<xs:enumeration value="1305"/>
+										<xs:enumeration value="1401"/>
+										<xs:enumeration value="1403"/>
+										<xs:enumeration value="1405"/>
+										<xs:enumeration value="1406"/>
+										<xs:enumeration value="1"/>
+									</xs:restriction>
+								</xs:simpleType>
+							</xs:element>
+							<xs:element name="SykehusnavnHFMidt" default="">
+								<xs:simpleType>
+									<xs:restriction base="xs:string">
+										<xs:enumeration value=""/>
+										<xs:enumeration value="1501"/>
+										<xs:enumeration value="1502"/>
+										<xs:enumeration value="1503"/>
+										<xs:enumeration value="1504"/>
+										<xs:enumeration value="1602"/>
+										<xs:enumeration value="1608"/>
+										<xs:enumeration value="1701"/>
+										<xs:enumeration value="1702"/>
+										<xs:enumeration value="1"/>
+									</xs:restriction>
+								</xs:simpleType>
+							</xs:element>
+							<xs:element name="SykehusnavnHFNord" default="">
+								<xs:simpleType>
+									<xs:restriction base="xs:string">
+										<xs:enumeration value=""/>
+										<xs:enumeration value="1801"/>
+										<xs:enumeration value="1804"/>
+										<xs:enumeration value="1805"/>
+										<xs:enumeration value="1806"/>
+										<xs:enumeration value="1807"/>
+										<xs:enumeration value="1809"/>
+										<xs:enumeration value="1811"/>
+										<xs:enumeration value="1902"/>
+										<xs:enumeration value="1903"/>
+										<xs:enumeration value="2001"/>
+										<xs:enumeration value="2002"/>
+										<xs:enumeration value="2101"/>
+										<xs:enumeration value="1"/>
+									</xs:restriction>
+								</xs:simpleType>
+							</xs:element>
+							<xs:element name="SykehusnavnSpesSenter" default="">
+								<xs:simpleType>
+									<xs:restriction base="xs:string">
+										<xs:enumeration value=""/>
+										<xs:enumeration value="0317"/>
+										<xs:enumeration value="6013"/>
+										<xs:enumeration value="6024"/>
+										<xs:enumeration value="6072"/>
+										<xs:enumeration value="6023"/>
+										<xs:enumeration value="6043"/>
+										<xs:enumeration value="0801"/>
+										<xs:enumeration value="6068"/>
+										<xs:enumeration value="6038"/>
+										<xs:enumeration value="6046"/>
+										<xs:enumeration value="6021"/>
+										<xs:enumeration value="0608"/>
+										<xs:enumeration value="6026"/>
+										<xs:enumeration value="0214"/>
+										<xs:enumeration value="6053"/>
+										<xs:enumeration value="1102"/>
+										<xs:enumeration value="6044"/>
+										<xs:enumeration value="6002"/>
+										<xs:enumeration value="6030"/>
+										<xs:enumeration value="1197"/>
+										<xs:enumeration value="1301"/>
+										<xs:enumeration value="6003"/>
+										<xs:enumeration value="6004"/>
+										<xs:enumeration value="6069"/>
+										<xs:enumeration value="6042"/>
+										<xs:enumeration value="6028"/>
+										<xs:enumeration value="6031"/>
+										<xs:enumeration value="6066"/>
+										<xs:enumeration value="6049"/>
+										<xs:enumeration value="6007"/>
+										<xs:enumeration value="6008"/>
+										<xs:enumeration value="6054"/>
+										<xs:enumeration value="4710"/>
+										<xs:enumeration value="0708"/>
+										<xs:enumeration value="0329"/>
+										<xs:enumeration value="4709"/>
+										<xs:enumeration value="6025"/>
+										<xs:enumeration value="6071"/>
+										<xs:enumeration value="6056"/>
+										<xs:enumeration value="6022"/>
+										<xs:enumeration value="6011"/>
+										<xs:enumeration value="1198"/>
+										<xs:enumeration value="6067"/>
+										<xs:enumeration value="6036"/>
+										<xs:enumeration value="6010"/>
+										<xs:enumeration value="6009"/>
+										<xs:enumeration value="6041"/>
+										<xs:enumeration value="6032"/>
+										<xs:enumeration value="6052"/>
+										<xs:enumeration value="6055"/>
+										<xs:enumeration value="6015"/>
+										<xs:enumeration value="6051"/>
+										<xs:enumeration value="6001"/>
+										<xs:enumeration value="6014"/>
+										<xs:enumeration value="0111"/>
+										<xs:enumeration value="0412"/>
+										<xs:enumeration value="0327"/>
+										<xs:enumeration value="1311"/>
+										<xs:enumeration value="6029"/>
+										<xs:enumeration value="6073"/>
+										<xs:enumeration value="6074"/>
+										<xs:enumeration value="6075"/>
+										<xs:enumeration value="6076"/>
+										<xs:enumeration value="6077"/>
+										<xs:enumeration value="6078"/>
+										<xs:enumeration value="6079"/>
+										<xs:enumeration value="6080"/>
+										<xs:enumeration value="6081"/>
+										<xs:enumeration value="6082"/>
+										<xs:enumeration value="6083"/>
+										<xs:enumeration value="6084"/>
+										<xs:enumeration value="6085"/>
+										<xs:enumeration value="6086"/>
+										<xs:enumeration value="6087"/>
+										<xs:enumeration value="6088"/>
+										<xs:enumeration value="6089"/>
+										<xs:enumeration value="6090"/>
+										<xs:enumeration value="6091"/>
+										<xs:enumeration value="6092"/>
+										<xs:enumeration value="6093"/>
+										<xs:enumeration value="6094"/>
+										<xs:enumeration value="6095"/>
+										<xs:enumeration value="6096"/>
+										<xs:enumeration value="6097"/>
+										<xs:enumeration value="6098"/>
+										<xs:enumeration value="6099"/>
+										<xs:enumeration value="6100"/>
+										<xs:enumeration value="1"/>
+									</xs:restriction>
+								</xs:simpleType>
+							</xs:element>
+							<xs:element name="SykehusnavnHFSpesifiser" type="xs:string" default=""/>
+							<xs:element name="SykehusnavnKRGSpesifiser" type="xs:string" default=""/>
+							
+							
+							
+							<xs:element name="Avdelingskode" type="xs:string" default=""/>
+							<xs:element name="Avdelingsnavn" default="">
+								<xs:simpleType>
+									<xs:restriction base="xs:string">
+										<xs:enumeration value=""/>
+										<xs:enumeration value="14"/>
+										<xs:enumeration value="01"/>
+										<xs:enumeration value="47"/>
+										<xs:enumeration value="20"/>
+										<xs:enumeration value="1"/>
+										<xs:enumeration value="2"/>
+									</xs:restriction>
+									
+									
+								</xs:simpleType>
+							</xs:element>
+							<xs:element name="AvdelingsnavnHFSpesifiser" type="xs:string" default=""/>
+							
+							<xs:element name="AvdelingsnavnKRGSpesifiser" type="xs:string" default=""/>
+						</xs:sequence>
+					</xs:complexType>
+				</xs:element>
+				<xs:element name="Kommentarfelt">
+					<xs:complexType>
+						<xs:sequence>
+							<xs:element name="Kommentar" type="xs:string" default=""/>
+						</xs:sequence>
+					</xs:complexType>
+				</xs:element>
+				<xs:element name="FilmBilde" minOccurs="0">
+					<xs:complexType>
+						<xs:sequence>
+							<xs:element name="FilmNr" default="">
+								<xs:simpleType>
+									<xs:restriction base="xs:string">
+										<xs:pattern value="(\d{4})?"/>
+									</xs:restriction>
+								</xs:simpleType>
+							</xs:element>
+							<xs:element name="BildeNr" default="">
+								<xs:simpleType>
+									<xs:restriction base="xs:string">
+										<xs:pattern value="(\d{4})?"/>
+									</xs:restriction>
+								</xs:simpleType>
+							</xs:element>
+						</xs:sequence>
+					</xs:complexType>
+				</xs:element>
+				<xs:element name="Melder">
+					<xs:complexType>
+						<xs:sequence>
+							<xs:element name="MeldersNavn" type="xs:string" default=""/>
+							<xs:element name="MeldeDato">
+								<xs:simpleType>
+									<xs:union memberTypes="xs:date">
+										<xs:simpleType>
+											<xs:restriction base="xs:string">
+												<xs:pattern value=""/>
+											</xs:restriction>
+										</xs:simpleType>
+									</xs:union>
+								</xs:simpleType>
+							</xs:element>
+							<xs:element name="MelderID" type="xs:string" default=""/>
+						</xs:sequence>
+					</xs:complexType>
+				</xs:element>
+			</xs:sequence>
+		</xs:complexType>
+	</xs:element>
+	<xs:element name="Laboratorium">
+		<xs:complexType>
+			<xs:sequence>
+				<xs:element name="LabnavnKRG" type="xs:string" default=""/>
+				<xs:element name="LabnavnHF" default="">
+					<xs:simpleType>
+						<xs:restriction base="xs:string">
+							<xs:enumeration value=""/>
+							<xs:enumeration value="01"/>
+							<xs:enumeration value="02"/>
+							<xs:enumeration value="03"/>
+							<xs:enumeration value="05"/>
+							<xs:enumeration value="06"/>
+							<xs:enumeration value="07"/>
+							<xs:enumeration value="08"/>
+							<xs:enumeration value="10"/>
+							<xs:enumeration value="11"/>
+							<xs:enumeration value="12"/>
+							<xs:enumeration value="13"/>
+							<xs:enumeration value="14"/>
+							<xs:enumeration value="15"/>
+							<xs:enumeration value="16"/>
+							<xs:enumeration value="17"/>
+							<xs:enumeration value="18"/>
+							<xs:enumeration value="19"/>
+							<xs:enumeration value="20"/>
+							<xs:enumeration value="21"/>
+							<xs:enumeration value="23"/>
+							<xs:enumeration value="26"/>
+							<xs:enumeration value="31"/>
+							<xs:enumeration value="34"/>
+							<xs:enumeration value="04"/>
+							<xs:enumeration value="09"/>
+							<xs:enumeration value="27"/>
+							<xs:enumeration value="28"/>
+							<xs:enumeration value="1"/>
+							<xs:enumeration value="99"/>
+						</xs:restriction>
+					</xs:simpleType>
+				</xs:element>
+				<xs:element name="LabnavnHFIkkeRelevant">
+					<xs:simpleType>
+						<xs:restriction base="xs:boolean">
+							<xs:pattern value="true|false"/>
+						</xs:restriction>
+					</xs:simpleType>
+				</xs:element>
+				<xs:element name="LabnavnHFSpesifiser" type="xs:string" default=""/>
+				<xs:element name="Preparatnummer" type="xs:string" default=""/>
+				<xs:element name="Labkode" type="xs:string" default=""/>
+			</xs:sequence>
+		</xs:complexType>
+	</xs:element>
+	<xs:element name="Behandling">
+		<xs:complexType>
+			<xs:sequence>
+				<xs:element name="Kirurgi">
+					<xs:complexType>
+						<xs:sequence>
+							<xs:element name="KirurgiPrimaer">
+								<xs:complexType>
+									<xs:sequence>
+										<xs:element name="PreoperativInformasjon">
+											<xs:complexType>
+												<xs:sequence>
+													<xs:element name="AktivMonitorering" default="">
+														<xs:simpleType>
+															<xs:restriction base="xs:string">
+																<xs:enumeration value=""/>
+																<xs:enumeration value="1"/>
+																<xs:enumeration value="0"/>
+															</xs:restriction>
+														</xs:simpleType>
+													</xs:element>
+													<xs:element name="RevurderingSykdomsutrbredelse" default="">
+														<xs:simpleType>
+															<xs:restriction base="xs:string">
+																<xs:enumeration value=""/>
+																<xs:enumeration value="1"/>
+																<xs:enumeration value="0"/>
+															</xs:restriction>
+														</xs:simpleType>
+													</xs:element>
+													<xs:element name="PreoprPSAVerdi" default="">
+														<xs:simpleType>
+															<xs:restriction base="xs:string">
+																<xs:pattern value="([1-9]\d{0,5}|\d,\d|[1-9]\d{1,5},\d)?"/>
+															</xs:restriction>
+														</xs:simpleType>
+													</xs:element>
+													<xs:element name="PreoprPSAVerdiUkjent" default="">
+														<xs:simpleType>
+															<xs:restriction base="xs:string">
+																<xs:enumeration value=""/>
+																<xs:enumeration value="99"/>
+															</xs:restriction>
+														</xs:simpleType>
+													</xs:element>
+													<xs:element name="NeoadjuvantEndokrinBehandling" default="">
+														<xs:simpleType>
+															<xs:restriction base="xs:string">
+																<xs:enumeration value=""/>
+																<xs:enumeration value="1"/>
+																<xs:enumeration value="0"/>
+																<xs:enumeration value="99"/>
+															</xs:restriction>
+														</xs:simpleType>
+													</xs:element>
+													<xs:element name="DatoOppstartNeoadjBeh">
+														<xs:simpleType>
+															<xs:union memberTypes="xs:date">
+																<xs:simpleType>
+																	<xs:restriction base="xs:string">
+																		<xs:pattern value=""/>
+																	</xs:restriction>
+																</xs:simpleType>
+															</xs:union>
+														</xs:simpleType>
+													</xs:element>
+													<xs:element name="DatoOppstartNeoadjBehUkjent" default="">
+														<xs:simpleType>
+															<xs:restriction base="xs:string">
+																<xs:enumeration value=""/>
+																<xs:enumeration value="99"/>
+															</xs:restriction>
+														</xs:simpleType>
+													</xs:element>
+												</xs:sequence>
+											</xs:complexType>
+										</xs:element>
+										<xs:element name="Sykdomsutbredelse">
+											<xs:complexType>
+												<xs:sequence>
+													<xs:element name="Tumor">
+														<xs:complexType>
+															<xs:sequence>
+																<xs:element name="PalpatoriskTumorHoyre" default="">
+																	<xs:simpleType>
+																		<xs:restriction base="xs:string">
+																			<xs:enumeration value=""/>
+																			<xs:enumeration value="1"/>
+																			<xs:enumeration value="2"/>
+																			<xs:enumeration value="3"/>
+																			<xs:enumeration value="4"/>
+																			<xs:enumeration value="5"/>
+																			<xs:enumeration value="6"/>
+																		</xs:restriction>
+																	</xs:simpleType>
+																</xs:element>
+																<xs:element name="PalpatoriskTumorVenstre" default="">
+																	<xs:simpleType>
+																		<xs:restriction base="xs:string">
+																			<xs:enumeration value=""/>
+																			<xs:enumeration value="1"/>
+																			<xs:enumeration value="2"/>
+																			<xs:enumeration value="3"/>
+																			<xs:enumeration value="4"/>
+																			<xs:enumeration value="5"/>
+																			<xs:enumeration value="6"/>
+																		</xs:restriction>
+																	</xs:simpleType>
+																</xs:element>
+																<xs:element name="SamletPalpatoriskTumor" type="xs:string" default=""/>
+																<xs:element name="MRDiagnostikk" default="">
+																	<xs:simpleType>
+																		<xs:restriction base="xs:string">
+																			<xs:enumeration value=""/>
+																			<xs:enumeration value="1"/>
+																			<xs:enumeration value="0"/>
+																		</xs:restriction>
+																	</xs:simpleType>
+																</xs:element>
+																<xs:element name="DatoMRDiagnostikk">
+																	<xs:simpleType>
+																		<xs:union memberTypes="xs:date">
+																			<xs:simpleType>
+																				<xs:restriction base="xs:string">
+																					<xs:pattern value=""/>
+																				</xs:restriction>
+																			</xs:simpleType>
+																		</xs:union>
+																	</xs:simpleType>
+																</xs:element>
+																<xs:element name="DatoMRDiagnostikkUkjent" default="">
+																	<xs:simpleType>
+																		<xs:restriction base="xs:string">
+																			<xs:enumeration value=""/>
+																			<xs:enumeration value="99"/>
+																		</xs:restriction>
+																	</xs:simpleType>
+																</xs:element>
+																<xs:element name="PIRADSHoyre" default="">
+																	<xs:simpleType>
+																		<xs:restriction base="xs:string">
+																			<xs:enumeration value=""/>
+																			<xs:enumeration value="1"/>
+																			<xs:enumeration value="2"/>
+																			<xs:enumeration value="3"/>
+																			<xs:enumeration value="4"/>
+																			<xs:enumeration value="5"/>
+																			<xs:enumeration value="99"/>
+																		</xs:restriction>
+																	</xs:simpleType>
+																</xs:element>
+																<xs:element name="PIRADSVenstre" default="">
+																	<xs:simpleType>
+																		<xs:restriction base="xs:string">
+																			<xs:enumeration value=""/>
+																			<xs:enumeration value="1"/>
+																			<xs:enumeration value="2"/>
+																			<xs:enumeration value="3"/>
+																			<xs:enumeration value="4"/>
+																			<xs:enumeration value="5"/>
+																			<xs:enumeration value="99"/>
+																		</xs:restriction>
+																	</xs:simpleType>
+																</xs:element>
+																<xs:element name="MRBasertKliniskTHoyre" default="">
+																	<xs:simpleType>
+																		<xs:restriction base="xs:string">
+																			<xs:enumeration value=""/>
+																			<xs:enumeration value="1"/>
+																			<xs:enumeration value="2"/>
+																			<xs:enumeration value="3"/>
+																			<xs:enumeration value="4"/>
+																			<xs:enumeration value="5"/>
+																		</xs:restriction>
+																	</xs:simpleType>
+																</xs:element>
+																<xs:element name="MRBasertKliniskTVenstre" default="">
+																	<xs:simpleType>
+																		<xs:restriction base="xs:string">
+																			<xs:enumeration value=""/>
+																			<xs:enumeration value="1"/>
+																			<xs:enumeration value="2"/>
+																			<xs:enumeration value="3"/>
+																			<xs:enumeration value="4"/>
+																			<xs:enumeration value="5"/>
+																		</xs:restriction>
+																	</xs:simpleType>
+																</xs:element>
+																<xs:element name="SamletMRBasertKliniskT" type="xs:string" default=""/>
+																<xs:element name="TotalVurderingKliniskT" default="">
+																	<xs:simpleType>
+																		<xs:restriction base="xs:string">
+																			<xs:enumeration value=""/>
+																			<xs:enumeration value="X"/>
+																			<xs:enumeration value="0"/>
+																			<xs:enumeration value="1"/>
+																			<xs:enumeration value="1a"/>
+																			<xs:enumeration value="1b"/>
+																			<xs:enumeration value="1c"/>
+																			<xs:enumeration value="2"/>
+																			<xs:enumeration value="2a"/>
+																			<xs:enumeration value="2b"/>
+																			<xs:enumeration value="2c"/>
+																			<xs:enumeration value="3"/>
+																			<xs:enumeration value="3a"/>
+																			<xs:enumeration value="3b"/>
+																			<xs:enumeration value="4"/>
+																		</xs:restriction>
+																	</xs:simpleType>
+																</xs:element>
+																<xs:element name="KliniskVurdertAv" default="">
+																	<xs:simpleType>
+																		<xs:restriction base="xs:string">
+																			<xs:enumeration value=""/>
+																			<xs:enumeration value="1"/>
+																			<xs:enumeration value="2"/>
+																			<xs:enumeration value="3"/>
+																		</xs:restriction>
+																	</xs:simpleType>
+																</xs:element>
+															</xs:sequence>
+														</xs:complexType>
+													</xs:element>
+													<xs:element name="RegionaleLK">
+														<xs:complexType>
+															<xs:sequence>
+																<xs:element name="RegionaleLKPaavist" default="">
+																	<xs:simpleType>
+																		<xs:restriction base="xs:string">
+																			<xs:enumeration value=""/>
+																			<xs:enumeration value="1"/>
+																			<xs:enumeration value="0"/>
+																			<xs:enumeration value="2"/>
+																		</xs:restriction>
+																	</xs:simpleType>
+																</xs:element>
+															</xs:sequence>
+														</xs:complexType>
+													</xs:element>
+													<xs:element name="Fjernmetastaser">
+														<xs:complexType>
+															<xs:sequence>
+																<xs:element name="FjernmetPaavist" default="">
+																	<xs:simpleType>
+																		<xs:restriction base="xs:string">
+																			<xs:enumeration value=""/>
+																			<xs:enumeration value="1"/>
+																			<xs:enumeration value="0"/>
+																			<xs:enumeration value="2"/>
+																		</xs:restriction>
+																	</xs:simpleType>
+																</xs:element>
+																<xs:element name="LokalisasjonFjernmet">
+																	<xs:complexType>
+																		<xs:sequence>
+																			<xs:element name="FjerneLKmet">
+																				<xs:simpleType>
+																					<xs:restriction base="xs:boolean">
+																						<xs:pattern value="true|false"/>
+																					</xs:restriction>
+																				</xs:simpleType>
+																			</xs:element>
+																			<xs:element name="Skjelettmet">
+																				<xs:simpleType>
+																					<xs:restriction base="xs:boolean">
+																						<xs:pattern value="true|false"/>
+																					</xs:restriction>
+																				</xs:simpleType>
+																			</xs:element>
+																			<xs:element name="AnnetFjernmet">
+																				<xs:simpleType>
+																					<xs:restriction base="xs:boolean">
+																						<xs:pattern value="true|false"/>
+																					</xs:restriction>
+																				</xs:simpleType>
+																			</xs:element>
+																			<xs:element name="AnnetFjernmetSpesifiser" type="xs:string" default=""/>
+																		</xs:sequence>
+																	</xs:complexType>
+																</xs:element>
+															</xs:sequence>
+														</xs:complexType>
+													</xs:element>
+													<xs:element name="UtredningsmetodeMetastaser">
+														<xs:complexType>
+															<xs:sequence>
+																<xs:element name="UtredningsmetodeLK" default="">
+																	<xs:simpleType>
+																		<xs:restriction base="xs:string">
+																			<xs:enumeration value=""/>
+																			<xs:enumeration value="1"/>
+																			<xs:enumeration value="2"/>
+																			<xs:enumeration value="3"/>
+																			<xs:enumeration value="4"/>
+																			<xs:enumeration value="5"/>
+																			<xs:enumeration value="99"/>
+																		</xs:restriction>
+																	</xs:simpleType>
+																</xs:element>
+																<xs:element name="AnnenDiagnostikkLKSpesifiser" type="xs:string" default=""/>
+																<xs:element name="UtredningsmetodeFjernmet">
+																	<xs:complexType>
+																		<xs:sequence>
+																			<xs:element name="SkjelettscintigrafiMet">
+																				<xs:simpleType>
+																					<xs:restriction base="xs:boolean">
+																						<xs:pattern value="true|false"/>
+																					</xs:restriction>
+																				</xs:simpleType>
+																			</xs:element>
+																			<xs:element name="RtgThoraxMet">
+																				<xs:simpleType>
+																					<xs:restriction base="xs:boolean">
+																						<xs:pattern value="true|false"/>
+																					</xs:restriction>
+																				</xs:simpleType>
+																			</xs:element>
+																			<xs:element name="RtgBekkenMet">
+																				<xs:simpleType>
+																					<xs:restriction base="xs:boolean">
+																						<xs:pattern value="true|false"/>
+																					</xs:restriction>
+																				</xs:simpleType>
+																			</xs:element>
+																			<xs:element name="CTMet">
+																				<xs:simpleType>
+																					<xs:restriction base="xs:boolean">
+																						<xs:pattern value="true|false"/>
+																					</xs:restriction>
+																				</xs:simpleType>
+																			</xs:element>
+																			<xs:element name="MRMet">
+																				<xs:simpleType>
+																					<xs:restriction base="xs:boolean">
+																						<xs:pattern value="true|false"/>
+																					</xs:restriction>
+																				</xs:simpleType>
+																			</xs:element>
+																			<xs:element name="PETMet">
+																				<xs:simpleType>
+																					<xs:restriction base="xs:boolean">
+																						<xs:pattern value="true|false"/>
+																					</xs:restriction>
+																				</xs:simpleType>
+																			</xs:element>
+																			<xs:element name="CytologiMet">
+																				<xs:simpleType>
+																					<xs:restriction base="xs:boolean">
+																						<xs:pattern value="true|false"/>
+																					</xs:restriction>
+																				</xs:simpleType>
+																			</xs:element>
+																			<xs:element name="BiopsiMet">
+																				<xs:simpleType>
+																					<xs:restriction base="xs:boolean">
+																						<xs:pattern value="true|false"/>
+																					</xs:restriction>
+																				</xs:simpleType>
+																			</xs:element>
+																			<xs:element name="AnnenDiagnostikkMet">
+																				<xs:simpleType>
+																					<xs:restriction base="xs:boolean">
+																						<xs:pattern value="true|false"/>
+																					</xs:restriction>
+																				</xs:simpleType>
+																			</xs:element>
+																			<xs:element name="AnnenDiagnostikkMetSpesifiser" type="xs:string" default=""/>
+																			<xs:element name="UtredningsmetodeFjernmetUkjent" default="">
+																				<xs:simpleType>
+																					<xs:restriction base="xs:string">
+																						<xs:enumeration value=""/>
+																						<xs:enumeration value="99"/>
+																					</xs:restriction>
+																				</xs:simpleType>
+																			</xs:element>
+																		</xs:sequence>
+																	</xs:complexType>
+																</xs:element>
+															</xs:sequence>
+														</xs:complexType>
+													</xs:element>
+												</xs:sequence>
+											</xs:complexType>
+										</xs:element>
+										<xs:element name="OperasjonsdatoPrimaer">
+											<xs:simpleType>
+												<xs:union memberTypes="xs:date">
+													<xs:simpleType>
+														<xs:restriction base="xs:string">
+															<xs:pattern value=""/>
+														</xs:restriction>
+													</xs:simpleType>
+												</xs:union>
+											</xs:simpleType>
+										</xs:element>
+										<xs:element name="KirurgiskBehPrimaer">
+											<xs:complexType>
+												<xs:sequence>
+													<xs:element name="TypeKirurgi" default="">
+														<xs:simpleType>
+															<xs:restriction base="xs:string">
+																<xs:enumeration value=""/>
+																<xs:enumeration value="6"/>
+																<xs:enumeration value="7"/>
+																<xs:enumeration value="2"/>
+																<xs:enumeration value="4"/>
+																<xs:enumeration value="5"/>
+															</xs:restriction>
+														</xs:simpleType>
+													</xs:element>
+													<xs:element name="TypeKirurgiSpesifiser" type="xs:string" default=""/>
+													<xs:element name="NervesparendeIntensjon" default="">
+														<xs:simpleType>
+															<xs:restriction base="xs:string">
+																<xs:enumeration value=""/>
+																<xs:enumeration value="0"/>
+																<xs:enumeration value="1"/>
+																<xs:enumeration value="2"/>
+																<xs:enumeration value="3"/>
+																<xs:enumeration value="4"/>
+																<xs:enumeration value="99"/>
+															</xs:restriction>
+														</xs:simpleType>
+													</xs:element>
+													<xs:element name="SamtidigLymfadenektomi" default="">
+														<xs:simpleType>
+															<xs:restriction base="xs:string">
+																<xs:enumeration value=""/>
+																<xs:enumeration value="0"/>
+																<xs:enumeration value="1"/>
+																<xs:enumeration value="2"/>
+																<xs:enumeration value="3"/>
+																<xs:enumeration value="4"/>
+																<xs:enumeration value="99"/>
+															</xs:restriction>
+														</xs:simpleType>
+													</xs:element>
+												</xs:sequence>
+											</xs:complexType>
+										</xs:element>
+									</xs:sequence>
+								</xs:complexType>
+							</xs:element>
+						</xs:sequence>
+					</xs:complexType>
+				</xs:element>
+			</xs:sequence>
+		</xs:complexType>
+	</xs:element>
+</xs:schema>
