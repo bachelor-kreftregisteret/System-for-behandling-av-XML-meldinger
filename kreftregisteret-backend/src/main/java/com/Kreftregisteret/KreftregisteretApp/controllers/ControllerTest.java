@@ -14,11 +14,15 @@ import java.io.File;
 public class ControllerTest {
 
     //http://localhost:8080/api/v1/hallo
+    //BY DEFAULT blir dette json. Why? kan vi ovveride metoden til å la klienten bestemme?
     @RequestMapping(path = "api/v1/hallo")
     public KliniskProstataUtredning helloWorld() {
+        //lager en melding
         KliniskProstataUtredning melding = null;
         try {
+
             File file = new File("/Users/tomhenrikmeltingbasmo/Dev/System-for-behandling-av-XML-meldinger/kreftregisteret-backend/Prostatapakke/Prostata_4_0_UtredningEksempelfil.xml");
+            //jaxb context lager en "Kontext" for kliniskprostata ( for å gjøre dette trenger modell-klassen spesifikke annotasjoner )
             JAXBContext jaxbContext = JAXBContext.newInstance(KliniskProstataUtredning.class);
 
             Unmarshaller jaxbUnmarshaller = jaxbContext.createUnmarshaller();
