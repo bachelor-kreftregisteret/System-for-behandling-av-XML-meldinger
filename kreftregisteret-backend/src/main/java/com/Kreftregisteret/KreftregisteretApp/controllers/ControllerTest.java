@@ -18,20 +18,11 @@ public class ControllerTest {
     public KliniskProstataUtredning helloWorld() {
         KliniskProstataUtredning melding = null;
         try {
-
             File file = new File("/Users/tomhenrikmeltingbasmo/Dev/System-for-behandling-av-XML-meldinger/kreftregisteret-backend/Prostatapakke/Prostata_4_0_UtredningEksempelfil.xml");
             JAXBContext jaxbContext = JAXBContext.newInstance(KliniskProstataUtredning.class);
 
             Unmarshaller jaxbUnmarshaller = jaxbContext.createUnmarshaller();
             melding = (KliniskProstataUtredning) jaxbUnmarshaller.unmarshal(file);
-/*
-            System.out.println(melding.getId()+" "+melding.getQuestionname());
-            System.out.println("Answers:");
-            List<Answer> list=que.getAnswers();
-            for(Answer ans:list)
-                System.out.println(ans.getId()+" "+ans.getAnswername()+"  "+ans.getPostedby());
-*/
-
         } catch (JAXBException e) {
             e.printStackTrace();
         }
