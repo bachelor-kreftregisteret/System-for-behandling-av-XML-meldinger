@@ -2,6 +2,9 @@
 
 
 FRONTEND 
+gå til http://localhost:8080/api/v1/meldinger for å se en eksempelmelding (av typen utredning) når serveren kjører.
+
+
 
 For å starte react dev server:
 1. Du trenger Node version >14
