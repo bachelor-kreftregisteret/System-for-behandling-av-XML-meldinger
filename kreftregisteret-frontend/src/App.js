@@ -1,15 +1,12 @@
-import logo from './logo.svg';
 import { useCallback } from "react";
 import './App.css';
-// import 'survey-react/survey.min.css';
+import surveyJSON from "./survey/surveyUtredning";
 import { Survey, StylesManager, Model } from "surveyjs-react";
 
 StylesManager.applyTheme("modern");
 
-
-
 function App() {
-  const survey = new Model(surveyJson);
+  const survey = new Model(surveyJSON);
   survey.focusFirstQuestionAutomatic = false;
 
   const alertResults = useCallback((sender) => {
