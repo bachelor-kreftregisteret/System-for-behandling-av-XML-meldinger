@@ -21,27 +21,17 @@ import java.util.HashMap;
 
 @RestController
 public class ControllerTest {
-    // ved instansiering av denne kontrolleren bør wiplist instansieres med alle (eller feks 50 første) meldinger tilgjengelige. Det bør alltid være 50 meldinger tilgjengelig i listen
-
-
-    //todo jeg tror den beste løsningen er å lagre meldingsobjektene i en liste med dictionaries, slik at vi kan finne igjen meldingen.
-    //todo på denne måten kan klienten motta "små" objekter i json, og returnere kun de feltene som ble endret.
-    //eneste drawback er at serveren må modellere alle meldinger + ha en måte å identifisere hvilken type melding en melding er for å kunne INNSETTE i xml
-
 
     //tror vi trengre en generert UNIK id som sendes frem og tilbake til klienten. for å kunne være sikre på at vi endrer den korrekte meldingen.
-
     //denne listen wiplist er på en måte en cached list med uendrede meldinger, dvs meldinger som er sendt ut til klient, men ikke sendt tilbake til serveren i ferdig format
 
-    //kanskje denne arraylisten bør være en arraylist of dictionaries?
+    //Denne hashmappen fukan fungere som en klø - vi lager en unik ID for hver melding, slik at serveren kan gjenkjenne hvilken melding klienten skal endre på
     //slik at den kan lagre meldingen og en ID som er unik, slik at vi kan finne den meldingen vi skal endre på når klienten sender en ENDRET melding tilbake?
     HashMap<Melding, Integer> wiplist = new HashMap<>();
 
     MeldingService meldingService = new MeldingService();
 
-    //http://localhost:8080/api/v1/hallo
-    //BY DEFAULT blir dette json. Why? kan vi ovveride metoden til å la klienten bestemme?
-    //sjekk ut @Produces tipper jeg
+    //http://localhost:8080/api/v1/meldinger
     @RequestMapping(path = "api/v1/meldinger")
     public KliniskProstataUtredning helloWorld() {
         //lager en melding
