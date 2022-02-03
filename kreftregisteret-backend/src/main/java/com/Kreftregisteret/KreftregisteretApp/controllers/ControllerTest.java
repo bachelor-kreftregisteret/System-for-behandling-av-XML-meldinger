@@ -49,7 +49,6 @@ public class ControllerTest {
         return melding;
     }
 
-    //denne metoden returnerer alle klassene i
     @RequestMapping(path = "api/v1/wipmeldinger")
     public String helloWorldDTO() {
         Gson gson = new Gson();
@@ -59,25 +58,10 @@ public class ControllerTest {
 
     @PatchMapping(path = "/api/v1/meldinger", consumes = "application/json-patch+json")
     public ResponseEntity<Melding> updateMelding(@RequestBody JsonPatch patch){
+        //todo legg til parsing av json patch her.
         Gson gson = new Gson();
         Melding object = gson.fromJson(String.valueOf(patch), Melding.class);
          return ResponseEntity.ok(object);
-
-       /* try {
-            Melding melding = meldingService.findMeldingFromID(patch.).//.orElseThrow(MeldingNotFoundException::new);
-            Customer  = applyPatchToCustomer(patch, melding);
-            customerService.updateCustomer(melding);
-            return ResponseEntity.ok(melding);
-        } catch (JsonPatchException | JsonProcessingException e) {
-            return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).build();
-        }*/
     }
-
-
-
-
-    //public post postMelding(Melding helMelding){
-    // spesifikk meldingtype = detectMeldingType(helMelding);
-
     // }
 }
