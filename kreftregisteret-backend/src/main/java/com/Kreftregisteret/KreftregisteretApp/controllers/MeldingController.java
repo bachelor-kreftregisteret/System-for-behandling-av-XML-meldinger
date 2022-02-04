@@ -18,20 +18,14 @@ import java.util.UUID;
 
 @RestController
 public class MeldingController {
-
-    public MeldingController(){
-
-    }
-
-    HashMap<Melding, UUID> wiplist = new HashMap<>();
-
+    HashMap<Melding, UUID> msgList = new HashMap<>();
     MeldingService meldingService = new MeldingService();
 
     //http://localhost:8080/api/v1/meldinger
     @RequestMapping(path = "api/v1/meldinger")
     public Melding helloWorld() {
         Melding melding = MessageManager.getXMLFromPath("/Users/tomhenrikmeltingbasmo/Dev/System-for-behandling-av-XML-meldinger/kreftregisteret-backend/Prostatapakke/Prostata_4_0_UtredningEksempelfil.xml");
-        wiplist.put(melding, UUID.randomUUID());
+        msgList.put(melding, UUID.randomUUID());
         return melding;
     }
 
