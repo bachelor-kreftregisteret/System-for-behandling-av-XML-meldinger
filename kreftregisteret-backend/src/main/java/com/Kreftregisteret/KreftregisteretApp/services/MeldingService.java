@@ -1,12 +1,17 @@
 package com.Kreftregisteret.KreftregisteretApp.services;
 
+import com.Kreftregisteret.KreftregisteretApp.models.KliniskProstataUtredning;
 import com.Kreftregisteret.KreftregisteretApp.models.Melding;
 import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.databind.JsonNode;
 import com.github.fge.jsonpatch.JsonPatch;
 import com.github.fge.jsonpatch.JsonPatchException;
+import jakarta.xml.bind.JAXBContext;
+import jakarta.xml.bind.JAXBException;
+import jakarta.xml.bind.Unmarshaller;
 import org.springframework.stereotype.Service;
 
+import java.io.File;
 import java.util.HashMap;
 import java.util.Map;
 
@@ -25,12 +30,27 @@ public class MeldingService {
         return null;
     }
 
-/*
-    private Melding applyPatchToCustomer(
-            JsonPatch patch, Melding targetMelding) throws JsonPatchException, JsonProcessingException {
-        JsonNode patched = patch.apply(objectMapper.convertValue(targetMelding, JsonNode.class));
-        return objectMapper.treeToValue(patched, Melding.class);
+    public static Melding getXMLFromPath(String path){
+        Melding melding = null;
+        try {
+            File file = new File(path);
+            // er det mulig å sende en Type/Klasse inn i en funksjon?
+            JAXBContext jaxbContext = JAXBContext.newInstance(KliniskProstataUtredning.class);
+            Unmarshaller jaxbUnmarshaller = jaxbContext.createUnmarshaller();
+            melding = (KliniskProstataUtredning) jaxbUnmarshaller.unmarshal(file);
+            return melding;
+        } catch (JAXBException e) {
+            e.printStackTrace();
+        }
+        return null;
+
     }
-*/
+
+
+    public static void saveXML(Melding melding){
+        File file = new File("Out");
+        return;
+    }
+
 
 }

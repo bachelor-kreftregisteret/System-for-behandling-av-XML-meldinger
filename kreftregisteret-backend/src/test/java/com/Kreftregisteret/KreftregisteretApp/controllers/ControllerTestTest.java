@@ -11,7 +11,7 @@ import org.springframework.test.web.servlet.MockMvc;
 
 
 
-@WebMvcTest(ControllerTest.class)
+@WebMvcTest(MeldingController.class)
 class ControllerTestTest {
 
     @Autowired
