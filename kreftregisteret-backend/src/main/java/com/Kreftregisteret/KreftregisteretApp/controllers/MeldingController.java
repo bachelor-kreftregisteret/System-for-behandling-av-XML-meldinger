@@ -21,7 +21,7 @@ public class MeldingController {
     //http://localhost:8080/api/v1/meldinger
     @RequestMapping(path = "api/v1/meldinger")
     public Melding helloWorld() {
-        Melding melding = MessageManager.getMeldingFromPath("/Users/tomhenrikmeltingbasmo/Dev/System-for-behandling-av-XML-meldinger/kreftregisteret-backend/Prostatapakke/Prostata_4_0_UtredningEksempelfil.xml");
+        Melding melding = MessageManager.getMeldingFromPath("C:\\Users\\hajin\\Bacheloroppgave\\System-for-behandling-av-XML-meldinger\\kreftregisteret-backend\\Prostatapakke\\Prostata_4_0_UtredningEksempelfil.xml");
         msgList.put(melding, UUID.randomUUID());
 
         return melding;
