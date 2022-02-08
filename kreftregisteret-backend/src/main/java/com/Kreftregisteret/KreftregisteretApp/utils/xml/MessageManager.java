@@ -22,11 +22,11 @@ import java.io.*;
 
 public class MessageManager {
 
-    public static Melding getMeldingFromPath(String path){
+    public static Melding getMeldingFromPath(String path) {
         Melding melding = null;
         try {
             File file = new File(path);
-            JAXBContext jaxbContext = JAXBContext.newInstance(KliniskProstataUtredning.class);
+            JAXBContext jaxbContext = JAXBContext.newInstance("com.Kreftregisteret.KreftregisteretApp.models");
             Unmarshaller jaxbUnmarshaller = jaxbContext.createUnmarshaller();
             melding = (KliniskProstataUtredning) jaxbUnmarshaller.unmarshal(file);
             return melding;
@@ -38,28 +38,16 @@ public class MessageManager {
     }
 
     //for å kjøre denne kan vi bruke melding.getClass().getName()
+    //https://docs.oracle.com/javase/7/docs/api/javax/xml/bind/Marshaller.html
     public static void writeMeldingToPath(Melding melding) throws JAXBException, ParserConfigurationException, IOException, TransformerException, SAXException, ClassNotFoundException {
-        //Ved å bruke getclass kan vi kjøre
-        Class<?> sClass = Class.forName(melding.getClass().getName());
-        //kan man gjøre dette kallet generisk? dvs unngå å ha en switch for hver type melding?
-        //kan gjøre sånn her, men det kan være litt tungvint:
-        KliniskProstataUtredning kliniskProstataUtredning = new KliniskProstataUtredning();
-
-        if(sClass.isInstance(kliniskProstataUtredning)) {
-
-            JAXBContext jaxbContext = JAXBContext.newInstance(KliniskProstataUtredning.class);
-            Marshaller jaxbMarshaller = jaxbContext.createMarshaller();
-            StringWriter writer = new StringWriter();
-            jaxbMarshaller.marshal(melding, writer);
-            String xmlContent = writer.toString();
-            System.out.println( xmlContent );
-            // write dom document to a file
-            stringParseToFile(xmlContent);
-        }
-
-
-
-
+        JAXBContext jaxbContext = JAXBContext.newInstance("com.Kreftregisteret.KreftregisteretApp.models");
+        Marshaller jaxbMarshaller = jaxbContext.createMarshaller();
+        StringWriter writer = new StringWriter();
+        jaxbMarshaller.marshal(melding, writer);
+        String xmlContent = writer.toString();
+        //validering!!!!
+        System.out.println(xmlContent);
+        stringParseToFile(xmlContent);
 
 
     }
@@ -76,7 +64,7 @@ public class MessageManager {
         Transformer transformer = transformerFactory.newTransformer();
         DOMSource source = new DOMSource(document);
         //trenger logikk for å gi den riktig navn.
-        StreamResult result =  new StreamResult(new File("Out/my-file.xml"));
+        StreamResult result = new StreamResult(new File("Out/my-file.xml"));
         transformer.transform(source, result);
     }
 
