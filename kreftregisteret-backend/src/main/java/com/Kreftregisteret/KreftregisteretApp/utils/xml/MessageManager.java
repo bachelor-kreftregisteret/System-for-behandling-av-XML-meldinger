@@ -19,6 +19,9 @@ import javax.xml.transform.TransformerFactory;
 import javax.xml.transform.dom.DOMSource;
 import javax.xml.transform.stream.StreamResult;
 import java.io.*;
+import java.text.SimpleDateFormat;
+import java.time.LocalDateTime;
+import java.util.Date;
 
 public class MessageManager {
 
@@ -34,7 +37,6 @@ public class MessageManager {
             e.printStackTrace();
         }
         return null;
-
     }
 
     //for å kjøre denne kan vi bruke melding.getClass().getName()
@@ -42,31 +44,9 @@ public class MessageManager {
     public static void writeMeldingToPath(Melding melding) throws JAXBException, ParserConfigurationException, IOException, TransformerException, SAXException, ClassNotFoundException {
         JAXBContext jaxbContext = JAXBContext.newInstance("com.Kreftregisteret.KreftregisteretApp.models");
         Marshaller jaxbMarshaller = jaxbContext.createMarshaller();
-        StringWriter writer = new StringWriter();
-        jaxbMarshaller.marshal(melding, writer);
-        String xmlContent = writer.toString();
-        //validering!!!!
-        System.out.println(xmlContent);
-        stringParseToFile(xmlContent);
-
-
+        SimpleDateFormat formatter = new SimpleDateFormat("dd/MM/yyyy HH:mm:ss");
+        Date date = new Date();
+        File file = new File( "Out/"+date.toString()+melding.getSkjemaNavn()+".xml");
+        jaxbMarshaller.marshal( melding, file );
     }
-
-    public static void stringParseToFile(String xmlSource)
-            throws SAXException, ParserConfigurationException, IOException, TransformerException {
-        // Parser strengen
-        DocumentBuilderFactory documentFactory = DocumentBuilderFactory.newInstance();
-        DocumentBuilder builder = documentFactory.newDocumentBuilder();
-        Document document = builder.parse(new InputSource(new StringReader(xmlSource)));
-
-        // Skriver dokumentet til XML
-        TransformerFactory transformerFactory = TransformerFactory.newInstance();
-        Transformer transformer = transformerFactory.newTransformer();
-        DOMSource source = new DOMSource(document);
-        //trenger logikk for å gi den riktig navn.
-        StreamResult result = new StreamResult(new File("Out/my-file.xml"));
-        transformer.transform(source, result);
-    }
-
-
 }

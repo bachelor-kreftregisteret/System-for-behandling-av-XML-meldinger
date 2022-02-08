@@ -35,6 +35,7 @@ import java.io.Serializable;
  * 
  * 
  */
+
 @XmlAccessorType(XmlAccessType.FIELD)
 @XmlType(name = "", propOrder = {
     "meldingsinformasjon",
@@ -208,4 +209,8 @@ public class KliniskProstataUtredning extends Melding implements Serializable {
         this.utredning = value;
     }
 
+    @Override
+    public String getSkjemaNavn() {
+        return this.meldingsinformasjon.getSkjema();
+    }
 }
