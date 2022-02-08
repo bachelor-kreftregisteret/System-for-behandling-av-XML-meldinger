@@ -23,7 +23,7 @@ public class MeldingController {
 
     //http://localhost:8080/api/v1/meldinger
     @RequestMapping(path = "api/v1/meldinger")
-    public Melding helloWorld() {
+    public Melding getMelding() {
         Melding melding = MessageManager.getMeldingFromPath("/Users/tomhenrikmeltingbasmo/Dev/System-for-behandling-av-XML-meldinger/kreftregisteret-backend/Prostatapakke/Prostata_4_0_UtredningEksempelfil.xml");
         msgList.put(melding, UUID.randomUUID());
 
@@ -50,8 +50,10 @@ public class MeldingController {
         //vi får inn en "hel melding" her, så må vi se om vi klarer å direkte lagre en xml ut i fra dette
             //Melding melding = meldingService.
         //validering
+        System.out.println(melding);
+        System.out.println("treffer vu ger npå=?=?==?=");
         MessageManager.writeMeldingToPath(melding);
-        return ResponseEntity.ok(melding);
+        return ResponseEntity.ok(null);
     }
 
 }
