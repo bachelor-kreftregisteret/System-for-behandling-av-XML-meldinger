@@ -1,5 +1,7 @@
 package com.Kreftregisteret.KreftregisteretApp.models;
 
 
-public interface Melding {
+public abstract class Melding {
+
+    public abstract String getSkjemaNavn();
 }

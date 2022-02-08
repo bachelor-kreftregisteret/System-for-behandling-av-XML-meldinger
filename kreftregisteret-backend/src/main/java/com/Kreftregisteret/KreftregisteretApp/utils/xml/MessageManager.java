@@ -19,14 +19,17 @@ import javax.xml.transform.TransformerFactory;
 import javax.xml.transform.dom.DOMSource;
 import javax.xml.transform.stream.StreamResult;
 import java.io.*;
+import java.text.SimpleDateFormat;
+import java.time.LocalDateTime;
+import java.util.Date;
 
 public class MessageManager {
 
-    public static Melding getMeldingFromPath(String path){
+    public static Melding getMeldingFromPath(String path) {
         Melding melding = null;
         try {
             File file = new File(path);
-            JAXBContext jaxbContext = JAXBContext.newInstance(KliniskProstataUtredning.class);
+            JAXBContext jaxbContext = JAXBContext.newInstance("com.Kreftregisteret.KreftregisteretApp.models");
             Unmarshaller jaxbUnmarshaller = jaxbContext.createUnmarshaller();
             melding = (KliniskProstataUtredning) jaxbUnmarshaller.unmarshal(file);
             return melding;
@@ -34,51 +37,16 @@ public class MessageManager {
             e.printStackTrace();
         }
         return null;
-
     }
 
     //for å kjøre denne kan vi bruke melding.getClass().getName()
+    //https://docs.oracle.com/javase/7/docs/api/javax/xml/bind/Marshaller.html
     public static void writeMeldingToPath(Melding melding) throws JAXBException, ParserConfigurationException, IOException, TransformerException, SAXException, ClassNotFoundException {
-        //Ved å bruke getclass kan vi kjøre
-        Class<?> sClass = Class.forName(melding.getClass().getName());
-        //kan man gjøre dette kallet generisk? dvs unngå å ha en switch for hver type melding?
-        //kan gjøre sånn her, men det kan være litt tungvint:
-        KliniskProstataUtredning kliniskProstataUtredning = new KliniskProstataUtredning();
-
-        if(sClass.isInstance(kliniskProstataUtredning)) {
-
-            JAXBContext jaxbContext = JAXBContext.newInstance(KliniskProstataUtredning.class);
-            Marshaller jaxbMarshaller = jaxbContext.createMarshaller();
-            StringWriter writer = new StringWriter();
-            jaxbMarshaller.marshal(melding, writer);
-            String xmlContent = writer.toString();
-            System.out.println( xmlContent );
-            // write dom document to a file
-            stringParseToFile(xmlContent);
-        }
-
-
-
-
-
-
+        JAXBContext jaxbContext = JAXBContext.newInstance("com.Kreftregisteret.KreftregisteretApp.models");
+        Marshaller jaxbMarshaller = jaxbContext.createMarshaller();
+        SimpleDateFormat formatter = new SimpleDateFormat("dd/MM/yyyy HH:mm:ss");
+        Date date = new Date();
+        File file = new File( "Out/"+date.toString()+melding.getSkjemaNavn()+".xml");
+        jaxbMarshaller.marshal( melding, file );
     }
-
-    public static void stringParseToFile(String xmlSource)
-            throws SAXException, ParserConfigurationException, IOException, TransformerException {
-        // Parser strengen
-        DocumentBuilderFactory documentFactory = DocumentBuilderFactory.newInstance();
-        DocumentBuilder builder = documentFactory.newDocumentBuilder();
-        Document document = builder.parse(new InputSource(new StringReader(xmlSource)));
-
-        // Skriver dokumentet til XML
-        TransformerFactory transformerFactory = TransformerFactory.newInstance();
-        Transformer transformer = transformerFactory.newTransformer();
-        DOMSource source = new DOMSource(document);
-        //trenger logikk for å gi den riktig navn.
-        StreamResult result =  new StreamResult(new File("Out/my-file.xml"));
-        transformer.transform(source, result);
-    }
-
-
 }

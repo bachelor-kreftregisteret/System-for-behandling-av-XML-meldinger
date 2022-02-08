@@ -2,13 +2,17 @@ package com.Kreftregisteret.KreftregisteretApp.controllers;
 
 
 import com.Kreftregisteret.KreftregisteretApp.models.Melding;
-import com.Kreftregisteret.KreftregisteretApp.services.MeldingService;
 import com.Kreftregisteret.KreftregisteretApp.utils.xml.MessageManager;
 import com.github.fge.jsonpatch.JsonPatch;
 import com.google.gson.Gson;
+import jakarta.xml.bind.JAXBException;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
+import org.xml.sax.SAXException;
 
+import javax.xml.parsers.ParserConfigurationException;
+import javax.xml.transform.TransformerException;
+import java.io.IOException;
 import java.util.HashMap;
 import java.util.UUID;
 
@@ -16,11 +20,10 @@ import java.util.UUID;
 @RestController
 public class MeldingController {
     HashMap<Melding, UUID> msgList = new HashMap<>();
-    MeldingService meldingService = new MeldingService();
 
     //http://localhost:8080/api/v1/meldinger
     @RequestMapping(path = "api/v1/meldinger")
-    public Melding helloWorld() {
+    public Melding getMelding() {
         Melding melding = MessageManager.getMeldingFromPath("/Users/tomhenrikmeltingbasmo/Dev/System-for-behandling-av-XML-meldinger/kreftregisteret-backend/Prostatapakke/Prostata_4_0_UtredningEksempelfil.xml");
         msgList.put(melding, UUID.randomUUID());
 
@@ -43,18 +46,15 @@ public class MeldingController {
     @PostMapping(
             path = "/api/v1/meldinger",
             consumes="application/json-patch+json")
-    public ResponseEntity<Melding> postMelding(@RequestBody Melding melding){
+    public ResponseEntity<Melding> postMelding(@RequestBody Melding melding) throws JAXBException, ParserConfigurationException, IOException, ClassNotFoundException, TransformerException, SAXException {
         //vi får inn en "hel melding" her, så må vi se om vi klarer å direkte lagre en xml ut i fra dette
             //Melding melding = meldingService.
-        return ResponseEntity.ok(melding);
+        //validering
+        System.out.println(melding);
+        System.out.println("treffer vu ger npå=?=?==?=");
+        MessageManager.writeMeldingToPath(melding);
+        return ResponseEntity.ok(null);
     }
-/*
-    public Melding applyPatchToMelding(JsonPatch patch, Melding melding){
-        JsonNode patched = patch.apply(objectMapper.convertValue(melding, JsonNode.class));
-        return objectMapper.treeToValue(patched, Melding.class);
-
-    }
-    */
 
 }
 

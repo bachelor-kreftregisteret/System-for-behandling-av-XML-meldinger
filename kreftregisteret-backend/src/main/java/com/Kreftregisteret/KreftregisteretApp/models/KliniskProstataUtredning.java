@@ -35,6 +35,7 @@ import java.io.Serializable;
  * 
  * 
  */
+
 @XmlAccessorType(XmlAccessType.FIELD)
 @XmlType(name = "", propOrder = {
     "meldingsinformasjon",
@@ -45,7 +46,7 @@ import java.io.Serializable;
     "utredning"
 })
 @XmlRootElement(name = "KliniskProstataUtredning", namespace = "http://www.kreftregisteret.no/kremt/KliniskProstataUtredning/v4_0")
-public class KliniskProstataUtredning implements Melding, Serializable {
+public class KliniskProstataUtredning extends Melding implements Serializable {
 
     @XmlElement(name = "Meldingsinformasjon", namespace = "http://www.kreftregisteret.no/kremt/KliniskProstataUtredning/v4_0", required = true)
     protected Meldingsinformasjon meldingsinformasjon;
@@ -208,4 +209,8 @@ public class KliniskProstataUtredning implements Melding, Serializable {
         this.utredning = value;
     }
 
+    @Override
+    public String getSkjemaNavn() {
+        return this.meldingsinformasjon.getSkjema();
+    }
 }
