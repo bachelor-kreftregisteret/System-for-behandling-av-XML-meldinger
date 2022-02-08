@@ -15,9 +15,9 @@ import java.util.HashMap;
 public class XMLValidator {
 
     public static final HashMap<String, String> XSD_MAP = new HashMap<>() {{
-        put("Prostata_4_0_KirurgiEksempelfil.xml", "KliniskProstataKirurgi_v4_0.xsd");
-        put("Prostata_4_0_StraalebehandlingEksempelfil.xml", "KliniskProstataStraalebehandling_v4_0.xsd");
-        put("Prostata_4_0_UtredningEksempelfil.xml", "KliniskProstataUtredning_v4_0.xsd");
+        put("KliniskProstataKirurgi", "KliniskProstataKirurgi_v4_0.xsd");
+        put("KliniskProstataStraale", "KliniskProstataStraalebehandling_v4_0.xsd");
+        put("KliniskProstataUtredning", "KliniskProstataUtredning_v4_0.xsd");
     }};
 
     private XMLValidator() {

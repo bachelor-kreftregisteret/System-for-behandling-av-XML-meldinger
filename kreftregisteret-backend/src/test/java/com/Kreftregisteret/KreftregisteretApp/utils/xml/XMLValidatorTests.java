@@ -39,8 +39,8 @@ public class XMLValidatorTests {
 
     @Test
     void testXSD_MAP() {
-        assertEquals(XMLValidator.XSD_MAP.get("Prostata_4_0_KirurgiEksempelfil.xml"), "KliniskProstataKirurgi_v4_0.xsd");
-        assertEquals(XMLValidator.XSD_MAP.get("Prostata_4_0_StraalebehandlingEksempelfil.xml"), "KliniskProstataStraalebehandling_v4_0.xsd");
-        assertEquals(XMLValidator.XSD_MAP.get("Prostata_4_0_UtredningEksempelfil.xml"), "KliniskProstataUtredning_v4_0.xsd");
+        assertEquals(XMLValidator.XSD_MAP.get("KliniskProstataKirurgi"), "KliniskProstataKirurgi_v4_0.xsd");
+        assertEquals(XMLValidator.XSD_MAP.get("KliniskProstataStraale"), "KliniskProstataStraalebehandling_v4_0.xsd");
+        assertEquals(XMLValidator.XSD_MAP.get("KliniskProstataUtredning"), "KliniskProstataUtredning_v4_0.xsd");
     }
 }
