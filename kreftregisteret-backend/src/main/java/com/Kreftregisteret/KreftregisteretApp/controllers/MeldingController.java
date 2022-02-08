@@ -46,7 +46,7 @@ public class MeldingController {
             consumes="application/json-patch+json")
     public ResponseEntity<Melding> postMelding(@RequestBody Melding melding) throws JAXBException, ParserConfigurationException, IOException, ClassNotFoundException, TransformerException, SAXException {
         //vi får inn en "hel melding" her, så må vi se om vi klarer å direkte lagre en xml ut i fra dette
-            //Melding melding = meldingService.
+        //Melding melding = meldingService.
         //validering
         System.out.println(melding);
         System.out.println("treffer vu ger npå=?=?==?=");
