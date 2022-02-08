@@ -9,7 +9,6 @@ import jakarta.xml.bind.JAXBException;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 import org.xml.sax.SAXException;
-
 import javax.xml.parsers.ParserConfigurationException;
 import javax.xml.transform.TransformerException;
 import java.io.IOException;
@@ -26,7 +25,6 @@ public class MeldingController {
     public Melding getMelding() {
         Melding melding = MessageManager.getMeldingFromPath("/Users/tomhenrikmeltingbasmo/Dev/System-for-behandling-av-XML-meldinger/kreftregisteret-backend/Prostatapakke/Prostata_4_0_UtredningEksempelfil.xml");
         msgList.put(melding, UUID.randomUUID());
-
         return melding;
     }
 

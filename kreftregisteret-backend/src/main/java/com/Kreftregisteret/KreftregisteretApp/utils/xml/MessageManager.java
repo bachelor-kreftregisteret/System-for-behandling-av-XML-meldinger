@@ -6,25 +6,14 @@ import jakarta.xml.bind.JAXBContext;
 import jakarta.xml.bind.JAXBException;
 import jakarta.xml.bind.Marshaller;
 import jakarta.xml.bind.Unmarshaller;
-import org.w3c.dom.Document;
-import org.xml.sax.InputSource;
 import org.xml.sax.SAXException;
-
-import javax.xml.parsers.DocumentBuilder;
-import javax.xml.parsers.DocumentBuilderFactory;
 import javax.xml.parsers.ParserConfigurationException;
-import javax.xml.transform.Transformer;
 import javax.xml.transform.TransformerException;
-import javax.xml.transform.TransformerFactory;
-import javax.xml.transform.dom.DOMSource;
-import javax.xml.transform.stream.StreamResult;
 import java.io.*;
 import java.text.SimpleDateFormat;
-import java.time.LocalDateTime;
 import java.util.Date;
 
 public class MessageManager {
-
     public static Melding getMeldingFromPath(String path) {
         Melding melding = null;
         try {
@@ -48,5 +37,15 @@ public class MessageManager {
         Date date = new Date();
         File file = new File( "Out/"+date.toString()+melding.getSkjemaNavn()+".xml");
         jaxbMarshaller.marshal( melding, file );
+    }
+
+    public static File findXSDFromMelding(Melding melding){
+        //todo Kanskje lag et hashmap med verdier for skjemanavn og .xSD, slik at man kan finne korrekt .xsd
+        //
+        String skjemanavn = melding.getSkjemaNavn(); //KliniskProstataUtredning
+        //loop gjennom en mappe som har alle XSD skjemanavn
+        // sjekk om skjemanavn ==filnavn
+        //  returner hvis ja
+        return new File("");
     }
 }
