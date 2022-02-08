@@ -4,6 +4,8 @@ services:
     build: ./kreftregisteret-backend
     ports:
       - 8080:8080
+    volumes:
+      - ./kreftregisteret-backend:/app/kreftregisteret-backend
   frontend:
     container_name: frontend
     build: ./kreftregisteret-frontend
