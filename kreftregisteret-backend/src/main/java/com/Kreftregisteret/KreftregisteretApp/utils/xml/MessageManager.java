@@ -33,9 +33,12 @@ public class MessageManager {
     public static void writeMeldingToPath(Melding melding) throws JAXBException, ParserConfigurationException, IOException, TransformerException, SAXException, ClassNotFoundException {
         JAXBContext jaxbContext = JAXBContext.newInstance("com.Kreftregisteret.KreftregisteretApp.models");
         Marshaller jaxbMarshaller = jaxbContext.createMarshaller();
-        SimpleDateFormat formatter = new SimpleDateFormat("dd/MM/yyyy HH:mm:ss");
+
+        SimpleDateFormat formatter = new SimpleDateFormat("ddMMyyyy_'kl'HHmmss");
         Date date = new Date();
-        File file = new File( "Out/"+date.toString()+melding.getSkjemaNavn()+".xml");
+        String formattedDate = formatter.format(date);
+
+        File file = new File( "utmappe/" + formattedDate + melding.getSkjemaNavn() + ".xml");
         jaxbMarshaller.marshal( melding, file );
     }
 

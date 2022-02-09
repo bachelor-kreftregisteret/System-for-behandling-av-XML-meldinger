@@ -1,13 +1,12 @@
 package com.Kreftregisteret.KreftregisteretApp.utils.xml;
 
-import static org.junit.jupiter.api.Assertions.assertFalse;
-import static org.junit.jupiter.api.Assertions.assertTrue;
-
 import org.junit.jupiter.api.Test;
 import org.xml.sax.SAXException;
 
 import java.io.File;
 import java.io.IOException;
+
+import static org.junit.jupiter.api.Assertions.*;
 
 public class XMLValidatorTests {
     File XMLKirurgi = new File("src/test/java/com/Kreftregisteret/KreftregisteretApp/utils/xml/testfiles/Prostata_4_0_KirurgiEksempelfil.xml");
@@ -36,5 +35,12 @@ public class XMLValidatorTests {
                 }
             }
         }
+    }
+
+    @Test
+    void testXSD_MAP() {
+        assertEquals(XMLValidator.XSD_MAP.get("KliniskProstataKirurgi"), "KliniskProstataKirurgi_v4_0.xsd");
+        assertEquals(XMLValidator.XSD_MAP.get("KliniskProstataStraale"), "KliniskProstataStraalebehandling_v4_0.xsd");
+        assertEquals(XMLValidator.XSD_MAP.get("KliniskProstataUtredning"), "KliniskProstataUtredning_v4_0.xsd");
     }
 }

@@ -10,8 +10,16 @@ import javax.xml.validation.SchemaFactory;
 import javax.xml.validation.Validator;
 import java.io.File;
 import java.io.IOException;
+import java.util.HashMap;
 
 public class XMLValidator {
+
+    public static final HashMap<String, String> XSD_MAP = new HashMap<>() {{
+        put("KliniskProstataKirurgi", "KliniskProstataKirurgi_v4_0.xsd");
+        put("KliniskProstataStraale", "KliniskProstataStraalebehandling_v4_0.xsd");
+        put("KliniskProstataUtredning", "KliniskProstataUtredning_v4_0.xsd");
+    }};
+
     private XMLValidator() {
     }
 

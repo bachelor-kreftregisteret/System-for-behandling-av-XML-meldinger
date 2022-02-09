@@ -15,7 +15,7 @@ class MessageManagerTest {
 
         @Test
         public void messageManagerTest() throws JAXBException, ParserConfigurationException, IOException, TransformerException, SAXException, ClassNotFoundException {
-            Melding melding = MessageManager.getMeldingFromPath("/Users/tomhenrikmeltingbasmo/Dev/System-for-behandling-av-XML-meldinger/kreftregisteret-backend/Prostatapakke/Prostata_4_0_UtredningEksempelfil.xml");
+            Melding melding = MessageManager.getMeldingFromPath("src/test/java/com/Kreftregisteret/KreftregisteretApp/utils/xml/testfiles/Prostata_4_0_UtredningEksempelfil.xml");
             assert melding != null;
             MessageManager.writeMeldingToPath(melding);
 
