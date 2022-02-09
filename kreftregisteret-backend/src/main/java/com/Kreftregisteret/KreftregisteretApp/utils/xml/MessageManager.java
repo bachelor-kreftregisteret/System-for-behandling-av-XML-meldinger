@@ -63,9 +63,6 @@ public class MessageManager {
                 return file;
             }
         }
-        //loop gjennom en mappe som har alle XSD skjemanavn
-        // sjekk om skjemanavn ==filnavn
-        //  returner hvis ja
         return null;
     }
 
