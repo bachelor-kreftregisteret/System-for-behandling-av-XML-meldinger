@@ -1,5 +1,5 @@
 
-package com.Kreftregisteret.KreftregisteretApp.models;
+package com.Kreftregisteret.KreftregisteretApp.models.KliniskProstataUtredning;
 
 import java.math.BigInteger;
 import jakarta.xml.bind.annotation.XmlAccessType;
@@ -83,9 +83,10 @@ import jakarta.xml.bind.annotation.XmlType;
     "feilSkjema"
 })
 @XmlRootElement(name = "Meldingsinformasjon", namespace = "http://www.kreftregisteret.no/kremt/KliniskProstataUtredning/v4_0")
+
 public class Meldingsinformasjon {
 
-    @XmlElement(name = "Skjema", namespace = "http://www.kreftregisteret.no/kremt/KliniskProstataUtredning/v4_0", required = true, defaultValue = "KliniskProstataUtredning")
+    @XmlElement(name = "Skjema", namespace = "http://www.kreftregisteret.no/kremt/KliniskProstataUtredning/v4_0", required = true)
     protected String skjema;
     @XmlElement(name = "VersjonsNr", namespace = "http://www.kreftregisteret.no/kremt/KliniskProstataUtredning/v4_0", required = true, defaultValue = "4.0")
     protected String versjonsNr;

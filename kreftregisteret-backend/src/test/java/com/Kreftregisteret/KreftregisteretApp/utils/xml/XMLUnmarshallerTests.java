@@ -1,6 +1,6 @@
 package com.Kreftregisteret.KreftregisteretApp.utils.xml;
 
-import com.Kreftregisteret.KreftregisteretApp.models.KliniskProstataUtredning;
+import com.Kreftregisteret.KreftregisteretApp.models.KliniskProstataUtredning.KliniskProstataUtredning;
 import jakarta.xml.bind.JAXBException;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;

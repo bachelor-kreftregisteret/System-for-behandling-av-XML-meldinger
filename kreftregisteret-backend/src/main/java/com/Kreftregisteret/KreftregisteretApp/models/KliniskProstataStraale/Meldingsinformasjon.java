@@ -1,5 +1,5 @@
 
-package src;
+package com.Kreftregisteret.KreftregisteretApp.models.KliniskProstataStraale;
 
 import java.math.BigInteger;
 import jakarta.xml.bind.annotation.XmlAccessType;
@@ -22,7 +22,6 @@ import jakarta.xml.bind.annotation.XmlType;
  *         &lt;element name="Skjema"&gt;
  *           &lt;simpleType&gt;
  *             &lt;restriction base="{http://www.w3.org/2001/XMLSchema}string"&gt;
- *               &lt;enumeration value="KliniskProstataKirurgi"/&gt;
  *             &lt;/restriction&gt;
  *           &lt;/simpleType&gt;
  *         &lt;/element&gt;
@@ -49,14 +48,6 @@ import jakarta.xml.bind.annotation.XmlType;
  *             &lt;restriction base="{http://www.w3.org/2001/XMLSchema}string"&gt;
  *               &lt;enumeration value="0"/&gt;
  *               &lt;enumeration value="1"/&gt;
- *               &lt;enumeration value="2"/&gt;
- *             &lt;/restriction&gt;
- *           &lt;/simpleType&gt;
- *         &lt;/element&gt;
- *         &lt;element name="FeilSkjema" minOccurs="0"&gt;
- *           &lt;simpleType&gt;
- *             &lt;restriction base="{http://www.w3.org/2001/XMLSchema}boolean"&gt;
- *               &lt;pattern value="true|false"/&gt;
  *             &lt;/restriction&gt;
  *           &lt;/simpleType&gt;
  *         &lt;/element&gt;
@@ -79,34 +70,31 @@ import jakarta.xml.bind.annotation.XmlType;
     "tidspunktSubmit",
     "brukernavn",
     "filnavn",
-    "versjonInternEkstern",
-    "feilSkjema"
+    "versjonInternEkstern"
 })
-@XmlRootElement(name = "Meldingsinformasjon", namespace = "http://www.kreftregisteret.no/kremt/KliniskProstataKirurgi/v4_0")
+@XmlRootElement(name = "Meldingsinformasjon", namespace = "http://www.kreftregisteret.no/kremt/KliniskProstataStraale/v4_0")
 public class Meldingsinformasjon {
 
-    @XmlElement(name = "Skjema", namespace = "http://www.kreftregisteret.no/kremt/KliniskProstataKirurgi/v4_0", required = true)
+    @XmlElement(name = "Skjema", namespace = "http://www.kreftregisteret.no/kremt/KliniskProstataStraale/v4_0", required = true, defaultValue = "KliniskProstataStraale")
     protected String skjema;
-    @XmlElement(name = "VersjonsNr", namespace = "http://www.kreftregisteret.no/kremt/KliniskProstataKirurgi/v4_0", required = true, defaultValue = "4.0")
+    @XmlElement(name = "VersjonsNr", namespace = "http://www.kreftregisteret.no/kremt/KliniskProstataStraale/v4_0", required = true, defaultValue = "4.0")
     protected String versjonsNr;
-    @XmlElement(name = "VersjonsNrOriginal", namespace = "http://www.kreftregisteret.no/kremt/KliniskProstataKirurgi/v4_0", required = true)
+    @XmlElement(name = "VersjonsNrOriginal", namespace = "http://www.kreftregisteret.no/kremt/KliniskProstataStraale/v4_0", required = true)
     protected String versjonsNrOriginal;
-    @XmlElement(name = "KRG_GUID", namespace = "http://www.kreftregisteret.no/kremt/KliniskProstataKirurgi/v4_0", required = true, defaultValue = "")
+    @XmlElement(name = "KRG_GUID", namespace = "http://www.kreftregisteret.no/kremt/KliniskProstataStraale/v4_0", required = true, defaultValue = "")
     protected String krgguid;
-    @XmlElement(name = "VersjonIP", namespace = "http://www.kreftregisteret.no/kremt/KliniskProstataKirurgi/v4_0", required = true, defaultValue = "0")
+    @XmlElement(name = "VersjonIP", namespace = "http://www.kreftregisteret.no/kremt/KliniskProstataStraale/v4_0", required = true, defaultValue = "0")
     protected BigInteger versjonIP;
-    @XmlElement(name = "VersjonBT", namespace = "http://www.kreftregisteret.no/kremt/KliniskProstataKirurgi/v4_0", required = true, defaultValue = "0")
+    @XmlElement(name = "VersjonBT", namespace = "http://www.kreftregisteret.no/kremt/KliniskProstataStraale/v4_0", required = true, defaultValue = "0")
     protected BigInteger versjonBT;
-    @XmlElement(name = "TidspunktSubmit", namespace = "http://www.kreftregisteret.no/kremt/KliniskProstataKirurgi/v4_0", required = true)
+    @XmlElement(name = "TidspunktSubmit", namespace = "http://www.kreftregisteret.no/kremt/KliniskProstataStraale/v4_0", required = true)
     protected String tidspunktSubmit;
-    @XmlElement(name = "Brukernavn", namespace = "http://www.kreftregisteret.no/kremt/KliniskProstataKirurgi/v4_0", required = true, defaultValue = "")
+    @XmlElement(name = "Brukernavn", namespace = "http://www.kreftregisteret.no/kremt/KliniskProstataStraale/v4_0", required = true, defaultValue = "")
     protected String brukernavn;
-    @XmlElement(name = "Filnavn", namespace = "http://www.kreftregisteret.no/kremt/KliniskProstataKirurgi/v4_0", required = true, defaultValue = "")
+    @XmlElement(name = "Filnavn", namespace = "http://www.kreftregisteret.no/kremt/KliniskProstataStraale/v4_0", required = true, defaultValue = "")
     protected String filnavn;
-    @XmlElement(name = "VersjonInternEkstern", namespace = "http://www.kreftregisteret.no/kremt/KliniskProstataKirurgi/v4_0", required = true, defaultValue = "0")
+    @XmlElement(name = "VersjonInternEkstern", namespace = "http://www.kreftregisteret.no/kremt/KliniskProstataStraale/v4_0", required = true, defaultValue = "1")
     protected String versjonInternEkstern;
-    @XmlElement(name = "FeilSkjema", namespace = "http://www.kreftregisteret.no/kremt/KliniskProstataKirurgi/v4_0")
-    protected Boolean feilSkjema;
 
     /**
      * Gets the value of the skjema property.
@@ -346,30 +334,6 @@ public class Meldingsinformasjon {
      */
     public void setVersjonInternEkstern(String value) {
         this.versjonInternEkstern = value;
-    }
-
-    /**
-     * Gets the value of the feilSkjema property.
-     * 
-     * @return
-     *     possible object is
-     *     {@link Boolean }
-     *     
-     */
-    public Boolean isFeilSkjema() {
-        return feilSkjema;
-    }
-
-    /**
-     * Sets the value of the feilSkjema property.
-     * 
-     * @param value
-     *     allowed object is
-     *     {@link Boolean }
-     *     
-     */
-    public void setFeilSkjema(Boolean value) {
-        this.feilSkjema = value;
     }
 
 }

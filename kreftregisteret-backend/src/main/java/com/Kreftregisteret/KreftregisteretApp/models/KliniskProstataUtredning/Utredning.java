@@ -1,5 +1,5 @@
 
-package com.Kreftregisteret.KreftregisteretApp.models;
+package com.Kreftregisteret.KreftregisteretApp.models.KliniskProstataUtredning;
 
 import jakarta.xml.bind.annotation.XmlAccessType;
 import jakarta.xml.bind.annotation.XmlAccessorType;
@@ -18,54 +18,33 @@ import jakarta.xml.bind.annotation.XmlType;
  *   &lt;complexContent&gt;
  *     &lt;restriction base="{http://www.w3.org/2001/XMLSchema}anyType"&gt;
  *       &lt;sequence&gt;
- *         &lt;element name="PrimaerEllerPostop"&gt;
+ *         &lt;element name="FunnUtredning"&gt;
  *           &lt;simpleType&gt;
  *             &lt;restriction base="{http://www.w3.org/2001/XMLSchema}string"&gt;
  *               &lt;enumeration value=""/&gt;
  *               &lt;enumeration value="1"/&gt;
  *               &lt;enumeration value="2"/&gt;
+ *               &lt;enumeration value="3"/&gt;
  *             &lt;/restriction&gt;
  *           &lt;/simpleType&gt;
  *         &lt;/element&gt;
- *         &lt;element name="PreStraaleInformasjon"&gt;
+ *         &lt;element name="Diagnosedato"&gt;
+ *           &lt;simpleType&gt;
+ *             &lt;union memberTypes=" {http://www.w3.org/2001/XMLSchema}date"&gt;
+ *               &lt;simpleType&gt;
+ *                 &lt;restriction base="{http://www.w3.org/2001/XMLSchema}string"&gt;
+ *                   &lt;pattern value=""/&gt;
+ *                 &lt;/restriction&gt;
+ *               &lt;/simpleType&gt;
+ *             &lt;/union&gt;
+ *           &lt;/simpleType&gt;
+ *         &lt;/element&gt;
+ *         &lt;element name="Sykehistorie"&gt;
  *           &lt;complexType&gt;
  *             &lt;complexContent&gt;
  *               &lt;restriction base="{http://www.w3.org/2001/XMLSchema}anyType"&gt;
  *                 &lt;sequence&gt;
- *                   &lt;element name="AktivMonitorering"&gt;
- *                     &lt;simpleType&gt;
- *                       &lt;restriction base="{http://www.w3.org/2001/XMLSchema}string"&gt;
- *                         &lt;enumeration value=""/&gt;
- *                         &lt;enumeration value="1"/&gt;
- *                         &lt;enumeration value="0"/&gt;
- *                       &lt;/restriction&gt;
- *                     &lt;/simpleType&gt;
- *                   &lt;/element&gt;
- *                   &lt;element name="RevurderingSykdomsutrbredelse"&gt;
- *                     &lt;simpleType&gt;
- *                       &lt;restriction base="{http://www.w3.org/2001/XMLSchema}string"&gt;
- *                         &lt;enumeration value=""/&gt;
- *                         &lt;enumeration value="1"/&gt;
- *                         &lt;enumeration value="0"/&gt;
- *                       &lt;/restriction&gt;
- *                     &lt;/simpleType&gt;
- *                   &lt;/element&gt;
- *                   &lt;element name="PreStraalePSAVerdi"&gt;
- *                     &lt;simpleType&gt;
- *                       &lt;restriction base="{http://www.w3.org/2001/XMLSchema}string"&gt;
- *                         &lt;pattern value="([1-9]\d{0,5}|\d,\d{1,2}|[1-9]\d{1,5},\d{1,2})?"/&gt;
- *                       &lt;/restriction&gt;
- *                     &lt;/simpleType&gt;
- *                   &lt;/element&gt;
- *                   &lt;element name="PreStraalePSAVerdiUkjent"&gt;
- *                     &lt;simpleType&gt;
- *                       &lt;restriction base="{http://www.w3.org/2001/XMLSchema}string"&gt;
- *                         &lt;enumeration value=""/&gt;
- *                         &lt;enumeration value="99"/&gt;
- *                       &lt;/restriction&gt;
- *                     &lt;/simpleType&gt;
- *                   &lt;/element&gt;
- *                   &lt;element name="EndokrinBehandling"&gt;
+ *                   &lt;element name="Vannlatingsproblem"&gt;
  *                     &lt;simpleType&gt;
  *                       &lt;restriction base="{http://www.w3.org/2001/XMLSchema}string"&gt;
  *                         &lt;enumeration value=""/&gt;
@@ -75,18 +54,37 @@ import jakarta.xml.bind.annotation.XmlType;
  *                       &lt;/restriction&gt;
  *                     &lt;/simpleType&gt;
  *                   &lt;/element&gt;
- *                   &lt;element name="DatoOppstartEndokrinBeh"&gt;
+ *                   &lt;element name="Kreftsymptomer"&gt;
  *                     &lt;simpleType&gt;
- *                       &lt;union memberTypes=" {http://www.w3.org/2001/XMLSchema}date"&gt;
- *                         &lt;simpleType&gt;
- *                           &lt;restriction base="{http://www.w3.org/2001/XMLSchema}string"&gt;
- *                             &lt;pattern value=""/&gt;
- *                           &lt;/restriction&gt;
- *                         &lt;/simpleType&gt;
- *                       &lt;/union&gt;
+ *                       &lt;restriction base="{http://www.w3.org/2001/XMLSchema}string"&gt;
+ *                         &lt;enumeration value=""/&gt;
+ *                         &lt;enumeration value="1"/&gt;
+ *                         &lt;enumeration value="0"/&gt;
+ *                         &lt;enumeration value="99"/&gt;
+ *                       &lt;/restriction&gt;
  *                     &lt;/simpleType&gt;
  *                   &lt;/element&gt;
- *                   &lt;element name="DatoOppstartEndokrinBehUkjent"&gt;
+ *                   &lt;element name="WHOStatus"&gt;
+ *                     &lt;simpleType&gt;
+ *                       &lt;restriction base="{http://www.w3.org/2001/XMLSchema}string"&gt;
+ *                         &lt;enumeration value=""/&gt;
+ *                         &lt;enumeration value="1"/&gt;
+ *                         &lt;enumeration value="2"/&gt;
+ *                         &lt;enumeration value="3"/&gt;
+ *                         &lt;enumeration value="4"/&gt;
+ *                         &lt;enumeration value="5"/&gt;
+ *                         &lt;enumeration value="99"/&gt;
+ *                       &lt;/restriction&gt;
+ *                     &lt;/simpleType&gt;
+ *                   &lt;/element&gt;
+ *                   &lt;element name="Prostatavolum"&gt;
+ *                     &lt;simpleType&gt;
+ *                       &lt;restriction base="{http://www.w3.org/2001/XMLSchema}string"&gt;
+ *                         &lt;pattern value="([1-9]|[1-9]\d{1,2})?"/&gt;
+ *                       &lt;/restriction&gt;
+ *                     &lt;/simpleType&gt;
+ *                   &lt;/element&gt;
+ *                   &lt;element name="ProstatavolumUkjent"&gt;
  *                     &lt;simpleType&gt;
  *                       &lt;restriction base="{http://www.w3.org/2001/XMLSchema}string"&gt;
  *                         &lt;enumeration value=""/&gt;
@@ -94,25 +92,152 @@ import jakarta.xml.bind.annotation.XmlType;
  *                       &lt;/restriction&gt;
  *                     &lt;/simpleType&gt;
  *                   &lt;/element&gt;
- *                   &lt;element name="VarighetEndokrinBehandling"&gt;
- *                     &lt;simpleType&gt;
- *                       &lt;restriction base="{http://www.w3.org/2001/XMLSchema}string"&gt;
- *                         &lt;pattern value="([1-9]\d{0,2})?"/&gt;
- *                       &lt;/restriction&gt;
- *                     &lt;/simpleType&gt;
- *                   &lt;/element&gt;
- *                   &lt;element name="VarighetEndokrinBehUkjent"&gt;
- *                     &lt;simpleType&gt;
- *                       &lt;restriction base="{http://www.w3.org/2001/XMLSchema}string"&gt;
- *                         &lt;enumeration value=""/&gt;
- *                         &lt;enumeration value="99"/&gt;
- *                       &lt;/restriction&gt;
- *                     &lt;/simpleType&gt;
+ *                   &lt;element name="SPSA"&gt;
+ *                     &lt;complexType&gt;
+ *                       &lt;complexContent&gt;
+ *                         &lt;restriction base="{http://www.w3.org/2001/XMLSchema}anyType"&gt;
+ *                           &lt;sequence&gt;
+ *                             &lt;element name="PSAVerdi"&gt;
+ *                               &lt;simpleType&gt;
+ *                                 &lt;restriction base="{http://www.w3.org/2001/XMLSchema}string"&gt;
+ *                                   &lt;pattern value="([1-9]\d{0,5}|\d,\d|[1-9]\d{1,5},\d)?"/&gt;
+ *                                 &lt;/restriction&gt;
+ *                               &lt;/simpleType&gt;
+ *                             &lt;/element&gt;
+ *                             &lt;element name="PSAVerdiIkkeTatt"&gt;
+ *                               &lt;simpleType&gt;
+ *                                 &lt;restriction base="{http://www.w3.org/2001/XMLSchema}boolean"&gt;
+ *                                   &lt;pattern value="true|false"/&gt;
+ *                                 &lt;/restriction&gt;
+ *                               &lt;/simpleType&gt;
+ *                             &lt;/element&gt;
+ *                             &lt;element name="PSAVerdiUkjent"&gt;
+ *                               &lt;simpleType&gt;
+ *                                 &lt;restriction base="{http://www.w3.org/2001/XMLSchema}string"&gt;
+ *                                   &lt;enumeration value=""/&gt;
+ *                                   &lt;enumeration value="99"/&gt;
+ *                                 &lt;/restriction&gt;
+ *                               &lt;/simpleType&gt;
+ *                             &lt;/element&gt;
+ *                           &lt;/sequence&gt;
+ *                         &lt;/restriction&gt;
+ *                       &lt;/complexContent&gt;
+ *                     &lt;/complexType&gt;
  *                   &lt;/element&gt;
  *                 &lt;/sequence&gt;
  *               &lt;/restriction&gt;
  *             &lt;/complexContent&gt;
  *           &lt;/complexType&gt;
+ *         &lt;/element&gt;
+ *         &lt;element name="DiagnostiskeUS"&gt;
+ *           &lt;complexType&gt;
+ *             &lt;complexContent&gt;
+ *               &lt;restriction base="{http://www.w3.org/2001/XMLSchema}anyType"&gt;
+ *                 &lt;sequence&gt;
+ *                   &lt;element name="BildediagnostikkUS"&gt;
+ *                     &lt;complexType&gt;
+ *                       &lt;complexContent&gt;
+ *                         &lt;restriction base="{http://www.w3.org/2001/XMLSchema}anyType"&gt;
+ *                           &lt;sequence&gt;
+ *                             &lt;element name="DatoMRDiagnostikk"&gt;
+ *                               &lt;simpleType&gt;
+ *                                 &lt;union memberTypes=" {http://www.w3.org/2001/XMLSchema}date"&gt;
+ *                                   &lt;simpleType&gt;
+ *                                     &lt;restriction base="{http://www.w3.org/2001/XMLSchema}string"&gt;
+ *                                       &lt;pattern value=""/&gt;
+ *                                     &lt;/restriction&gt;
+ *                                   &lt;/simpleType&gt;
+ *                                 &lt;/union&gt;
+ *                               &lt;/simpleType&gt;
+ *                             &lt;/element&gt;
+ *                             &lt;element name="MRDiagnostikk"&gt;
+ *                               &lt;simpleType&gt;
+ *                                 &lt;restriction base="{http://www.w3.org/2001/XMLSchema}string"&gt;
+ *                                   &lt;enumeration value=""/&gt;
+ *                                   &lt;enumeration value="1"/&gt;
+ *                                   &lt;enumeration value="0"/&gt;
+ *                                 &lt;/restriction&gt;
+ *                               &lt;/simpleType&gt;
+ *                             &lt;/element&gt;
+ *                             &lt;element name="DatoMRDiagnostikkUkjent"&gt;
+ *                               &lt;simpleType&gt;
+ *                                 &lt;restriction base="{http://www.w3.org/2001/XMLSchema}string"&gt;
+ *                                   &lt;enumeration value=""/&gt;
+ *                                   &lt;enumeration value="99"/&gt;
+ *                                 &lt;/restriction&gt;
+ *                               &lt;/simpleType&gt;
+ *                             &lt;/element&gt;
+ *                             &lt;element name="AnnetBildediagnostikk"&gt;
+ *                               &lt;simpleType&gt;
+ *                                 &lt;restriction base="{http://www.w3.org/2001/XMLSchema}string"&gt;
+ *                                   &lt;enumeration value=""/&gt;
+ *                                   &lt;enumeration value="1"/&gt;
+ *                                   &lt;enumeration value="0"/&gt;
+ *                                 &lt;/restriction&gt;
+ *                               &lt;/simpleType&gt;
+ *                             &lt;/element&gt;
+ *                             &lt;element name="AnnetBildediagnostikkSpesifiser2" type="{http://www.w3.org/2001/XMLSchema}string"/&gt;
+ *                           &lt;/sequence&gt;
+ *                         &lt;/restriction&gt;
+ *                       &lt;/complexContent&gt;
+ *                     &lt;/complexType&gt;
+ *                   &lt;/element&gt;
+ *                   &lt;element name="Vevsprover"&gt;
+ *                     &lt;simpleType&gt;
+ *                       &lt;restriction base="{http://www.w3.org/2001/XMLSchema}string"&gt;
+ *                         &lt;enumeration value=""/&gt;
+ *                         &lt;enumeration value="1"/&gt;
+ *                         &lt;enumeration value="0"/&gt;
+ *                       &lt;/restriction&gt;
+ *                     &lt;/simpleType&gt;
+ *                   &lt;/element&gt;
+ *                   &lt;element name="VevsproverUS"&gt;
+ *                     &lt;complexType&gt;
+ *                       &lt;complexContent&gt;
+ *                         &lt;restriction base="{http://www.w3.org/2001/XMLSchema}anyType"&gt;
+ *                           &lt;sequence&gt;
+ *                             &lt;element name="BiopsiVevsprover"&gt;
+ *                               &lt;simpleType&gt;
+ *                                 &lt;restriction base="{http://www.w3.org/2001/XMLSchema}boolean"&gt;
+ *                                   &lt;pattern value="true|false"/&gt;
+ *                                 &lt;/restriction&gt;
+ *                               &lt;/simpleType&gt;
+ *                             &lt;/element&gt;
+ *                             &lt;element name="TURPVevsprover"&gt;
+ *                               &lt;simpleType&gt;
+ *                                 &lt;restriction base="{http://www.w3.org/2001/XMLSchema}boolean"&gt;
+ *                                   &lt;pattern value="true|false"/&gt;
+ *                                 &lt;/restriction&gt;
+ *                               &lt;/simpleType&gt;
+ *                             &lt;/element&gt;
+ *                             &lt;element name="AnnetVevsprover"&gt;
+ *                               &lt;simpleType&gt;
+ *                                 &lt;restriction base="{http://www.w3.org/2001/XMLSchema}boolean"&gt;
+ *                                   &lt;pattern value="true|false"/&gt;
+ *                                 &lt;/restriction&gt;
+ *                               &lt;/simpleType&gt;
+ *                             &lt;/element&gt;
+ *                             &lt;element name="AnnetVevsproverSpesifiser2" type="{http://www.w3.org/2001/XMLSchema}string"/&gt;
+ *                           &lt;/sequence&gt;
+ *                         &lt;/restriction&gt;
+ *                       &lt;/complexContent&gt;
+ *                     &lt;/complexType&gt;
+ *                   &lt;/element&gt;
+ *                 &lt;/sequence&gt;
+ *               &lt;/restriction&gt;
+ *             &lt;/complexContent&gt;
+ *           &lt;/complexType&gt;
+ *         &lt;/element&gt;
+ *         &lt;element name="DatoMetastaser"&gt;
+ *           &lt;simpleType&gt;
+ *             &lt;union memberTypes=" {http://www.w3.org/2001/XMLSchema}date"&gt;
+ *               &lt;simpleType&gt;
+ *                 &lt;restriction base="{http://www.w3.org/2001/XMLSchema}string"&gt;
+ *                   &lt;pattern value=""/&gt;
+ *                 &lt;/restriction&gt;
+ *               &lt;/simpleType&gt;
+ *             &lt;/union&gt;
+ *           &lt;/simpleType&gt;
  *         &lt;/element&gt;
  *         &lt;element name="Sykdomsutbredelse"&gt;
  *           &lt;complexType&gt;
@@ -151,34 +276,6 @@ import jakarta.xml.bind.annotation.XmlType;
  *                               &lt;/simpleType&gt;
  *                             &lt;/element&gt;
  *                             &lt;element name="SamletPalpatoriskTumor" type="{http://www.w3.org/2001/XMLSchema}string"/&gt;
- *                             &lt;element name="MRDiagnostikk"&gt;
- *                               &lt;simpleType&gt;
- *                                 &lt;restriction base="{http://www.w3.org/2001/XMLSchema}string"&gt;
- *                                   &lt;enumeration value=""/&gt;
- *                                   &lt;enumeration value="1"/&gt;
- *                                   &lt;enumeration value="0"/&gt;
- *                                 &lt;/restriction&gt;
- *                               &lt;/simpleType&gt;
- *                             &lt;/element&gt;
- *                             &lt;element name="DatoMRDiagnostikk"&gt;
- *                               &lt;simpleType&gt;
- *                                 &lt;union memberTypes=" {http://www.w3.org/2001/XMLSchema}date"&gt;
- *                                   &lt;simpleType&gt;
- *                                     &lt;restriction base="{http://www.w3.org/2001/XMLSchema}string"&gt;
- *                                       &lt;pattern value=""/&gt;
- *                                     &lt;/restriction&gt;
- *                                   &lt;/simpleType&gt;
- *                                 &lt;/union&gt;
- *                               &lt;/simpleType&gt;
- *                             &lt;/element&gt;
- *                             &lt;element name="DatoMRDiagnostikkUkjent"&gt;
- *                               &lt;simpleType&gt;
- *                                 &lt;restriction base="{http://www.w3.org/2001/XMLSchema}string"&gt;
- *                                   &lt;enumeration value=""/&gt;
- *                                   &lt;enumeration value="99"/&gt;
- *                                 &lt;/restriction&gt;
- *                               &lt;/simpleType&gt;
- *                             &lt;/element&gt;
  *                             &lt;element name="PIRADSHoyre"&gt;
  *                               &lt;simpleType&gt;
  *                                 &lt;restriction base="{http://www.w3.org/2001/XMLSchema}string"&gt;
@@ -449,185 +546,14 @@ import jakarta.xml.bind.annotation.XmlType;
  *             &lt;/complexContent&gt;
  *           &lt;/complexType&gt;
  *         &lt;/element&gt;
- *         &lt;element name="Straalebehandling"&gt;
+ *         &lt;element name="KliniskTNM"&gt;
  *           &lt;complexType&gt;
  *             &lt;complexContent&gt;
  *               &lt;restriction base="{http://www.w3.org/2001/XMLSchema}anyType"&gt;
  *                 &lt;sequence&gt;
- *                   &lt;element name="EksternStraalebehandling"&gt;
- *                     &lt;simpleType&gt;
- *                       &lt;restriction base="{http://www.w3.org/2001/XMLSchema}string"&gt;
- *                         &lt;enumeration value=""/&gt;
- *                         &lt;enumeration value="1"/&gt;
- *                         &lt;enumeration value="0"/&gt;
- *                       &lt;/restriction&gt;
- *                     &lt;/simpleType&gt;
- *                   &lt;/element&gt;
- *                   &lt;element name="DatoOppstartStraale"&gt;
- *                     &lt;simpleType&gt;
- *                       &lt;union memberTypes=" {http://www.w3.org/2001/XMLSchema}date"&gt;
- *                         &lt;simpleType&gt;
- *                           &lt;restriction base="{http://www.w3.org/2001/XMLSchema}string"&gt;
- *                             &lt;pattern value=""/&gt;
- *                           &lt;/restriction&gt;
- *                         &lt;/simpleType&gt;
- *                       &lt;/union&gt;
- *                     &lt;/simpleType&gt;
- *                   &lt;/element&gt;
- *                   &lt;sequence&gt;
- *                     &lt;element name="Prostata"&gt;
- *                       &lt;complexType&gt;
- *                         &lt;complexContent&gt;
- *                           &lt;restriction base="{http://www.w3.org/2001/XMLSchema}anyType"&gt;
- *                             &lt;sequence&gt;
- *                               &lt;element name="ProstataFRDoseGY"&gt;
- *                                 &lt;simpleType&gt;
- *                                   &lt;restriction base="{http://www.w3.org/2001/XMLSchema}string"&gt;
- *                                     &lt;pattern value="([1-9]\d{0,1}|\d{0,2},\d{1,2})?"/&gt;
- *                                   &lt;/restriction&gt;
- *                                 &lt;/simpleType&gt;
- *                               &lt;/element&gt;
- *                               &lt;element name="ProstataFRDoseUkjent"&gt;
- *                                 &lt;simpleType&gt;
- *                                   &lt;restriction base="{http://www.w3.org/2001/XMLSchema}string"&gt;
- *                                     &lt;enumeration value=""/&gt;
- *                                     &lt;enumeration value="99"/&gt;
- *                                   &lt;/restriction&gt;
- *                                 &lt;/simpleType&gt;
- *                               &lt;/element&gt;
- *                               &lt;element name="ProstataAntFR"&gt;
- *                                 &lt;simpleType&gt;
- *                                   &lt;restriction base="{http://www.w3.org/2001/XMLSchema}string"&gt;
- *                                     &lt;pattern value="([1-9]\d{0,1})?"/&gt;
- *                                   &lt;/restriction&gt;
- *                                 &lt;/simpleType&gt;
- *                               &lt;/element&gt;
- *                               &lt;element name="ProstataAntFRUkjent"&gt;
- *                                 &lt;simpleType&gt;
- *                                   &lt;restriction base="{http://www.w3.org/2001/XMLSchema}string"&gt;
- *                                     &lt;enumeration value=""/&gt;
- *                                     &lt;enumeration value="99"/&gt;
- *                                   &lt;/restriction&gt;
- *                                 &lt;/simpleType&gt;
- *                               &lt;/element&gt;
- *                             &lt;/sequence&gt;
- *                           &lt;/restriction&gt;
- *                         &lt;/complexContent&gt;
- *                       &lt;/complexType&gt;
- *                     &lt;/element&gt;
- *                     &lt;element name="LKbekken"&gt;
- *                       &lt;complexType&gt;
- *                         &lt;complexContent&gt;
- *                           &lt;restriction base="{http://www.w3.org/2001/XMLSchema}anyType"&gt;
- *                             &lt;sequence&gt;
- *                               &lt;element name="LKBekkenStraalebehandling"&gt;
- *                                 &lt;simpleType&gt;
- *                                   &lt;restriction base="{http://www.w3.org/2001/XMLSchema}string"&gt;
- *                                     &lt;enumeration value=""/&gt;
- *                                     &lt;enumeration value="1"/&gt;
- *                                     &lt;enumeration value="0"/&gt;
- *                                     &lt;enumeration value="99"/&gt;
- *                                   &lt;/restriction&gt;
- *                                 &lt;/simpleType&gt;
- *                               &lt;/element&gt;
- *                             &lt;/sequence&gt;
- *                           &lt;/restriction&gt;
- *                         &lt;/complexContent&gt;
- *                       &lt;/complexType&gt;
- *                     &lt;/element&gt;
- *                     &lt;element name="HoydoserateBrachyterapi"&gt;
- *                       &lt;complexType&gt;
- *                         &lt;complexContent&gt;
- *                           &lt;restriction base="{http://www.w3.org/2001/XMLSchema}anyType"&gt;
- *                             &lt;sequence&gt;
- *                               &lt;element name="HDBrachyterapi"&gt;
- *                                 &lt;simpleType&gt;
- *                                   &lt;restriction base="{http://www.w3.org/2001/XMLSchema}string"&gt;
- *                                     &lt;enumeration value=""/&gt;
- *                                     &lt;enumeration value="1"/&gt;
- *                                     &lt;enumeration value="0"/&gt;
- *                                   &lt;/restriction&gt;
- *                                 &lt;/simpleType&gt;
- *                               &lt;/element&gt;
- *                               &lt;element name="HDBrachyterapiFRDoseGY"&gt;
- *                                 &lt;simpleType&gt;
- *                                   &lt;restriction base="{http://www.w3.org/2001/XMLSchema}string"&gt;
- *                                     &lt;pattern value="([1-9]\d{0,1}|\d{0,2},\d{1,2})?"/&gt;
- *                                   &lt;/restriction&gt;
- *                                 &lt;/simpleType&gt;
- *                               &lt;/element&gt;
- *                               &lt;element name="HDBrachyterapiFRDoseUkjent"&gt;
- *                                 &lt;simpleType&gt;
- *                                   &lt;restriction base="{http://www.w3.org/2001/XMLSchema}string"&gt;
- *                                     &lt;enumeration value=""/&gt;
- *                                     &lt;enumeration value="99"/&gt;
- *                                   &lt;/restriction&gt;
- *                                 &lt;/simpleType&gt;
- *                               &lt;/element&gt;
- *                               &lt;element name="HDBrachyterapiAntFR"&gt;
- *                                 &lt;simpleType&gt;
- *                                   &lt;restriction base="{http://www.w3.org/2001/XMLSchema}string"&gt;
- *                                     &lt;pattern value="([1-9])?"/&gt;
- *                                   &lt;/restriction&gt;
- *                                 &lt;/simpleType&gt;
- *                               &lt;/element&gt;
- *                               &lt;element name="HDBrachyterapiAntFRUkjent"&gt;
- *                                 &lt;simpleType&gt;
- *                                   &lt;restriction base="{http://www.w3.org/2001/XMLSchema}string"&gt;
- *                                     &lt;enumeration value=""/&gt;
- *                                     &lt;enumeration value="99"/&gt;
- *                                   &lt;/restriction&gt;
- *                                 &lt;/simpleType&gt;
- *                               &lt;/element&gt;
- *                             &lt;/sequence&gt;
- *                           &lt;/restriction&gt;
- *                         &lt;/complexContent&gt;
- *                       &lt;/complexType&gt;
- *                     &lt;/element&gt;
- *                     &lt;element name="LavdoserateBrachyterapi"&gt;
- *                       &lt;complexType&gt;
- *                         &lt;complexContent&gt;
- *                           &lt;restriction base="{http://www.w3.org/2001/XMLSchema}anyType"&gt;
- *                             &lt;sequence&gt;
- *                               &lt;element name="LDBrachyterapi"&gt;
- *                                 &lt;simpleType&gt;
- *                                   &lt;restriction base="{http://www.w3.org/2001/XMLSchema}string"&gt;
- *                                     &lt;enumeration value=""/&gt;
- *                                     &lt;enumeration value="1"/&gt;
- *                                     &lt;enumeration value="0"/&gt;
- *                                   &lt;/restriction&gt;
- *                                 &lt;/simpleType&gt;
- *                               &lt;/element&gt;
- *                               &lt;element name="Behandlingssted" type="{http://www.w3.org/2001/XMLSchema}string"/&gt;
- *                               &lt;element name="BehandlingsstedUkjent"&gt;
- *                                 &lt;simpleType&gt;
- *                                   &lt;restriction base="{http://www.w3.org/2001/XMLSchema}string"&gt;
- *                                     &lt;enumeration value=""/&gt;
- *                                     &lt;enumeration value="99"/&gt;
- *                                   &lt;/restriction&gt;
- *                                 &lt;/simpleType&gt;
- *                               &lt;/element&gt;
- *                               &lt;element name="LDBrachyterapiFRDoseGY"&gt;
- *                                 &lt;simpleType&gt;
- *                                   &lt;restriction base="{http://www.w3.org/2001/XMLSchema}string"&gt;
- *                                     &lt;pattern value="([1-9]\d{0,2}|\d{0,3},\d{1,2})?"/&gt;
- *                                   &lt;/restriction&gt;
- *                                 &lt;/simpleType&gt;
- *                               &lt;/element&gt;
- *                               &lt;element name="LDBrachyterapiFRDoseUkjent"&gt;
- *                                 &lt;simpleType&gt;
- *                                   &lt;restriction base="{http://www.w3.org/2001/XMLSchema}string"&gt;
- *                                     &lt;enumeration value=""/&gt;
- *                                     &lt;enumeration value="99"/&gt;
- *                                   &lt;/restriction&gt;
- *                                 &lt;/simpleType&gt;
- *                               &lt;/element&gt;
- *                             &lt;/sequence&gt;
- *                           &lt;/restriction&gt;
- *                         &lt;/complexContent&gt;
- *                       &lt;/complexType&gt;
- *                     &lt;/element&gt;
- *                   &lt;/sequence&gt;
+ *                   &lt;element name="cT" type="{http://www.w3.org/2001/XMLSchema}string"/&gt;
+ *                   &lt;element name="cN" type="{http://www.w3.org/2001/XMLSchema}string"/&gt;
+ *                   &lt;element name="cM" type="{http://www.w3.org/2001/XMLSchema}string"/&gt;
  *                 &lt;/sequence&gt;
  *               &lt;/restriction&gt;
  *             &lt;/complexContent&gt;
@@ -643,69 +569,150 @@ import jakarta.xml.bind.annotation.XmlType;
  */
 @XmlAccessorType(XmlAccessType.FIELD)
 @XmlType(name = "", propOrder = {
-    "primaerEllerPostop",
-    "preStraaleInformasjon",
+    "funnUtredning",
+    "diagnosedato",
+    "sykehistorie",
+    "diagnostiskeUS",
+    "datoMetastaser",
     "sykdomsutbredelse",
-    "straalebehandling"
+    "kliniskTNM"
 })
-@XmlRootElement(name = "Behandling", namespace = "http://www.kreftregisteret.no/kremt/KliniskProstataStraale/v4_0")
-public class Behandling {
+@XmlRootElement(name = "Utredning", namespace = "http://www.kreftregisteret.no/kremt/KliniskProstataUtredning/v4_0")
+public class Utredning {
 
-    @XmlElement(name = "PrimaerEllerPostop", namespace = "http://www.kreftregisteret.no/kremt/KliniskProstataStraale/v4_0", required = true, defaultValue = "")
-    protected String primaerEllerPostop;
-    @XmlElement(name = "PreStraaleInformasjon", namespace = "http://www.kreftregisteret.no/kremt/KliniskProstataStraale/v4_0", required = true)
-    protected Behandling.PreStraaleInformasjon preStraaleInformasjon;
-    @XmlElement(name = "Sykdomsutbredelse", namespace = "http://www.kreftregisteret.no/kremt/KliniskProstataStraale/v4_0", required = true)
-    protected Behandling.Sykdomsutbredelse sykdomsutbredelse;
-    @XmlElement(name = "Straalebehandling", namespace = "http://www.kreftregisteret.no/kremt/KliniskProstataStraale/v4_0", required = true)
-    protected Behandling.Straalebehandling straalebehandling;
+    @XmlElement(name = "FunnUtredning", namespace = "http://www.kreftregisteret.no/kremt/KliniskProstataUtredning/v4_0", required = true, defaultValue = "")
+    protected String funnUtredning;
+    @XmlElement(name = "Diagnosedato", namespace = "http://www.kreftregisteret.no/kremt/KliniskProstataUtredning/v4_0", required = true)
+    protected String diagnosedato;
+    @XmlElement(name = "Sykehistorie", namespace = "http://www.kreftregisteret.no/kremt/KliniskProstataUtredning/v4_0", required = true)
+    protected Utredning.Sykehistorie sykehistorie;
+    @XmlElement(name = "DiagnostiskeUS", namespace = "http://www.kreftregisteret.no/kremt/KliniskProstataUtredning/v4_0", required = true)
+    protected Utredning.DiagnostiskeUS diagnostiskeUS;
+    @XmlElement(name = "DatoMetastaser", namespace = "http://www.kreftregisteret.no/kremt/KliniskProstataUtredning/v4_0", required = true)
+    protected String datoMetastaser;
+    @XmlElement(name = "Sykdomsutbredelse", namespace = "http://www.kreftregisteret.no/kremt/KliniskProstataUtredning/v4_0", required = true)
+    protected Utredning.Sykdomsutbredelse sykdomsutbredelse;
+    @XmlElement(name = "KliniskTNM", namespace = "http://www.kreftregisteret.no/kremt/KliniskProstataUtredning/v4_0", required = true)
+    protected Utredning.KliniskTNM kliniskTNM;
 
     /**
-     * Gets the value of the primaerEllerPostop property.
+     * Gets the value of the funnUtredning property.
      * 
      * @return
      *     possible object is
      *     {@link String }
      *     
      */
-    public String getPrimaerEllerPostop() {
-        return primaerEllerPostop;
+    public String getFunnUtredning() {
+        return funnUtredning;
     }
 
     /**
-     * Sets the value of the primaerEllerPostop property.
+     * Sets the value of the funnUtredning property.
      * 
      * @param value
      *     allowed object is
      *     {@link String }
      *     
      */
-    public void setPrimaerEllerPostop(String value) {
-        this.primaerEllerPostop = value;
+    public void setFunnUtredning(String value) {
+        this.funnUtredning = value;
     }
 
     /**
-     * Gets the value of the preStraaleInformasjon property.
+     * Gets the value of the diagnosedato property.
      * 
      * @return
      *     possible object is
-     *     {@link Behandling.PreStraaleInformasjon }
+     *     {@link String }
      *     
      */
-    public Behandling.PreStraaleInformasjon getPreStraaleInformasjon() {
-        return preStraaleInformasjon;
+    public String getDiagnosedato() {
+        return diagnosedato;
     }
 
     /**
-     * Sets the value of the preStraaleInformasjon property.
+     * Sets the value of the diagnosedato property.
      * 
      * @param value
      *     allowed object is
-     *     {@link Behandling.PreStraaleInformasjon }
+     *     {@link String }
      *     
      */
-    public void setPreStraaleInformasjon(Behandling.PreStraaleInformasjon value) {
-        this.preStraaleInformasjon = value;
+    public void setDiagnosedato(String value) {
+        this.diagnosedato = value;
+    }
+
+    /**
+     * Gets the value of the sykehistorie property.
+     * 
+     * @return
+     *     possible object is
+     *     {@link Utredning.Sykehistorie }
+     *     
+     */
+    public Utredning.Sykehistorie getSykehistorie() {
+        return sykehistorie;
+    }
+
+    /**
+     * Sets the value of the sykehistorie property.
+     * 
+     * @param value
+     *     allowed object is
+     *     {@link Utredning.Sykehistorie }
+     *     
+     */
+    public void setSykehistorie(Utredning.Sykehistorie value) {
+        this.sykehistorie = value;
+    }
+
+    /**
+     * Gets the value of the diagnostiskeUS property.
+     * 
+     * @return
+     *     possible object is
+     *     {@link Utredning.DiagnostiskeUS }
+     *     
+     */
+    public Utredning.DiagnostiskeUS getDiagnostiskeUS() {
+        return diagnostiskeUS;
+    }
+
+    /**
+     * Sets the value of the diagnostiskeUS property.
+     * 
+     * @param value
+     *     allowed object is
+     *     {@link Utredning.DiagnostiskeUS }
+     *     
+     */
+    public void setDiagnostiskeUS(Utredning.DiagnostiskeUS value) {
+        this.diagnostiskeUS = value;
+    }
+
+    /**
+     * Gets the value of the datoMetastaser property.
+     * 
+     * @return
+     *     possible object is
+     *     {@link String }
+     *     
+     */
+    public String getDatoMetastaser() {
+        return datoMetastaser;
+    }
+
+    /**
+     * Sets the value of the datoMetastaser property.
+     * 
+     * @param value
+     *     allowed object is
+     *     {@link String }
+     *     
+     */
+    public void setDatoMetastaser(String value) {
+        this.datoMetastaser = value;
     }
 
     /**
@@ -713,10 +720,10 @@ public class Behandling {
      * 
      * @return
      *     possible object is
-     *     {@link Behandling.Sykdomsutbredelse }
+     *     {@link Utredning.Sykdomsutbredelse }
      *     
      */
-    public Behandling.Sykdomsutbredelse getSykdomsutbredelse() {
+    public Utredning.Sykdomsutbredelse getSykdomsutbredelse() {
         return sykdomsutbredelse;
     }
 
@@ -725,35 +732,35 @@ public class Behandling {
      * 
      * @param value
      *     allowed object is
-     *     {@link Behandling.Sykdomsutbredelse }
+     *     {@link Utredning.Sykdomsutbredelse }
      *     
      */
-    public void setSykdomsutbredelse(Behandling.Sykdomsutbredelse value) {
+    public void setSykdomsutbredelse(Utredning.Sykdomsutbredelse value) {
         this.sykdomsutbredelse = value;
     }
 
     /**
-     * Gets the value of the straalebehandling property.
+     * Gets the value of the kliniskTNM property.
      * 
      * @return
      *     possible object is
-     *     {@link Behandling.Straalebehandling }
+     *     {@link Utredning.KliniskTNM }
      *     
      */
-    public Behandling.Straalebehandling getStraalebehandling() {
-        return straalebehandling;
+    public Utredning.KliniskTNM getKliniskTNM() {
+        return kliniskTNM;
     }
 
     /**
-     * Sets the value of the straalebehandling property.
+     * Sets the value of the kliniskTNM property.
      * 
      * @param value
      *     allowed object is
-     *     {@link Behandling.Straalebehandling }
+     *     {@link Utredning.KliniskTNM }
      *     
      */
-    public void setStraalebehandling(Behandling.Straalebehandling value) {
-        this.straalebehandling = value;
+    public void setKliniskTNM(Utredning.KliniskTNM value) {
+        this.kliniskTNM = value;
     }
 
 
@@ -767,7 +774,55 @@ public class Behandling {
      *   &lt;complexContent&gt;
      *     &lt;restriction base="{http://www.w3.org/2001/XMLSchema}anyType"&gt;
      *       &lt;sequence&gt;
-     *         &lt;element name="AktivMonitorering"&gt;
+     *         &lt;element name="BildediagnostikkUS"&gt;
+     *           &lt;complexType&gt;
+     *             &lt;complexContent&gt;
+     *               &lt;restriction base="{http://www.w3.org/2001/XMLSchema}anyType"&gt;
+     *                 &lt;sequence&gt;
+     *                   &lt;element name="DatoMRDiagnostikk"&gt;
+     *                     &lt;simpleType&gt;
+     *                       &lt;union memberTypes=" {http://www.w3.org/2001/XMLSchema}date"&gt;
+     *                         &lt;simpleType&gt;
+     *                           &lt;restriction base="{http://www.w3.org/2001/XMLSchema}string"&gt;
+     *                             &lt;pattern value=""/&gt;
+     *                           &lt;/restriction&gt;
+     *                         &lt;/simpleType&gt;
+     *                       &lt;/union&gt;
+     *                     &lt;/simpleType&gt;
+     *                   &lt;/element&gt;
+     *                   &lt;element name="MRDiagnostikk"&gt;
+     *                     &lt;simpleType&gt;
+     *                       &lt;restriction base="{http://www.w3.org/2001/XMLSchema}string"&gt;
+     *                         &lt;enumeration value=""/&gt;
+     *                         &lt;enumeration value="1"/&gt;
+     *                         &lt;enumeration value="0"/&gt;
+     *                       &lt;/restriction&gt;
+     *                     &lt;/simpleType&gt;
+     *                   &lt;/element&gt;
+     *                   &lt;element name="DatoMRDiagnostikkUkjent"&gt;
+     *                     &lt;simpleType&gt;
+     *                       &lt;restriction base="{http://www.w3.org/2001/XMLSchema}string"&gt;
+     *                         &lt;enumeration value=""/&gt;
+     *                         &lt;enumeration value="99"/&gt;
+     *                       &lt;/restriction&gt;
+     *                     &lt;/simpleType&gt;
+     *                   &lt;/element&gt;
+     *                   &lt;element name="AnnetBildediagnostikk"&gt;
+     *                     &lt;simpleType&gt;
+     *                       &lt;restriction base="{http://www.w3.org/2001/XMLSchema}string"&gt;
+     *                         &lt;enumeration value=""/&gt;
+     *                         &lt;enumeration value="1"/&gt;
+     *                         &lt;enumeration value="0"/&gt;
+     *                       &lt;/restriction&gt;
+     *                     &lt;/simpleType&gt;
+     *                   &lt;/element&gt;
+     *                   &lt;element name="AnnetBildediagnostikkSpesifiser2" type="{http://www.w3.org/2001/XMLSchema}string"/&gt;
+     *                 &lt;/sequence&gt;
+     *               &lt;/restriction&gt;
+     *             &lt;/complexContent&gt;
+     *           &lt;/complexType&gt;
+     *         &lt;/element&gt;
+     *         &lt;element name="Vevsprover"&gt;
      *           &lt;simpleType&gt;
      *             &lt;restriction base="{http://www.w3.org/2001/XMLSchema}string"&gt;
      *               &lt;enumeration value=""/&gt;
@@ -776,73 +831,37 @@ public class Behandling {
      *             &lt;/restriction&gt;
      *           &lt;/simpleType&gt;
      *         &lt;/element&gt;
-     *         &lt;element name="RevurderingSykdomsutrbredelse"&gt;
-     *           &lt;simpleType&gt;
-     *             &lt;restriction base="{http://www.w3.org/2001/XMLSchema}string"&gt;
-     *               &lt;enumeration value=""/&gt;
-     *               &lt;enumeration value="1"/&gt;
-     *               &lt;enumeration value="0"/&gt;
-     *             &lt;/restriction&gt;
-     *           &lt;/simpleType&gt;
-     *         &lt;/element&gt;
-     *         &lt;element name="PreStraalePSAVerdi"&gt;
-     *           &lt;simpleType&gt;
-     *             &lt;restriction base="{http://www.w3.org/2001/XMLSchema}string"&gt;
-     *               &lt;pattern value="([1-9]\d{0,5}|\d,\d{1,2}|[1-9]\d{1,5},\d{1,2})?"/&gt;
-     *             &lt;/restriction&gt;
-     *           &lt;/simpleType&gt;
-     *         &lt;/element&gt;
-     *         &lt;element name="PreStraalePSAVerdiUkjent"&gt;
-     *           &lt;simpleType&gt;
-     *             &lt;restriction base="{http://www.w3.org/2001/XMLSchema}string"&gt;
-     *               &lt;enumeration value=""/&gt;
-     *               &lt;enumeration value="99"/&gt;
-     *             &lt;/restriction&gt;
-     *           &lt;/simpleType&gt;
-     *         &lt;/element&gt;
-     *         &lt;element name="EndokrinBehandling"&gt;
-     *           &lt;simpleType&gt;
-     *             &lt;restriction base="{http://www.w3.org/2001/XMLSchema}string"&gt;
-     *               &lt;enumeration value=""/&gt;
-     *               &lt;enumeration value="1"/&gt;
-     *               &lt;enumeration value="0"/&gt;
-     *               &lt;enumeration value="99"/&gt;
-     *             &lt;/restriction&gt;
-     *           &lt;/simpleType&gt;
-     *         &lt;/element&gt;
-     *         &lt;element name="DatoOppstartEndokrinBeh"&gt;
-     *           &lt;simpleType&gt;
-     *             &lt;union memberTypes=" {http://www.w3.org/2001/XMLSchema}date"&gt;
-     *               &lt;simpleType&gt;
-     *                 &lt;restriction base="{http://www.w3.org/2001/XMLSchema}string"&gt;
-     *                   &lt;pattern value=""/&gt;
-     *                 &lt;/restriction&gt;
-     *               &lt;/simpleType&gt;
-     *             &lt;/union&gt;
-     *           &lt;/simpleType&gt;
-     *         &lt;/element&gt;
-     *         &lt;element name="DatoOppstartEndokrinBehUkjent"&gt;
-     *           &lt;simpleType&gt;
-     *             &lt;restriction base="{http://www.w3.org/2001/XMLSchema}string"&gt;
-     *               &lt;enumeration value=""/&gt;
-     *               &lt;enumeration value="99"/&gt;
-     *             &lt;/restriction&gt;
-     *           &lt;/simpleType&gt;
-     *         &lt;/element&gt;
-     *         &lt;element name="VarighetEndokrinBehandling"&gt;
-     *           &lt;simpleType&gt;
-     *             &lt;restriction base="{http://www.w3.org/2001/XMLSchema}string"&gt;
-     *               &lt;pattern value="([1-9]\d{0,2})?"/&gt;
-     *             &lt;/restriction&gt;
-     *           &lt;/simpleType&gt;
-     *         &lt;/element&gt;
-     *         &lt;element name="VarighetEndokrinBehUkjent"&gt;
-     *           &lt;simpleType&gt;
-     *             &lt;restriction base="{http://www.w3.org/2001/XMLSchema}string"&gt;
-     *               &lt;enumeration value=""/&gt;
-     *               &lt;enumeration value="99"/&gt;
-     *             &lt;/restriction&gt;
-     *           &lt;/simpleType&gt;
+     *         &lt;element name="VevsproverUS"&gt;
+     *           &lt;complexType&gt;
+     *             &lt;complexContent&gt;
+     *               &lt;restriction base="{http://www.w3.org/2001/XMLSchema}anyType"&gt;
+     *                 &lt;sequence&gt;
+     *                   &lt;element name="BiopsiVevsprover"&gt;
+     *                     &lt;simpleType&gt;
+     *                       &lt;restriction base="{http://www.w3.org/2001/XMLSchema}boolean"&gt;
+     *                         &lt;pattern value="true|false"/&gt;
+     *                       &lt;/restriction&gt;
+     *                     &lt;/simpleType&gt;
+     *                   &lt;/element&gt;
+     *                   &lt;element name="TURPVevsprover"&gt;
+     *                     &lt;simpleType&gt;
+     *                       &lt;restriction base="{http://www.w3.org/2001/XMLSchema}boolean"&gt;
+     *                         &lt;pattern value="true|false"/&gt;
+     *                       &lt;/restriction&gt;
+     *                     &lt;/simpleType&gt;
+     *                   &lt;/element&gt;
+     *                   &lt;element name="AnnetVevsprover"&gt;
+     *                     &lt;simpleType&gt;
+     *                       &lt;restriction base="{http://www.w3.org/2001/XMLSchema}boolean"&gt;
+     *                         &lt;pattern value="true|false"/&gt;
+     *                       &lt;/restriction&gt;
+     *                     &lt;/simpleType&gt;
+     *                   &lt;/element&gt;
+     *                   &lt;element name="AnnetVevsproverSpesifiser2" type="{http://www.w3.org/2001/XMLSchema}string"/&gt;
+     *                 &lt;/sequence&gt;
+     *               &lt;/restriction&gt;
+     *             &lt;/complexContent&gt;
+     *           &lt;/complexType&gt;
      *         &lt;/element&gt;
      *       &lt;/sequence&gt;
      *     &lt;/restriction&gt;
@@ -854,251 +873,422 @@ public class Behandling {
      */
     @XmlAccessorType(XmlAccessType.FIELD)
     @XmlType(name = "", propOrder = {
-        "aktivMonitorering",
-        "revurderingSykdomsutrbredelse",
-        "preStraalePSAVerdi",
-        "preStraalePSAVerdiUkjent",
-        "endokrinBehandling",
-        "datoOppstartEndokrinBeh",
-        "datoOppstartEndokrinBehUkjent",
-        "varighetEndokrinBehandling",
-        "varighetEndokrinBehUkjent"
+        "bildediagnostikkUS",
+        "vevsprover",
+        "vevsproverUS"
     })
-    public static class PreStraaleInformasjon {
+    public static class DiagnostiskeUS {
 
-        @XmlElement(name = "AktivMonitorering", namespace = "http://www.kreftregisteret.no/kremt/KliniskProstataStraale/v4_0", required = true, defaultValue = "")
-        protected String aktivMonitorering;
-        @XmlElement(name = "RevurderingSykdomsutrbredelse", namespace = "http://www.kreftregisteret.no/kremt/KliniskProstataStraale/v4_0", required = true, defaultValue = "")
-        protected String revurderingSykdomsutrbredelse;
-        @XmlElement(name = "PreStraalePSAVerdi", namespace = "http://www.kreftregisteret.no/kremt/KliniskProstataStraale/v4_0", required = true, defaultValue = "")
-        protected String preStraalePSAVerdi;
-        @XmlElement(name = "PreStraalePSAVerdiUkjent", namespace = "http://www.kreftregisteret.no/kremt/KliniskProstataStraale/v4_0", required = true, defaultValue = "")
-        protected String preStraalePSAVerdiUkjent;
-        @XmlElement(name = "EndokrinBehandling", namespace = "http://www.kreftregisteret.no/kremt/KliniskProstataStraale/v4_0", required = true, defaultValue = "")
-        protected String endokrinBehandling;
-        @XmlElement(name = "DatoOppstartEndokrinBeh", namespace = "http://www.kreftregisteret.no/kremt/KliniskProstataStraale/v4_0", required = true)
-        protected String datoOppstartEndokrinBeh;
-        @XmlElement(name = "DatoOppstartEndokrinBehUkjent", namespace = "http://www.kreftregisteret.no/kremt/KliniskProstataStraale/v4_0", required = true, defaultValue = "")
-        protected String datoOppstartEndokrinBehUkjent;
-        @XmlElement(name = "VarighetEndokrinBehandling", namespace = "http://www.kreftregisteret.no/kremt/KliniskProstataStraale/v4_0", required = true, defaultValue = "")
-        protected String varighetEndokrinBehandling;
-        @XmlElement(name = "VarighetEndokrinBehUkjent", namespace = "http://www.kreftregisteret.no/kremt/KliniskProstataStraale/v4_0", required = true, defaultValue = "")
-        protected String varighetEndokrinBehUkjent;
+        @XmlElement(name = "BildediagnostikkUS", namespace = "http://www.kreftregisteret.no/kremt/KliniskProstataUtredning/v4_0", required = true)
+        protected Utredning.DiagnostiskeUS.BildediagnostikkUS bildediagnostikkUS;
+        @XmlElement(name = "Vevsprover", namespace = "http://www.kreftregisteret.no/kremt/KliniskProstataUtredning/v4_0", required = true, defaultValue = "")
+        protected String vevsprover;
+        @XmlElement(name = "VevsproverUS", namespace = "http://www.kreftregisteret.no/kremt/KliniskProstataUtredning/v4_0", required = true)
+        protected Utredning.DiagnostiskeUS.VevsproverUS vevsproverUS;
 
         /**
-         * Gets the value of the aktivMonitorering property.
+         * Gets the value of the bildediagnostikkUS property.
+         * 
+         * @return
+         *     possible object is
+         *     {@link Utredning.DiagnostiskeUS.BildediagnostikkUS }
+         *     
+         */
+        public Utredning.DiagnostiskeUS.BildediagnostikkUS getBildediagnostikkUS() {
+            return bildediagnostikkUS;
+        }
+
+        /**
+         * Sets the value of the bildediagnostikkUS property.
+         * 
+         * @param value
+         *     allowed object is
+         *     {@link Utredning.DiagnostiskeUS.BildediagnostikkUS }
+         *     
+         */
+        public void setBildediagnostikkUS(Utredning.DiagnostiskeUS.BildediagnostikkUS value) {
+            this.bildediagnostikkUS = value;
+        }
+
+        /**
+         * Gets the value of the vevsprover property.
          * 
          * @return
          *     possible object is
          *     {@link String }
          *     
          */
-        public String getAktivMonitorering() {
-            return aktivMonitorering;
+        public String getVevsprover() {
+            return vevsprover;
         }
 
         /**
-         * Sets the value of the aktivMonitorering property.
+         * Sets the value of the vevsprover property.
          * 
          * @param value
          *     allowed object is
          *     {@link String }
          *     
          */
-        public void setAktivMonitorering(String value) {
-            this.aktivMonitorering = value;
+        public void setVevsprover(String value) {
+            this.vevsprover = value;
         }
 
         /**
-         * Gets the value of the revurderingSykdomsutrbredelse property.
+         * Gets the value of the vevsproverUS property.
          * 
          * @return
          *     possible object is
-         *     {@link String }
+         *     {@link Utredning.DiagnostiskeUS.VevsproverUS }
          *     
          */
-        public String getRevurderingSykdomsutrbredelse() {
-            return revurderingSykdomsutrbredelse;
+        public Utredning.DiagnostiskeUS.VevsproverUS getVevsproverUS() {
+            return vevsproverUS;
         }
 
         /**
-         * Sets the value of the revurderingSykdomsutrbredelse property.
+         * Sets the value of the vevsproverUS property.
          * 
          * @param value
          *     allowed object is
-         *     {@link String }
+         *     {@link Utredning.DiagnostiskeUS.VevsproverUS }
          *     
          */
-        public void setRevurderingSykdomsutrbredelse(String value) {
-            this.revurderingSykdomsutrbredelse = value;
+        public void setVevsproverUS(Utredning.DiagnostiskeUS.VevsproverUS value) {
+            this.vevsproverUS = value;
         }
 
-        /**
-         * Gets the value of the preStraalePSAVerdi property.
-         * 
-         * @return
-         *     possible object is
-         *     {@link String }
-         *     
-         */
-        public String getPreStraalePSAVerdi() {
-            return preStraalePSAVerdi;
-        }
 
         /**
-         * Sets the value of the preStraalePSAVerdi property.
+         * <p>Java class for anonymous complex type.
          * 
-         * @param value
-         *     allowed object is
-         *     {@link String }
-         *     
+         * <p>The following schema fragment specifies the expected content contained within this class.
+         * 
+         * <pre>
+         * &lt;complexType&gt;
+         *   &lt;complexContent&gt;
+         *     &lt;restriction base="{http://www.w3.org/2001/XMLSchema}anyType"&gt;
+         *       &lt;sequence&gt;
+         *         &lt;element name="DatoMRDiagnostikk"&gt;
+         *           &lt;simpleType&gt;
+         *             &lt;union memberTypes=" {http://www.w3.org/2001/XMLSchema}date"&gt;
+         *               &lt;simpleType&gt;
+         *                 &lt;restriction base="{http://www.w3.org/2001/XMLSchema}string"&gt;
+         *                   &lt;pattern value=""/&gt;
+         *                 &lt;/restriction&gt;
+         *               &lt;/simpleType&gt;
+         *             &lt;/union&gt;
+         *           &lt;/simpleType&gt;
+         *         &lt;/element&gt;
+         *         &lt;element name="MRDiagnostikk"&gt;
+         *           &lt;simpleType&gt;
+         *             &lt;restriction base="{http://www.w3.org/2001/XMLSchema}string"&gt;
+         *               &lt;enumeration value=""/&gt;
+         *               &lt;enumeration value="1"/&gt;
+         *               &lt;enumeration value="0"/&gt;
+         *             &lt;/restriction&gt;
+         *           &lt;/simpleType&gt;
+         *         &lt;/element&gt;
+         *         &lt;element name="DatoMRDiagnostikkUkjent"&gt;
+         *           &lt;simpleType&gt;
+         *             &lt;restriction base="{http://www.w3.org/2001/XMLSchema}string"&gt;
+         *               &lt;enumeration value=""/&gt;
+         *               &lt;enumeration value="99"/&gt;
+         *             &lt;/restriction&gt;
+         *           &lt;/simpleType&gt;
+         *         &lt;/element&gt;
+         *         &lt;element name="AnnetBildediagnostikk"&gt;
+         *           &lt;simpleType&gt;
+         *             &lt;restriction base="{http://www.w3.org/2001/XMLSchema}string"&gt;
+         *               &lt;enumeration value=""/&gt;
+         *               &lt;enumeration value="1"/&gt;
+         *               &lt;enumeration value="0"/&gt;
+         *             &lt;/restriction&gt;
+         *           &lt;/simpleType&gt;
+         *         &lt;/element&gt;
+         *         &lt;element name="AnnetBildediagnostikkSpesifiser2" type="{http://www.w3.org/2001/XMLSchema}string"/&gt;
+         *       &lt;/sequence&gt;
+         *     &lt;/restriction&gt;
+         *   &lt;/complexContent&gt;
+         * &lt;/complexType&gt;
+         * </pre>
+         * 
+         * 
          */
-        public void setPreStraalePSAVerdi(String value) {
-            this.preStraalePSAVerdi = value;
+        @XmlAccessorType(XmlAccessType.FIELD)
+        @XmlType(name = "", propOrder = {
+            "datoMRDiagnostikk",
+            "mrDiagnostikk",
+            "datoMRDiagnostikkUkjent",
+            "annetBildediagnostikk",
+            "annetBildediagnostikkSpesifiser2"
+        })
+        public static class BildediagnostikkUS {
+
+            @XmlElement(name = "DatoMRDiagnostikk", namespace = "http://www.kreftregisteret.no/kremt/KliniskProstataUtredning/v4_0", required = true)
+            protected String datoMRDiagnostikk;
+            @XmlElement(name = "MRDiagnostikk", namespace = "http://www.kreftregisteret.no/kremt/KliniskProstataUtredning/v4_0", required = true, defaultValue = "")
+            protected String mrDiagnostikk;
+            @XmlElement(name = "DatoMRDiagnostikkUkjent", namespace = "http://www.kreftregisteret.no/kremt/KliniskProstataUtredning/v4_0", required = true, defaultValue = "")
+            protected String datoMRDiagnostikkUkjent;
+            @XmlElement(name = "AnnetBildediagnostikk", namespace = "http://www.kreftregisteret.no/kremt/KliniskProstataUtredning/v4_0", required = true, defaultValue = "")
+            protected String annetBildediagnostikk;
+            @XmlElement(name = "AnnetBildediagnostikkSpesifiser2", namespace = "http://www.kreftregisteret.no/kremt/KliniskProstataUtredning/v4_0", required = true, defaultValue = "")
+            protected String annetBildediagnostikkSpesifiser2;
+
+            /**
+             * Gets the value of the datoMRDiagnostikk property.
+             * 
+             * @return
+             *     possible object is
+             *     {@link String }
+             *     
+             */
+            public String getDatoMRDiagnostikk() {
+                return datoMRDiagnostikk;
+            }
+
+            /**
+             * Sets the value of the datoMRDiagnostikk property.
+             * 
+             * @param value
+             *     allowed object is
+             *     {@link String }
+             *     
+             */
+            public void setDatoMRDiagnostikk(String value) {
+                this.datoMRDiagnostikk = value;
+            }
+
+            /**
+             * Gets the value of the mrDiagnostikk property.
+             * 
+             * @return
+             *     possible object is
+             *     {@link String }
+             *     
+             */
+            public String getMRDiagnostikk() {
+                return mrDiagnostikk;
+            }
+
+            /**
+             * Sets the value of the mrDiagnostikk property.
+             * 
+             * @param value
+             *     allowed object is
+             *     {@link String }
+             *     
+             */
+            public void setMRDiagnostikk(String value) {
+                this.mrDiagnostikk = value;
+            }
+
+            /**
+             * Gets the value of the datoMRDiagnostikkUkjent property.
+             * 
+             * @return
+             *     possible object is
+             *     {@link String }
+             *     
+             */
+            public String getDatoMRDiagnostikkUkjent() {
+                return datoMRDiagnostikkUkjent;
+            }
+
+            /**
+             * Sets the value of the datoMRDiagnostikkUkjent property.
+             * 
+             * @param value
+             *     allowed object is
+             *     {@link String }
+             *     
+             */
+            public void setDatoMRDiagnostikkUkjent(String value) {
+                this.datoMRDiagnostikkUkjent = value;
+            }
+
+            /**
+             * Gets the value of the annetBildediagnostikk property.
+             * 
+             * @return
+             *     possible object is
+             *     {@link String }
+             *     
+             */
+            public String getAnnetBildediagnostikk() {
+                return annetBildediagnostikk;
+            }
+
+            /**
+             * Sets the value of the annetBildediagnostikk property.
+             * 
+             * @param value
+             *     allowed object is
+             *     {@link String }
+             *     
+             */
+            public void setAnnetBildediagnostikk(String value) {
+                this.annetBildediagnostikk = value;
+            }
+
+            /**
+             * Gets the value of the annetBildediagnostikkSpesifiser2 property.
+             * 
+             * @return
+             *     possible object is
+             *     {@link String }
+             *     
+             */
+            public String getAnnetBildediagnostikkSpesifiser2() {
+                return annetBildediagnostikkSpesifiser2;
+            }
+
+            /**
+             * Sets the value of the annetBildediagnostikkSpesifiser2 property.
+             * 
+             * @param value
+             *     allowed object is
+             *     {@link String }
+             *     
+             */
+            public void setAnnetBildediagnostikkSpesifiser2(String value) {
+                this.annetBildediagnostikkSpesifiser2 = value;
+            }
+
         }
 
-        /**
-         * Gets the value of the preStraalePSAVerdiUkjent property.
-         * 
-         * @return
-         *     possible object is
-         *     {@link String }
-         *     
-         */
-        public String getPreStraalePSAVerdiUkjent() {
-            return preStraalePSAVerdiUkjent;
-        }
 
         /**
-         * Sets the value of the preStraalePSAVerdiUkjent property.
+         * <p>Java class for anonymous complex type.
          * 
-         * @param value
-         *     allowed object is
-         *     {@link String }
-         *     
+         * <p>The following schema fragment specifies the expected content contained within this class.
+         * 
+         * <pre>
+         * &lt;complexType&gt;
+         *   &lt;complexContent&gt;
+         *     &lt;restriction base="{http://www.w3.org/2001/XMLSchema}anyType"&gt;
+         *       &lt;sequence&gt;
+         *         &lt;element name="BiopsiVevsprover"&gt;
+         *           &lt;simpleType&gt;
+         *             &lt;restriction base="{http://www.w3.org/2001/XMLSchema}boolean"&gt;
+         *               &lt;pattern value="true|false"/&gt;
+         *             &lt;/restriction&gt;
+         *           &lt;/simpleType&gt;
+         *         &lt;/element&gt;
+         *         &lt;element name="TURPVevsprover"&gt;
+         *           &lt;simpleType&gt;
+         *             &lt;restriction base="{http://www.w3.org/2001/XMLSchema}boolean"&gt;
+         *               &lt;pattern value="true|false"/&gt;
+         *             &lt;/restriction&gt;
+         *           &lt;/simpleType&gt;
+         *         &lt;/element&gt;
+         *         &lt;element name="AnnetVevsprover"&gt;
+         *           &lt;simpleType&gt;
+         *             &lt;restriction base="{http://www.w3.org/2001/XMLSchema}boolean"&gt;
+         *               &lt;pattern value="true|false"/&gt;
+         *             &lt;/restriction&gt;
+         *           &lt;/simpleType&gt;
+         *         &lt;/element&gt;
+         *         &lt;element name="AnnetVevsproverSpesifiser2" type="{http://www.w3.org/2001/XMLSchema}string"/&gt;
+         *       &lt;/sequence&gt;
+         *     &lt;/restriction&gt;
+         *   &lt;/complexContent&gt;
+         * &lt;/complexType&gt;
+         * </pre>
+         * 
+         * 
          */
-        public void setPreStraalePSAVerdiUkjent(String value) {
-            this.preStraalePSAVerdiUkjent = value;
-        }
+        @XmlAccessorType(XmlAccessType.FIELD)
+        @XmlType(name = "", propOrder = {
+            "biopsiVevsprover",
+            "turpVevsprover",
+            "annetVevsprover",
+            "annetVevsproverSpesifiser2"
+        })
+        public static class VevsproverUS {
 
-        /**
-         * Gets the value of the endokrinBehandling property.
-         * 
-         * @return
-         *     possible object is
-         *     {@link String }
-         *     
-         */
-        public String getEndokrinBehandling() {
-            return endokrinBehandling;
-        }
+            @XmlElement(name = "BiopsiVevsprover", namespace = "http://www.kreftregisteret.no/kremt/KliniskProstataUtredning/v4_0")
+            protected boolean biopsiVevsprover;
+            @XmlElement(name = "TURPVevsprover", namespace = "http://www.kreftregisteret.no/kremt/KliniskProstataUtredning/v4_0")
+            protected boolean turpVevsprover;
+            @XmlElement(name = "AnnetVevsprover", namespace = "http://www.kreftregisteret.no/kremt/KliniskProstataUtredning/v4_0")
+            protected boolean annetVevsprover;
+            @XmlElement(name = "AnnetVevsproverSpesifiser2", namespace = "http://www.kreftregisteret.no/kremt/KliniskProstataUtredning/v4_0", required = true, defaultValue = "")
+            protected String annetVevsproverSpesifiser2;
 
-        /**
-         * Sets the value of the endokrinBehandling property.
-         * 
-         * @param value
-         *     allowed object is
-         *     {@link String }
-         *     
-         */
-        public void setEndokrinBehandling(String value) {
-            this.endokrinBehandling = value;
-        }
+            /**
+             * Gets the value of the biopsiVevsprover property.
+             * 
+             */
+            public boolean isBiopsiVevsprover() {
+                return biopsiVevsprover;
+            }
 
-        /**
-         * Gets the value of the datoOppstartEndokrinBeh property.
-         * 
-         * @return
-         *     possible object is
-         *     {@link String }
-         *     
-         */
-        public String getDatoOppstartEndokrinBeh() {
-            return datoOppstartEndokrinBeh;
-        }
+            /**
+             * Sets the value of the biopsiVevsprover property.
+             * 
+             */
+            public void setBiopsiVevsprover(boolean value) {
+                this.biopsiVevsprover = value;
+            }
 
-        /**
-         * Sets the value of the datoOppstartEndokrinBeh property.
-         * 
-         * @param value
-         *     allowed object is
-         *     {@link String }
-         *     
-         */
-        public void setDatoOppstartEndokrinBeh(String value) {
-            this.datoOppstartEndokrinBeh = value;
-        }
+            /**
+             * Gets the value of the turpVevsprover property.
+             * 
+             */
+            public boolean isTURPVevsprover() {
+                return turpVevsprover;
+            }
 
-        /**
-         * Gets the value of the datoOppstartEndokrinBehUkjent property.
-         * 
-         * @return
-         *     possible object is
-         *     {@link String }
-         *     
-         */
-        public String getDatoOppstartEndokrinBehUkjent() {
-            return datoOppstartEndokrinBehUkjent;
-        }
+            /**
+             * Sets the value of the turpVevsprover property.
+             * 
+             */
+            public void setTURPVevsprover(boolean value) {
+                this.turpVevsprover = value;
+            }
 
-        /**
-         * Sets the value of the datoOppstartEndokrinBehUkjent property.
-         * 
-         * @param value
-         *     allowed object is
-         *     {@link String }
-         *     
-         */
-        public void setDatoOppstartEndokrinBehUkjent(String value) {
-            this.datoOppstartEndokrinBehUkjent = value;
-        }
+            /**
+             * Gets the value of the annetVevsprover property.
+             * 
+             */
+            public boolean isAnnetVevsprover() {
+                return annetVevsprover;
+            }
 
-        /**
-         * Gets the value of the varighetEndokrinBehandling property.
-         * 
-         * @return
-         *     possible object is
-         *     {@link String }
-         *     
-         */
-        public String getVarighetEndokrinBehandling() {
-            return varighetEndokrinBehandling;
-        }
+            /**
+             * Sets the value of the annetVevsprover property.
+             * 
+             */
+            public void setAnnetVevsprover(boolean value) {
+                this.annetVevsprover = value;
+            }
 
-        /**
-         * Sets the value of the varighetEndokrinBehandling property.
-         * 
-         * @param value
-         *     allowed object is
-         *     {@link String }
-         *     
-         */
-        public void setVarighetEndokrinBehandling(String value) {
-            this.varighetEndokrinBehandling = value;
-        }
+            /**
+             * Gets the value of the annetVevsproverSpesifiser2 property.
+             * 
+             * @return
+             *     possible object is
+             *     {@link String }
+             *     
+             */
+            public String getAnnetVevsproverSpesifiser2() {
+                return annetVevsproverSpesifiser2;
+            }
 
-        /**
-         * Gets the value of the varighetEndokrinBehUkjent property.
-         * 
-         * @return
-         *     possible object is
-         *     {@link String }
-         *     
-         */
-        public String getVarighetEndokrinBehUkjent() {
-            return varighetEndokrinBehUkjent;
-        }
+            /**
+             * Sets the value of the annetVevsproverSpesifiser2 property.
+             * 
+             * @param value
+             *     allowed object is
+             *     {@link String }
+             *     
+             */
+            public void setAnnetVevsproverSpesifiser2(String value) {
+                this.annetVevsproverSpesifiser2 = value;
+            }
 
-        /**
-         * Sets the value of the varighetEndokrinBehUkjent property.
-         * 
-         * @param value
-         *     allowed object is
-         *     {@link String }
-         *     
-         */
-        public void setVarighetEndokrinBehUkjent(String value) {
-            this.varighetEndokrinBehUkjent = value;
         }
 
     }
@@ -1114,180 +1304,9 @@ public class Behandling {
      *   &lt;complexContent&gt;
      *     &lt;restriction base="{http://www.w3.org/2001/XMLSchema}anyType"&gt;
      *       &lt;sequence&gt;
-     *         &lt;element name="EksternStraalebehandling"&gt;
-     *           &lt;simpleType&gt;
-     *             &lt;restriction base="{http://www.w3.org/2001/XMLSchema}string"&gt;
-     *               &lt;enumeration value=""/&gt;
-     *               &lt;enumeration value="1"/&gt;
-     *               &lt;enumeration value="0"/&gt;
-     *             &lt;/restriction&gt;
-     *           &lt;/simpleType&gt;
-     *         &lt;/element&gt;
-     *         &lt;element name="DatoOppstartStraale"&gt;
-     *           &lt;simpleType&gt;
-     *             &lt;union memberTypes=" {http://www.w3.org/2001/XMLSchema}date"&gt;
-     *               &lt;simpleType&gt;
-     *                 &lt;restriction base="{http://www.w3.org/2001/XMLSchema}string"&gt;
-     *                   &lt;pattern value=""/&gt;
-     *                 &lt;/restriction&gt;
-     *               &lt;/simpleType&gt;
-     *             &lt;/union&gt;
-     *           &lt;/simpleType&gt;
-     *         &lt;/element&gt;
-     *         &lt;sequence&gt;
-     *           &lt;element name="Prostata"&gt;
-     *             &lt;complexType&gt;
-     *               &lt;complexContent&gt;
-     *                 &lt;restriction base="{http://www.w3.org/2001/XMLSchema}anyType"&gt;
-     *                   &lt;sequence&gt;
-     *                     &lt;element name="ProstataFRDoseGY"&gt;
-     *                       &lt;simpleType&gt;
-     *                         &lt;restriction base="{http://www.w3.org/2001/XMLSchema}string"&gt;
-     *                           &lt;pattern value="([1-9]\d{0,1}|\d{0,2},\d{1,2})?"/&gt;
-     *                         &lt;/restriction&gt;
-     *                       &lt;/simpleType&gt;
-     *                     &lt;/element&gt;
-     *                     &lt;element name="ProstataFRDoseUkjent"&gt;
-     *                       &lt;simpleType&gt;
-     *                         &lt;restriction base="{http://www.w3.org/2001/XMLSchema}string"&gt;
-     *                           &lt;enumeration value=""/&gt;
-     *                           &lt;enumeration value="99"/&gt;
-     *                         &lt;/restriction&gt;
-     *                       &lt;/simpleType&gt;
-     *                     &lt;/element&gt;
-     *                     &lt;element name="ProstataAntFR"&gt;
-     *                       &lt;simpleType&gt;
-     *                         &lt;restriction base="{http://www.w3.org/2001/XMLSchema}string"&gt;
-     *                           &lt;pattern value="([1-9]\d{0,1})?"/&gt;
-     *                         &lt;/restriction&gt;
-     *                       &lt;/simpleType&gt;
-     *                     &lt;/element&gt;
-     *                     &lt;element name="ProstataAntFRUkjent"&gt;
-     *                       &lt;simpleType&gt;
-     *                         &lt;restriction base="{http://www.w3.org/2001/XMLSchema}string"&gt;
-     *                           &lt;enumeration value=""/&gt;
-     *                           &lt;enumeration value="99"/&gt;
-     *                         &lt;/restriction&gt;
-     *                       &lt;/simpleType&gt;
-     *                     &lt;/element&gt;
-     *                   &lt;/sequence&gt;
-     *                 &lt;/restriction&gt;
-     *               &lt;/complexContent&gt;
-     *             &lt;/complexType&gt;
-     *           &lt;/element&gt;
-     *           &lt;element name="LKbekken"&gt;
-     *             &lt;complexType&gt;
-     *               &lt;complexContent&gt;
-     *                 &lt;restriction base="{http://www.w3.org/2001/XMLSchema}anyType"&gt;
-     *                   &lt;sequence&gt;
-     *                     &lt;element name="LKBekkenStraalebehandling"&gt;
-     *                       &lt;simpleType&gt;
-     *                         &lt;restriction base="{http://www.w3.org/2001/XMLSchema}string"&gt;
-     *                           &lt;enumeration value=""/&gt;
-     *                           &lt;enumeration value="1"/&gt;
-     *                           &lt;enumeration value="0"/&gt;
-     *                           &lt;enumeration value="99"/&gt;
-     *                         &lt;/restriction&gt;
-     *                       &lt;/simpleType&gt;
-     *                     &lt;/element&gt;
-     *                   &lt;/sequence&gt;
-     *                 &lt;/restriction&gt;
-     *               &lt;/complexContent&gt;
-     *             &lt;/complexType&gt;
-     *           &lt;/element&gt;
-     *           &lt;element name="HoydoserateBrachyterapi"&gt;
-     *             &lt;complexType&gt;
-     *               &lt;complexContent&gt;
-     *                 &lt;restriction base="{http://www.w3.org/2001/XMLSchema}anyType"&gt;
-     *                   &lt;sequence&gt;
-     *                     &lt;element name="HDBrachyterapi"&gt;
-     *                       &lt;simpleType&gt;
-     *                         &lt;restriction base="{http://www.w3.org/2001/XMLSchema}string"&gt;
-     *                           &lt;enumeration value=""/&gt;
-     *                           &lt;enumeration value="1"/&gt;
-     *                           &lt;enumeration value="0"/&gt;
-     *                         &lt;/restriction&gt;
-     *                       &lt;/simpleType&gt;
-     *                     &lt;/element&gt;
-     *                     &lt;element name="HDBrachyterapiFRDoseGY"&gt;
-     *                       &lt;simpleType&gt;
-     *                         &lt;restriction base="{http://www.w3.org/2001/XMLSchema}string"&gt;
-     *                           &lt;pattern value="([1-9]\d{0,1}|\d{0,2},\d{1,2})?"/&gt;
-     *                         &lt;/restriction&gt;
-     *                       &lt;/simpleType&gt;
-     *                     &lt;/element&gt;
-     *                     &lt;element name="HDBrachyterapiFRDoseUkjent"&gt;
-     *                       &lt;simpleType&gt;
-     *                         &lt;restriction base="{http://www.w3.org/2001/XMLSchema}string"&gt;
-     *                           &lt;enumeration value=""/&gt;
-     *                           &lt;enumeration value="99"/&gt;
-     *                         &lt;/restriction&gt;
-     *                       &lt;/simpleType&gt;
-     *                     &lt;/element&gt;
-     *                     &lt;element name="HDBrachyterapiAntFR"&gt;
-     *                       &lt;simpleType&gt;
-     *                         &lt;restriction base="{http://www.w3.org/2001/XMLSchema}string"&gt;
-     *                           &lt;pattern value="([1-9])?"/&gt;
-     *                         &lt;/restriction&gt;
-     *                       &lt;/simpleType&gt;
-     *                     &lt;/element&gt;
-     *                     &lt;element name="HDBrachyterapiAntFRUkjent"&gt;
-     *                       &lt;simpleType&gt;
-     *                         &lt;restriction base="{http://www.w3.org/2001/XMLSchema}string"&gt;
-     *                           &lt;enumeration value=""/&gt;
-     *                           &lt;enumeration value="99"/&gt;
-     *                         &lt;/restriction&gt;
-     *                       &lt;/simpleType&gt;
-     *                     &lt;/element&gt;
-     *                   &lt;/sequence&gt;
-     *                 &lt;/restriction&gt;
-     *               &lt;/complexContent&gt;
-     *             &lt;/complexType&gt;
-     *           &lt;/element&gt;
-     *           &lt;element name="LavdoserateBrachyterapi"&gt;
-     *             &lt;complexType&gt;
-     *               &lt;complexContent&gt;
-     *                 &lt;restriction base="{http://www.w3.org/2001/XMLSchema}anyType"&gt;
-     *                   &lt;sequence&gt;
-     *                     &lt;element name="LDBrachyterapi"&gt;
-     *                       &lt;simpleType&gt;
-     *                         &lt;restriction base="{http://www.w3.org/2001/XMLSchema}string"&gt;
-     *                           &lt;enumeration value=""/&gt;
-     *                           &lt;enumeration value="1"/&gt;
-     *                           &lt;enumeration value="0"/&gt;
-     *                         &lt;/restriction&gt;
-     *                       &lt;/simpleType&gt;
-     *                     &lt;/element&gt;
-     *                     &lt;element name="Behandlingssted" type="{http://www.w3.org/2001/XMLSchema}string"/&gt;
-     *                     &lt;element name="BehandlingsstedUkjent"&gt;
-     *                       &lt;simpleType&gt;
-     *                         &lt;restriction base="{http://www.w3.org/2001/XMLSchema}string"&gt;
-     *                           &lt;enumeration value=""/&gt;
-     *                           &lt;enumeration value="99"/&gt;
-     *                         &lt;/restriction&gt;
-     *                       &lt;/simpleType&gt;
-     *                     &lt;/element&gt;
-     *                     &lt;element name="LDBrachyterapiFRDoseGY"&gt;
-     *                       &lt;simpleType&gt;
-     *                         &lt;restriction base="{http://www.w3.org/2001/XMLSchema}string"&gt;
-     *                           &lt;pattern value="([1-9]\d{0,2}|\d{0,3},\d{1,2})?"/&gt;
-     *                         &lt;/restriction&gt;
-     *                       &lt;/simpleType&gt;
-     *                     &lt;/element&gt;
-     *                     &lt;element name="LDBrachyterapiFRDoseUkjent"&gt;
-     *                       &lt;simpleType&gt;
-     *                         &lt;restriction base="{http://www.w3.org/2001/XMLSchema}string"&gt;
-     *                           &lt;enumeration value=""/&gt;
-     *                           &lt;enumeration value="99"/&gt;
-     *                         &lt;/restriction&gt;
-     *                       &lt;/simpleType&gt;
-     *                     &lt;/element&gt;
-     *                   &lt;/sequence&gt;
-     *                 &lt;/restriction&gt;
-     *               &lt;/complexContent&gt;
-     *             &lt;/complexType&gt;
-     *           &lt;/element&gt;
-     *         &lt;/sequence&gt;
+     *         &lt;element name="cT" type="{http://www.w3.org/2001/XMLSchema}string"/&gt;
+     *         &lt;element name="cN" type="{http://www.w3.org/2001/XMLSchema}string"/&gt;
+     *         &lt;element name="cM" type="{http://www.w3.org/2001/XMLSchema}string"/&gt;
      *       &lt;/sequence&gt;
      *     &lt;/restriction&gt;
      *   &lt;/complexContent&gt;
@@ -1298,795 +1317,89 @@ public class Behandling {
      */
     @XmlAccessorType(XmlAccessType.FIELD)
     @XmlType(name = "", propOrder = {
-        "eksternStraalebehandling",
-        "datoOppstartStraale",
-        "prostata",
-        "lKbekken",
-        "hoydoserateBrachyterapi",
-        "lavdoserateBrachyterapi"
+        "ct",
+        "cn",
+        "cm"
     })
-    public static class Straalebehandling {
+    public static class KliniskTNM {
 
-        @XmlElement(name = "EksternStraalebehandling", namespace = "http://www.kreftregisteret.no/kremt/KliniskProstataStraale/v4_0", required = true, defaultValue = "")
-        protected String eksternStraalebehandling;
-        @XmlElement(name = "DatoOppstartStraale", namespace = "http://www.kreftregisteret.no/kremt/KliniskProstataStraale/v4_0", required = true)
-        protected String datoOppstartStraale;
-        @XmlElement(name = "Prostata", namespace = "http://www.kreftregisteret.no/kremt/KliniskProstataStraale/v4_0", required = true)
-        protected Behandling.Straalebehandling.Prostata prostata;
-        @XmlElement(name = "LKbekken", namespace = "http://www.kreftregisteret.no/kremt/KliniskProstataStraale/v4_0", required = true)
-        protected Behandling.Straalebehandling.LKbekken lKbekken;
-        @XmlElement(name = "HoydoserateBrachyterapi", namespace = "http://www.kreftregisteret.no/kremt/KliniskProstataStraale/v4_0", required = true)
-        protected Behandling.Straalebehandling.HoydoserateBrachyterapi hoydoserateBrachyterapi;
-        @XmlElement(name = "LavdoserateBrachyterapi", namespace = "http://www.kreftregisteret.no/kremt/KliniskProstataStraale/v4_0", required = true)
-        protected Behandling.Straalebehandling.LavdoserateBrachyterapi lavdoserateBrachyterapi;
+        @XmlElement(name = "cT", namespace = "http://www.kreftregisteret.no/kremt/KliniskProstataUtredning/v4_0", required = true, defaultValue = "")
+        protected String ct;
+        @XmlElement(name = "cN", namespace = "http://www.kreftregisteret.no/kremt/KliniskProstataUtredning/v4_0", required = true, defaultValue = "")
+        protected String cn;
+        @XmlElement(name = "cM", namespace = "http://www.kreftregisteret.no/kremt/KliniskProstataUtredning/v4_0", required = true, defaultValue = "")
+        protected String cm;
 
         /**
-         * Gets the value of the eksternStraalebehandling property.
+         * Gets the value of the ct property.
          * 
          * @return
          *     possible object is
          *     {@link String }
          *     
          */
-        public String getEksternStraalebehandling() {
-            return eksternStraalebehandling;
+        public String getCT() {
+            return ct;
         }
 
         /**
-         * Sets the value of the eksternStraalebehandling property.
+         * Sets the value of the ct property.
          * 
          * @param value
          *     allowed object is
          *     {@link String }
          *     
          */
-        public void setEksternStraalebehandling(String value) {
-            this.eksternStraalebehandling = value;
+        public void setCT(String value) {
+            this.ct = value;
         }
 
         /**
-         * Gets the value of the datoOppstartStraale property.
+         * Gets the value of the cn property.
          * 
          * @return
          *     possible object is
          *     {@link String }
          *     
          */
-        public String getDatoOppstartStraale() {
-            return datoOppstartStraale;
+        public String getCN() {
+            return cn;
         }
 
         /**
-         * Sets the value of the datoOppstartStraale property.
+         * Sets the value of the cn property.
          * 
          * @param value
          *     allowed object is
          *     {@link String }
          *     
          */
-        public void setDatoOppstartStraale(String value) {
-            this.datoOppstartStraale = value;
+        public void setCN(String value) {
+            this.cn = value;
         }
 
         /**
-         * Gets the value of the prostata property.
+         * Gets the value of the cm property.
          * 
          * @return
          *     possible object is
-         *     {@link Behandling.Straalebehandling.Prostata }
+         *     {@link String }
          *     
          */
-        public Behandling.Straalebehandling.Prostata getProstata() {
-            return prostata;
+        public String getCM() {
+            return cm;
         }
 
         /**
-         * Sets the value of the prostata property.
+         * Sets the value of the cm property.
          * 
          * @param value
          *     allowed object is
-         *     {@link Behandling.Straalebehandling.Prostata }
+         *     {@link String }
          *     
          */
-        public void setProstata(Behandling.Straalebehandling.Prostata value) {
-            this.prostata = value;
-        }
-
-        /**
-         * Gets the value of the lKbekken property.
-         * 
-         * @return
-         *     possible object is
-         *     {@link Behandling.Straalebehandling.LKbekken }
-         *     
-         */
-        public Behandling.Straalebehandling.LKbekken getLKbekken() {
-            return lKbekken;
-        }
-
-        /**
-         * Sets the value of the lKbekken property.
-         * 
-         * @param value
-         *     allowed object is
-         *     {@link Behandling.Straalebehandling.LKbekken }
-         *     
-         */
-        public void setLKbekken(Behandling.Straalebehandling.LKbekken value) {
-            this.lKbekken = value;
-        }
-
-        /**
-         * Gets the value of the hoydoserateBrachyterapi property.
-         * 
-         * @return
-         *     possible object is
-         *     {@link Behandling.Straalebehandling.HoydoserateBrachyterapi }
-         *     
-         */
-        public Behandling.Straalebehandling.HoydoserateBrachyterapi getHoydoserateBrachyterapi() {
-            return hoydoserateBrachyterapi;
-        }
-
-        /**
-         * Sets the value of the hoydoserateBrachyterapi property.
-         * 
-         * @param value
-         *     allowed object is
-         *     {@link Behandling.Straalebehandling.HoydoserateBrachyterapi }
-         *     
-         */
-        public void setHoydoserateBrachyterapi(Behandling.Straalebehandling.HoydoserateBrachyterapi value) {
-            this.hoydoserateBrachyterapi = value;
-        }
-
-        /**
-         * Gets the value of the lavdoserateBrachyterapi property.
-         * 
-         * @return
-         *     possible object is
-         *     {@link Behandling.Straalebehandling.LavdoserateBrachyterapi }
-         *     
-         */
-        public Behandling.Straalebehandling.LavdoserateBrachyterapi getLavdoserateBrachyterapi() {
-            return lavdoserateBrachyterapi;
-        }
-
-        /**
-         * Sets the value of the lavdoserateBrachyterapi property.
-         * 
-         * @param value
-         *     allowed object is
-         *     {@link Behandling.Straalebehandling.LavdoserateBrachyterapi }
-         *     
-         */
-        public void setLavdoserateBrachyterapi(Behandling.Straalebehandling.LavdoserateBrachyterapi value) {
-            this.lavdoserateBrachyterapi = value;
-        }
-
-
-        /**
-         * <p>Java class for anonymous complex type.
-         * 
-         * <p>The following schema fragment specifies the expected content contained within this class.
-         * 
-         * <pre>
-         * &lt;complexType&gt;
-         *   &lt;complexContent&gt;
-         *     &lt;restriction base="{http://www.w3.org/2001/XMLSchema}anyType"&gt;
-         *       &lt;sequence&gt;
-         *         &lt;element name="HDBrachyterapi"&gt;
-         *           &lt;simpleType&gt;
-         *             &lt;restriction base="{http://www.w3.org/2001/XMLSchema}string"&gt;
-         *               &lt;enumeration value=""/&gt;
-         *               &lt;enumeration value="1"/&gt;
-         *               &lt;enumeration value="0"/&gt;
-         *             &lt;/restriction&gt;
-         *           &lt;/simpleType&gt;
-         *         &lt;/element&gt;
-         *         &lt;element name="HDBrachyterapiFRDoseGY"&gt;
-         *           &lt;simpleType&gt;
-         *             &lt;restriction base="{http://www.w3.org/2001/XMLSchema}string"&gt;
-         *               &lt;pattern value="([1-9]\d{0,1}|\d{0,2},\d{1,2})?"/&gt;
-         *             &lt;/restriction&gt;
-         *           &lt;/simpleType&gt;
-         *         &lt;/element&gt;
-         *         &lt;element name="HDBrachyterapiFRDoseUkjent"&gt;
-         *           &lt;simpleType&gt;
-         *             &lt;restriction base="{http://www.w3.org/2001/XMLSchema}string"&gt;
-         *               &lt;enumeration value=""/&gt;
-         *               &lt;enumeration value="99"/&gt;
-         *             &lt;/restriction&gt;
-         *           &lt;/simpleType&gt;
-         *         &lt;/element&gt;
-         *         &lt;element name="HDBrachyterapiAntFR"&gt;
-         *           &lt;simpleType&gt;
-         *             &lt;restriction base="{http://www.w3.org/2001/XMLSchema}string"&gt;
-         *               &lt;pattern value="([1-9])?"/&gt;
-         *             &lt;/restriction&gt;
-         *           &lt;/simpleType&gt;
-         *         &lt;/element&gt;
-         *         &lt;element name="HDBrachyterapiAntFRUkjent"&gt;
-         *           &lt;simpleType&gt;
-         *             &lt;restriction base="{http://www.w3.org/2001/XMLSchema}string"&gt;
-         *               &lt;enumeration value=""/&gt;
-         *               &lt;enumeration value="99"/&gt;
-         *             &lt;/restriction&gt;
-         *           &lt;/simpleType&gt;
-         *         &lt;/element&gt;
-         *       &lt;/sequence&gt;
-         *     &lt;/restriction&gt;
-         *   &lt;/complexContent&gt;
-         * &lt;/complexType&gt;
-         * </pre>
-         * 
-         * 
-         */
-        @XmlAccessorType(XmlAccessType.FIELD)
-        @XmlType(name = "", propOrder = {
-            "hdBrachyterapi",
-            "hdBrachyterapiFRDoseGY",
-            "hdBrachyterapiFRDoseUkjent",
-            "hdBrachyterapiAntFR",
-            "hdBrachyterapiAntFRUkjent"
-        })
-        public static class HoydoserateBrachyterapi {
-
-            @XmlElement(name = "HDBrachyterapi", namespace = "http://www.kreftregisteret.no/kremt/KliniskProstataStraale/v4_0", required = true, defaultValue = "")
-            protected String hdBrachyterapi;
-            @XmlElement(name = "HDBrachyterapiFRDoseGY", namespace = "http://www.kreftregisteret.no/kremt/KliniskProstataStraale/v4_0", required = true, defaultValue = "")
-            protected String hdBrachyterapiFRDoseGY;
-            @XmlElement(name = "HDBrachyterapiFRDoseUkjent", namespace = "http://www.kreftregisteret.no/kremt/KliniskProstataStraale/v4_0", required = true, defaultValue = "")
-            protected String hdBrachyterapiFRDoseUkjent;
-            @XmlElement(name = "HDBrachyterapiAntFR", namespace = "http://www.kreftregisteret.no/kremt/KliniskProstataStraale/v4_0", required = true)
-            protected String hdBrachyterapiAntFR;
-            @XmlElement(name = "HDBrachyterapiAntFRUkjent", namespace = "http://www.kreftregisteret.no/kremt/KliniskProstataStraale/v4_0", required = true, defaultValue = "")
-            protected String hdBrachyterapiAntFRUkjent;
-
-            /**
-             * Gets the value of the hdBrachyterapi property.
-             * 
-             * @return
-             *     possible object is
-             *     {@link String }
-             *     
-             */
-            public String getHDBrachyterapi() {
-                return hdBrachyterapi;
-            }
-
-            /**
-             * Sets the value of the hdBrachyterapi property.
-             * 
-             * @param value
-             *     allowed object is
-             *     {@link String }
-             *     
-             */
-            public void setHDBrachyterapi(String value) {
-                this.hdBrachyterapi = value;
-            }
-
-            /**
-             * Gets the value of the hdBrachyterapiFRDoseGY property.
-             * 
-             * @return
-             *     possible object is
-             *     {@link String }
-             *     
-             */
-            public String getHDBrachyterapiFRDoseGY() {
-                return hdBrachyterapiFRDoseGY;
-            }
-
-            /**
-             * Sets the value of the hdBrachyterapiFRDoseGY property.
-             * 
-             * @param value
-             *     allowed object is
-             *     {@link String }
-             *     
-             */
-            public void setHDBrachyterapiFRDoseGY(String value) {
-                this.hdBrachyterapiFRDoseGY = value;
-            }
-
-            /**
-             * Gets the value of the hdBrachyterapiFRDoseUkjent property.
-             * 
-             * @return
-             *     possible object is
-             *     {@link String }
-             *     
-             */
-            public String getHDBrachyterapiFRDoseUkjent() {
-                return hdBrachyterapiFRDoseUkjent;
-            }
-
-            /**
-             * Sets the value of the hdBrachyterapiFRDoseUkjent property.
-             * 
-             * @param value
-             *     allowed object is
-             *     {@link String }
-             *     
-             */
-            public void setHDBrachyterapiFRDoseUkjent(String value) {
-                this.hdBrachyterapiFRDoseUkjent = value;
-            }
-
-            /**
-             * Gets the value of the hdBrachyterapiAntFR property.
-             * 
-             * @return
-             *     possible object is
-             *     {@link String }
-             *     
-             */
-            public String getHDBrachyterapiAntFR() {
-                return hdBrachyterapiAntFR;
-            }
-
-            /**
-             * Sets the value of the hdBrachyterapiAntFR property.
-             * 
-             * @param value
-             *     allowed object is
-             *     {@link String }
-             *     
-             */
-            public void setHDBrachyterapiAntFR(String value) {
-                this.hdBrachyterapiAntFR = value;
-            }
-
-            /**
-             * Gets the value of the hdBrachyterapiAntFRUkjent property.
-             * 
-             * @return
-             *     possible object is
-             *     {@link String }
-             *     
-             */
-            public String getHDBrachyterapiAntFRUkjent() {
-                return hdBrachyterapiAntFRUkjent;
-            }
-
-            /**
-             * Sets the value of the hdBrachyterapiAntFRUkjent property.
-             * 
-             * @param value
-             *     allowed object is
-             *     {@link String }
-             *     
-             */
-            public void setHDBrachyterapiAntFRUkjent(String value) {
-                this.hdBrachyterapiAntFRUkjent = value;
-            }
-
-        }
-
-
-        /**
-         * <p>Java class for anonymous complex type.
-         * 
-         * <p>The following schema fragment specifies the expected content contained within this class.
-         * 
-         * <pre>
-         * &lt;complexType&gt;
-         *   &lt;complexContent&gt;
-         *     &lt;restriction base="{http://www.w3.org/2001/XMLSchema}anyType"&gt;
-         *       &lt;sequence&gt;
-         *         &lt;element name="LDBrachyterapi"&gt;
-         *           &lt;simpleType&gt;
-         *             &lt;restriction base="{http://www.w3.org/2001/XMLSchema}string"&gt;
-         *               &lt;enumeration value=""/&gt;
-         *               &lt;enumeration value="1"/&gt;
-         *               &lt;enumeration value="0"/&gt;
-         *             &lt;/restriction&gt;
-         *           &lt;/simpleType&gt;
-         *         &lt;/element&gt;
-         *         &lt;element name="Behandlingssted" type="{http://www.w3.org/2001/XMLSchema}string"/&gt;
-         *         &lt;element name="BehandlingsstedUkjent"&gt;
-         *           &lt;simpleType&gt;
-         *             &lt;restriction base="{http://www.w3.org/2001/XMLSchema}string"&gt;
-         *               &lt;enumeration value=""/&gt;
-         *               &lt;enumeration value="99"/&gt;
-         *             &lt;/restriction&gt;
-         *           &lt;/simpleType&gt;
-         *         &lt;/element&gt;
-         *         &lt;element name="LDBrachyterapiFRDoseGY"&gt;
-         *           &lt;simpleType&gt;
-         *             &lt;restriction base="{http://www.w3.org/2001/XMLSchema}string"&gt;
-         *               &lt;pattern value="([1-9]\d{0,2}|\d{0,3},\d{1,2})?"/&gt;
-         *             &lt;/restriction&gt;
-         *           &lt;/simpleType&gt;
-         *         &lt;/element&gt;
-         *         &lt;element name="LDBrachyterapiFRDoseUkjent"&gt;
-         *           &lt;simpleType&gt;
-         *             &lt;restriction base="{http://www.w3.org/2001/XMLSchema}string"&gt;
-         *               &lt;enumeration value=""/&gt;
-         *               &lt;enumeration value="99"/&gt;
-         *             &lt;/restriction&gt;
-         *           &lt;/simpleType&gt;
-         *         &lt;/element&gt;
-         *       &lt;/sequence&gt;
-         *     &lt;/restriction&gt;
-         *   &lt;/complexContent&gt;
-         * &lt;/complexType&gt;
-         * </pre>
-         * 
-         * 
-         */
-        @XmlAccessorType(XmlAccessType.FIELD)
-        @XmlType(name = "", propOrder = {
-            "ldBrachyterapi",
-            "behandlingssted",
-            "behandlingsstedUkjent",
-            "ldBrachyterapiFRDoseGY",
-            "ldBrachyterapiFRDoseUkjent"
-        })
-        public static class LavdoserateBrachyterapi {
-
-            @XmlElement(name = "LDBrachyterapi", namespace = "http://www.kreftregisteret.no/kremt/KliniskProstataStraale/v4_0", required = true, defaultValue = "")
-            protected String ldBrachyterapi;
-            @XmlElement(name = "Behandlingssted", namespace = "http://www.kreftregisteret.no/kremt/KliniskProstataStraale/v4_0", required = true, defaultValue = "")
-            protected String behandlingssted;
-            @XmlElement(name = "BehandlingsstedUkjent", namespace = "http://www.kreftregisteret.no/kremt/KliniskProstataStraale/v4_0", required = true, defaultValue = "")
-            protected String behandlingsstedUkjent;
-            @XmlElement(name = "LDBrachyterapiFRDoseGY", namespace = "http://www.kreftregisteret.no/kremt/KliniskProstataStraale/v4_0", required = true, defaultValue = "")
-            protected String ldBrachyterapiFRDoseGY;
-            @XmlElement(name = "LDBrachyterapiFRDoseUkjent", namespace = "http://www.kreftregisteret.no/kremt/KliniskProstataStraale/v4_0", required = true, defaultValue = "")
-            protected String ldBrachyterapiFRDoseUkjent;
-
-            /**
-             * Gets the value of the ldBrachyterapi property.
-             * 
-             * @return
-             *     possible object is
-             *     {@link String }
-             *     
-             */
-            public String getLDBrachyterapi() {
-                return ldBrachyterapi;
-            }
-
-            /**
-             * Sets the value of the ldBrachyterapi property.
-             * 
-             * @param value
-             *     allowed object is
-             *     {@link String }
-             *     
-             */
-            public void setLDBrachyterapi(String value) {
-                this.ldBrachyterapi = value;
-            }
-
-            /**
-             * Gets the value of the behandlingssted property.
-             * 
-             * @return
-             *     possible object is
-             *     {@link String }
-             *     
-             */
-            public String getBehandlingssted() {
-                return behandlingssted;
-            }
-
-            /**
-             * Sets the value of the behandlingssted property.
-             * 
-             * @param value
-             *     allowed object is
-             *     {@link String }
-             *     
-             */
-            public void setBehandlingssted(String value) {
-                this.behandlingssted = value;
-            }
-
-            /**
-             * Gets the value of the behandlingsstedUkjent property.
-             * 
-             * @return
-             *     possible object is
-             *     {@link String }
-             *     
-             */
-            public String getBehandlingsstedUkjent() {
-                return behandlingsstedUkjent;
-            }
-
-            /**
-             * Sets the value of the behandlingsstedUkjent property.
-             * 
-             * @param value
-             *     allowed object is
-             *     {@link String }
-             *     
-             */
-            public void setBehandlingsstedUkjent(String value) {
-                this.behandlingsstedUkjent = value;
-            }
-
-            /**
-             * Gets the value of the ldBrachyterapiFRDoseGY property.
-             * 
-             * @return
-             *     possible object is
-             *     {@link String }
-             *     
-             */
-            public String getLDBrachyterapiFRDoseGY() {
-                return ldBrachyterapiFRDoseGY;
-            }
-
-            /**
-             * Sets the value of the ldBrachyterapiFRDoseGY property.
-             * 
-             * @param value
-             *     allowed object is
-             *     {@link String }
-             *     
-             */
-            public void setLDBrachyterapiFRDoseGY(String value) {
-                this.ldBrachyterapiFRDoseGY = value;
-            }
-
-            /**
-             * Gets the value of the ldBrachyterapiFRDoseUkjent property.
-             * 
-             * @return
-             *     possible object is
-             *     {@link String }
-             *     
-             */
-            public String getLDBrachyterapiFRDoseUkjent() {
-                return ldBrachyterapiFRDoseUkjent;
-            }
-
-            /**
-             * Sets the value of the ldBrachyterapiFRDoseUkjent property.
-             * 
-             * @param value
-             *     allowed object is
-             *     {@link String }
-             *     
-             */
-            public void setLDBrachyterapiFRDoseUkjent(String value) {
-                this.ldBrachyterapiFRDoseUkjent = value;
-            }
-
-        }
-
-
-        /**
-         * <p>Java class for anonymous complex type.
-         * 
-         * <p>The following schema fragment specifies the expected content contained within this class.
-         * 
-         * <pre>
-         * &lt;complexType&gt;
-         *   &lt;complexContent&gt;
-         *     &lt;restriction base="{http://www.w3.org/2001/XMLSchema}anyType"&gt;
-         *       &lt;sequence&gt;
-         *         &lt;element name="LKBekkenStraalebehandling"&gt;
-         *           &lt;simpleType&gt;
-         *             &lt;restriction base="{http://www.w3.org/2001/XMLSchema}string"&gt;
-         *               &lt;enumeration value=""/&gt;
-         *               &lt;enumeration value="1"/&gt;
-         *               &lt;enumeration value="0"/&gt;
-         *               &lt;enumeration value="99"/&gt;
-         *             &lt;/restriction&gt;
-         *           &lt;/simpleType&gt;
-         *         &lt;/element&gt;
-         *       &lt;/sequence&gt;
-         *     &lt;/restriction&gt;
-         *   &lt;/complexContent&gt;
-         * &lt;/complexType&gt;
-         * </pre>
-         * 
-         * 
-         */
-        @XmlAccessorType(XmlAccessType.FIELD)
-        @XmlType(name = "", propOrder = {
-            "lkBekkenStraalebehandling"
-        })
-        public static class LKbekken {
-
-            @XmlElement(name = "LKBekkenStraalebehandling", namespace = "http://www.kreftregisteret.no/kremt/KliniskProstataStraale/v4_0", required = true, defaultValue = "")
-            protected String lkBekkenStraalebehandling;
-
-            /**
-             * Gets the value of the lkBekkenStraalebehandling property.
-             * 
-             * @return
-             *     possible object is
-             *     {@link String }
-             *     
-             */
-            public String getLKBekkenStraalebehandling() {
-                return lkBekkenStraalebehandling;
-            }
-
-            /**
-             * Sets the value of the lkBekkenStraalebehandling property.
-             * 
-             * @param value
-             *     allowed object is
-             *     {@link String }
-             *     
-             */
-            public void setLKBekkenStraalebehandling(String value) {
-                this.lkBekkenStraalebehandling = value;
-            }
-
-        }
-
-
-        /**
-         * <p>Java class for anonymous complex type.
-         * 
-         * <p>The following schema fragment specifies the expected content contained within this class.
-         * 
-         * <pre>
-         * &lt;complexType&gt;
-         *   &lt;complexContent&gt;
-         *     &lt;restriction base="{http://www.w3.org/2001/XMLSchema}anyType"&gt;
-         *       &lt;sequence&gt;
-         *         &lt;element name="ProstataFRDoseGY"&gt;
-         *           &lt;simpleType&gt;
-         *             &lt;restriction base="{http://www.w3.org/2001/XMLSchema}string"&gt;
-         *               &lt;pattern value="([1-9]\d{0,1}|\d{0,2},\d{1,2})?"/&gt;
-         *             &lt;/restriction&gt;
-         *           &lt;/simpleType&gt;
-         *         &lt;/element&gt;
-         *         &lt;element name="ProstataFRDoseUkjent"&gt;
-         *           &lt;simpleType&gt;
-         *             &lt;restriction base="{http://www.w3.org/2001/XMLSchema}string"&gt;
-         *               &lt;enumeration value=""/&gt;
-         *               &lt;enumeration value="99"/&gt;
-         *             &lt;/restriction&gt;
-         *           &lt;/simpleType&gt;
-         *         &lt;/element&gt;
-         *         &lt;element name="ProstataAntFR"&gt;
-         *           &lt;simpleType&gt;
-         *             &lt;restriction base="{http://www.w3.org/2001/XMLSchema}string"&gt;
-         *               &lt;pattern value="([1-9]\d{0,1})?"/&gt;
-         *             &lt;/restriction&gt;
-         *           &lt;/simpleType&gt;
-         *         &lt;/element&gt;
-         *         &lt;element name="ProstataAntFRUkjent"&gt;
-         *           &lt;simpleType&gt;
-         *             &lt;restriction base="{http://www.w3.org/2001/XMLSchema}string"&gt;
-         *               &lt;enumeration value=""/&gt;
-         *               &lt;enumeration value="99"/&gt;
-         *             &lt;/restriction&gt;
-         *           &lt;/simpleType&gt;
-         *         &lt;/element&gt;
-         *       &lt;/sequence&gt;
-         *     &lt;/restriction&gt;
-         *   &lt;/complexContent&gt;
-         * &lt;/complexType&gt;
-         * </pre>
-         * 
-         * 
-         */
-        @XmlAccessorType(XmlAccessType.FIELD)
-        @XmlType(name = "", propOrder = {
-            "prostataFRDoseGY",
-            "prostataFRDoseUkjent",
-            "prostataAntFR",
-            "prostataAntFRUkjent"
-        })
-        public static class Prostata {
-
-            @XmlElement(name = "ProstataFRDoseGY", namespace = "http://www.kreftregisteret.no/kremt/KliniskProstataStraale/v4_0", required = true, defaultValue = "")
-            protected String prostataFRDoseGY;
-            @XmlElement(name = "ProstataFRDoseUkjent", namespace = "http://www.kreftregisteret.no/kremt/KliniskProstataStraale/v4_0", required = true, defaultValue = "")
-            protected String prostataFRDoseUkjent;
-            @XmlElement(name = "ProstataAntFR", namespace = "http://www.kreftregisteret.no/kremt/KliniskProstataStraale/v4_0", required = true, defaultValue = "")
-            protected String prostataAntFR;
-            @XmlElement(name = "ProstataAntFRUkjent", namespace = "http://www.kreftregisteret.no/kremt/KliniskProstataStraale/v4_0", required = true, defaultValue = "")
-            protected String prostataAntFRUkjent;
-
-            /**
-             * Gets the value of the prostataFRDoseGY property.
-             * 
-             * @return
-             *     possible object is
-             *     {@link String }
-             *     
-             */
-            public String getProstataFRDoseGY() {
-                return prostataFRDoseGY;
-            }
-
-            /**
-             * Sets the value of the prostataFRDoseGY property.
-             * 
-             * @param value
-             *     allowed object is
-             *     {@link String }
-             *     
-             */
-            public void setProstataFRDoseGY(String value) {
-                this.prostataFRDoseGY = value;
-            }
-
-            /**
-             * Gets the value of the prostataFRDoseUkjent property.
-             * 
-             * @return
-             *     possible object is
-             *     {@link String }
-             *     
-             */
-            public String getProstataFRDoseUkjent() {
-                return prostataFRDoseUkjent;
-            }
-
-            /**
-             * Sets the value of the prostataFRDoseUkjent property.
-             * 
-             * @param value
-             *     allowed object is
-             *     {@link String }
-             *     
-             */
-            public void setProstataFRDoseUkjent(String value) {
-                this.prostataFRDoseUkjent = value;
-            }
-
-            /**
-             * Gets the value of the prostataAntFR property.
-             * 
-             * @return
-             *     possible object is
-             *     {@link String }
-             *     
-             */
-            public String getProstataAntFR() {
-                return prostataAntFR;
-            }
-
-            /**
-             * Sets the value of the prostataAntFR property.
-             * 
-             * @param value
-             *     allowed object is
-             *     {@link String }
-             *     
-             */
-            public void setProstataAntFR(String value) {
-                this.prostataAntFR = value;
-            }
-
-            /**
-             * Gets the value of the prostataAntFRUkjent property.
-             * 
-             * @return
-             *     possible object is
-             *     {@link String }
-             *     
-             */
-            public String getProstataAntFRUkjent() {
-                return prostataAntFRUkjent;
-            }
-
-            /**
-             * Sets the value of the prostataAntFRUkjent property.
-             * 
-             * @param value
-             *     allowed object is
-             *     {@link String }
-             *     
-             */
-            public void setProstataAntFRUkjent(String value) {
-                this.prostataAntFRUkjent = value;
-            }
-
+        public void setCM(String value) {
+            this.cm = value;
         }
 
     }
@@ -2134,34 +1447,6 @@ public class Behandling {
      *                     &lt;/simpleType&gt;
      *                   &lt;/element&gt;
      *                   &lt;element name="SamletPalpatoriskTumor" type="{http://www.w3.org/2001/XMLSchema}string"/&gt;
-     *                   &lt;element name="MRDiagnostikk"&gt;
-     *                     &lt;simpleType&gt;
-     *                       &lt;restriction base="{http://www.w3.org/2001/XMLSchema}string"&gt;
-     *                         &lt;enumeration value=""/&gt;
-     *                         &lt;enumeration value="1"/&gt;
-     *                         &lt;enumeration value="0"/&gt;
-     *                       &lt;/restriction&gt;
-     *                     &lt;/simpleType&gt;
-     *                   &lt;/element&gt;
-     *                   &lt;element name="DatoMRDiagnostikk"&gt;
-     *                     &lt;simpleType&gt;
-     *                       &lt;union memberTypes=" {http://www.w3.org/2001/XMLSchema}date"&gt;
-     *                         &lt;simpleType&gt;
-     *                           &lt;restriction base="{http://www.w3.org/2001/XMLSchema}string"&gt;
-     *                             &lt;pattern value=""/&gt;
-     *                           &lt;/restriction&gt;
-     *                         &lt;/simpleType&gt;
-     *                       &lt;/union&gt;
-     *                     &lt;/simpleType&gt;
-     *                   &lt;/element&gt;
-     *                   &lt;element name="DatoMRDiagnostikkUkjent"&gt;
-     *                     &lt;simpleType&gt;
-     *                       &lt;restriction base="{http://www.w3.org/2001/XMLSchema}string"&gt;
-     *                         &lt;enumeration value=""/&gt;
-     *                         &lt;enumeration value="99"/&gt;
-     *                       &lt;/restriction&gt;
-     *                     &lt;/simpleType&gt;
-     *                   &lt;/element&gt;
      *                   &lt;element name="PIRADSHoyre"&gt;
      *                     &lt;simpleType&gt;
      *                       &lt;restriction base="{http://www.w3.org/2001/XMLSchema}string"&gt;
@@ -2444,24 +1729,24 @@ public class Behandling {
     })
     public static class Sykdomsutbredelse {
 
-        @XmlElement(name = "Tumor", namespace = "http://www.kreftregisteret.no/kremt/KliniskProstataStraale/v4_0", required = true)
-        protected Behandling.Sykdomsutbredelse.Tumor tumor;
-        @XmlElement(name = "RegionaleLK", namespace = "http://www.kreftregisteret.no/kremt/KliniskProstataStraale/v4_0", required = true)
-        protected Behandling.Sykdomsutbredelse.RegionaleLK regionaleLK;
-        @XmlElement(name = "Fjernmetastaser", namespace = "http://www.kreftregisteret.no/kremt/KliniskProstataStraale/v4_0", required = true)
-        protected Behandling.Sykdomsutbredelse.Fjernmetastaser fjernmetastaser;
-        @XmlElement(name = "UtredningsmetodeMetastaser", namespace = "http://www.kreftregisteret.no/kremt/KliniskProstataStraale/v4_0", required = true)
-        protected Behandling.Sykdomsutbredelse.UtredningsmetodeMetastaser utredningsmetodeMetastaser;
+        @XmlElement(name = "Tumor", namespace = "http://www.kreftregisteret.no/kremt/KliniskProstataUtredning/v4_0", required = true)
+        protected Utredning.Sykdomsutbredelse.Tumor tumor;
+        @XmlElement(name = "RegionaleLK", namespace = "http://www.kreftregisteret.no/kremt/KliniskProstataUtredning/v4_0", required = true)
+        protected Utredning.Sykdomsutbredelse.RegionaleLK regionaleLK;
+        @XmlElement(name = "Fjernmetastaser", namespace = "http://www.kreftregisteret.no/kremt/KliniskProstataUtredning/v4_0", required = true)
+        protected Utredning.Sykdomsutbredelse.Fjernmetastaser fjernmetastaser;
+        @XmlElement(name = "UtredningsmetodeMetastaser", namespace = "http://www.kreftregisteret.no/kremt/KliniskProstataUtredning/v4_0", required = true)
+        protected Utredning.Sykdomsutbredelse.UtredningsmetodeMetastaser utredningsmetodeMetastaser;
 
         /**
          * Gets the value of the tumor property.
          * 
          * @return
          *     possible object is
-         *     {@link Behandling.Sykdomsutbredelse.Tumor }
+         *     {@link Utredning.Sykdomsutbredelse.Tumor }
          *     
          */
-        public Behandling.Sykdomsutbredelse.Tumor getTumor() {
+        public Utredning.Sykdomsutbredelse.Tumor getTumor() {
             return tumor;
         }
 
@@ -2470,10 +1755,10 @@ public class Behandling {
          * 
          * @param value
          *     allowed object is
-         *     {@link Behandling.Sykdomsutbredelse.Tumor }
+         *     {@link Utredning.Sykdomsutbredelse.Tumor }
          *     
          */
-        public void setTumor(Behandling.Sykdomsutbredelse.Tumor value) {
+        public void setTumor(Utredning.Sykdomsutbredelse.Tumor value) {
             this.tumor = value;
         }
 
@@ -2482,10 +1767,10 @@ public class Behandling {
          * 
          * @return
          *     possible object is
-         *     {@link Behandling.Sykdomsutbredelse.RegionaleLK }
+         *     {@link Utredning.Sykdomsutbredelse.RegionaleLK }
          *     
          */
-        public Behandling.Sykdomsutbredelse.RegionaleLK getRegionaleLK() {
+        public Utredning.Sykdomsutbredelse.RegionaleLK getRegionaleLK() {
             return regionaleLK;
         }
 
@@ -2494,10 +1779,10 @@ public class Behandling {
          * 
          * @param value
          *     allowed object is
-         *     {@link Behandling.Sykdomsutbredelse.RegionaleLK }
+         *     {@link Utredning.Sykdomsutbredelse.RegionaleLK }
          *     
          */
-        public void setRegionaleLK(Behandling.Sykdomsutbredelse.RegionaleLK value) {
+        public void setRegionaleLK(Utredning.Sykdomsutbredelse.RegionaleLK value) {
             this.regionaleLK = value;
         }
 
@@ -2506,10 +1791,10 @@ public class Behandling {
          * 
          * @return
          *     possible object is
-         *     {@link Behandling.Sykdomsutbredelse.Fjernmetastaser }
+         *     {@link Utredning.Sykdomsutbredelse.Fjernmetastaser }
          *     
          */
-        public Behandling.Sykdomsutbredelse.Fjernmetastaser getFjernmetastaser() {
+        public Utredning.Sykdomsutbredelse.Fjernmetastaser getFjernmetastaser() {
             return fjernmetastaser;
         }
 
@@ -2518,10 +1803,10 @@ public class Behandling {
          * 
          * @param value
          *     allowed object is
-         *     {@link Behandling.Sykdomsutbredelse.Fjernmetastaser }
+         *     {@link Utredning.Sykdomsutbredelse.Fjernmetastaser }
          *     
          */
-        public void setFjernmetastaser(Behandling.Sykdomsutbredelse.Fjernmetastaser value) {
+        public void setFjernmetastaser(Utredning.Sykdomsutbredelse.Fjernmetastaser value) {
             this.fjernmetastaser = value;
         }
 
@@ -2530,10 +1815,10 @@ public class Behandling {
          * 
          * @return
          *     possible object is
-         *     {@link Behandling.Sykdomsutbredelse.UtredningsmetodeMetastaser }
+         *     {@link Utredning.Sykdomsutbredelse.UtredningsmetodeMetastaser }
          *     
          */
-        public Behandling.Sykdomsutbredelse.UtredningsmetodeMetastaser getUtredningsmetodeMetastaser() {
+        public Utredning.Sykdomsutbredelse.UtredningsmetodeMetastaser getUtredningsmetodeMetastaser() {
             return utredningsmetodeMetastaser;
         }
 
@@ -2542,10 +1827,10 @@ public class Behandling {
          * 
          * @param value
          *     allowed object is
-         *     {@link Behandling.Sykdomsutbredelse.UtredningsmetodeMetastaser }
+         *     {@link Utredning.Sykdomsutbredelse.UtredningsmetodeMetastaser }
          *     
          */
-        public void setUtredningsmetodeMetastaser(Behandling.Sykdomsutbredelse.UtredningsmetodeMetastaser value) {
+        public void setUtredningsmetodeMetastaser(Utredning.Sykdomsutbredelse.UtredningsmetodeMetastaser value) {
             this.utredningsmetodeMetastaser = value;
         }
 
@@ -2617,10 +1902,10 @@ public class Behandling {
         })
         public static class Fjernmetastaser {
 
-            @XmlElement(name = "FjernmetPaavist", namespace = "http://www.kreftregisteret.no/kremt/KliniskProstataStraale/v4_0", required = true, defaultValue = "")
+            @XmlElement(name = "FjernmetPaavist", namespace = "http://www.kreftregisteret.no/kremt/KliniskProstataUtredning/v4_0", required = true, defaultValue = "")
             protected String fjernmetPaavist;
-            @XmlElement(name = "LokalisasjonFjernmet", namespace = "http://www.kreftregisteret.no/kremt/KliniskProstataStraale/v4_0", required = true)
-            protected Behandling.Sykdomsutbredelse.Fjernmetastaser.LokalisasjonFjernmet lokalisasjonFjernmet;
+            @XmlElement(name = "LokalisasjonFjernmet", namespace = "http://www.kreftregisteret.no/kremt/KliniskProstataUtredning/v4_0", required = true)
+            protected Utredning.Sykdomsutbredelse.Fjernmetastaser.LokalisasjonFjernmet lokalisasjonFjernmet;
 
             /**
              * Gets the value of the fjernmetPaavist property.
@@ -2651,10 +1936,10 @@ public class Behandling {
              * 
              * @return
              *     possible object is
-             *     {@link Behandling.Sykdomsutbredelse.Fjernmetastaser.LokalisasjonFjernmet }
+             *     {@link Utredning.Sykdomsutbredelse.Fjernmetastaser.LokalisasjonFjernmet }
              *     
              */
-            public Behandling.Sykdomsutbredelse.Fjernmetastaser.LokalisasjonFjernmet getLokalisasjonFjernmet() {
+            public Utredning.Sykdomsutbredelse.Fjernmetastaser.LokalisasjonFjernmet getLokalisasjonFjernmet() {
                 return lokalisasjonFjernmet;
             }
 
@@ -2663,10 +1948,10 @@ public class Behandling {
              * 
              * @param value
              *     allowed object is
-             *     {@link Behandling.Sykdomsutbredelse.Fjernmetastaser.LokalisasjonFjernmet }
+             *     {@link Utredning.Sykdomsutbredelse.Fjernmetastaser.LokalisasjonFjernmet }
              *     
              */
-            public void setLokalisasjonFjernmet(Behandling.Sykdomsutbredelse.Fjernmetastaser.LokalisasjonFjernmet value) {
+            public void setLokalisasjonFjernmet(Utredning.Sykdomsutbredelse.Fjernmetastaser.LokalisasjonFjernmet value) {
                 this.lokalisasjonFjernmet = value;
             }
 
@@ -2720,13 +2005,13 @@ public class Behandling {
             })
             public static class LokalisasjonFjernmet {
 
-                @XmlElement(name = "FjerneLKmet", namespace = "http://www.kreftregisteret.no/kremt/KliniskProstataStraale/v4_0")
+                @XmlElement(name = "FjerneLKmet", namespace = "http://www.kreftregisteret.no/kremt/KliniskProstataUtredning/v4_0")
                 protected boolean fjerneLKmet;
-                @XmlElement(name = "Skjelettmet", namespace = "http://www.kreftregisteret.no/kremt/KliniskProstataStraale/v4_0")
+                @XmlElement(name = "Skjelettmet", namespace = "http://www.kreftregisteret.no/kremt/KliniskProstataUtredning/v4_0")
                 protected boolean skjelettmet;
-                @XmlElement(name = "AnnetFjernmet", namespace = "http://www.kreftregisteret.no/kremt/KliniskProstataStraale/v4_0")
+                @XmlElement(name = "AnnetFjernmet", namespace = "http://www.kreftregisteret.no/kremt/KliniskProstataUtredning/v4_0")
                 protected boolean annetFjernmet;
-                @XmlElement(name = "AnnetFjernmetSpesifiser", namespace = "http://www.kreftregisteret.no/kremt/KliniskProstataStraale/v4_0", required = true, defaultValue = "")
+                @XmlElement(name = "AnnetFjernmetSpesifiser", namespace = "http://www.kreftregisteret.no/kremt/KliniskProstataUtredning/v4_0", required = true, defaultValue = "")
                 protected String annetFjernmetSpesifiser;
 
                 /**
@@ -2840,7 +2125,7 @@ public class Behandling {
         })
         public static class RegionaleLK {
 
-            @XmlElement(name = "RegionaleLKPaavist", namespace = "http://www.kreftregisteret.no/kremt/KliniskProstataStraale/v4_0", required = true, defaultValue = "")
+            @XmlElement(name = "RegionaleLKPaavist", namespace = "http://www.kreftregisteret.no/kremt/KliniskProstataUtredning/v4_0", required = true, defaultValue = "")
             protected String regionaleLKPaavist;
 
             /**
@@ -2907,34 +2192,6 @@ public class Behandling {
          *           &lt;/simpleType&gt;
          *         &lt;/element&gt;
          *         &lt;element name="SamletPalpatoriskTumor" type="{http://www.w3.org/2001/XMLSchema}string"/&gt;
-         *         &lt;element name="MRDiagnostikk"&gt;
-         *           &lt;simpleType&gt;
-         *             &lt;restriction base="{http://www.w3.org/2001/XMLSchema}string"&gt;
-         *               &lt;enumeration value=""/&gt;
-         *               &lt;enumeration value="1"/&gt;
-         *               &lt;enumeration value="0"/&gt;
-         *             &lt;/restriction&gt;
-         *           &lt;/simpleType&gt;
-         *         &lt;/element&gt;
-         *         &lt;element name="DatoMRDiagnostikk"&gt;
-         *           &lt;simpleType&gt;
-         *             &lt;union memberTypes=" {http://www.w3.org/2001/XMLSchema}date"&gt;
-         *               &lt;simpleType&gt;
-         *                 &lt;restriction base="{http://www.w3.org/2001/XMLSchema}string"&gt;
-         *                   &lt;pattern value=""/&gt;
-         *                 &lt;/restriction&gt;
-         *               &lt;/simpleType&gt;
-         *             &lt;/union&gt;
-         *           &lt;/simpleType&gt;
-         *         &lt;/element&gt;
-         *         &lt;element name="DatoMRDiagnostikkUkjent"&gt;
-         *           &lt;simpleType&gt;
-         *             &lt;restriction base="{http://www.w3.org/2001/XMLSchema}string"&gt;
-         *               &lt;enumeration value=""/&gt;
-         *               &lt;enumeration value="99"/&gt;
-         *             &lt;/restriction&gt;
-         *           &lt;/simpleType&gt;
-         *         &lt;/element&gt;
          *         &lt;element name="PIRADSHoyre"&gt;
          *           &lt;simpleType&gt;
          *             &lt;restriction base="{http://www.w3.org/2001/XMLSchema}string"&gt;
@@ -3030,9 +2287,6 @@ public class Behandling {
             "palpatoriskTumorHoyre",
             "palpatoriskTumorVenstre",
             "samletPalpatoriskTumor",
-            "mrDiagnostikk",
-            "datoMRDiagnostikk",
-            "datoMRDiagnostikkUkjent",
             "piradsHoyre",
             "piradsVenstre",
             "mrBasertKliniskTHoyre",
@@ -3043,31 +2297,25 @@ public class Behandling {
         })
         public static class Tumor {
 
-            @XmlElement(name = "PalpatoriskTumorHoyre", namespace = "http://www.kreftregisteret.no/kremt/KliniskProstataStraale/v4_0", required = true, defaultValue = "")
+            @XmlElement(name = "PalpatoriskTumorHoyre", namespace = "http://www.kreftregisteret.no/kremt/KliniskProstataUtredning/v4_0", required = true, defaultValue = "")
             protected String palpatoriskTumorHoyre;
-            @XmlElement(name = "PalpatoriskTumorVenstre", namespace = "http://www.kreftregisteret.no/kremt/KliniskProstataStraale/v4_0", required = true, defaultValue = "")
+            @XmlElement(name = "PalpatoriskTumorVenstre", namespace = "http://www.kreftregisteret.no/kremt/KliniskProstataUtredning/v4_0", required = true, defaultValue = "")
             protected String palpatoriskTumorVenstre;
-            @XmlElement(name = "SamletPalpatoriskTumor", namespace = "http://www.kreftregisteret.no/kremt/KliniskProstataStraale/v4_0", required = true, defaultValue = "")
+            @XmlElement(name = "SamletPalpatoriskTumor", namespace = "http://www.kreftregisteret.no/kremt/KliniskProstataUtredning/v4_0", required = true, defaultValue = "")
             protected String samletPalpatoriskTumor;
-            @XmlElement(name = "MRDiagnostikk", namespace = "http://www.kreftregisteret.no/kremt/KliniskProstataStraale/v4_0", required = true, defaultValue = "")
-            protected String mrDiagnostikk;
-            @XmlElement(name = "DatoMRDiagnostikk", namespace = "http://www.kreftregisteret.no/kremt/KliniskProstataStraale/v4_0", required = true)
-            protected String datoMRDiagnostikk;
-            @XmlElement(name = "DatoMRDiagnostikkUkjent", namespace = "http://www.kreftregisteret.no/kremt/KliniskProstataStraale/v4_0", required = true, defaultValue = "")
-            protected String datoMRDiagnostikkUkjent;
-            @XmlElement(name = "PIRADSHoyre", namespace = "http://www.kreftregisteret.no/kremt/KliniskProstataStraale/v4_0", required = true, defaultValue = "")
+            @XmlElement(name = "PIRADSHoyre", namespace = "http://www.kreftregisteret.no/kremt/KliniskProstataUtredning/v4_0", required = true, defaultValue = "")
             protected String piradsHoyre;
-            @XmlElement(name = "PIRADSVenstre", namespace = "http://www.kreftregisteret.no/kremt/KliniskProstataStraale/v4_0", required = true, defaultValue = "")
+            @XmlElement(name = "PIRADSVenstre", namespace = "http://www.kreftregisteret.no/kremt/KliniskProstataUtredning/v4_0", required = true, defaultValue = "")
             protected String piradsVenstre;
-            @XmlElement(name = "MRBasertKliniskTHoyre", namespace = "http://www.kreftregisteret.no/kremt/KliniskProstataStraale/v4_0", required = true, defaultValue = "")
+            @XmlElement(name = "MRBasertKliniskTHoyre", namespace = "http://www.kreftregisteret.no/kremt/KliniskProstataUtredning/v4_0", required = true, defaultValue = "")
             protected String mrBasertKliniskTHoyre;
-            @XmlElement(name = "MRBasertKliniskTVenstre", namespace = "http://www.kreftregisteret.no/kremt/KliniskProstataStraale/v4_0", required = true, defaultValue = "")
+            @XmlElement(name = "MRBasertKliniskTVenstre", namespace = "http://www.kreftregisteret.no/kremt/KliniskProstataUtredning/v4_0", required = true, defaultValue = "")
             protected String mrBasertKliniskTVenstre;
-            @XmlElement(name = "SamletMRBasertKliniskT", namespace = "http://www.kreftregisteret.no/kremt/KliniskProstataStraale/v4_0", required = true, defaultValue = "")
+            @XmlElement(name = "SamletMRBasertKliniskT", namespace = "http://www.kreftregisteret.no/kremt/KliniskProstataUtredning/v4_0", required = true, defaultValue = "")
             protected String samletMRBasertKliniskT;
-            @XmlElement(name = "TotalVurderingKliniskT", namespace = "http://www.kreftregisteret.no/kremt/KliniskProstataStraale/v4_0", required = true, defaultValue = "")
+            @XmlElement(name = "TotalVurderingKliniskT", namespace = "http://www.kreftregisteret.no/kremt/KliniskProstataUtredning/v4_0", required = true, defaultValue = "")
             protected String totalVurderingKliniskT;
-            @XmlElement(name = "KliniskVurdertAv", namespace = "http://www.kreftregisteret.no/kremt/KliniskProstataStraale/v4_0", required = true, defaultValue = "")
+            @XmlElement(name = "KliniskVurdertAv", namespace = "http://www.kreftregisteret.no/kremt/KliniskProstataUtredning/v4_0", required = true, defaultValue = "")
             protected String kliniskVurdertAv;
 
             /**
@@ -3140,78 +2388,6 @@ public class Behandling {
              */
             public void setSamletPalpatoriskTumor(String value) {
                 this.samletPalpatoriskTumor = value;
-            }
-
-            /**
-             * Gets the value of the mrDiagnostikk property.
-             * 
-             * @return
-             *     possible object is
-             *     {@link String }
-             *     
-             */
-            public String getMRDiagnostikk() {
-                return mrDiagnostikk;
-            }
-
-            /**
-             * Sets the value of the mrDiagnostikk property.
-             * 
-             * @param value
-             *     allowed object is
-             *     {@link String }
-             *     
-             */
-            public void setMRDiagnostikk(String value) {
-                this.mrDiagnostikk = value;
-            }
-
-            /**
-             * Gets the value of the datoMRDiagnostikk property.
-             * 
-             * @return
-             *     possible object is
-             *     {@link String }
-             *     
-             */
-            public String getDatoMRDiagnostikk() {
-                return datoMRDiagnostikk;
-            }
-
-            /**
-             * Sets the value of the datoMRDiagnostikk property.
-             * 
-             * @param value
-             *     allowed object is
-             *     {@link String }
-             *     
-             */
-            public void setDatoMRDiagnostikk(String value) {
-                this.datoMRDiagnostikk = value;
-            }
-
-            /**
-             * Gets the value of the datoMRDiagnostikkUkjent property.
-             * 
-             * @return
-             *     possible object is
-             *     {@link String }
-             *     
-             */
-            public String getDatoMRDiagnostikkUkjent() {
-                return datoMRDiagnostikkUkjent;
-            }
-
-            /**
-             * Sets the value of the datoMRDiagnostikkUkjent property.
-             * 
-             * @param value
-             *     allowed object is
-             *     {@link String }
-             *     
-             */
-            public void setDatoMRDiagnostikkUkjent(String value) {
-                this.datoMRDiagnostikkUkjent = value;
             }
 
             /**
@@ -3507,12 +2683,12 @@ public class Behandling {
         })
         public static class UtredningsmetodeMetastaser {
 
-            @XmlElement(name = "UtredningsmetodeLK", namespace = "http://www.kreftregisteret.no/kremt/KliniskProstataStraale/v4_0", required = true, defaultValue = "")
+            @XmlElement(name = "UtredningsmetodeLK", namespace = "http://www.kreftregisteret.no/kremt/KliniskProstataUtredning/v4_0", required = true, defaultValue = "")
             protected String utredningsmetodeLK;
-            @XmlElement(name = "AnnenDiagnostikkLKSpesifiser", namespace = "http://www.kreftregisteret.no/kremt/KliniskProstataStraale/v4_0", required = true, defaultValue = "")
+            @XmlElement(name = "AnnenDiagnostikkLKSpesifiser", namespace = "http://www.kreftregisteret.no/kremt/KliniskProstataUtredning/v4_0", required = true, defaultValue = "")
             protected String annenDiagnostikkLKSpesifiser;
-            @XmlElement(name = "UtredningsmetodeFjernmet", namespace = "http://www.kreftregisteret.no/kremt/KliniskProstataStraale/v4_0", required = true)
-            protected Behandling.Sykdomsutbredelse.UtredningsmetodeMetastaser.UtredningsmetodeFjernmet utredningsmetodeFjernmet;
+            @XmlElement(name = "UtredningsmetodeFjernmet", namespace = "http://www.kreftregisteret.no/kremt/KliniskProstataUtredning/v4_0", required = true)
+            protected Utredning.Sykdomsutbredelse.UtredningsmetodeMetastaser.UtredningsmetodeFjernmet utredningsmetodeFjernmet;
 
             /**
              * Gets the value of the utredningsmetodeLK property.
@@ -3567,10 +2743,10 @@ public class Behandling {
              * 
              * @return
              *     possible object is
-             *     {@link Behandling.Sykdomsutbredelse.UtredningsmetodeMetastaser.UtredningsmetodeFjernmet }
+             *     {@link Utredning.Sykdomsutbredelse.UtredningsmetodeMetastaser.UtredningsmetodeFjernmet }
              *     
              */
-            public Behandling.Sykdomsutbredelse.UtredningsmetodeMetastaser.UtredningsmetodeFjernmet getUtredningsmetodeFjernmet() {
+            public Utredning.Sykdomsutbredelse.UtredningsmetodeMetastaser.UtredningsmetodeFjernmet getUtredningsmetodeFjernmet() {
                 return utredningsmetodeFjernmet;
             }
 
@@ -3579,10 +2755,10 @@ public class Behandling {
              * 
              * @param value
              *     allowed object is
-             *     {@link Behandling.Sykdomsutbredelse.UtredningsmetodeMetastaser.UtredningsmetodeFjernmet }
+             *     {@link Utredning.Sykdomsutbredelse.UtredningsmetodeMetastaser.UtredningsmetodeFjernmet }
              *     
              */
-            public void setUtredningsmetodeFjernmet(Behandling.Sykdomsutbredelse.UtredningsmetodeMetastaser.UtredningsmetodeFjernmet value) {
+            public void setUtredningsmetodeFjernmet(Utredning.Sykdomsutbredelse.UtredningsmetodeMetastaser.UtredningsmetodeFjernmet value) {
                 this.utredningsmetodeFjernmet = value;
             }
 
@@ -3693,27 +2869,27 @@ public class Behandling {
             })
             public static class UtredningsmetodeFjernmet {
 
-                @XmlElement(name = "SkjelettscintigrafiMet", namespace = "http://www.kreftregisteret.no/kremt/KliniskProstataStraale/v4_0")
+                @XmlElement(name = "SkjelettscintigrafiMet", namespace = "http://www.kreftregisteret.no/kremt/KliniskProstataUtredning/v4_0")
                 protected boolean skjelettscintigrafiMet;
-                @XmlElement(name = "RtgThoraxMet", namespace = "http://www.kreftregisteret.no/kremt/KliniskProstataStraale/v4_0")
+                @XmlElement(name = "RtgThoraxMet", namespace = "http://www.kreftregisteret.no/kremt/KliniskProstataUtredning/v4_0")
                 protected boolean rtgThoraxMet;
-                @XmlElement(name = "RtgBekkenMet", namespace = "http://www.kreftregisteret.no/kremt/KliniskProstataStraale/v4_0")
+                @XmlElement(name = "RtgBekkenMet", namespace = "http://www.kreftregisteret.no/kremt/KliniskProstataUtredning/v4_0")
                 protected boolean rtgBekkenMet;
-                @XmlElement(name = "CTMet", namespace = "http://www.kreftregisteret.no/kremt/KliniskProstataStraale/v4_0")
+                @XmlElement(name = "CTMet", namespace = "http://www.kreftregisteret.no/kremt/KliniskProstataUtredning/v4_0")
                 protected boolean ctMet;
-                @XmlElement(name = "MRMet", namespace = "http://www.kreftregisteret.no/kremt/KliniskProstataStraale/v4_0")
+                @XmlElement(name = "MRMet", namespace = "http://www.kreftregisteret.no/kremt/KliniskProstataUtredning/v4_0")
                 protected boolean mrMet;
-                @XmlElement(name = "PETMet", namespace = "http://www.kreftregisteret.no/kremt/KliniskProstataStraale/v4_0")
+                @XmlElement(name = "PETMet", namespace = "http://www.kreftregisteret.no/kremt/KliniskProstataUtredning/v4_0")
                 protected boolean petMet;
-                @XmlElement(name = "CytologiMet", namespace = "http://www.kreftregisteret.no/kremt/KliniskProstataStraale/v4_0")
+                @XmlElement(name = "CytologiMet", namespace = "http://www.kreftregisteret.no/kremt/KliniskProstataUtredning/v4_0")
                 protected boolean cytologiMet;
-                @XmlElement(name = "BiopsiMet", namespace = "http://www.kreftregisteret.no/kremt/KliniskProstataStraale/v4_0")
+                @XmlElement(name = "BiopsiMet", namespace = "http://www.kreftregisteret.no/kremt/KliniskProstataUtredning/v4_0")
                 protected boolean biopsiMet;
-                @XmlElement(name = "AnnenDiagnostikkMet", namespace = "http://www.kreftregisteret.no/kremt/KliniskProstataStraale/v4_0")
+                @XmlElement(name = "AnnenDiagnostikkMet", namespace = "http://www.kreftregisteret.no/kremt/KliniskProstataUtredning/v4_0")
                 protected boolean annenDiagnostikkMet;
-                @XmlElement(name = "AnnenDiagnostikkMetSpesifiser", namespace = "http://www.kreftregisteret.no/kremt/KliniskProstataStraale/v4_0", required = true, defaultValue = "")
+                @XmlElement(name = "AnnenDiagnostikkMetSpesifiser", namespace = "http://www.kreftregisteret.no/kremt/KliniskProstataUtredning/v4_0", required = true, defaultValue = "")
                 protected String annenDiagnostikkMetSpesifiser;
-                @XmlElement(name = "UtredningsmetodeFjernmetUkjent", namespace = "http://www.kreftregisteret.no/kremt/KliniskProstataStraale/v4_0", required = true, defaultValue = "")
+                @XmlElement(name = "UtredningsmetodeFjernmetUkjent", namespace = "http://www.kreftregisteret.no/kremt/KliniskProstataUtredning/v4_0", required = true, defaultValue = "")
                 protected String utredningsmetodeFjernmetUkjent;
 
                 /**
@@ -3908,6 +3084,397 @@ public class Behandling {
                     this.utredningsmetodeFjernmetUkjent = value;
                 }
 
+            }
+
+        }
+
+    }
+
+
+    /**
+     * <p>Java class for anonymous complex type.
+     * 
+     * <p>The following schema fragment specifies the expected content contained within this class.
+     * 
+     * <pre>
+     * &lt;complexType&gt;
+     *   &lt;complexContent&gt;
+     *     &lt;restriction base="{http://www.w3.org/2001/XMLSchema}anyType"&gt;
+     *       &lt;sequence&gt;
+     *         &lt;element name="Vannlatingsproblem"&gt;
+     *           &lt;simpleType&gt;
+     *             &lt;restriction base="{http://www.w3.org/2001/XMLSchema}string"&gt;
+     *               &lt;enumeration value=""/&gt;
+     *               &lt;enumeration value="1"/&gt;
+     *               &lt;enumeration value="0"/&gt;
+     *               &lt;enumeration value="99"/&gt;
+     *             &lt;/restriction&gt;
+     *           &lt;/simpleType&gt;
+     *         &lt;/element&gt;
+     *         &lt;element name="Kreftsymptomer"&gt;
+     *           &lt;simpleType&gt;
+     *             &lt;restriction base="{http://www.w3.org/2001/XMLSchema}string"&gt;
+     *               &lt;enumeration value=""/&gt;
+     *               &lt;enumeration value="1"/&gt;
+     *               &lt;enumeration value="0"/&gt;
+     *               &lt;enumeration value="99"/&gt;
+     *             &lt;/restriction&gt;
+     *           &lt;/simpleType&gt;
+     *         &lt;/element&gt;
+     *         &lt;element name="WHOStatus"&gt;
+     *           &lt;simpleType&gt;
+     *             &lt;restriction base="{http://www.w3.org/2001/XMLSchema}string"&gt;
+     *               &lt;enumeration value=""/&gt;
+     *               &lt;enumeration value="1"/&gt;
+     *               &lt;enumeration value="2"/&gt;
+     *               &lt;enumeration value="3"/&gt;
+     *               &lt;enumeration value="4"/&gt;
+     *               &lt;enumeration value="5"/&gt;
+     *               &lt;enumeration value="99"/&gt;
+     *             &lt;/restriction&gt;
+     *           &lt;/simpleType&gt;
+     *         &lt;/element&gt;
+     *         &lt;element name="Prostatavolum"&gt;
+     *           &lt;simpleType&gt;
+     *             &lt;restriction base="{http://www.w3.org/2001/XMLSchema}string"&gt;
+     *               &lt;pattern value="([1-9]|[1-9]\d{1,2})?"/&gt;
+     *             &lt;/restriction&gt;
+     *           &lt;/simpleType&gt;
+     *         &lt;/element&gt;
+     *         &lt;element name="ProstatavolumUkjent"&gt;
+     *           &lt;simpleType&gt;
+     *             &lt;restriction base="{http://www.w3.org/2001/XMLSchema}string"&gt;
+     *               &lt;enumeration value=""/&gt;
+     *               &lt;enumeration value="99"/&gt;
+     *             &lt;/restriction&gt;
+     *           &lt;/simpleType&gt;
+     *         &lt;/element&gt;
+     *         &lt;element name="SPSA"&gt;
+     *           &lt;complexType&gt;
+     *             &lt;complexContent&gt;
+     *               &lt;restriction base="{http://www.w3.org/2001/XMLSchema}anyType"&gt;
+     *                 &lt;sequence&gt;
+     *                   &lt;element name="PSAVerdi"&gt;
+     *                     &lt;simpleType&gt;
+     *                       &lt;restriction base="{http://www.w3.org/2001/XMLSchema}string"&gt;
+     *                         &lt;pattern value="([1-9]\d{0,5}|\d,\d|[1-9]\d{1,5},\d)?"/&gt;
+     *                       &lt;/restriction&gt;
+     *                     &lt;/simpleType&gt;
+     *                   &lt;/element&gt;
+     *                   &lt;element name="PSAVerdiIkkeTatt"&gt;
+     *                     &lt;simpleType&gt;
+     *                       &lt;restriction base="{http://www.w3.org/2001/XMLSchema}boolean"&gt;
+     *                         &lt;pattern value="true|false"/&gt;
+     *                       &lt;/restriction&gt;
+     *                     &lt;/simpleType&gt;
+     *                   &lt;/element&gt;
+     *                   &lt;element name="PSAVerdiUkjent"&gt;
+     *                     &lt;simpleType&gt;
+     *                       &lt;restriction base="{http://www.w3.org/2001/XMLSchema}string"&gt;
+     *                         &lt;enumeration value=""/&gt;
+     *                         &lt;enumeration value="99"/&gt;
+     *                       &lt;/restriction&gt;
+     *                     &lt;/simpleType&gt;
+     *                   &lt;/element&gt;
+     *                 &lt;/sequence&gt;
+     *               &lt;/restriction&gt;
+     *             &lt;/complexContent&gt;
+     *           &lt;/complexType&gt;
+     *         &lt;/element&gt;
+     *       &lt;/sequence&gt;
+     *     &lt;/restriction&gt;
+     *   &lt;/complexContent&gt;
+     * &lt;/complexType&gt;
+     * </pre>
+     * 
+     * 
+     */
+    @XmlAccessorType(XmlAccessType.FIELD)
+    @XmlType(name = "", propOrder = {
+        "vannlatingsproblem",
+        "kreftsymptomer",
+        "whoStatus",
+        "prostatavolum",
+        "prostatavolumUkjent",
+        "spsa"
+    })
+    public static class Sykehistorie {
+
+        @XmlElement(name = "Vannlatingsproblem", namespace = "http://www.kreftregisteret.no/kremt/KliniskProstataUtredning/v4_0", required = true, defaultValue = "")
+        protected String vannlatingsproblem;
+        @XmlElement(name = "Kreftsymptomer", namespace = "http://www.kreftregisteret.no/kremt/KliniskProstataUtredning/v4_0", required = true, defaultValue = "")
+        protected String kreftsymptomer;
+        @XmlElement(name = "WHOStatus", namespace = "http://www.kreftregisteret.no/kremt/KliniskProstataUtredning/v4_0", required = true, defaultValue = "")
+        protected String whoStatus;
+        @XmlElement(name = "Prostatavolum", namespace = "http://www.kreftregisteret.no/kremt/KliniskProstataUtredning/v4_0", required = true, defaultValue = "")
+        protected String prostatavolum;
+        @XmlElement(name = "ProstatavolumUkjent", namespace = "http://www.kreftregisteret.no/kremt/KliniskProstataUtredning/v4_0", required = true, defaultValue = "")
+        protected String prostatavolumUkjent;
+        @XmlElement(name = "SPSA", namespace = "http://www.kreftregisteret.no/kremt/KliniskProstataUtredning/v4_0", required = true)
+        protected Utredning.Sykehistorie.SPSA spsa;
+
+        /**
+         * Gets the value of the vannlatingsproblem property.
+         * 
+         * @return
+         *     possible object is
+         *     {@link String }
+         *     
+         */
+        public String getVannlatingsproblem() {
+            return vannlatingsproblem;
+        }
+
+        /**
+         * Sets the value of the vannlatingsproblem property.
+         * 
+         * @param value
+         *     allowed object is
+         *     {@link String }
+         *     
+         */
+        public void setVannlatingsproblem(String value) {
+            this.vannlatingsproblem = value;
+        }
+
+        /**
+         * Gets the value of the kreftsymptomer property.
+         * 
+         * @return
+         *     possible object is
+         *     {@link String }
+         *     
+         */
+        public String getKreftsymptomer() {
+            return kreftsymptomer;
+        }
+
+        /**
+         * Sets the value of the kreftsymptomer property.
+         * 
+         * @param value
+         *     allowed object is
+         *     {@link String }
+         *     
+         */
+        public void setKreftsymptomer(String value) {
+            this.kreftsymptomer = value;
+        }
+
+        /**
+         * Gets the value of the whoStatus property.
+         * 
+         * @return
+         *     possible object is
+         *     {@link String }
+         *     
+         */
+        public String getWHOStatus() {
+            return whoStatus;
+        }
+
+        /**
+         * Sets the value of the whoStatus property.
+         * 
+         * @param value
+         *     allowed object is
+         *     {@link String }
+         *     
+         */
+        public void setWHOStatus(String value) {
+            this.whoStatus = value;
+        }
+
+        /**
+         * Gets the value of the prostatavolum property.
+         * 
+         * @return
+         *     possible object is
+         *     {@link String }
+         *     
+         */
+        public String getProstatavolum() {
+            return prostatavolum;
+        }
+
+        /**
+         * Sets the value of the prostatavolum property.
+         * 
+         * @param value
+         *     allowed object is
+         *     {@link String }
+         *     
+         */
+        public void setProstatavolum(String value) {
+            this.prostatavolum = value;
+        }
+
+        /**
+         * Gets the value of the prostatavolumUkjent property.
+         * 
+         * @return
+         *     possible object is
+         *     {@link String }
+         *     
+         */
+        public String getProstatavolumUkjent() {
+            return prostatavolumUkjent;
+        }
+
+        /**
+         * Sets the value of the prostatavolumUkjent property.
+         * 
+         * @param value
+         *     allowed object is
+         *     {@link String }
+         *     
+         */
+        public void setProstatavolumUkjent(String value) {
+            this.prostatavolumUkjent = value;
+        }
+
+        /**
+         * Gets the value of the spsa property.
+         * 
+         * @return
+         *     possible object is
+         *     {@link Utredning.Sykehistorie.SPSA }
+         *     
+         */
+        public Utredning.Sykehistorie.SPSA getSPSA() {
+            return spsa;
+        }
+
+        /**
+         * Sets the value of the spsa property.
+         * 
+         * @param value
+         *     allowed object is
+         *     {@link Utredning.Sykehistorie.SPSA }
+         *     
+         */
+        public void setSPSA(Utredning.Sykehistorie.SPSA value) {
+            this.spsa = value;
+        }
+
+
+        /**
+         * <p>Java class for anonymous complex type.
+         * 
+         * <p>The following schema fragment specifies the expected content contained within this class.
+         * 
+         * <pre>
+         * &lt;complexType&gt;
+         *   &lt;complexContent&gt;
+         *     &lt;restriction base="{http://www.w3.org/2001/XMLSchema}anyType"&gt;
+         *       &lt;sequence&gt;
+         *         &lt;element name="PSAVerdi"&gt;
+         *           &lt;simpleType&gt;
+         *             &lt;restriction base="{http://www.w3.org/2001/XMLSchema}string"&gt;
+         *               &lt;pattern value="([1-9]\d{0,5}|\d,\d|[1-9]\d{1,5},\d)?"/&gt;
+         *             &lt;/restriction&gt;
+         *           &lt;/simpleType&gt;
+         *         &lt;/element&gt;
+         *         &lt;element name="PSAVerdiIkkeTatt"&gt;
+         *           &lt;simpleType&gt;
+         *             &lt;restriction base="{http://www.w3.org/2001/XMLSchema}boolean"&gt;
+         *               &lt;pattern value="true|false"/&gt;
+         *             &lt;/restriction&gt;
+         *           &lt;/simpleType&gt;
+         *         &lt;/element&gt;
+         *         &lt;element name="PSAVerdiUkjent"&gt;
+         *           &lt;simpleType&gt;
+         *             &lt;restriction base="{http://www.w3.org/2001/XMLSchema}string"&gt;
+         *               &lt;enumeration value=""/&gt;
+         *               &lt;enumeration value="99"/&gt;
+         *             &lt;/restriction&gt;
+         *           &lt;/simpleType&gt;
+         *         &lt;/element&gt;
+         *       &lt;/sequence&gt;
+         *     &lt;/restriction&gt;
+         *   &lt;/complexContent&gt;
+         * &lt;/complexType&gt;
+         * </pre>
+         * 
+         * 
+         */
+        @XmlAccessorType(XmlAccessType.FIELD)
+        @XmlType(name = "", propOrder = {
+            "psaVerdi",
+            "psaVerdiIkkeTatt",
+            "psaVerdiUkjent"
+        })
+        public static class SPSA {
+
+            @XmlElement(name = "PSAVerdi", namespace = "http://www.kreftregisteret.no/kremt/KliniskProstataUtredning/v4_0", required = true, defaultValue = "")
+            protected String psaVerdi;
+            @XmlElement(name = "PSAVerdiIkkeTatt", namespace = "http://www.kreftregisteret.no/kremt/KliniskProstataUtredning/v4_0")
+            protected boolean psaVerdiIkkeTatt;
+            @XmlElement(name = "PSAVerdiUkjent", namespace = "http://www.kreftregisteret.no/kremt/KliniskProstataUtredning/v4_0", required = true, defaultValue = "")
+            protected String psaVerdiUkjent;
+
+            /**
+             * Gets the value of the psaVerdi property.
+             * 
+             * @return
+             *     possible object is
+             *     {@link String }
+             *     
+             */
+            public String getPSAVerdi() {
+                return psaVerdi;
+            }
+
+            /**
+             * Sets the value of the psaVerdi property.
+             * 
+             * @param value
+             *     allowed object is
+             *     {@link String }
+             *     
+             */
+            public void setPSAVerdi(String value) {
+                this.psaVerdi = value;
+            }
+
+            /**
+             * Gets the value of the psaVerdiIkkeTatt property.
+             * 
+             */
+            public boolean isPSAVerdiIkkeTatt() {
+                return psaVerdiIkkeTatt;
+            }
+
+            /**
+             * Sets the value of the psaVerdiIkkeTatt property.
+             * 
+             */
+            public void setPSAVerdiIkkeTatt(boolean value) {
+                this.psaVerdiIkkeTatt = value;
+            }
+
+            /**
+             * Gets the value of the psaVerdiUkjent property.
+             * 
+             * @return
+             *     possible object is
+             *     {@link String }
+             *     
+             */
+            public String getPSAVerdiUkjent() {
+                return psaVerdiUkjent;
+            }
+
+            /**
+             * Sets the value of the psaVerdiUkjent property.
+             * 
+             * @param value
+             *     allowed object is
+             *     {@link String }
+             *     
+             */
+            public void setPSAVerdiUkjent(String value) {
+                this.psaVerdiUkjent = value;
             }
 
         }

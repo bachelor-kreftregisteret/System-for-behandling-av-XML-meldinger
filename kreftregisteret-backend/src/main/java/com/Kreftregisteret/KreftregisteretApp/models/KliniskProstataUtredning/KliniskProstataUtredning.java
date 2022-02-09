@@ -1,7 +1,7 @@
 
-package com.Kreftregisteret.KreftregisteretApp.models;
+package com.Kreftregisteret.KreftregisteretApp.models.KliniskProstataUtredning;
 
-import com.Kreftregisteret.KreftregisteretApp.models.Melding;
+import com.Kreftregisteret.KreftregisteretApp.models.*;
 import jakarta.xml.bind.annotation.XmlAccessType;
 import jakarta.xml.bind.annotation.XmlAccessorType;
 import jakarta.xml.bind.annotation.XmlElement;

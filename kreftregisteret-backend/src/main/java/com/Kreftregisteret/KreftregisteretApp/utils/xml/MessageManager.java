@@ -1,6 +1,7 @@
 package com.Kreftregisteret.KreftregisteretApp.utils.xml;
 
-import com.Kreftregisteret.KreftregisteretApp.models.KliniskProstataUtredning;
+import com.Kreftregisteret.KreftregisteretApp.models.KliniskProstataStraale.KliniskProstataStraale;
+import com.Kreftregisteret.KreftregisteretApp.models.KliniskProstataUtredning.KliniskProstataUtredning;
 import com.Kreftregisteret.KreftregisteretApp.models.Melding;
 import jakarta.xml.bind.JAXBContext;
 import jakarta.xml.bind.JAXBException;
@@ -19,7 +20,7 @@ public class MessageManager {
         Melding melding = null;
         try {
             File file = new File(path);
-            JAXBContext jaxbContext = JAXBContext.newInstance("com.Kreftregisteret.KreftregisteretApp.models");
+            JAXBContext jaxbContext = JAXBContext.newInstance( KliniskProstataStraale.class, KliniskProstataUtredning.class);
             Unmarshaller jaxbUnmarshaller = jaxbContext.createUnmarshaller();
             melding = (Melding) jaxbUnmarshaller.unmarshal(file);
             return melding;
@@ -56,7 +57,7 @@ public class MessageManager {
         File[] files = dir.listFiles();
 
         for (File file : files) {
-            System.out.println(file.getAbsoluteFile());
+            //System.out.println(file.getAbsoluteFile());
             if(file.isFile() && file.toPath().toString().contains(skjemanavn)){
                 System.out.println("YES FOUND");
                 return file;

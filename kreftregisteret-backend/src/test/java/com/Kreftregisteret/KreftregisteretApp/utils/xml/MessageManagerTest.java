@@ -19,7 +19,7 @@ class MessageManagerTest {
             Melding melding = MessageManager.getMeldingFromPath("Prostatapakke/Prostata_4_0_StraalebehandlingEksempelfil.xml");
             assert melding != null;
             //MessageManager.writeMeldingToPath(melding);
-            System.out.println(melding.getSkjemaNavn());
+            System.out.println(melding.getSkjemaNavn() + " skjemanavn er null?=?");
             File file = MessageManager.findXSDFromMelding(melding);
             if(file != null) {
                 System.out.println(file.toPath().toString());

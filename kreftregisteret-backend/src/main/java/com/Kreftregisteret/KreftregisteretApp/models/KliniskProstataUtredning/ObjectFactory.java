@@ -1,5 +1,5 @@
 
-package com.Kreftregisteret.KreftregisteretApp.models;
+package com.Kreftregisteret.KreftregisteretApp.models.KliniskProstataUtredning;
 
 import jakarta.xml.bind.annotation.XmlRegistry;
 
