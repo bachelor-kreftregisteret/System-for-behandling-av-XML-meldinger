@@ -1,5 +1,5 @@
 
-package src;
+package com.Kreftregisteret.KreftregisteretApp.models;
 
 import jakarta.xml.bind.annotation.XmlAccessType;
 import jakarta.xml.bind.annotation.XmlAccessorType;

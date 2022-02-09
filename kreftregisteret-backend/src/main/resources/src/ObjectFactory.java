@@ -46,43 +46,51 @@ public class ObjectFactory {
     }
 
     /**
-     * Create an instance of {@link Behandling.Straalebehandling }
+     * Create an instance of {@link Behandling.Kirurgi }
      * 
      */
-    public Behandling.Straalebehandling createBehandlingStraalebehandling() {
-        return new Behandling.Straalebehandling();
+    public Behandling.Kirurgi createBehandlingKirurgi() {
+        return new Behandling.Kirurgi();
     }
 
     /**
-     * Create an instance of {@link Behandling.Sykdomsutbredelse }
+     * Create an instance of {@link Behandling.Kirurgi.KirurgiPrimaer }
      * 
      */
-    public Behandling.Sykdomsutbredelse createBehandlingSykdomsutbredelse() {
-        return new Behandling.Sykdomsutbredelse();
+    public Behandling.Kirurgi.KirurgiPrimaer createBehandlingKirurgiKirurgiPrimaer() {
+        return new Behandling.Kirurgi.KirurgiPrimaer();
     }
 
     /**
-     * Create an instance of {@link Behandling.Sykdomsutbredelse.UtredningsmetodeMetastaser }
+     * Create an instance of {@link Behandling.Kirurgi.KirurgiPrimaer.Sykdomsutbredelse }
      * 
      */
-    public Behandling.Sykdomsutbredelse.UtredningsmetodeMetastaser createBehandlingSykdomsutbredelseUtredningsmetodeMetastaser() {
-        return new Behandling.Sykdomsutbredelse.UtredningsmetodeMetastaser();
+    public Behandling.Kirurgi.KirurgiPrimaer.Sykdomsutbredelse createBehandlingKirurgiKirurgiPrimaerSykdomsutbredelse() {
+        return new Behandling.Kirurgi.KirurgiPrimaer.Sykdomsutbredelse();
     }
 
     /**
-     * Create an instance of {@link Behandling.Sykdomsutbredelse.Fjernmetastaser }
+     * Create an instance of {@link Behandling.Kirurgi.KirurgiPrimaer.Sykdomsutbredelse.UtredningsmetodeMetastaser }
      * 
      */
-    public Behandling.Sykdomsutbredelse.Fjernmetastaser createBehandlingSykdomsutbredelseFjernmetastaser() {
-        return new Behandling.Sykdomsutbredelse.Fjernmetastaser();
+    public Behandling.Kirurgi.KirurgiPrimaer.Sykdomsutbredelse.UtredningsmetodeMetastaser createBehandlingKirurgiKirurgiPrimaerSykdomsutbredelseUtredningsmetodeMetastaser() {
+        return new Behandling.Kirurgi.KirurgiPrimaer.Sykdomsutbredelse.UtredningsmetodeMetastaser();
     }
 
     /**
-     * Create an instance of {@link KliniskProstataStraale }
+     * Create an instance of {@link Behandling.Kirurgi.KirurgiPrimaer.Sykdomsutbredelse.Fjernmetastaser }
      * 
      */
-    public KliniskProstataStraale createKliniskProstataStraale() {
-        return new KliniskProstataStraale();
+    public Behandling.Kirurgi.KirurgiPrimaer.Sykdomsutbredelse.Fjernmetastaser createBehandlingKirurgiKirurgiPrimaerSykdomsutbredelseFjernmetastaser() {
+        return new Behandling.Kirurgi.KirurgiPrimaer.Sykdomsutbredelse.Fjernmetastaser();
+    }
+
+    /**
+     * Create an instance of {@link KliniskProstataKirurgi }
+     * 
+     */
+    public KliniskProstataKirurgi createKliniskProstataKirurgi() {
+        return new KliniskProstataKirurgi();
     }
 
     /**
@@ -134,75 +142,59 @@ public class ObjectFactory {
     }
 
     /**
-     * Create an instance of {@link Behandling.PreStraaleInformasjon }
+     * Create an instance of {@link Laboratorium }
      * 
      */
-    public Behandling.PreStraaleInformasjon createBehandlingPreStraaleInformasjon() {
-        return new Behandling.PreStraaleInformasjon();
+    public Laboratorium createLaboratorium() {
+        return new Laboratorium();
     }
 
     /**
-     * Create an instance of {@link Behandling.Straalebehandling.Prostata }
+     * Create an instance of {@link Behandling.Kirurgi.KirurgiPrimaer.PreoperativInformasjon }
      * 
      */
-    public Behandling.Straalebehandling.Prostata createBehandlingStraalebehandlingProstata() {
-        return new Behandling.Straalebehandling.Prostata();
+    public Behandling.Kirurgi.KirurgiPrimaer.PreoperativInformasjon createBehandlingKirurgiKirurgiPrimaerPreoperativInformasjon() {
+        return new Behandling.Kirurgi.KirurgiPrimaer.PreoperativInformasjon();
     }
 
     /**
-     * Create an instance of {@link Behandling.Straalebehandling.LKbekken }
+     * Create an instance of {@link Behandling.Kirurgi.KirurgiPrimaer.KirurgiskBehPrimaer }
      * 
      */
-    public Behandling.Straalebehandling.LKbekken createBehandlingStraalebehandlingLKbekken() {
-        return new Behandling.Straalebehandling.LKbekken();
+    public Behandling.Kirurgi.KirurgiPrimaer.KirurgiskBehPrimaer createBehandlingKirurgiKirurgiPrimaerKirurgiskBehPrimaer() {
+        return new Behandling.Kirurgi.KirurgiPrimaer.KirurgiskBehPrimaer();
     }
 
     /**
-     * Create an instance of {@link Behandling.Straalebehandling.HoydoserateBrachyterapi }
+     * Create an instance of {@link Behandling.Kirurgi.KirurgiPrimaer.Sykdomsutbredelse.Tumor }
      * 
      */
-    public Behandling.Straalebehandling.HoydoserateBrachyterapi createBehandlingStraalebehandlingHoydoserateBrachyterapi() {
-        return new Behandling.Straalebehandling.HoydoserateBrachyterapi();
+    public Behandling.Kirurgi.KirurgiPrimaer.Sykdomsutbredelse.Tumor createBehandlingKirurgiKirurgiPrimaerSykdomsutbredelseTumor() {
+        return new Behandling.Kirurgi.KirurgiPrimaer.Sykdomsutbredelse.Tumor();
     }
 
     /**
-     * Create an instance of {@link Behandling.Straalebehandling.LavdoserateBrachyterapi }
+     * Create an instance of {@link Behandling.Kirurgi.KirurgiPrimaer.Sykdomsutbredelse.RegionaleLK }
      * 
      */
-    public Behandling.Straalebehandling.LavdoserateBrachyterapi createBehandlingStraalebehandlingLavdoserateBrachyterapi() {
-        return new Behandling.Straalebehandling.LavdoserateBrachyterapi();
+    public Behandling.Kirurgi.KirurgiPrimaer.Sykdomsutbredelse.RegionaleLK createBehandlingKirurgiKirurgiPrimaerSykdomsutbredelseRegionaleLK() {
+        return new Behandling.Kirurgi.KirurgiPrimaer.Sykdomsutbredelse.RegionaleLK();
     }
 
     /**
-     * Create an instance of {@link Behandling.Sykdomsutbredelse.Tumor }
+     * Create an instance of {@link Behandling.Kirurgi.KirurgiPrimaer.Sykdomsutbredelse.UtredningsmetodeMetastaser.UtredningsmetodeFjernmet }
      * 
      */
-    public Behandling.Sykdomsutbredelse.Tumor createBehandlingSykdomsutbredelseTumor() {
-        return new Behandling.Sykdomsutbredelse.Tumor();
+    public Behandling.Kirurgi.KirurgiPrimaer.Sykdomsutbredelse.UtredningsmetodeMetastaser.UtredningsmetodeFjernmet createBehandlingKirurgiKirurgiPrimaerSykdomsutbredelseUtredningsmetodeMetastaserUtredningsmetodeFjernmet() {
+        return new Behandling.Kirurgi.KirurgiPrimaer.Sykdomsutbredelse.UtredningsmetodeMetastaser.UtredningsmetodeFjernmet();
     }
 
     /**
-     * Create an instance of {@link Behandling.Sykdomsutbredelse.RegionaleLK }
+     * Create an instance of {@link Behandling.Kirurgi.KirurgiPrimaer.Sykdomsutbredelse.Fjernmetastaser.LokalisasjonFjernmet }
      * 
      */
-    public Behandling.Sykdomsutbredelse.RegionaleLK createBehandlingSykdomsutbredelseRegionaleLK() {
-        return new Behandling.Sykdomsutbredelse.RegionaleLK();
-    }
-
-    /**
-     * Create an instance of {@link Behandling.Sykdomsutbredelse.UtredningsmetodeMetastaser.UtredningsmetodeFjernmet }
-     * 
-     */
-    public Behandling.Sykdomsutbredelse.UtredningsmetodeMetastaser.UtredningsmetodeFjernmet createBehandlingSykdomsutbredelseUtredningsmetodeMetastaserUtredningsmetodeFjernmet() {
-        return new Behandling.Sykdomsutbredelse.UtredningsmetodeMetastaser.UtredningsmetodeFjernmet();
-    }
-
-    /**
-     * Create an instance of {@link Behandling.Sykdomsutbredelse.Fjernmetastaser.LokalisasjonFjernmet }
-     * 
-     */
-    public Behandling.Sykdomsutbredelse.Fjernmetastaser.LokalisasjonFjernmet createBehandlingSykdomsutbredelseFjernmetastaserLokalisasjonFjernmet() {
-        return new Behandling.Sykdomsutbredelse.Fjernmetastaser.LokalisasjonFjernmet();
+    public Behandling.Kirurgi.KirurgiPrimaer.Sykdomsutbredelse.Fjernmetastaser.LokalisasjonFjernmet createBehandlingKirurgiKirurgiPrimaerSykdomsutbredelseFjernmetastaserLokalisasjonFjernmet() {
+        return new Behandling.Kirurgi.KirurgiPrimaer.Sykdomsutbredelse.Fjernmetastaser.LokalisasjonFjernmet();
     }
 
 }

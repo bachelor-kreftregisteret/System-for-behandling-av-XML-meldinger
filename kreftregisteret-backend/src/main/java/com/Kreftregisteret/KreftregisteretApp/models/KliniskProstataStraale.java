@@ -1,11 +1,13 @@
 
-package src;
+package com.Kreftregisteret.KreftregisteretApp.models;
 
 import jakarta.xml.bind.annotation.XmlAccessType;
 import jakarta.xml.bind.annotation.XmlAccessorType;
 import jakarta.xml.bind.annotation.XmlElement;
 import jakarta.xml.bind.annotation.XmlRootElement;
 import jakarta.xml.bind.annotation.XmlType;
+
+import java.io.Serializable;
 
 
 /**
@@ -38,7 +40,7 @@ import jakarta.xml.bind.annotation.XmlType;
     "behandling"
 })
 @XmlRootElement(name = "KliniskProstataStraale", namespace = "http://www.kreftregisteret.no/kremt/KliniskProstataStraale/v4_0")
-public class KliniskProstataStraale {
+public class KliniskProstataStraale extends Melding implements Serializable {
 
     @XmlElement(name = "Meldingsinformasjon", namespace = "http://www.kreftregisteret.no/kremt/KliniskProstataStraale/v4_0", required = true)
     protected Meldingsinformasjon meldingsinformasjon;
@@ -145,4 +147,8 @@ public class KliniskProstataStraale {
         this.behandling = value;
     }
 
+    @Override
+    public String getSkjemaNavn() {
+        return this.meldingsinformasjon.getSkjema();
+    }
 }

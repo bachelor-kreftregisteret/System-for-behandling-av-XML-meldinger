@@ -22,7 +22,7 @@ import jakarta.xml.bind.annotation.XmlType;
  *         &lt;element name="MeldingsNr"&gt;
  *           &lt;simpleType&gt;
  *             &lt;restriction base="{http://www.w3.org/2001/XMLSchema}string"&gt;
- *               &lt;pattern value="(500)?"/&gt;
+ *               &lt;pattern value="(200)?"/&gt;
  *             &lt;/restriction&gt;
  *           &lt;/simpleType&gt;
  *         &lt;/element&gt;
@@ -39,12 +39,12 @@ import jakarta.xml.bind.annotation.XmlType;
     "meldingstittel",
     "meldingsNr"
 })
-@XmlRootElement(name = "Navigering", namespace = "http://www.kreftregisteret.no/kremt/KliniskProstataStraale/v4_0")
+@XmlRootElement(name = "Navigering", namespace = "http://www.kreftregisteret.no/kremt/KliniskProstataKirurgi/v4_0")
 public class Navigering {
 
-    @XmlElement(name = "Meldingstittel", namespace = "http://www.kreftregisteret.no/kremt/KliniskProstataStraale/v4_0", required = true)
+    @XmlElement(name = "Meldingstittel", namespace = "http://www.kreftregisteret.no/kremt/KliniskProstataKirurgi/v4_0", required = true, defaultValue = "")
     protected String meldingstittel;
-    @XmlElement(name = "MeldingsNr", namespace = "http://www.kreftregisteret.no/kremt/KliniskProstataStraale/v4_0", required = true)
+    @XmlElement(name = "MeldingsNr", namespace = "http://www.kreftregisteret.no/kremt/KliniskProstataKirurgi/v4_0", required = true)
     protected String meldingsNr;
 
     /**

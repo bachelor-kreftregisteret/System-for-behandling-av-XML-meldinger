@@ -23,12 +23,7 @@ import jakarta.xml.bind.annotation.XmlType;
  *             &lt;complexContent&gt;
  *               &lt;restriction base="{http://www.w3.org/2001/XMLSchema}anyType"&gt;
  *                 &lt;sequence&gt;
- *                   &lt;element name="FodselsnummerKRG"&gt;
- *                     &lt;simpleType&gt;
- *                       &lt;restriction base="{http://www.w3.org/2001/XMLSchema}string"&gt;
- *                       &lt;/restriction&gt;
- *                     &lt;/simpleType&gt;
- *                   &lt;/element&gt;
+ *                   &lt;element name="FodselsnummerKRG" type="{http://www.w3.org/2001/XMLSchema}string"/&gt;
  *                   &lt;element name="FodselsnummerHF"&gt;
  *                     &lt;simpleType&gt;
  *                       &lt;restriction base="{http://www.w3.org/2001/XMLSchema}string"&gt;
@@ -46,22 +41,205 @@ import jakarta.xml.bind.annotation.XmlType;
  *                   &lt;element name="FodselsnummerUtlandSpesifiser" type="{http://www.w3.org/2001/XMLSchema}string"/&gt;
  *                   &lt;element name="NavnPasient" type="{http://www.w3.org/2001/XMLSchema}string"/&gt;
  *                   &lt;element name="Sykehuskode" type="{http://www.w3.org/2001/XMLSchema}string"/&gt;
- *                   &lt;element name="SykehusnavnHF"&gt;
+ *                   &lt;element name="SykehusnavnRHF"&gt;
  *                     &lt;simpleType&gt;
  *                       &lt;restriction base="{http://www.w3.org/2001/XMLSchema}string"&gt;
  *                         &lt;enumeration value=""/&gt;
- *                         &lt;enumeration value="1305"/&gt;
- *                         &lt;enumeration value="1801"/&gt;
+ *                         &lt;enumeration value="1"/&gt;
+ *                         &lt;enumeration value="2"/&gt;
+ *                         &lt;enumeration value="3"/&gt;
+ *                         &lt;enumeration value="4"/&gt;
+ *                         &lt;enumeration value="5"/&gt;
+ *                         &lt;enumeration value="6"/&gt;
+ *                       &lt;/restriction&gt;
+ *                     &lt;/simpleType&gt;
+ *                   &lt;/element&gt;
+ *                   &lt;element name="SykehusnavnHFSorOst"&gt;
+ *                     &lt;simpleType&gt;
+ *                       &lt;restriction base="{http://www.w3.org/2001/XMLSchema}string"&gt;
+ *                         &lt;enumeration value=""/&gt;
+ *                         &lt;enumeration value="0101"/&gt;
+ *                         &lt;enumeration value="0103"/&gt;
+ *                         &lt;enumeration value="0104"/&gt;
+ *                         &lt;enumeration value="0105"/&gt;
+ *                         &lt;enumeration value="0202"/&gt;
+ *                         &lt;enumeration value="0208"/&gt;
+ *                         &lt;enumeration value="0301"/&gt;
+ *                         &lt;enumeration value="0304"/&gt;
  *                         &lt;enumeration value="0305"/&gt;
+ *                         &lt;enumeration value="0306"/&gt;
+ *                         &lt;enumeration value="0316"/&gt;
  *                         &lt;enumeration value="0320"/&gt;
- *                         &lt;enumeration value="1107"/&gt;
- *                         &lt;enumeration value="1608"/&gt;
+ *                         &lt;enumeration value="0402"/&gt;
+ *                         &lt;enumeration value="0403"/&gt;
+ *                         &lt;enumeration value="0404"/&gt;
+ *                         &lt;enumeration value="0405"/&gt;
  *                         &lt;enumeration value="0501"/&gt;
- *                         &lt;enumeration value="1005"/&gt;
- *                         &lt;enumeration value="1903"/&gt;
- *                         &lt;enumeration value="1504"/&gt;
- *                         &lt;enumeration value="0808"/&gt;
+ *                         &lt;enumeration value="0502"/&gt;
  *                         &lt;enumeration value="0601"/&gt;
+ *                         &lt;enumeration value="0602"/&gt;
+ *                         &lt;enumeration value="0605"/&gt;
+ *                         &lt;enumeration value="0703"/&gt;
+ *                         &lt;enumeration value="0705"/&gt;
+ *                         &lt;enumeration value="0707"/&gt;
+ *                         &lt;enumeration value="0804"/&gt;
+ *                         &lt;enumeration value="0805"/&gt;
+ *                         &lt;enumeration value="0806"/&gt;
+ *                         &lt;enumeration value="0807"/&gt;
+ *                         &lt;enumeration value="0808"/&gt;
+ *                         &lt;enumeration value="0904"/&gt;
+ *                         &lt;enumeration value="1003"/&gt;
+ *                         &lt;enumeration value="1005"/&gt;
+ *                         &lt;enumeration value="1"/&gt;
+ *                       &lt;/restriction&gt;
+ *                     &lt;/simpleType&gt;
+ *                   &lt;/element&gt;
+ *                   &lt;element name="SykehusnavnHFVest"&gt;
+ *                     &lt;simpleType&gt;
+ *                       &lt;restriction base="{http://www.w3.org/2001/XMLSchema}string"&gt;
+ *                         &lt;enumeration value=""/&gt;
+ *                         &lt;enumeration value="1101"/&gt;
+ *                         &lt;enumeration value="1107"/&gt;
+ *                         &lt;enumeration value="1201"/&gt;
+ *                         &lt;enumeration value="1202"/&gt;
+ *                         &lt;enumeration value="1302"/&gt;
+ *                         &lt;enumeration value="1203"/&gt;
+ *                         &lt;enumeration value="1305"/&gt;
+ *                         &lt;enumeration value="1401"/&gt;
+ *                         &lt;enumeration value="1403"/&gt;
+ *                         &lt;enumeration value="1405"/&gt;
+ *                         &lt;enumeration value="1406"/&gt;
+ *                         &lt;enumeration value="1"/&gt;
+ *                       &lt;/restriction&gt;
+ *                     &lt;/simpleType&gt;
+ *                   &lt;/element&gt;
+ *                   &lt;element name="SykehusnavnHFMidt"&gt;
+ *                     &lt;simpleType&gt;
+ *                       &lt;restriction base="{http://www.w3.org/2001/XMLSchema}string"&gt;
+ *                         &lt;enumeration value=""/&gt;
+ *                         &lt;enumeration value="1501"/&gt;
+ *                         &lt;enumeration value="1502"/&gt;
+ *                         &lt;enumeration value="1503"/&gt;
+ *                         &lt;enumeration value="1504"/&gt;
+ *                         &lt;enumeration value="1602"/&gt;
+ *                         &lt;enumeration value="1608"/&gt;
+ *                         &lt;enumeration value="1701"/&gt;
+ *                         &lt;enumeration value="1702"/&gt;
+ *                         &lt;enumeration value="1"/&gt;
+ *                       &lt;/restriction&gt;
+ *                     &lt;/simpleType&gt;
+ *                   &lt;/element&gt;
+ *                   &lt;element name="SykehusnavnHFNord"&gt;
+ *                     &lt;simpleType&gt;
+ *                       &lt;restriction base="{http://www.w3.org/2001/XMLSchema}string"&gt;
+ *                         &lt;enumeration value=""/&gt;
+ *                         &lt;enumeration value="1801"/&gt;
+ *                         &lt;enumeration value="1804"/&gt;
+ *                         &lt;enumeration value="1805"/&gt;
+ *                         &lt;enumeration value="1806"/&gt;
+ *                         &lt;enumeration value="1807"/&gt;
+ *                         &lt;enumeration value="1809"/&gt;
+ *                         &lt;enumeration value="1811"/&gt;
+ *                         &lt;enumeration value="1902"/&gt;
+ *                         &lt;enumeration value="1903"/&gt;
+ *                         &lt;enumeration value="2001"/&gt;
+ *                         &lt;enumeration value="2002"/&gt;
+ *                         &lt;enumeration value="2101"/&gt;
+ *                         &lt;enumeration value="1"/&gt;
+ *                       &lt;/restriction&gt;
+ *                     &lt;/simpleType&gt;
+ *                   &lt;/element&gt;
+ *                   &lt;element name="SykehusnavnSpesSenter"&gt;
+ *                     &lt;simpleType&gt;
+ *                       &lt;restriction base="{http://www.w3.org/2001/XMLSchema}string"&gt;
+ *                         &lt;enumeration value=""/&gt;
+ *                         &lt;enumeration value="0317"/&gt;
+ *                         &lt;enumeration value="6013"/&gt;
+ *                         &lt;enumeration value="6024"/&gt;
+ *                         &lt;enumeration value="6072"/&gt;
+ *                         &lt;enumeration value="6023"/&gt;
+ *                         &lt;enumeration value="6043"/&gt;
+ *                         &lt;enumeration value="0801"/&gt;
+ *                         &lt;enumeration value="6068"/&gt;
+ *                         &lt;enumeration value="6038"/&gt;
+ *                         &lt;enumeration value="6046"/&gt;
+ *                         &lt;enumeration value="6021"/&gt;
+ *                         &lt;enumeration value="0608"/&gt;
+ *                         &lt;enumeration value="6026"/&gt;
+ *                         &lt;enumeration value="0214"/&gt;
+ *                         &lt;enumeration value="6053"/&gt;
+ *                         &lt;enumeration value="1102"/&gt;
+ *                         &lt;enumeration value="6044"/&gt;
+ *                         &lt;enumeration value="6002"/&gt;
+ *                         &lt;enumeration value="6030"/&gt;
+ *                         &lt;enumeration value="1197"/&gt;
+ *                         &lt;enumeration value="1301"/&gt;
+ *                         &lt;enumeration value="6003"/&gt;
+ *                         &lt;enumeration value="6004"/&gt;
+ *                         &lt;enumeration value="6069"/&gt;
+ *                         &lt;enumeration value="6042"/&gt;
+ *                         &lt;enumeration value="6028"/&gt;
+ *                         &lt;enumeration value="6031"/&gt;
+ *                         &lt;enumeration value="6066"/&gt;
+ *                         &lt;enumeration value="6049"/&gt;
+ *                         &lt;enumeration value="6007"/&gt;
+ *                         &lt;enumeration value="6008"/&gt;
+ *                         &lt;enumeration value="6054"/&gt;
+ *                         &lt;enumeration value="4710"/&gt;
+ *                         &lt;enumeration value="0708"/&gt;
+ *                         &lt;enumeration value="0329"/&gt;
+ *                         &lt;enumeration value="4709"/&gt;
+ *                         &lt;enumeration value="6025"/&gt;
+ *                         &lt;enumeration value="6071"/&gt;
+ *                         &lt;enumeration value="6056"/&gt;
+ *                         &lt;enumeration value="6022"/&gt;
+ *                         &lt;enumeration value="6011"/&gt;
+ *                         &lt;enumeration value="1198"/&gt;
+ *                         &lt;enumeration value="6067"/&gt;
+ *                         &lt;enumeration value="6036"/&gt;
+ *                         &lt;enumeration value="6010"/&gt;
+ *                         &lt;enumeration value="6009"/&gt;
+ *                         &lt;enumeration value="6041"/&gt;
+ *                         &lt;enumeration value="6032"/&gt;
+ *                         &lt;enumeration value="6052"/&gt;
+ *                         &lt;enumeration value="6055"/&gt;
+ *                         &lt;enumeration value="6015"/&gt;
+ *                         &lt;enumeration value="6051"/&gt;
+ *                         &lt;enumeration value="6001"/&gt;
+ *                         &lt;enumeration value="6014"/&gt;
+ *                         &lt;enumeration value="0111"/&gt;
+ *                         &lt;enumeration value="0412"/&gt;
+ *                         &lt;enumeration value="0327"/&gt;
+ *                         &lt;enumeration value="1311"/&gt;
+ *                         &lt;enumeration value="6029"/&gt;
+ *                         &lt;enumeration value="6073"/&gt;
+ *                         &lt;enumeration value="6074"/&gt;
+ *                         &lt;enumeration value="6075"/&gt;
+ *                         &lt;enumeration value="6076"/&gt;
+ *                         &lt;enumeration value="6077"/&gt;
+ *                         &lt;enumeration value="6078"/&gt;
+ *                         &lt;enumeration value="6079"/&gt;
+ *                         &lt;enumeration value="6080"/&gt;
+ *                         &lt;enumeration value="6081"/&gt;
+ *                         &lt;enumeration value="6082"/&gt;
+ *                         &lt;enumeration value="6083"/&gt;
+ *                         &lt;enumeration value="6084"/&gt;
+ *                         &lt;enumeration value="6085"/&gt;
+ *                         &lt;enumeration value="6086"/&gt;
+ *                         &lt;enumeration value="6087"/&gt;
+ *                         &lt;enumeration value="6088"/&gt;
+ *                         &lt;enumeration value="6089"/&gt;
+ *                         &lt;enumeration value="6090"/&gt;
+ *                         &lt;enumeration value="6091"/&gt;
+ *                         &lt;enumeration value="6092"/&gt;
+ *                         &lt;enumeration value="6093"/&gt;
+ *                         &lt;enumeration value="6094"/&gt;
+ *                         &lt;enumeration value="6095"/&gt;
+ *                         &lt;enumeration value="6096"/&gt;
+ *                         &lt;enumeration value="6097"/&gt;
+ *                         &lt;enumeration value="6098"/&gt;
+ *                         &lt;enumeration value="6099"/&gt;
+ *                         &lt;enumeration value="6100"/&gt;
  *                         &lt;enumeration value="1"/&gt;
  *                       &lt;/restriction&gt;
  *                     &lt;/simpleType&gt;
@@ -162,16 +340,16 @@ import jakarta.xml.bind.annotation.XmlType;
     "filmBilde",
     "melder"
 })
-@XmlRootElement(name = "StdInfo", namespace = "http://www.kreftregisteret.no/kremt/KliniskProstataStraale/v4_0")
+@XmlRootElement(name = "StdInfo", namespace = "http://www.kreftregisteret.no/kremt/KliniskProstataKirurgi/v4_0")
 public class StdInfo {
 
-    @XmlElement(name = "PasientInstitusjon", namespace = "http://www.kreftregisteret.no/kremt/KliniskProstataStraale/v4_0", required = true)
+    @XmlElement(name = "PasientInstitusjon", namespace = "http://www.kreftregisteret.no/kremt/KliniskProstataKirurgi/v4_0", required = true)
     protected StdInfo.PasientInstitusjon pasientInstitusjon;
-    @XmlElement(name = "Kommentarfelt", namespace = "http://www.kreftregisteret.no/kremt/KliniskProstataStraale/v4_0", required = true)
+    @XmlElement(name = "Kommentarfelt", namespace = "http://www.kreftregisteret.no/kremt/KliniskProstataKirurgi/v4_0", required = true)
     protected StdInfo.Kommentarfelt kommentarfelt;
-    @XmlElement(name = "FilmBilde", namespace = "http://www.kreftregisteret.no/kremt/KliniskProstataStraale/v4_0")
+    @XmlElement(name = "FilmBilde", namespace = "http://www.kreftregisteret.no/kremt/KliniskProstataKirurgi/v4_0")
     protected StdInfo.FilmBilde filmBilde;
-    @XmlElement(name = "Melder", namespace = "http://www.kreftregisteret.no/kremt/KliniskProstataStraale/v4_0", required = true)
+    @XmlElement(name = "Melder", namespace = "http://www.kreftregisteret.no/kremt/KliniskProstataKirurgi/v4_0", required = true)
     protected StdInfo.Melder melder;
 
     /**
@@ -310,9 +488,9 @@ public class StdInfo {
     })
     public static class FilmBilde {
 
-        @XmlElement(name = "FilmNr", namespace = "http://www.kreftregisteret.no/kremt/KliniskProstataStraale/v4_0", required = true, defaultValue = "")
+        @XmlElement(name = "FilmNr", namespace = "http://www.kreftregisteret.no/kremt/KliniskProstataKirurgi/v4_0", required = true, defaultValue = "")
         protected String filmNr;
-        @XmlElement(name = "BildeNr", namespace = "http://www.kreftregisteret.no/kremt/KliniskProstataStraale/v4_0", required = true, defaultValue = "")
+        @XmlElement(name = "BildeNr", namespace = "http://www.kreftregisteret.no/kremt/KliniskProstataKirurgi/v4_0", required = true, defaultValue = "")
         protected String bildeNr;
 
         /**
@@ -391,7 +569,7 @@ public class StdInfo {
     })
     public static class Kommentarfelt {
 
-        @XmlElement(name = "Kommentar", namespace = "http://www.kreftregisteret.no/kremt/KliniskProstataStraale/v4_0", required = true, defaultValue = "")
+        @XmlElement(name = "Kommentar", namespace = "http://www.kreftregisteret.no/kremt/KliniskProstataKirurgi/v4_0", required = true, defaultValue = "")
         protected String kommentar;
 
         /**
@@ -460,11 +638,11 @@ public class StdInfo {
     })
     public static class Melder {
 
-        @XmlElement(name = "MeldersNavn", namespace = "http://www.kreftregisteret.no/kremt/KliniskProstataStraale/v4_0", required = true, defaultValue = "")
+        @XmlElement(name = "MeldersNavn", namespace = "http://www.kreftregisteret.no/kremt/KliniskProstataKirurgi/v4_0", required = true, defaultValue = "")
         protected String meldersNavn;
-        @XmlElement(name = "MeldeDato", namespace = "http://www.kreftregisteret.no/kremt/KliniskProstataStraale/v4_0", required = true)
+        @XmlElement(name = "MeldeDato", namespace = "http://www.kreftregisteret.no/kremt/KliniskProstataKirurgi/v4_0", required = true)
         protected String meldeDato;
-        @XmlElement(name = "MelderID", namespace = "http://www.kreftregisteret.no/kremt/KliniskProstataStraale/v4_0", required = true, defaultValue = "")
+        @XmlElement(name = "MelderID", namespace = "http://www.kreftregisteret.no/kremt/KliniskProstataKirurgi/v4_0", required = true, defaultValue = "")
         protected String melderID;
 
         /**
@@ -552,12 +730,7 @@ public class StdInfo {
      *   &lt;complexContent&gt;
      *     &lt;restriction base="{http://www.w3.org/2001/XMLSchema}anyType"&gt;
      *       &lt;sequence&gt;
-     *         &lt;element name="FodselsnummerKRG"&gt;
-     *           &lt;simpleType&gt;
-     *             &lt;restriction base="{http://www.w3.org/2001/XMLSchema}string"&gt;
-     *             &lt;/restriction&gt;
-     *           &lt;/simpleType&gt;
-     *         &lt;/element&gt;
+     *         &lt;element name="FodselsnummerKRG" type="{http://www.w3.org/2001/XMLSchema}string"/&gt;
      *         &lt;element name="FodselsnummerHF"&gt;
      *           &lt;simpleType&gt;
      *             &lt;restriction base="{http://www.w3.org/2001/XMLSchema}string"&gt;
@@ -575,22 +748,205 @@ public class StdInfo {
      *         &lt;element name="FodselsnummerUtlandSpesifiser" type="{http://www.w3.org/2001/XMLSchema}string"/&gt;
      *         &lt;element name="NavnPasient" type="{http://www.w3.org/2001/XMLSchema}string"/&gt;
      *         &lt;element name="Sykehuskode" type="{http://www.w3.org/2001/XMLSchema}string"/&gt;
-     *         &lt;element name="SykehusnavnHF"&gt;
+     *         &lt;element name="SykehusnavnRHF"&gt;
      *           &lt;simpleType&gt;
      *             &lt;restriction base="{http://www.w3.org/2001/XMLSchema}string"&gt;
      *               &lt;enumeration value=""/&gt;
-     *               &lt;enumeration value="1305"/&gt;
-     *               &lt;enumeration value="1801"/&gt;
+     *               &lt;enumeration value="1"/&gt;
+     *               &lt;enumeration value="2"/&gt;
+     *               &lt;enumeration value="3"/&gt;
+     *               &lt;enumeration value="4"/&gt;
+     *               &lt;enumeration value="5"/&gt;
+     *               &lt;enumeration value="6"/&gt;
+     *             &lt;/restriction&gt;
+     *           &lt;/simpleType&gt;
+     *         &lt;/element&gt;
+     *         &lt;element name="SykehusnavnHFSorOst"&gt;
+     *           &lt;simpleType&gt;
+     *             &lt;restriction base="{http://www.w3.org/2001/XMLSchema}string"&gt;
+     *               &lt;enumeration value=""/&gt;
+     *               &lt;enumeration value="0101"/&gt;
+     *               &lt;enumeration value="0103"/&gt;
+     *               &lt;enumeration value="0104"/&gt;
+     *               &lt;enumeration value="0105"/&gt;
+     *               &lt;enumeration value="0202"/&gt;
+     *               &lt;enumeration value="0208"/&gt;
+     *               &lt;enumeration value="0301"/&gt;
+     *               &lt;enumeration value="0304"/&gt;
      *               &lt;enumeration value="0305"/&gt;
+     *               &lt;enumeration value="0306"/&gt;
+     *               &lt;enumeration value="0316"/&gt;
      *               &lt;enumeration value="0320"/&gt;
-     *               &lt;enumeration value="1107"/&gt;
-     *               &lt;enumeration value="1608"/&gt;
+     *               &lt;enumeration value="0402"/&gt;
+     *               &lt;enumeration value="0403"/&gt;
+     *               &lt;enumeration value="0404"/&gt;
+     *               &lt;enumeration value="0405"/&gt;
      *               &lt;enumeration value="0501"/&gt;
-     *               &lt;enumeration value="1005"/&gt;
-     *               &lt;enumeration value="1903"/&gt;
-     *               &lt;enumeration value="1504"/&gt;
-     *               &lt;enumeration value="0808"/&gt;
+     *               &lt;enumeration value="0502"/&gt;
      *               &lt;enumeration value="0601"/&gt;
+     *               &lt;enumeration value="0602"/&gt;
+     *               &lt;enumeration value="0605"/&gt;
+     *               &lt;enumeration value="0703"/&gt;
+     *               &lt;enumeration value="0705"/&gt;
+     *               &lt;enumeration value="0707"/&gt;
+     *               &lt;enumeration value="0804"/&gt;
+     *               &lt;enumeration value="0805"/&gt;
+     *               &lt;enumeration value="0806"/&gt;
+     *               &lt;enumeration value="0807"/&gt;
+     *               &lt;enumeration value="0808"/&gt;
+     *               &lt;enumeration value="0904"/&gt;
+     *               &lt;enumeration value="1003"/&gt;
+     *               &lt;enumeration value="1005"/&gt;
+     *               &lt;enumeration value="1"/&gt;
+     *             &lt;/restriction&gt;
+     *           &lt;/simpleType&gt;
+     *         &lt;/element&gt;
+     *         &lt;element name="SykehusnavnHFVest"&gt;
+     *           &lt;simpleType&gt;
+     *             &lt;restriction base="{http://www.w3.org/2001/XMLSchema}string"&gt;
+     *               &lt;enumeration value=""/&gt;
+     *               &lt;enumeration value="1101"/&gt;
+     *               &lt;enumeration value="1107"/&gt;
+     *               &lt;enumeration value="1201"/&gt;
+     *               &lt;enumeration value="1202"/&gt;
+     *               &lt;enumeration value="1302"/&gt;
+     *               &lt;enumeration value="1203"/&gt;
+     *               &lt;enumeration value="1305"/&gt;
+     *               &lt;enumeration value="1401"/&gt;
+     *               &lt;enumeration value="1403"/&gt;
+     *               &lt;enumeration value="1405"/&gt;
+     *               &lt;enumeration value="1406"/&gt;
+     *               &lt;enumeration value="1"/&gt;
+     *             &lt;/restriction&gt;
+     *           &lt;/simpleType&gt;
+     *         &lt;/element&gt;
+     *         &lt;element name="SykehusnavnHFMidt"&gt;
+     *           &lt;simpleType&gt;
+     *             &lt;restriction base="{http://www.w3.org/2001/XMLSchema}string"&gt;
+     *               &lt;enumeration value=""/&gt;
+     *               &lt;enumeration value="1501"/&gt;
+     *               &lt;enumeration value="1502"/&gt;
+     *               &lt;enumeration value="1503"/&gt;
+     *               &lt;enumeration value="1504"/&gt;
+     *               &lt;enumeration value="1602"/&gt;
+     *               &lt;enumeration value="1608"/&gt;
+     *               &lt;enumeration value="1701"/&gt;
+     *               &lt;enumeration value="1702"/&gt;
+     *               &lt;enumeration value="1"/&gt;
+     *             &lt;/restriction&gt;
+     *           &lt;/simpleType&gt;
+     *         &lt;/element&gt;
+     *         &lt;element name="SykehusnavnHFNord"&gt;
+     *           &lt;simpleType&gt;
+     *             &lt;restriction base="{http://www.w3.org/2001/XMLSchema}string"&gt;
+     *               &lt;enumeration value=""/&gt;
+     *               &lt;enumeration value="1801"/&gt;
+     *               &lt;enumeration value="1804"/&gt;
+     *               &lt;enumeration value="1805"/&gt;
+     *               &lt;enumeration value="1806"/&gt;
+     *               &lt;enumeration value="1807"/&gt;
+     *               &lt;enumeration value="1809"/&gt;
+     *               &lt;enumeration value="1811"/&gt;
+     *               &lt;enumeration value="1902"/&gt;
+     *               &lt;enumeration value="1903"/&gt;
+     *               &lt;enumeration value="2001"/&gt;
+     *               &lt;enumeration value="2002"/&gt;
+     *               &lt;enumeration value="2101"/&gt;
+     *               &lt;enumeration value="1"/&gt;
+     *             &lt;/restriction&gt;
+     *           &lt;/simpleType&gt;
+     *         &lt;/element&gt;
+     *         &lt;element name="SykehusnavnSpesSenter"&gt;
+     *           &lt;simpleType&gt;
+     *             &lt;restriction base="{http://www.w3.org/2001/XMLSchema}string"&gt;
+     *               &lt;enumeration value=""/&gt;
+     *               &lt;enumeration value="0317"/&gt;
+     *               &lt;enumeration value="6013"/&gt;
+     *               &lt;enumeration value="6024"/&gt;
+     *               &lt;enumeration value="6072"/&gt;
+     *               &lt;enumeration value="6023"/&gt;
+     *               &lt;enumeration value="6043"/&gt;
+     *               &lt;enumeration value="0801"/&gt;
+     *               &lt;enumeration value="6068"/&gt;
+     *               &lt;enumeration value="6038"/&gt;
+     *               &lt;enumeration value="6046"/&gt;
+     *               &lt;enumeration value="6021"/&gt;
+     *               &lt;enumeration value="0608"/&gt;
+     *               &lt;enumeration value="6026"/&gt;
+     *               &lt;enumeration value="0214"/&gt;
+     *               &lt;enumeration value="6053"/&gt;
+     *               &lt;enumeration value="1102"/&gt;
+     *               &lt;enumeration value="6044"/&gt;
+     *               &lt;enumeration value="6002"/&gt;
+     *               &lt;enumeration value="6030"/&gt;
+     *               &lt;enumeration value="1197"/&gt;
+     *               &lt;enumeration value="1301"/&gt;
+     *               &lt;enumeration value="6003"/&gt;
+     *               &lt;enumeration value="6004"/&gt;
+     *               &lt;enumeration value="6069"/&gt;
+     *               &lt;enumeration value="6042"/&gt;
+     *               &lt;enumeration value="6028"/&gt;
+     *               &lt;enumeration value="6031"/&gt;
+     *               &lt;enumeration value="6066"/&gt;
+     *               &lt;enumeration value="6049"/&gt;
+     *               &lt;enumeration value="6007"/&gt;
+     *               &lt;enumeration value="6008"/&gt;
+     *               &lt;enumeration value="6054"/&gt;
+     *               &lt;enumeration value="4710"/&gt;
+     *               &lt;enumeration value="0708"/&gt;
+     *               &lt;enumeration value="0329"/&gt;
+     *               &lt;enumeration value="4709"/&gt;
+     *               &lt;enumeration value="6025"/&gt;
+     *               &lt;enumeration value="6071"/&gt;
+     *               &lt;enumeration value="6056"/&gt;
+     *               &lt;enumeration value="6022"/&gt;
+     *               &lt;enumeration value="6011"/&gt;
+     *               &lt;enumeration value="1198"/&gt;
+     *               &lt;enumeration value="6067"/&gt;
+     *               &lt;enumeration value="6036"/&gt;
+     *               &lt;enumeration value="6010"/&gt;
+     *               &lt;enumeration value="6009"/&gt;
+     *               &lt;enumeration value="6041"/&gt;
+     *               &lt;enumeration value="6032"/&gt;
+     *               &lt;enumeration value="6052"/&gt;
+     *               &lt;enumeration value="6055"/&gt;
+     *               &lt;enumeration value="6015"/&gt;
+     *               &lt;enumeration value="6051"/&gt;
+     *               &lt;enumeration value="6001"/&gt;
+     *               &lt;enumeration value="6014"/&gt;
+     *               &lt;enumeration value="0111"/&gt;
+     *               &lt;enumeration value="0412"/&gt;
+     *               &lt;enumeration value="0327"/&gt;
+     *               &lt;enumeration value="1311"/&gt;
+     *               &lt;enumeration value="6029"/&gt;
+     *               &lt;enumeration value="6073"/&gt;
+     *               &lt;enumeration value="6074"/&gt;
+     *               &lt;enumeration value="6075"/&gt;
+     *               &lt;enumeration value="6076"/&gt;
+     *               &lt;enumeration value="6077"/&gt;
+     *               &lt;enumeration value="6078"/&gt;
+     *               &lt;enumeration value="6079"/&gt;
+     *               &lt;enumeration value="6080"/&gt;
+     *               &lt;enumeration value="6081"/&gt;
+     *               &lt;enumeration value="6082"/&gt;
+     *               &lt;enumeration value="6083"/&gt;
+     *               &lt;enumeration value="6084"/&gt;
+     *               &lt;enumeration value="6085"/&gt;
+     *               &lt;enumeration value="6086"/&gt;
+     *               &lt;enumeration value="6087"/&gt;
+     *               &lt;enumeration value="6088"/&gt;
+     *               &lt;enumeration value="6089"/&gt;
+     *               &lt;enumeration value="6090"/&gt;
+     *               &lt;enumeration value="6091"/&gt;
+     *               &lt;enumeration value="6092"/&gt;
+     *               &lt;enumeration value="6093"/&gt;
+     *               &lt;enumeration value="6094"/&gt;
+     *               &lt;enumeration value="6095"/&gt;
+     *               &lt;enumeration value="6096"/&gt;
+     *               &lt;enumeration value="6097"/&gt;
+     *               &lt;enumeration value="6098"/&gt;
+     *               &lt;enumeration value="6099"/&gt;
+     *               &lt;enumeration value="6100"/&gt;
      *               &lt;enumeration value="1"/&gt;
      *             &lt;/restriction&gt;
      *           &lt;/simpleType&gt;
@@ -629,7 +985,12 @@ public class StdInfo {
         "fodselsnummerUtlandSpesifiser",
         "navnPasient",
         "sykehuskode",
-        "sykehusnavnHF",
+        "sykehusnavnRHF",
+        "sykehusnavnHFSorOst",
+        "sykehusnavnHFVest",
+        "sykehusnavnHFMidt",
+        "sykehusnavnHFNord",
+        "sykehusnavnSpesSenter",
         "sykehusnavnHFSpesifiser",
         "sykehusnavnKRGSpesifiser",
         "avdelingskode",
@@ -639,31 +1000,41 @@ public class StdInfo {
     })
     public static class PasientInstitusjon {
 
-        @XmlElement(name = "FodselsnummerKRG", namespace = "http://www.kreftregisteret.no/kremt/KliniskProstataStraale/v4_0", required = true)
+        @XmlElement(name = "FodselsnummerKRG", namespace = "http://www.kreftregisteret.no/kremt/KliniskProstataKirurgi/v4_0", required = true, defaultValue = "")
         protected String fodselsnummerKRG;
-        @XmlElement(name = "FodselsnummerHF", namespace = "http://www.kreftregisteret.no/kremt/KliniskProstataStraale/v4_0", required = true)
+        @XmlElement(name = "FodselsnummerHF", namespace = "http://www.kreftregisteret.no/kremt/KliniskProstataKirurgi/v4_0", required = true, defaultValue = "")
         protected String fodselsnummerHF;
-        @XmlElement(name = "FodselnummerUtland", namespace = "http://www.kreftregisteret.no/kremt/KliniskProstataStraale/v4_0")
+        @XmlElement(name = "FodselnummerUtland", namespace = "http://www.kreftregisteret.no/kremt/KliniskProstataKirurgi/v4_0")
         protected boolean fodselnummerUtland;
-        @XmlElement(name = "FodselsnummerUtlandSpesifiser", namespace = "http://www.kreftregisteret.no/kremt/KliniskProstataStraale/v4_0", required = true)
+        @XmlElement(name = "FodselsnummerUtlandSpesifiser", namespace = "http://www.kreftregisteret.no/kremt/KliniskProstataKirurgi/v4_0", required = true)
         protected String fodselsnummerUtlandSpesifiser;
-        @XmlElement(name = "NavnPasient", namespace = "http://www.kreftregisteret.no/kremt/KliniskProstataStraale/v4_0", required = true)
+        @XmlElement(name = "NavnPasient", namespace = "http://www.kreftregisteret.no/kremt/KliniskProstataKirurgi/v4_0", required = true, defaultValue = "")
         protected String navnPasient;
-        @XmlElement(name = "Sykehuskode", namespace = "http://www.kreftregisteret.no/kremt/KliniskProstataStraale/v4_0", required = true, defaultValue = "")
+        @XmlElement(name = "Sykehuskode", namespace = "http://www.kreftregisteret.no/kremt/KliniskProstataKirurgi/v4_0", required = true, defaultValue = "")
         protected String sykehuskode;
-        @XmlElement(name = "SykehusnavnHF", namespace = "http://www.kreftregisteret.no/kremt/KliniskProstataStraale/v4_0", required = true, defaultValue = "")
-        protected String sykehusnavnHF;
-        @XmlElement(name = "SykehusnavnHFSpesifiser", namespace = "http://www.kreftregisteret.no/kremt/KliniskProstataStraale/v4_0", required = true, defaultValue = "")
+        @XmlElement(name = "SykehusnavnRHF", namespace = "http://www.kreftregisteret.no/kremt/KliniskProstataKirurgi/v4_0", required = true, defaultValue = "")
+        protected String sykehusnavnRHF;
+        @XmlElement(name = "SykehusnavnHFSorOst", namespace = "http://www.kreftregisteret.no/kremt/KliniskProstataKirurgi/v4_0", required = true, defaultValue = "")
+        protected String sykehusnavnHFSorOst;
+        @XmlElement(name = "SykehusnavnHFVest", namespace = "http://www.kreftregisteret.no/kremt/KliniskProstataKirurgi/v4_0", required = true, defaultValue = "")
+        protected String sykehusnavnHFVest;
+        @XmlElement(name = "SykehusnavnHFMidt", namespace = "http://www.kreftregisteret.no/kremt/KliniskProstataKirurgi/v4_0", required = true, defaultValue = "")
+        protected String sykehusnavnHFMidt;
+        @XmlElement(name = "SykehusnavnHFNord", namespace = "http://www.kreftregisteret.no/kremt/KliniskProstataKirurgi/v4_0", required = true, defaultValue = "")
+        protected String sykehusnavnHFNord;
+        @XmlElement(name = "SykehusnavnSpesSenter", namespace = "http://www.kreftregisteret.no/kremt/KliniskProstataKirurgi/v4_0", required = true, defaultValue = "")
+        protected String sykehusnavnSpesSenter;
+        @XmlElement(name = "SykehusnavnHFSpesifiser", namespace = "http://www.kreftregisteret.no/kremt/KliniskProstataKirurgi/v4_0", required = true, defaultValue = "")
         protected String sykehusnavnHFSpesifiser;
-        @XmlElement(name = "SykehusnavnKRGSpesifiser", namespace = "http://www.kreftregisteret.no/kremt/KliniskProstataStraale/v4_0", required = true, defaultValue = "")
+        @XmlElement(name = "SykehusnavnKRGSpesifiser", namespace = "http://www.kreftregisteret.no/kremt/KliniskProstataKirurgi/v4_0", required = true, defaultValue = "")
         protected String sykehusnavnKRGSpesifiser;
-        @XmlElement(name = "Avdelingskode", namespace = "http://www.kreftregisteret.no/kremt/KliniskProstataStraale/v4_0", required = true, defaultValue = "")
+        @XmlElement(name = "Avdelingskode", namespace = "http://www.kreftregisteret.no/kremt/KliniskProstataKirurgi/v4_0", required = true, defaultValue = "")
         protected String avdelingskode;
-        @XmlElement(name = "Avdelingsnavn", namespace = "http://www.kreftregisteret.no/kremt/KliniskProstataStraale/v4_0", required = true, defaultValue = "")
+        @XmlElement(name = "Avdelingsnavn", namespace = "http://www.kreftregisteret.no/kremt/KliniskProstataKirurgi/v4_0", required = true, defaultValue = "")
         protected String avdelingsnavn;
-        @XmlElement(name = "AvdelingsnavnHFSpesifiser", namespace = "http://www.kreftregisteret.no/kremt/KliniskProstataStraale/v4_0", required = true, defaultValue = "")
+        @XmlElement(name = "AvdelingsnavnHFSpesifiser", namespace = "http://www.kreftregisteret.no/kremt/KliniskProstataKirurgi/v4_0", required = true, defaultValue = "")
         protected String avdelingsnavnHFSpesifiser;
-        @XmlElement(name = "AvdelingsnavnKRGSpesifiser", namespace = "http://www.kreftregisteret.no/kremt/KliniskProstataStraale/v4_0", required = true, defaultValue = "")
+        @XmlElement(name = "AvdelingsnavnKRGSpesifiser", namespace = "http://www.kreftregisteret.no/kremt/KliniskProstataKirurgi/v4_0", required = true, defaultValue = "")
         protected String avdelingsnavnKRGSpesifiser;
 
         /**
@@ -803,27 +1174,147 @@ public class StdInfo {
         }
 
         /**
-         * Gets the value of the sykehusnavnHF property.
+         * Gets the value of the sykehusnavnRHF property.
          * 
          * @return
          *     possible object is
          *     {@link String }
          *     
          */
-        public String getSykehusnavnHF() {
-            return sykehusnavnHF;
+        public String getSykehusnavnRHF() {
+            return sykehusnavnRHF;
         }
 
         /**
-         * Sets the value of the sykehusnavnHF property.
+         * Sets the value of the sykehusnavnRHF property.
          * 
          * @param value
          *     allowed object is
          *     {@link String }
          *     
          */
-        public void setSykehusnavnHF(String value) {
-            this.sykehusnavnHF = value;
+        public void setSykehusnavnRHF(String value) {
+            this.sykehusnavnRHF = value;
+        }
+
+        /**
+         * Gets the value of the sykehusnavnHFSorOst property.
+         * 
+         * @return
+         *     possible object is
+         *     {@link String }
+         *     
+         */
+        public String getSykehusnavnHFSorOst() {
+            return sykehusnavnHFSorOst;
+        }
+
+        /**
+         * Sets the value of the sykehusnavnHFSorOst property.
+         * 
+         * @param value
+         *     allowed object is
+         *     {@link String }
+         *     
+         */
+        public void setSykehusnavnHFSorOst(String value) {
+            this.sykehusnavnHFSorOst = value;
+        }
+
+        /**
+         * Gets the value of the sykehusnavnHFVest property.
+         * 
+         * @return
+         *     possible object is
+         *     {@link String }
+         *     
+         */
+        public String getSykehusnavnHFVest() {
+            return sykehusnavnHFVest;
+        }
+
+        /**
+         * Sets the value of the sykehusnavnHFVest property.
+         * 
+         * @param value
+         *     allowed object is
+         *     {@link String }
+         *     
+         */
+        public void setSykehusnavnHFVest(String value) {
+            this.sykehusnavnHFVest = value;
+        }
+
+        /**
+         * Gets the value of the sykehusnavnHFMidt property.
+         * 
+         * @return
+         *     possible object is
+         *     {@link String }
+         *     
+         */
+        public String getSykehusnavnHFMidt() {
+            return sykehusnavnHFMidt;
+        }
+
+        /**
+         * Sets the value of the sykehusnavnHFMidt property.
+         * 
+         * @param value
+         *     allowed object is
+         *     {@link String }
+         *     
+         */
+        public void setSykehusnavnHFMidt(String value) {
+            this.sykehusnavnHFMidt = value;
+        }
+
+        /**
+         * Gets the value of the sykehusnavnHFNord property.
+         * 
+         * @return
+         *     possible object is
+         *     {@link String }
+         *     
+         */
+        public String getSykehusnavnHFNord() {
+            return sykehusnavnHFNord;
+        }
+
+        /**
+         * Sets the value of the sykehusnavnHFNord property.
+         * 
+         * @param value
+         *     allowed object is
+         *     {@link String }
+         *     
+         */
+        public void setSykehusnavnHFNord(String value) {
+            this.sykehusnavnHFNord = value;
+        }
+
+        /**
+         * Gets the value of the sykehusnavnSpesSenter property.
+         * 
+         * @return
+         *     possible object is
+         *     {@link String }
+         *     
+         */
+        public String getSykehusnavnSpesSenter() {
+            return sykehusnavnSpesSenter;
+        }
+
+        /**
+         * Sets the value of the sykehusnavnSpesSenter property.
+         * 
+         * @param value
+         *     allowed object is
+         *     {@link String }
+         *     
+         */
+        public void setSykehusnavnSpesSenter(String value) {
+            this.sykehusnavnSpesSenter = value;
         }
 
         /**

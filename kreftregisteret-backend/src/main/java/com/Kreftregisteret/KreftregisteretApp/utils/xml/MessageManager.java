@@ -12,6 +12,7 @@ import javax.xml.transform.TransformerException;
 import java.io.*;
 import java.text.SimpleDateFormat;
 import java.util.Date;
+import java.util.HashMap;
 
 public class MessageManager {
     public static Melding getMeldingFromPath(String path) {
@@ -20,7 +21,7 @@ public class MessageManager {
             File file = new File(path);
             JAXBContext jaxbContext = JAXBContext.newInstance("com.Kreftregisteret.KreftregisteretApp.models");
             Unmarshaller jaxbUnmarshaller = jaxbContext.createUnmarshaller();
-            melding = (KliniskProstataUtredning) jaxbUnmarshaller.unmarshal(file);
+            melding = (Melding) jaxbUnmarshaller.unmarshal(file);
             return melding;
         } catch (JAXBException e) {
             e.printStackTrace();
@@ -42,13 +43,28 @@ public class MessageManager {
         jaxbMarshaller.marshal( melding, file );
     }
 
+
+
+    HashMap<String, String> xsdDictionary = new HashMap();
     public static File findXSDFromMelding(Melding melding){
         //todo Kanskje lag et hashmap med verdier for skjemanavn og .xSD, slik at man kan finne korrekt .xsd
         //
         String skjemanavn = melding.getSkjemaNavn(); //KliniskProstataUtredning
+
+        File dir = new File("XSD");
+
+        File[] files = dir.listFiles();
+
+        for (File file : files) {
+            System.out.println(file.getAbsoluteFile());
+            if(file.isFile() && file.toPath().toString().contains(skjemanavn)){
+                System.out.println("YES FOUND");
+                return file;
+            }
+        }
         //loop gjennom en mappe som har alle XSD skjemanavn
         // sjekk om skjemanavn ==filnavn
         //  returner hvis ja
-        return new File("");
+        return null;
     }
 }
