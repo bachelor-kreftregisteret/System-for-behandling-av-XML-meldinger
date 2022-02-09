@@ -68,4 +68,10 @@ public class MessageManager {
         //  returner hvis ja
         return null;
     }
+
+    public static Melding getNewMelding(){
+        //kanskje implementer kø-logikk her.
+        return null;
+    }
+
 }
