@@ -12,6 +12,7 @@ import javax.xml.parsers.ParserConfigurationException;
 import javax.xml.transform.TransformerException;
 import java.io.*;
 import java.text.SimpleDateFormat;
+import java.util.ArrayList;
 import java.util.Date;
 import java.util.HashMap;
 
@@ -64,6 +65,15 @@ public class MessageManager {
             }
         }
         return null;
+    }
+
+
+    public static ArrayList<Melding> getAllMeldinger(){
+        ArrayList<Melding> liste = new ArrayList<>();
+
+
+
+        return liste;
     }
 
     public static Melding getNewMelding(){

@@ -9,6 +9,7 @@
     "react": "^17.0.2",
     "react-dom": "^17.0.2",
     "react-scripts": "^5.0.0",
+    "request": "^2.88.2",
     "survey-react": "^1.9.8",
     "surveyjs-react": "^1.0.1",
     "web-vitals": "^2.1.4"
