@@ -21,7 +21,7 @@ public class MessageManager {
         Melding melding = null;
         try {
             File file = new File(path);
-            JAXBContext jaxbContext = JAXBContext.newInstance( KliniskProstataStraale.class, KliniskProstataUtredning.class);
+            JAXBContext jaxbContext = JAXBContext.newInstance("com.Kreftregisteret.KreftregisteretApp.models");
             Unmarshaller jaxbUnmarshaller = jaxbContext.createUnmarshaller();
             melding = (Melding) jaxbUnmarshaller.unmarshal(file);
             return melding;
