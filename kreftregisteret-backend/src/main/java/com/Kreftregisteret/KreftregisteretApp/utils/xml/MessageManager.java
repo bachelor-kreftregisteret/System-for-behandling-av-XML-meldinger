@@ -10,6 +10,7 @@ import jakarta.xml.bind.Unmarshaller;
 import org.xml.sax.SAXException;
 import javax.xml.parsers.ParserConfigurationException;
 import javax.xml.transform.TransformerException;
+import javax.xml.validation.Schema;
 import java.io.*;
 import java.text.SimpleDateFormat;
 import java.util.Date;
@@ -40,11 +41,13 @@ public class MessageManager {
         Date date = new Date();
         String formattedDate = formatter.format(date);
 
+        // Validate against XSD, throws JAXBException if not valid
+        Schema schema = MessageValidator.generateSchema(melding);
+        jaxbMarshaller.setSchema(schema);
+
         File file = new File( "utmappe/" + formattedDate + melding.getSkjemaNavn() + ".xml");
         jaxbMarshaller.marshal( melding, file );
     }
-
-
 
     HashMap<String, String> xsdDictionary = new HashMap();
     public static File findXSDFromMelding(Melding melding){
