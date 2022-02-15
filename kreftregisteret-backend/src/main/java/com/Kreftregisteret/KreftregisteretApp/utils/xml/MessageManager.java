@@ -10,11 +10,17 @@ import jakarta.xml.bind.Unmarshaller;
 import org.xml.sax.SAXException;
 import javax.xml.parsers.ParserConfigurationException;
 import javax.xml.transform.TransformerException;
+import javax.xml.validation.Schema;
 import java.io.*;
+import java.nio.file.DirectoryIteratorException;
+import java.nio.file.DirectoryStream;
+import java.nio.file.Files;
+import java.nio.file.Path;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.HashMap;
+import java.util.List;
 
 public class MessageManager {
     public static Melding getMeldingFromPath(String path) {
@@ -41,11 +47,13 @@ public class MessageManager {
         Date date = new Date();
         String formattedDate = formatter.format(date);
 
+        // Validate against XSD, throws JAXBException if not valid
+        Schema schema = MessageValidator.generateSchema(melding);
+        jaxbMarshaller.setSchema(schema);
+
         File file = new File( "utmappe/" + formattedDate + melding.getSkjemaNavn() + ".xml");
         jaxbMarshaller.marshal( melding, file );
     }
-
-
 
     HashMap<String, String> xsdDictionary = new HashMap();
     public static File findXSDFromMelding(Melding melding){
@@ -65,6 +73,21 @@ public class MessageManager {
             }
         }
         return null;
+    }
+
+    // Inspired by: https://docs.oracle.com/javase/tutorial/essential/io/dirs.html
+    public static List<File> getFiles(Path directory) throws IOException, DirectoryIteratorException {
+        if (!Files.isDirectory(directory)) {
+            throw new IOException("Directory does not exist");
+        }
+
+        ArrayList<File> files = new ArrayList<>();
+        DirectoryStream<Path> stream = Files.newDirectoryStream(directory);
+        for (Path file : stream) {
+            files.add(new File(file.toUri()));
+        }
+
+        return files;
     }
 
 
