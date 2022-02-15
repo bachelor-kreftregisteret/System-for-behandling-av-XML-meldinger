@@ -6,6 +6,7 @@ import com.Kreftregisteret.KreftregisteretApp.utils.xml.MessageManager;
 import com.github.fge.jsonpatch.JsonPatch;
 import com.google.gson.Gson;
 import jakarta.xml.bind.JAXBException;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 import org.xml.sax.SAXException;
@@ -20,10 +21,13 @@ import java.util.UUID;
 public class MeldingController {
     HashMap<Melding, UUID> msgList = new HashMap<>();
 
+    @Autowired
+    MessageManager messageManager = new MessageManager();
+
     //http://localhost:8080/api/v1/meldinger
     @RequestMapping(path = "api/v1/meldinger")
     public Melding getMelding() {
-        Melding melding = MessageManager.getMeldingFromPath("kreftregisteret-backend/Prostatapakke/Prostata_4_0_UtredningEksempelfil.xml");
+        Melding melding = messageManager.getMeldingFromPath("kreftregisteret-backend/Prostatapakke/Prostata_4_0_UtredningEksempelfil.xml");
         msgList.put(melding, UUID.randomUUID());
         return melding;
     }

@@ -1,12 +1,16 @@
 package com.Kreftregisteret.KreftregisteretApp.utils.xml;
 
+import com.Kreftregisteret.KreftregisteretApp.models.KliniskProstataKirurgi.KliniskProstataKirurgi;
+import com.Kreftregisteret.KreftregisteretApp.models.KliniskProstataKirurgi.ObjectFactory;
 import com.Kreftregisteret.KreftregisteretApp.models.KliniskProstataStraale.KliniskProstataStraale;
 import com.Kreftregisteret.KreftregisteretApp.models.KliniskProstataUtredning.KliniskProstataUtredning;
 import com.Kreftregisteret.KreftregisteretApp.models.Melding;
+import com.sun.xml.bind.v2.JAXBContextFactory;
 import jakarta.xml.bind.JAXBContext;
 import jakarta.xml.bind.JAXBException;
 import jakarta.xml.bind.Marshaller;
 import jakarta.xml.bind.Unmarshaller;
+import org.springframework.stereotype.Service;
 import org.xml.sax.SAXException;
 import javax.xml.parsers.ParserConfigurationException;
 import javax.xml.transform.TransformerException;
@@ -22,12 +26,24 @@ import java.util.Date;
 import java.util.HashMap;
 import java.util.List;
 
+
+//er det bedre å ha EN jaxbcontext instance her? dvs ha en felles for alle metodene også injecte message manager istedenfor public static?
+@Service
 public class MessageManager {
-    public static Melding getMeldingFromPath(String path) {
+
+
+    public Melding getMeldingFromPath(String path) {
         Melding melding = null;
         try {
             File file = new File(path);
-            JAXBContext jaxbContext = JAXBContext.newInstance("com.Kreftregisteret.KreftregisteretApp.models");
+            //usikker på hvilken måte som er enklest å maintaine..
+           // JAXBContext jaxbContext = JAXBContext.newInstance(KliniskProstataKirurgi.class, KliniskProstataStraale.class, KliniskProstataUtredning.class);
+            //JAXBContext jaxbContext = JAXBContext.newInstance("com.Kreftregisteret.KreftregisteretApp.models");
+            //JAXBContext jaxbContext = JAXBContextFactory.createContext(new Class[]{Melding.class, ObjectFactory.class}, properties);
+            JAXBContext jaxbContext = JAXBContext.newInstance(Melding.class);
+
+
+
             Unmarshaller jaxbUnmarshaller = jaxbContext.createUnmarshaller();
             melding = (Melding) jaxbUnmarshaller.unmarshal(file);
             return melding;

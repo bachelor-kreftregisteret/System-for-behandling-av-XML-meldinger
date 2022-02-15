@@ -18,9 +18,11 @@ import static org.junit.jupiter.api.Assertions.*;
 
 class MessageManagerTest {
 
+    MessageManager messageManager = new MessageManager();
+
         @Test
         public void messageManagerTest() throws JAXBException, ParserConfigurationException, IOException, TransformerException, SAXException, ClassNotFoundException {
-            Melding melding = MessageManager.getMeldingFromPath("Prostatapakke/Prostata_4_0_StraalebehandlingEksempelfil.xml");
+            Melding melding = messageManager.getMeldingFromPath("Prostatapakke/Prostata_4_0_StraalebehandlingEksempelfil.xml");
             assert melding != null;
             //MessageManager.writeMeldingToPath(melding);
             System.out.println(melding.getSkjemaNavn() + " skjemanavn er null?=?");
