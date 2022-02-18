@@ -1,12 +1,12 @@
 import React, {useEffect, useState} from "react";
 import 'survey-react/survey.css';
-import SurveyJSON from '../surveyJSONs/surveyUtredning'
+import SurveyJSON from '../surveyJSONs/surveyProstataUtredning'
 import {Model, StylesManager, Survey} from "survey-react";
-import useFetch from "../useFetch";
+import useFetch from "./useFetch";
 import axios from "axios";
 
 
-const UtredningSurvey = () => {
+const RenderSurvey = () => {
     //Henter data fra backend
     const data = useFetch('http://localhost:8080/api/v1/meldinger');
 
@@ -18,8 +18,6 @@ const UtredningSurvey = () => {
     //En templiste for array
     let tempArr = [];
     const [arrayOfNames, setArrayOfNames] = useState([]);
-
-
 
 
     // const flattenJSON = (obj = {}, tempArr = {}, extraKey = '') => {
@@ -90,9 +88,9 @@ const UtredningSurvey = () => {
     return (
         /*Render skjema*/
         <Survey
-        model={survey}
+            model={survey}
         />
     )
 }
 
-export default UtredningSurvey;
+export default RenderSurvey;
