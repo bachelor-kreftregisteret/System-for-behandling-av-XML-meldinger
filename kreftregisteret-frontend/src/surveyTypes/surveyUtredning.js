@@ -1,4 +1,4 @@
-import React, {useCallback, useEffect, useState} from "react";
+import React, {useEffect, useState} from "react";
 import 'survey-react/survey.css';
 import SurveyJSON from '../surveyJSONs/surveyUtredning'
 import {Model, StylesManager, Survey} from "survey-react";
@@ -82,7 +82,11 @@ const UtredningSurvey = () => {
         options.showDataSaving();//you may pass a text parameter to show your own text
         const headers = {
             'Content-Type': 'application/json'}
-        axios.post('http://localhost:8080/api/v1/meldinger', sender.data,{headers}).then(response => console.log(response));
+        axios.post('http://localhost:8080/api/v1/meldinger', sender.data,{headers})
+            .then(response => console.log(response))
+            .finally(() => {
+                    options.showDataSavingSuccess();
+            } );
     });
 
     return (
