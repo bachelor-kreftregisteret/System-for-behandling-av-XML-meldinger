@@ -8,7 +8,7 @@ import axios from "axios";
 
 const RenderSurvey = () => {
     //Henter data fra backend
-    const data = useFetch('http://localhost:8080/api/v1/meldinger');
+    const importData = useFetch('http://localhost:8080/api/v1/meldinger');
 
     //Lager en modell av surveyen vi har laget
     const survey = new Model(SurveyJSON);
@@ -18,19 +18,6 @@ const RenderSurvey = () => {
     //En templiste for array
     let tempArr = [];
     const [arrayOfNames, setArrayOfNames] = useState([]);
-
-
-    // const flattenJSON = (obj = {}, tempArr = {}, extraKey = '') => {
-    //     for(const key in obj){
-    //         if(typeof obj[key] !== 'object'){
-    //             tempArr[extraKey + key] = obj[key];
-    //         }else{
-    //             flattenJSON(obj[key], tempArr, `${extraKey}${key}.`);
-    //         };
-    //     };
-    //     return tempArr;
-    // };
-
 
     const setDataValues = (incomingDataObject) => {
         for (const key in incomingDataObject) {
@@ -54,8 +41,6 @@ const RenderSurvey = () => {
         }
     }
 
-    setDataValues(data.data);
-
     //Henter og lager en liste av alle navn fra surveyJS-skjemaet vårt
     const addPropertyNamesToArray = (obj) => {
         obj = SurveyJSON.pages; //SurveyJSON.pages er et array med flere elementer i hvert object
@@ -74,6 +59,8 @@ const RenderSurvey = () => {
     useEffect(() =>  {
         addPropertyNamesToArray(SurveyJSON)
     }, []);
+
+    setDataValues(importData.data);
 
     survey.onComplete.add(function (sender, options) {
         //Show message about "Saving..." the results
