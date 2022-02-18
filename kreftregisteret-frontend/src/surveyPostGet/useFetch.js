@@ -1,5 +1,5 @@
 import React, {useState, useEffect} from "react";
-import axios from 'axios'
+import axios from 'axios';
 
 //Inspired by https://www.youtube.com/watch?v=Vspeudp-M9k
 function useFetch(url) {

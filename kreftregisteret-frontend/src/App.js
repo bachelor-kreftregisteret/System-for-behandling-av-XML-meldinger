@@ -1,11 +1,11 @@
 import React from "react";
-import SurveyUtredning from "./surveyDisplay/surveyUtredning";
+import SurveyDisplayProstataUtredning from "./surveyDisplay/surveyDisplayProstataUtredning";
 function App() {
 
   return (
       <div className="App">
           <main>
-              <SurveyUtredning/>
+              <SurveyDisplayProstataUtredning/>
           </main>
 
       </div>
