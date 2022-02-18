@@ -55,9 +55,7 @@ const UtredningSurvey = () => {
             }
         }
     }
-
     setDataValues(data.data);
-
     //Henter og lager en liste av alle navn fra surveyJS-skjemaet vårt
     const addPropertyNamesToArray = (obj) => {
         obj = SurveyJSON.pages; //SurveyJSON.pages er et array med flere elementer i hvert object
