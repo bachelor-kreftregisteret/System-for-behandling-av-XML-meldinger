@@ -1,8 +1,8 @@
 import React, {useEffect, useState} from "react";
 import 'survey-react/survey.css';
 import SurveyJSON from '../surveyJSONs/surveyProstataUtredning';
-import * as Survey from "survey-react";
-import {Model, StylesManager} from "survey-react";
+import {Model, StylesManager, Survey } from "survey-react";
+import {dateValidator} from "./surveyValidator";
 import useFetch from "./useFetch";
 import axios from "axios";
 
@@ -14,7 +14,6 @@ const RenderSurvey = () => {
     //Lager en modell av surveyen vi har laget
     const survey = new Model(SurveyJSON);
     StylesManager.applyTheme('default')
-    console.log(StylesManager.ThemeColors)
 
     //En templiste for array
     let tempArr = [];
@@ -66,12 +65,7 @@ const RenderSurvey = () => {
     survey.onValueChanged.add(function (sender, options) {
         const question = options.question;
         if (question.inputType === "date") {
-            const currentDate = new Date();
-            const inputDate = new Date(options.value);
-            if (inputDate.getTime() > currentDate.getTime()) {
-                question.addError(new Survey.SurveyError("Dato kan ikke være etter dagens dato"));
-                console.log(options.name)
-            }
+            dateValidator(options);
         }
     })
 
