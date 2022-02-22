@@ -1,6 +1,6 @@
 import 'survey-react/survey.css';
 
-const SurveyJSON = {
+const SurveyJSON ={
     locale: "no",
     title: "UTREDNING ",
     logoPosition: "right",
@@ -671,9 +671,9 @@ const SurveyJSON = {
                     title: {
                         no: "Laboratorium input"
                     },
-                    enableIf: "{labnavnHFIkkeRelevant} <> ['item1']",
+                    enableIf: "{labnavnHFIkkeRelevant} <> ['true']",
                     isRequired: true,
-                    requiredIf: "{labnavnHFIkkeRelevant} <> ['item1']",
+                    requiredIf: "{labnavnHFIkkeRelevant} <> ['true']",
                     choices: [
                         {
                             value: "21",
@@ -710,7 +710,7 @@ const SurveyJSON = {
                     },
                     choices: [
                         {
-                            value: "item1",
+                            value: "true",
                             text: {
                                 no: "Ikke relevent"
                             }
@@ -1303,7 +1303,7 @@ const SurveyJSON = {
                     type: "text",
                     name: "annetFjernmetSpesifiser",
                     visible: false,
-                    visibleIf: "{lokalisasjonFjernmet} contains 'Annet (M1c)'",
+                    visibleIf: "{lokalisasjonFjernmet} contains 'annetFjernmet'",
                     startWithNewLine: false,
                     title: {
                         no: "Spesifiser"
@@ -1840,6 +1840,6 @@ const SurveyJSON = {
     clearInvisibleValues: "onHidden",
     checkErrorsMode: "onValueChanged",
     questionsOnPageMode: "singlePage"
-}
+};
 
 export default SurveyJSON;
