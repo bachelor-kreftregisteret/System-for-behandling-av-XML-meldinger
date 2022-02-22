@@ -6,6 +6,7 @@ import {dateValidator} from "./surveyValidator";
 import useFetch from "./useFetch";
 import axios from "axios";
 
+StylesManager.applyTheme('default')
 
 const RenderSurvey = () => {
     //Henter data fra backend
@@ -17,7 +18,91 @@ const RenderSurvey = () => {
 
     //En templiste for array
     let tempArr = [];
+    let lokalisasjonsListe = [];
+    let utredningsmetodeFjernmetValues = [];
+    let vevsproverUSValues = [];
+
+
     const [arrayOfNames, setArrayOfNames] = useState([]);
+
+    const getVevsproverUSValues = (incomingDataObject) => {
+
+        for (const key in incomingDataObject)
+            if (incomingDataObject[key] === true) {
+                if (key === "biopsiVevsprover")
+                    vevsproverUSValues.push(key);
+                console.log("Skjera", lokalisasjonsListe)
+
+                if (key === "turpvevsprover") {
+                    vevsproverUSValues.push(key);
+                }
+                if (key === "annetVevsprover") {
+                    vevsproverUSValues.push(key);
+                }
+
+            }
+        return vevsproverUSValues;
+    }
+
+    const getLokalisasjonValues = (incomingDataObject) => {
+
+        for (const key in incomingDataObject)
+            if (incomingDataObject[key] === true) {
+                if (key === "annetFjernmet")
+                    lokalisasjonsListe.push(key);
+                console.log("Skjera", lokalisasjonsListe)
+
+                if (key === "fjerneLKmet") {
+                    lokalisasjonsListe.push(key);
+                }
+                if (key === "skjelettmet") {
+                    lokalisasjonsListe.push(key);
+                }
+
+            }
+        return lokalisasjonsListe;
+    }
+
+    const getUtredningsmetodeFjernmetValues = (incomingDataObject) => {
+        for (const key in incomingDataObject)
+            if (incomingDataObject[key] === true) {
+                if (key === "annenDiagnostikkMet")
+                    utredningsmetodeFjernmetValues.push(key);
+
+                if (key === "biopsiMet") {
+                    utredningsmetodeFjernmetValues.push(key);
+                }
+                if (key === "ctmet") {
+                    utredningsmetodeFjernmetValues.push(key);
+                }
+                if (key === "mrmet")
+                    utredningsmetodeFjernmetValues.push(key);
+
+                if (key === "petmet") {
+                    utredningsmetodeFjernmetValues.push(key);
+                }
+                if (key === "rtgBekkenMet") {
+                    utredningsmetodeFjernmetValues.push(key);
+                }
+                if (key === "utredningsmetodeFjernmetUkjent") {
+                    utredningsmetodeFjernmetValues.push(key);
+                }
+                if (key === "skjelettscintigrafiMet") {
+                    utredningsmetodeFjernmetValues.push(key);
+                }
+                if (key === "rtgThoraxMet") {
+                    utredningsmetodeFjernmetValues.push(key);
+                }
+                if (key === "cytologiMet") {
+                    utredningsmetodeFjernmetValues.push(key);
+                }
+
+            }
+        return utredningsmetodeFjernmetValues;
+    }
+
+
+
 
     const setDataValues = (incomingDataObject) => {
         for (const key in incomingDataObject) {
@@ -31,8 +116,36 @@ const RenderSurvey = () => {
                         if (key === arrayOfNames[keyz]) {
                             console.log("Its a match")
                             survey.setValue(`${arrayOfNames[keyz]}`, incomingDataObject[key])
-                            console.log(`Array: ${arrayOfNames[keyz]} og ${key}`)
+                            survey.setValue("lokalisasjonFjernmet", getLokalisasjonValues(incomingDataObject))
+                            survey.setValue("utredningsmetodeMetastaser", getUtredningsmetodeFjernmetValues(incomingDataObject))
+                            survey.setValue("vevsproverUS", getVevsproverUSValues(incomingDataObject))
+                            if (key === "funnUtredning" && incomingDataObject[key] === "2") { //2 eksisterer ikke som verdi lenger.
+                                survey.setValue(`${arrayOfNames[keyz]}`, "1");
+                            }
+                            if (key === "prostatavolumUkjent" ) {
+                                if(incomingDataObject[key] === "99") {
+                                    survey.setValue(`${arrayOfNames[keyz]}`, "item1")
+                                } else {
+                                    survey.setValue(`${arrayOfNames[keyz]}`, "")
+                                }
+                            }
+                            if (key === "labnavnHFIkkeRelevant" ) {
+                                if(incomingDataObject[key] === true) {
+                                    survey.setValue(`${arrayOfNames[keyz]}`, "item1")
+                                } else {
+                                    survey.setValue(`${arrayOfNames[keyz]}`, "")
+                                }
+                            }
+                        }
 
+                        //psaverdiIkkeTatt eksisterer ikke som navn i nytt skjema
+                        if (key === "psaverdiIkkeTatt") {
+                            if (incomingDataObject[key] === true) {
+
+                                survey.setValue(`psaverdiValg`, "psaverdiIkkeTatt")
+                            } else {
+                                survey.setValue(`psaverdiValg`, "psaverdiUkjent")
+                            }
                         }
                     }
                 }
