@@ -22,7 +22,6 @@ const RenderSurvey = () => {
     let utredningsmetodeFjernmetValues = [];
     let vevsproverUSValues = [];
 
-
     const [arrayOfNames, setArrayOfNames] = useState([]);
 
     const getVevsproverUSValues = (incomingDataObject) => {
@@ -101,9 +100,6 @@ const RenderSurvey = () => {
         return utredningsmetodeFjernmetValues;
     }
 
-
-
-
     const setDataValues = (incomingDataObject) => {
         for (const key in incomingDataObject) {
             if (typeof (incomingDataObject[key]) === "object") {
@@ -114,7 +110,6 @@ const RenderSurvey = () => {
                 if (arrayOfNames) {
                     for (const keyz in arrayOfNames) {
                         if (key === arrayOfNames[keyz]) {
-                            console.log("Its a match")
                             survey.setValue(`${arrayOfNames[keyz]}`, incomingDataObject[key])
                             survey.setValue("lokalisasjonFjernmet", getLokalisasjonValues(incomingDataObject))
                             survey.setValue("utredningsmetodeMetastaser", getUtredningsmetodeFjernmetValues(incomingDataObject))
@@ -162,25 +157,31 @@ const RenderSurvey = () => {
                 el.elements.map(ele =>
                     tempArr.push(ele.name));
             }
-        })
-        console.log("Dette er tempArr", tempArr)
+        });
         setArrayOfNames(tempArr);
-
-    }
+    };
 
     //Kjører metoden
     useEffect(() =>  {
-        addPropertyNamesToArray(SurveyJSON)
+        addPropertyNamesToArray(SurveyJSON);
     }, []);
 
     setDataValues(importData.data);
 
-    survey.onValueChanged.add(function (sender, options) {
-        const question = options.question;
-        if (question.inputType === "date") {
-            dateValidator(options);
+    const setChangedValue = (options, data) => {
+        for (const key in data) {
+            if (key === options.name) {
+                data[key] = options.value;
+            }
+            else if (typeof (data[key]) === "object") {
+                setChangedValue(options, data[key]);
+            }
         }
-    })
+    }
+
+    survey.onValueChanged.add(function (sender, options) {
+        setChangedValue(options, importData);
+    });
 
     survey.onComplete.add(function (sender, options) {
         //Show message about "Saving..." the results
