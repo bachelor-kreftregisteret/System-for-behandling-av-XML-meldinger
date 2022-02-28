@@ -172,10 +172,14 @@ const RenderSurvey = () => {
 // setDataValues(data)
 
 
-    const setChangedValue = (options, data) => {
+    const setChangedValue = (options) => {
         for (const key in data) {
             if (key === options.name) {
-                data[key] = options.value;
+                if (options.question.getType === "checkbox") {
+                    data[key] = !data[key];
+                } else {
+                    data[key] = options.value;
+                }
 
             }
             else if (typeof (data[key]) === "object") {
@@ -185,8 +189,7 @@ const RenderSurvey = () => {
     }
 //Denne metoden forstyrrer oppretting av listene??? Ser ut som at den overkjører endringene som skjer i setdataValues
     survey.onValueChanged.add(function (sender, options) {
-        setChangedValue(options, data);
-        console.log(options, sender)
+        setChangedValue(options);
     });
 
     //Sender tilbake det gamle skjemaet. Må fikses slik at det nye skjemaet sendes i gamle drakter..
