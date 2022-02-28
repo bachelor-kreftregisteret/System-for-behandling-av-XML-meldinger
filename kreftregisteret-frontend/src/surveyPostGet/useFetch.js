@@ -4,11 +4,11 @@ import axios from 'axios';
 //Inspired by https://www.youtube.com/watch?v=Vspeudp-M9k
 function useFetch(url) {
     const [data, setData] = useState(null);
-    const [loading, setLoading] = useState(false);
+    const [loading, setLoading] = useState(true);
     const [error, setError] = useState(null);
 
     useEffect(() => {
-        setLoading(true);
+
         axios.get(url)
             .then(res => {
                 console.log(res.data);

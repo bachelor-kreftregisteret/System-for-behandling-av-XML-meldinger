@@ -48,12 +48,17 @@ const RenderSurvey = () => {
                                     survey.setValue(`${arrayOfNames[keyz]}`, "")
                                 }
                             }
+                            if (key === "labnavnHFIkkeRelevant" ) {
+                                if(incomingDataObject[key] === true) {
+                                    survey.setValue(`${arrayOfNames[keyz]}`, "99")
+                                } else {
+                                }
+                            }
                         }
 
                         //psaverdiIkkeTatt eksisterer ikke som navn i nytt skjema
                         if (key === "psaverdiIkkeTatt") {
                             if (incomingDataObject[key] === true) {
-
                                 survey.setValue(`psaverdiValg`, "psaverdiIkkeTatt")
                             } else {
                                 survey.setValue(`psaverdiValg`, "psaverdiUkjent")
@@ -165,13 +170,21 @@ const RenderSurvey = () => {
                         let found = false;
                         for (const fieldInSurvey in options.value) {
                             if (options.value[fieldInSurvey] === fieldInJSON) {
-                                JSONdata[key]["utredningsmetodeFjernmet"][fieldInJSON] = true;
+                                if (fieldInJSON === "utredningsmetodeFjernmetUkjent") {
+                                    JSONdata[key]["utredningsmetodeFjernmet"][fieldInJSON] = "99"
+                                }else {
+                                    JSONdata[key]["utredningsmetodeFjernmet"][fieldInJSON] = true;
+                                }
                                 found = true;
                             }
                         }
-                        /*if (!found) {
-                            JSONdata[key]["utredningsmetodeFjernmet"][fieldInJSON] = false;
-                        }*/
+                        if (!found) {
+                            if (fieldInJSON === "utredningsmetodeFjernmetUkjent" ) {
+                                JSONdata[key]["utredningsmetodeFjernmet"][fieldInJSON] = "";
+                            } else {
+                                JSONdata[key]["utredningsmetodeFjernmet"][fieldInJSON] = false;
+                            }
+                        }
                     }
                 } else {
                     JSONdata[key] = options.value;
@@ -184,9 +197,13 @@ const RenderSurvey = () => {
         }
     }
 
-    survey.onValueChanged.add(function (sender, options) {
-        setChangedValue(options, data, false);
-    });
+    useEffect(() =>  {
+        survey.onValueChanged.add(function (sender, options) {
+            console.log("FØR", data)
+            setChangedValue(options, data, false);
+            console.log(data)
+        });
+    }, [setDataValues]);
 
 
     //Sender tilbake det gamle skjemaet. Må fikses slik at det nye skjemaet sendes i gamle drakter..
