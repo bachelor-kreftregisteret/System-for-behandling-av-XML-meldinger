@@ -14,9 +14,9 @@ const SurveyJSON ={
                     title: {
                         no: "Fødselsnummer"
                     },
-                    enableIf: "{fodselnummerUtland} <> ['item1']",
+                    enableIf: "{fodselnummerUtland} <> ['true']",
                     isRequired: true,
-                    requiredIf: "{fodselnummerUtland} <> ['item1']",
+                    requiredIf: "{fodselnummerUtland} <> ['true']",
                     requiredErrorText: {
                         no: "Skriv inn gyldig fødselsnummer "
                     },
@@ -671,9 +671,9 @@ const SurveyJSON ={
                     title: {
                         no: "Laboratorium input"
                     },
-                    enableIf: "{labnavnHFIkkeRelevant} <> ['true']",
+                    enableIf: "{labnavnHFIkkeRelevant} <> ['99']",
                     isRequired: true,
-                    requiredIf: "{labnavnHFIkkeRelevant} <> ['true']",
+                    requiredIf: "{labnavnHFIkkeRelevant} <> ['99']",
                     choices: [
                         {
                             value: "21",
@@ -710,9 +710,9 @@ const SurveyJSON ={
                     },
                     choices: [
                         {
-                            value: "true",
+                            value: "99",
                             text: {
-                                no: "Ikke relevent"
+                                no: "Ikke relevant"
                             }
                         }
                     ]

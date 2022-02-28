@@ -11,10 +11,8 @@ StylesManager.applyTheme('default')
 const RenderSurvey = () => {
     //Henter data fra backend
     const {data, loading, error} = useFetch('http://localhost:8080/api/v1/meldinger');
-
     //Lager en modell av surveyen vi har laget
     const survey = new Model(SurveyJSON);
-    StylesManager.applyTheme('default')
 
     //En templiste for array
     let tempArr = [];
@@ -30,13 +28,12 @@ const RenderSurvey = () => {
         for (const key in incomingDataObject) {
             if (typeof (incomingDataObject[key]) === "object") {
                 setDataValues(incomingDataObject[key]);
-                //Hvis det er et objekt vil denne funksjonen rekursivt
+                // Hvis det er et objekt vil denne funksjonen rekursivt
                 // fortsette å lete til det ikke lenger er det slik at vi kommer til siste objekt i strukturen.
             } else {
                 if (arrayOfNames) {
                     for (const keyz in arrayOfNames) {
                         if (key === arrayOfNames[keyz]) {
-                            console.log("Its a match")
                             survey.setValue(`${arrayOfNames[keyz]}`, incomingDataObject[key])
                             survey.setValue("lokalisasjonFjernmet", getLokalisasjonValues(incomingDataObject))
                             survey.setValue("utredningsmetodeMetastaser", getUtredningsmetodeFjernmetValues(incomingDataObject))
@@ -88,10 +85,9 @@ const RenderSurvey = () => {
     const getLokalisasjonValues = (incomingDataObject) => {
         for (const key in incomingDataObject)
             if (incomingDataObject[key] === true) {
-                if (key === "annetFjernmet")
+                if (key === "annetFjernmet") {
                     lokalisasjonsListe.push(key);
-                console.log("Skjera", lokalisasjonsListe)
-
+                }
                 if (key === "fjerneLKmet") {
                     lokalisasjonsListe.push(key);
                 }
@@ -159,12 +155,7 @@ const RenderSurvey = () => {
 
     useEffect(() =>  {
         setDataValues(data);
-        setDataLoading(false);
     }, [!loading]); //Dependent på loading. Når loading endrer seg, vil setValues kjøre. Altså da er dataene klare
-
-    // Kjører metoden - Hvorfor funker ikke denne i en useEffect?
-    // setDataValues(data)
-
 
     const setChangedValue = (options) => {
         for (const key in data) {
@@ -181,9 +172,9 @@ const RenderSurvey = () => {
             }
         }
     }
-//Denne metoden forstyrrer oppretting av listene??? Ser ut som at den overkjører endringene som skjer i setdataValues
+
     survey.onValueChanged.add(function (sender, options) {
-        setChangedValue(options);
+        console.log("hei")
     });
 
 
@@ -193,7 +184,7 @@ const RenderSurvey = () => {
         options.showDataSaving();//you may pass a text parameter to show your own text
         const headers = {
             'Content-Type': 'application/json'}
-        axios.post('http://localhost:8080/api/v1/meldinger', survey.data,{headers})
+        axios.post('http://localhost:8080/api/v1/meldinger', data,{headers})
             .then(response => console.log(response))
             .finally(() => {
                     options.showDataSavingSuccess();
