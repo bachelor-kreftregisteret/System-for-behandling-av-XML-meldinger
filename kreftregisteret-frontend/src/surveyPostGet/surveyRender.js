@@ -11,7 +11,7 @@ StylesManager.applyTheme('default')
 const RenderSurvey = () => {
     //Henter data fra backend
     const {data, loading, error} = useFetch('http://localhost:8080/api/v1/meldinger');
-
+    const [dataLoading, setDataLoading] = useState(true)
     //Lager en modell av surveyen vi har laget
     const survey = new Model(SurveyJSON);
     StylesManager.applyTheme('default')
@@ -51,13 +51,6 @@ const RenderSurvey = () => {
                                     survey.setValue(`${arrayOfNames[keyz]}`, "")
                                 }
                             }
-                            if (key === "labnavnHFIkkeRelevant" ) {
-                                if(incomingDataObject[key] === true) {
-                                    survey.setValue(`${arrayOfNames[keyz]}`, "item1")
-                                } else {
-                                    survey.setValue(`${arrayOfNames[keyz]}`, "")
-                                }
-                            }
                         }
 
                         //psaverdiIkkeTatt eksisterer ikke som navn i nytt skjema
@@ -70,6 +63,7 @@ const RenderSurvey = () => {
                             }
                         }
                     }
+                    //console.log(survey.valuesHash)
                 }
                 //console.log(key, ":", incomingDataObject[key])
             }
@@ -97,7 +91,6 @@ const RenderSurvey = () => {
             if (incomingDataObject[key] === true) {
                 if (key === "annetFjernmet")
                     lokalisasjonsListe.push(key);
-                console.log("Skjera", lokalisasjonsListe)
 
                 if (key === "fjerneLKmet") {
                     lokalisasjonsListe.push(key);
@@ -165,17 +158,19 @@ const RenderSurvey = () => {
     }, []);
 
     useEffect(() =>  {
-        setDataValues(data)
-    }, [loading]); //Dependent på loading. Når loading endrer seg, vil setValues kjøre. Altså da er dataene klare
+        setDataValues(data);
+        setDataLoading(false);
+    }, [!loading]); //Dependent på loading. Når loading endrer seg, vil setValues kjøre. Altså da er dataene klare
 
-    //Kjører metoden - Hvorfor funker ikke denne i en useEffect?
-// setDataValues(data)
+    // Kjører metoden - Hvorfor funker ikke denne i en useEffect?
+    // setDataValues(data)
+
 
 
     const setChangedValue = (options, data) => {
         for (const key in data) {
             if (key === options.name) {
-                data[key] = options.value;
+                options.value = data[key] ;
 
             }
             else if (typeof (data[key]) === "object") {
@@ -183,19 +178,23 @@ const RenderSurvey = () => {
             }
         }
     }
-//Denne metoden forstyrrer oppretting av listene??? Ser ut som at den overkjører endringene som skjer i setdataValues
+//Denne metoden forstyrrer oppretting av listene??? Ser ut som at den overkjører endringene som skjer i setdataValues.
+// Oppdatering: Byttet om på data[key} = options.value i setChangedValue og det funket igjen
     survey.onValueChanged.add(function (sender, options) {
+        if(dataLoading) { return; }
         setChangedValue(options, data);
-        console.log(options, sender)
+        //console.log("ON VALUE CHANGED", sender)
     });
+
 
     //Sender tilbake det gamle skjemaet. Må fikses slik at det nye skjemaet sendes i gamle drakter..
     survey.onComplete.add(function (sender, options) {
+        console.log("sender", sender.valuesHash)
         //Show message about "Saving..." the results
         options.showDataSaving();//you may pass a text parameter to show your own text
         const headers = {
             'Content-Type': 'application/json'}
-        axios.post('http://localhost:8080/api/v1/meldinger', survey.data,{headers})
+        axios.post('http://localhost:8080/api/v1/meldinger', sender.valuesHash,{headers})
             .then(response => console.log(response))
             .finally(() => {
                     options.showDataSavingSuccess();
