@@ -157,24 +157,35 @@ const RenderSurvey = () => {
         setDataValues(data);
     }, [!loading]); //Dependent på loading. Når loading endrer seg, vil setValues kjøre. Altså da er dataene klare
 
-    const setChangedValue = (options) => {
-        for (const key in data) {
+    const setChangedValue = (options, JSONdata, changed) => {
+        for (const key in JSONdata) {
             if (key === options.name) {
-                if (options.question.getType === "checkbox") {
-                    data[key] = !data[key];
+                if (options.question.getType() === "checkbox") {
+                    for (const fieldInJSON in JSONdata[key]["utredningsmetodeFjernmet"]) {
+                        let found = false;
+                        for (const fieldInSurvey in options.value) {
+                            if (options.value[fieldInSurvey] === fieldInJSON) {
+                                JSONdata[key]["utredningsmetodeFjernmet"][fieldInJSON] = true;
+                                found = true;
+                            }
+                        }
+                        /*if (!found) {
+                            JSONdata[key]["utredningsmetodeFjernmet"][fieldInJSON] = false;
+                        }*/
+                    }
                 } else {
-                    data[key] = options.value;
+                    JSONdata[key] = options.value;
                 }
-
+                changed = true;
             }
-            else if (typeof (data[key]) === "object") {
-                setChangedValue(options, data[key]);
+            else if (typeof (JSONdata[key]) === "object" && !changed) {
+                setChangedValue(options, JSONdata[key], changed);
             }
         }
     }
 
     survey.onValueChanged.add(function (sender, options) {
-        console.log("hei")
+        setChangedValue(options, data, false);
     });
 
 

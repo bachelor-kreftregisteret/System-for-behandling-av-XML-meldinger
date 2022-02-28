@@ -1663,7 +1663,7 @@ const SurveyJSON ={
         },
         {
             type: "setvalue",
-            expression: "{labnavnHFIkkeRelevant} = ['item1']",
+            expression: "{labnavnHFIkkeRelevant} = ['99']",
             setToName: "labnavnHF"
         },
         {
