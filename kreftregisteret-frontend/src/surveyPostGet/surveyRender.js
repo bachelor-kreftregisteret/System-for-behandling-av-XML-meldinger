@@ -11,7 +11,7 @@ StylesManager.applyTheme('default')
 const RenderSurvey = () => {
     //Henter data fra backend
     const {data, loading, error} = useFetch('http://localhost:8080/api/v1/meldinger');
-    const [dataLoading, setDataLoading] = useState(true)
+
     //Lager en modell av surveyen vi har laget
     const survey = new Model(SurveyJSON);
     StylesManager.applyTheme('default')
@@ -63,7 +63,6 @@ const RenderSurvey = () => {
                             }
                         }
                     }
-                    //console.log(survey.valuesHash)
                 }
                 //console.log(key, ":", incomingDataObject[key])
             }
@@ -91,6 +90,7 @@ const RenderSurvey = () => {
             if (incomingDataObject[key] === true) {
                 if (key === "annetFjernmet")
                     lokalisasjonsListe.push(key);
+                console.log("Skjera", lokalisasjonsListe)
 
                 if (key === "fjerneLKmet") {
                     lokalisasjonsListe.push(key);
@@ -166,11 +166,14 @@ const RenderSurvey = () => {
     // setDataValues(data)
 
 
-
-    const setChangedValue = (options, data) => {
+    const setChangedValue = (options) => {
         for (const key in data) {
             if (key === options.name) {
-                options.value = data[key] ;
+                if (options.question.getType === "checkbox") {
+                    data[key] = !data[key];
+                } else {
+                    data[key] = options.value;
+                }
 
             }
             else if (typeof (data[key]) === "object") {
@@ -178,23 +181,19 @@ const RenderSurvey = () => {
             }
         }
     }
-//Denne metoden forstyrrer oppretting av listene??? Ser ut som at den overkjører endringene som skjer i setdataValues.
-// Oppdatering: Byttet om på data[key} = options.value i setChangedValue og det funket igjen
+//Denne metoden forstyrrer oppretting av listene??? Ser ut som at den overkjører endringene som skjer i setdataValues
     survey.onValueChanged.add(function (sender, options) {
-        if(dataLoading) { return; }
-        setChangedValue(options, data);
-        //console.log("ON VALUE CHANGED", sender)
+        setChangedValue(options);
     });
 
 
     //Sender tilbake det gamle skjemaet. Må fikses slik at det nye skjemaet sendes i gamle drakter..
     survey.onComplete.add(function (sender, options) {
-        console.log("sender", sender.valuesHash)
         //Show message about "Saving..." the results
         options.showDataSaving();//you may pass a text parameter to show your own text
         const headers = {
             'Content-Type': 'application/json'}
-        axios.post('http://localhost:8080/api/v1/meldinger', sender.valuesHash,{headers})
+        axios.post('http://localhost:8080/api/v1/meldinger', survey.data,{headers})
             .then(response => console.log(response))
             .finally(() => {
                     options.showDataSavingSuccess();
