@@ -308,9 +308,9 @@ const SurveyJSON ={
                     title: {
                         no: "PSA-verdi ved diagnosetidspunkt"
                     },
-                    enableIf: "{psaverdiValg} empty",
+                    enableIf: "{spsa} empty",
                     isRequired: true,
-                    requiredIf: "{psaverdiValg} empty",
+                    requiredIf: "{spsa} empty",
                     validators: [
                         {
                             type: "regex",
@@ -328,7 +328,7 @@ const SurveyJSON ={
                 },
                 {
                     type: "checkbox",
-                    name: "psaverdiValg",
+                    name: "spsa",
                     startWithNewLine: false,
                     title: {
                         no: "ㅤ"
@@ -1769,21 +1769,21 @@ const SurveyJSON ={
         },
         {
             type: "setvalue",
-            expression: "{psaverdiValg} notempty",
+            expression: "{spsa} notempty",
             setToName: "psaverdi"
         },
         {
             type: "setvalue",
-            expression: "{psaverdiValg} contains 'psaverdiIkkeTatt'",
-            setToName: "psaverdiValg",
+            expression: "{spsa} contains 'psaverdiIkkeTatt'",
+            setToName: "spsa",
             setValue: [
                 "psaverdiIkkeTatt"
             ]
         },
         {
             type: "setvalue",
-            expression: "{psaverdiValg} contains 'psaverdiUkjent'",
-            setToName: "psaverdiValg",
+            expression: "{spsa} contains 'psaverdiUkjent'",
+            setToName: "spsa",
             setValue: [
                 "psaverdiUkjent"
             ]

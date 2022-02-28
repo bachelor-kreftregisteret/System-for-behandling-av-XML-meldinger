@@ -59,9 +59,9 @@ const RenderSurvey = () => {
                         //psaverdiIkkeTatt eksisterer ikke som navn i nytt skjema
                         if (key === "psaverdiIkkeTatt") {
                             if (incomingDataObject[key] === true) {
-                                survey.setValue(`psaverdiValg`, "psaverdiIkkeTatt")
-                            } else {
-                                survey.setValue(`psaverdiValg`, "psaverdiUkjent")
+                                survey.setValue(`spsa`, "psaverdiIkkeTatt")
+                            } else if (incomingDataObject[key] === "99") {
+                                survey.setValue(`spsa`, "psaverdiUkjent")
                             }
                         }
                     }
@@ -166,23 +166,51 @@ const RenderSurvey = () => {
         for (const key in JSONdata) {
             if (key === options.name) {
                 if (options.question.getType() === "checkbox") {
-                    for (const fieldInJSON in JSONdata[key]["utredningsmetodeFjernmet"]) {
-                        let found = false;
-                        for (const fieldInSurvey in options.value) {
-                            if (options.value[fieldInSurvey] === fieldInJSON) {
-                                if (fieldInJSON === "utredningsmetodeFjernmetUkjent") {
-                                    JSONdata[key]["utredningsmetodeFjernmet"][fieldInJSON] = "99"
-                                }else {
-                                    JSONdata[key]["utredningsmetodeFjernmet"][fieldInJSON] = true;
+                    if (options.name === "utredningsmetodeMetastaser") {
+                        for (const fieldInJSON in JSONdata[key]["utredningsmetodeFjernmet"]) {
+                            let found = false;
+                            for (const fieldInSurvey in options.value) {
+                                if (options.value[fieldInSurvey] === fieldInJSON) {
+                                    if (fieldInJSON === "utredningsmetodeFjernmetUkjent") {
+                                        JSONdata[key]["utredningsmetodeFjernmet"][fieldInJSON] = "99"
+                                    } else {
+                                        JSONdata[key]["utredningsmetodeFjernmet"][fieldInJSON] = true;
+                                    }
+                                    found = true;
                                 }
-                                found = true;
+                            }
+                            if (!found) {
+                                if (fieldInJSON === "utredningsmetodeFjernmetUkjent") {
+                                    JSONdata[key]["utredningsmetodeFjernmet"][fieldInJSON] = "";
+                                } else {
+                                    JSONdata[key]["utredningsmetodeFjernmet"][fieldInJSON] = false;
+                                }
                             }
                         }
-                        if (!found) {
-                            if (fieldInJSON === "utredningsmetodeFjernmetUkjent" ) {
-                                JSONdata[key]["utredningsmetodeFjernmet"][fieldInJSON] = "";
-                            } else {
-                                JSONdata[key]["utredningsmetodeFjernmet"][fieldInJSON] = false;
+                    }
+                    if (options.name === "fodselnummerUtland") {
+                        if (options.value.length > 0) {
+                            JSONdata[key] = true;
+                        } else {
+                            JSONdata[key] = false;
+                        }
+                    }
+                    if (options.name === "spsa") {
+                        console.log(options.value)
+                        for (const k in JSONdata[key]) {
+                            if (options.value.length <= 1) {
+                                if (options.value.includes("psaverdiIkkeTatt")) {
+                                    JSONdata[key][`psaverdiIkkeTatt`] = true;
+                                } else {
+                                    JSONdata[key]['psaverdiIkkeTatt'] = false;
+                                }
+                                if (options.value.includes("psaverdiUkjent")) {
+                                    JSONdata[key]["psaverdiUkjent"] = 99;
+                                } else {
+                                    JSONdata[key]["psaverdiUkjent"] = "";
+                                }
+                            }else {
+                                break;
                             }
                         }
                     }
@@ -190,12 +218,12 @@ const RenderSurvey = () => {
                     JSONdata[key] = options.value;
                 }
                 changed = true;
-            }
-            else if (typeof (JSONdata[key]) === "object" && !changed) {
+            } else if (typeof (JSONdata[key]) === "object" && !changed) {
                 setChangedValue(options, JSONdata[key], changed);
             }
         }
     }
+
 
     useEffect(() =>  {
         survey.onValueChanged.add(function (sender, options) {
