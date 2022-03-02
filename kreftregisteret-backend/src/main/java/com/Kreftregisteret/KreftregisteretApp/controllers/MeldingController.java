@@ -24,9 +24,15 @@ public class MeldingController {
     @CrossOrigin(origins = "http://localhost:3000") //Denne merknaden tillater at frontend fetcher data - Hajin
     @RequestMapping(path = "api/v1/meldinger")
     public Melding getMelding() {
-        Melding melding = MessageManager.getMeldingFromPath("kreftregisteret-backend/Prostatapakke/Prostata_4_0_UtredningEksempelfil.xml");
+        // Bør vurdere å hente fil fra resources mappen
+        Melding melding = MessageManager.getMeldingFromPath("Prostatapakke/Prostata_4_0_UtredningEksempelfil.xml");
         msgList.put(melding, UUID.randomUUID());
         return melding;
+    }
+
+    @RequestMapping(path = "/")
+    public String helloWorld() {
+        return "Hello, World!";
     }
 
     @PatchMapping(
@@ -55,5 +61,17 @@ public class MeldingController {
         return ResponseEntity.ok(null);
     }
 
+//    @PatchMapping(
+//            path = "/api/v1/meldinger",
+//            consumes="application/json-patch+json")
+//    public ResponseEntity<Melding> patchMelding(@RequestBody Melding melding) throws JAXBException, ParserConfigurationException, IOException, ClassNotFoundException, TransformerException, SAXException {
+//        //vi får inn en "hel melding" her, så må vi se om vi klarer å direkte lagre en xml ut i fra dette
+//        //Melding melding = meldingService.
+//        //validering
+//        System.out.println(melding);
+//        System.out.println("treffer vu ger npå=?=?==?=");
+//        MessageManager.writeMeldingToPath(melding);
+//        return ResponseEntity.ok(null);
+//    }
 }
 
