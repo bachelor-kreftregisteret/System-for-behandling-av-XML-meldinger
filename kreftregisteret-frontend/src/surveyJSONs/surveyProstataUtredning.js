@@ -1715,7 +1715,7 @@ const SurveyJSON = {
                     },
                     choices: [
                         {
-                            value: "99",
+                            value: "true",
                             text: {
                                 no: "Ikke relevant"
                             }

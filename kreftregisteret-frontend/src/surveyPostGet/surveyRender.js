@@ -41,21 +41,7 @@ const RenderSurvey = () => {
                             if (key === "funnUtredning" && incomingDataObject[key] === "2") { //2 eksisterer ikke som verdi lenger.
                                 survey.setValue(`${arrayOfNames[keyz]}`, "1");
                             }
-                            // if (key === "prostatavolumUkjent" ) {
-                            //     if(incomingDataObject[key] === "99") {
-                            //         survey.setValue(`${arrayOfNames[keyz]}`, "item1")
-                            //     } else {
-                            //         survey.setValue(`${arrayOfNames[keyz]}`, "")
-                            //     }
-                            // }
-                            if (key === "labnavnHFIkkeRelevant" ) {
-                                if(incomingDataObject[key] === true) {
-                                    survey.setValue(`${arrayOfNames[keyz]}`, "99")
-                                } else {
-                                }
-                            }
                         }
-
                         //psaverdiIkkeTatt eksisterer ikke som navn i nytt skjema
                         if (key === "psaverdiIkkeTatt") {
                             if (incomingDataObject[key] === true) {
@@ -188,11 +174,14 @@ const RenderSurvey = () => {
                             }
                         }
                     }
-                    if (options.name === "fodselnummerUtland") {
+                    if (options.name === "fodselnummerUtland" || options.name === "labnavnHFIkkeRelevant") {
+                        console.log(options.name, "==", options.value)
                         if (options.value.length > 0) {
                             JSONdata[key] = true;
+                            console.log("Json er endret: ", JSONdata[key])
                         } else {
                             JSONdata[key] = false;
+                            console.log("Json er endret: ", JSONdata[key])
                         }
                     }
                     if (options.name === "spsa") {
@@ -209,8 +198,40 @@ const RenderSurvey = () => {
                                 } else {
                                     JSONdata[key]["psaverdiUkjent"] = "";
                                 }
-                            }else {
+                            } else {
                                 break;
+                            }
+                        }
+                    }
+                    if (options.name === "prostatavolumUkjent" || options.name === "datoMRDiagnostikkUkjent") {
+                        console.log(options.name, "==", options.value)
+                        if (options.value.length > 0) {
+                            JSONdata[key] = 99;
+                            console.log("Json er endret: ", JSONdata[key])
+                        } else {
+                            JSONdata[key] = "";
+                            console.log("Json er endret: ", JSONdata[key])
+                        }
+                    }
+                    if (options.name === "vevsproverUS") {
+                        console.log(options.value)
+                        for (const k in JSONdata[key]) {
+                            if (options.value.length >= 0) {
+                                if (options.value.includes("biopsiVevsprover")) {
+                                    JSONdata[key][`biopsiVevsprover`] = true;
+                                } else {
+                                    JSONdata[key]['biopsiVevsprover'] = false;
+                                }
+                                if (options.value.includes("turpvevsprover")) {
+                                    JSONdata[key]["turpvevsprover"] = true;
+                                } else {
+                                    JSONdata[key]["turpvevsprover"] = false;
+                                }
+                                if (options.value.includes("annetVevsprover")) {
+                                    JSONdata[key]["annetVevsprover"] = true;
+                                } else {
+                                    JSONdata[key]["annetVevsprover"] = false;
+                                }
                             }
                         }
                     }
