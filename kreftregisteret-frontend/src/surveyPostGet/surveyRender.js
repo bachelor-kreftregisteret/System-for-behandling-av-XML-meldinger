@@ -41,13 +41,13 @@ const RenderSurvey = () => {
                             if (key === "funnUtredning" && incomingDataObject[key] === "2") { //2 eksisterer ikke som verdi lenger.
                                 survey.setValue(`${arrayOfNames[keyz]}`, "1");
                             }
-                            if (key === "prostatavolumUkjent" ) {
-                                if(incomingDataObject[key] === "99") {
-                                    survey.setValue(`${arrayOfNames[keyz]}`, "item1")
-                                } else {
-                                    survey.setValue(`${arrayOfNames[keyz]}`, "")
-                                }
-                            }
+                            // if (key === "prostatavolumUkjent" ) {
+                            //     if(incomingDataObject[key] === "99") {
+                            //         survey.setValue(`${arrayOfNames[keyz]}`, "item1")
+                            //     } else {
+                            //         survey.setValue(`${arrayOfNames[keyz]}`, "")
+                            //     }
+                            // }
                             if (key === "labnavnHFIkkeRelevant" ) {
                                 if(incomingDataObject[key] === true) {
                                     survey.setValue(`${arrayOfNames[keyz]}`, "99")
@@ -156,7 +156,7 @@ const RenderSurvey = () => {
     //Kjører metoden
     useEffect(() =>  {
         addPropertyNamesToArray(SurveyJSON);
-    }, []);
+    }, [SurveyJSON]);
 
     useEffect(() =>  {
         setDataValues(data);
@@ -224,12 +224,10 @@ const RenderSurvey = () => {
         }
     }
 
-
     useEffect(() =>  {
         survey.onValueChanged.add(function (sender, options) {
-            console.log("FØR", data)
             setChangedValue(options, data, false);
-            console.log(data)
+            console.log("ETTER", data)
         });
     }, [setDataValues]);
 
