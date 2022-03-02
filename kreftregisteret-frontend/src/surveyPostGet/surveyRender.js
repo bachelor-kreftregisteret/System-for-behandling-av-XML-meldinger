@@ -11,16 +11,17 @@ StylesManager.applyTheme('default')
 const RenderSurvey = () => {
     //Henter data fra backend
     const {data, loading, error} = useFetch('http://localhost:8080/api/v1/meldinger');
+
     //Lager en modell av surveyen vi har laget
     const survey = new Model(SurveyJSON);
 
-    //En templiste for array
+    //templister for array
     let tempArr = [];
     let lokalisasjonsListe = [];
     let utredningsmetodeFjernmetValues = [];
     let vevsproverUSValues = [];
 
-
+    //Lager en array av navnene i skjemaet fra surveyjs
     const [arrayOfNames, setArrayOfNames] = useState([]);
 
     const setDataValues = (incomingDataObject) => {
@@ -32,27 +33,27 @@ const RenderSurvey = () => {
                 // fortsette å lete til det ikke lenger er det slik at vi kommer til siste objekt i strukturen.
             } else {
                 if (arrayOfNames) {
-                    for (const keyz in arrayOfNames) {
-                        if (key === arrayOfNames[keyz]) {
-                            survey.setValue(`${arrayOfNames[keyz]}`, incomingDataObject[key])
+                    arrayOfNames.map((name) => {
+                        if (key === name) {
+                            survey.setValue(`${name}`, incomingDataObject[key])
                             survey.setValue("lokalisasjonFjernmet", getLokalisasjonValues(incomingDataObject))
                             survey.setValue("utredningsmetodeMetastaser", getUtredningsmetodeFjernmetValues(incomingDataObject))
                             survey.setValue("vevsproverUS", getVevsproverUSValues(incomingDataObject))
                             if (key === "funnUtredning" && incomingDataObject[key] === "2") { //2 eksisterer ikke som verdi lenger.
-                                survey.setValue(`${arrayOfNames[keyz]}`, "1");
+                                survey.setValue(`${name}`, "1");
                             }
                         }
                         //psaverdiIkkeTatt eksisterer ikke som navn i nytt skjema
                         if (key === "psaverdiIkkeTatt") {
+                            console.log("OBJEKT", key)
                             if (incomingDataObject[key] === true) {
                                 survey.setValue(`spsa`, "psaverdiIkkeTatt")
                             } else if (incomingDataObject[key] === "99") {
                                 survey.setValue(`spsa`, "psaverdiUkjent")
                             }
                         }
-                    }
+                    })
                 }
-                //console.log(key, ":", incomingDataObject[key])
             }
         }
     }
@@ -248,7 +249,6 @@ const RenderSurvey = () => {
     useEffect(() =>  {
         survey.onValueChanged.add(function (sender, options) {
             setChangedValue(options, data, false);
-            console.log("ETTER", data)
         });
     }, [setDataValues]);
 
