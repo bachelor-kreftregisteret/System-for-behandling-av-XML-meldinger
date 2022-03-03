@@ -25,8 +25,9 @@ public class MeldingController {
     MessageManager messageManager = new MessageManager();
 
     //http://localhost:8080/api/v1/meldinger
-    @RequestMapping(path = "api/v1/meldinger")
+    @RequestMapping(path = "api/v1/meldinger", method = RequestMethod.GET)
     public Melding getMelding() {
+        System.out.println("Er dette get:meldinger???");
         Melding melding = messageManager.getMeldingFromPath("kreftregisteret-backend/Prostatapakke/Prostata_4_0_UtredningEksempelfil.xml");
         msgList.put(melding, UUID.randomUUID());
         return melding;
@@ -47,7 +48,7 @@ public class MeldingController {
     //i førstee omgang bør klienten sende hele json filen!! Så får vi se om vi klarer å lage patch senere...
     @PostMapping(
             path = "/api/v1/meldinger",
-            consumes="application/json-patch+json")
+            consumes="application/json")
     public ResponseEntity<Melding> postMelding(@RequestBody Melding melding) throws JAXBException, ParserConfigurationException, IOException, ClassNotFoundException, TransformerException, SAXException {
         //vi får inn en "hel melding" her, så må vi se om vi klarer å direkte lagre en xml ut i fra dette
         //Melding melding = meldingService.

@@ -1,11 +1,6 @@
 package com.Kreftregisteret.KreftregisteretApp.utils.xml;
 
-import com.Kreftregisteret.KreftregisteretApp.models.KliniskProstataKirurgi.KliniskProstataKirurgi;
-import com.Kreftregisteret.KreftregisteretApp.models.KliniskProstataKirurgi.ObjectFactory;
-import com.Kreftregisteret.KreftregisteretApp.models.KliniskProstataStraale.KliniskProstataStraale;
-import com.Kreftregisteret.KreftregisteretApp.models.KliniskProstataUtredning.KliniskProstataUtredning;
 import com.Kreftregisteret.KreftregisteretApp.models.Melding;
-import com.sun.xml.bind.v2.JAXBContextFactory;
 import jakarta.xml.bind.JAXBContext;
 import jakarta.xml.bind.JAXBException;
 import jakarta.xml.bind.Marshaller;
@@ -30,20 +25,15 @@ import java.util.List;
 //er det bedre å ha EN jaxbcontext instance her? dvs ha en felles for alle metodene også injecte message manager istedenfor public static?
 @Service
 public class MessageManager {
-
-
     public Melding getMeldingFromPath(String path) {
         Melding melding = null;
         try {
             File file = new File(path);
             //usikker på hvilken måte som er enklest å maintaine..
-           // JAXBContext jaxbContext = JAXBContext.newInstance(KliniskProstataKirurgi.class, KliniskProstataStraale.class, KliniskProstataUtredning.class);
+            //JAXBContext jaxbContext = JAXBContext.newInstance(KliniskProstataKirurgi.class, KliniskProstataStraale.class, KliniskProstataUtredning.class);
             //JAXBContext jaxbContext = JAXBContext.newInstance("com.Kreftregisteret.KreftregisteretApp.models");
             //JAXBContext jaxbContext = JAXBContextFactory.createContext(new Class[]{Melding.class, ObjectFactory.class}, properties);
             JAXBContext jaxbContext = JAXBContext.newInstance(Melding.class);
-
-
-
             Unmarshaller jaxbUnmarshaller = jaxbContext.createUnmarshaller();
             melding = (Melding) jaxbUnmarshaller.unmarshal(file);
             return melding;
@@ -56,23 +46,25 @@ public class MessageManager {
     //for å kjøre denne kan vi bruke melding.getClass().getName()
     //https://docs.oracle.com/javase/7/docs/api/javax/xml/bind/Marshaller.html
     public static void writeMeldingToPath(Melding melding) throws JAXBException, ParserConfigurationException, IOException, TransformerException, SAXException, ClassNotFoundException {
-        JAXBContext jaxbContext = JAXBContext.newInstance("com.Kreftregisteret.KreftregisteretApp.models");
+        JAXBContext jaxbContext = JAXBContext.newInstance(Melding.class);
         Marshaller jaxbMarshaller = jaxbContext.createMarshaller();
-
+        System.out.println("vi klarer i allefall å lage en JAXBCONTEXT???");
+        System.out.println(melding.getSkjemaNavn() + " dette skjemaet kom akkuratt inn i writeMeldingToPath");
         SimpleDateFormat formatter = new SimpleDateFormat("ddMMyyyy_'kl'HHmmss");
         Date date = new Date();
         String formattedDate = formatter.format(date);
 
         // Validate against XSD, throws JAXBException if not valid
-        Schema schema = MessageValidator.generateSchema(melding);
-        jaxbMarshaller.setSchema(schema);
+        //Schema schema = MessageValidator.generateSchema(melding);
+        //jaxbMarshaller.setSchema(schema);
 
-        File file = new File( "utmappe/" + formattedDate + melding.getSkjemaNavn() + ".xml");
+        File file = new File( "kreftregisteret-backend/utmappe/" + formattedDate + melding.getSkjemaNavn() + ".xml");
         jaxbMarshaller.marshal( melding, file );
     }
 
     HashMap<String, String> xsdDictionary = new HashMap();
     public static File findXSDFromMelding(Melding melding){
+        System.out.println(melding.toString());
         //todo Kanskje lag et hashmap med verdier for skjemanavn og .xSD, slik at man kan finne korrekt .xsd
         //
         String skjemanavn = melding.getSkjemaNavn(); //KliniskProstataUtredning
@@ -102,16 +94,11 @@ public class MessageManager {
         for (Path file : stream) {
             files.add(new File(file.toUri()));
         }
-
         return files;
     }
 
-
     public static ArrayList<Melding> getAllMeldinger(){
         ArrayList<Melding> liste = new ArrayList<>();
-
-
-
         return liste;
     }
 
