@@ -7,6 +7,9 @@ import com.github.fge.jsonpatch.JsonPatch;
 import com.google.gson.Gson;
 import jakarta.xml.bind.JAXBException;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.context.ApplicationContext;
+import org.springframework.context.support.ClassPathXmlApplicationContext;
+import org.springframework.core.io.Resource;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 import org.xml.sax.SAXException;
@@ -24,11 +27,16 @@ public class MeldingController {
     @Autowired
     MessageManager messageManager = new MessageManager();
 
+    @Autowired
+    private ApplicationContext appContext;
+
+
     //http://localhost:8080/api/v1/meldinger
-    @RequestMapping(path = "api/v1/meldinger", method = RequestMethod.GET)
+    @GetMapping(path = "api/v1/meldinger")
     public Melding getMelding() {
+        Resource resource = appContext.getResource("file:/Prostatapakke/Prostata_4_0_UtredningEksempelfil.xml");
         System.out.println("Er dette get:meldinger???");
-        Melding melding = messageManager.getMeldingFromPath("kreftregisteret-backend/Prostatapakke/Prostata_4_0_UtredningEksempelfil.xml");
+        Melding melding = messageManager.getMeldingFromPath("Prostatapakke/Prostata_4_0_UtredningEksempelfil.xml");
         msgList.put(melding, UUID.randomUUID());
         return melding;
     }
