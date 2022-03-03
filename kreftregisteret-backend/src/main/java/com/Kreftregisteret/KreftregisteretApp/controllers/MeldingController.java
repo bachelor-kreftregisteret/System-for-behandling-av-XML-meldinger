@@ -31,7 +31,8 @@ public class MeldingController {
     public Melding getMelding() throws IOException {
         ClassPathResource pathResource = new ClassPathResource("Prostatapakke/Prostata_4_0_UtredningEksempelfil.xml");
         System.out.println("Er dette get:meldinger???");
-        Melding melding = messageManager.getMeldingFromPath(pathResource.getPath());
+        System.out.println("pathResource.getPath(): " + pathResource.getURL().getPath());
+        Melding melding = messageManager.getMeldingFromPath(pathResource.getURL().getPath());
         msgList.put(melding, UUID.randomUUID());
         return melding;
     }
