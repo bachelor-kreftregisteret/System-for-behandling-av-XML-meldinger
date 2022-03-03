@@ -1204,31 +1204,31 @@ const SurveyJSON = {
                         {
                             value: "14",
                             text: {
-                                no: "Urologisk"
+                                no: "Urologisk avdeling"
                             }
                         },
                         {
-                            value: "#01",
+                            value: "01",
                             text: {
-                                no: "Kiurgisk"
+                                no: "Kiurgisk avdeling"
                             }
                         },
                         {
                             value: "47",
                             text: {
-                                no: "Onkologisk"
+                                no: "Onkologisk avdeling"
                             }
                         },
                         {
                             value: "20",
                             text: {
-                                no: "Medisinsk"
+                                no: "Medisinsk avdeling"
                             }
                         },
                         {
                             value: "1",
                             text: {
-                                no: "Annen"
+                                no: "Annen avdeling"
                             }
                         },
                         {
@@ -1674,11 +1674,11 @@ const SurveyJSON = {
                     type: "dropdown",
                     name: "labnavnHF",
                     title: {
-                        no: "Laboratorium input"
+                        no: "Laboratorium"
                     },
-                    enableIf: "{labnavnHFIkkeRelevant} <> ['99']",
+                    enableIf: "{labnavnHFIkkeRelevant} <> ['true']",
                     isRequired: true,
-                    requiredIf: "{labnavnHFIkkeRelevant} <> ['99']",
+                    requiredIf: "{labnavnHFIkkeRelevant} <> ['true']",
                     choices: [
                         {
                             value: "21",
@@ -1699,9 +1699,129 @@ const SurveyJSON = {
                             }
                         },
                         {
+                            value: "34",
+                            text: {
+                                no: "Helse Fonna, Haugesund sjukehus"
+                            }
+                        },
+                        {
+                            value: "Helse Førde, Førde sjukehus26",
+                            text: {
+                                no: "Helse Førde, Førde sjukehus"
+                            }
+                        },
+                        {
+                            value: "10",
+                            text: {
+                                no: "Helse Møre og Romsdal, Molde sjukehus"
+                            }
+                        },
+                        {
+                            value: "17",
+                            text: {
+                                no: "Helse Sunnmøre, Ålesund sjukehus"
+                            }
+                        },
+                        {
+                            value: "18",
+                            text: {
+                                no: "Nordlandssykehuset, Bodø"
+                            }
+                        },
+                        {
+                            value: "06",
+                            text: {
+                                no: "Oslo universitetssykehus, Aker"
+                            }
+                        },
+                        {
+                            value: "01",
+                            text: {
+                                no: "Oslo universitetssykehus, Radiumhospitalet"
+                            }
+                        },
+                        {
+                            value: "02",
+                            text: {
+                                no: "Oslo universitetssykehus, Rikshospitalet"
+                            }
+                        },
+                        {
+                            value: "05",
+                            text: {
+                                no: "Oslo universitetssykehus, Ullevål"
+                            }
+                        },
+                        {
+                            value: "19",
+                            text: {
+                                no: "Stavanger universitetssjukehus"
+                            }
+                        },
+                        {
+                            value: "08",
+                            text: {
+                                no: "St. Olavs Hospital"
+                            }
+                        },
+                        {
+                            value: "15",
+                            text: {
+                                no: "Sykehuset Innlandet, Lillehammer"
+                            }
+                        },
+                        {
+                            value: "14",
+                            text: {
+                                no: "Sykehuset i Telemark, Skien"
+                            }
+                        },
+                        {
+                            value: "23",
+                            text: {
+                                no: "Sykehuset i Vestfold, Tønsberg"
+                            }
+                        },
+                        {
+                            value: "12",
+                            text: {
+                                no: "Sykehuset Østfold, Kalnes"
+                            }
+                        },
+                        {
+                            value: "20",
+                            text: {
+                                no: "Sørlandet sykehus, Kristiansand"
+                            }
+                        },
+                        {
+                            value: "11",
+                            text: {
+                                no: "Unilabs Laboratoriemedisin"
+                            }
+                        },
+                        {
+                            value: "13",
+                            text: {
+                                no: "UNN, Universitetssykehuset i Nord-Norge"
+                            }
+                        },
+                        {
+                            value: "16",
+                            text: {
+                                no: "Vestre Viken HF, Sykehuset Buskerud, Drammen"
+                            }
+                        },
+                        {
                             value: "1",
                             text: {
                                 no: "Annet laboratorium"
+                            }
+                        },
+                        {
+                            value: "99",
+                            text: {
+                                no: "Ukjent"
                             }
                         }
                     ]
@@ -2667,9 +2787,8 @@ const SurveyJSON = {
     triggers: [
         {
             type: "setvalue",
-            expression: "{fodselnummerUtland} = ['other', true]",
-            setToName: "fodselsnummerHF",
-            setValue: 1
+            expression: "{fodselnummerUtland} notempty",
+            setToName: "fodselsnummerHF"
         },
         {
             type: "setvalue",
@@ -2678,19 +2797,21 @@ const SurveyJSON = {
         },
         {
             type: "setvalue",
-            expression: "{labnavnHFIkkeRelevant} = ['99']",
+            expression: "{labnavnHFIkkeRelevant} notempty",
             setToName: "labnavnHF"
         },
         {
             type: "setvalue",
-            expression: "{utredningsmetodeMetastaser} contains 'Ukjent'",
-            setToName: "utredningsmetodeMetastaser"
+            expression: "{utredningsmetodeMetastaser} contains 'utredningsmetodeFjernmetUkjent'",
+            setToName: "utredningsmetodeMetastaser",
+            setValue: [
+                "utredningsmetodeFjernmetUkjent"
+            ]
         },
         {
             type: "setvalue",
-            expression: "{prostatavolumUkjent} = ['other', 99]",
-            setToName: "prostatavolum",
-            setValue: 0
+            expression: "{prostatavolumUkjent}  notempty",
+            setToName: "prostatavolum"
         },
         {
             type: "setvalue",
@@ -2851,6 +2972,6 @@ const SurveyJSON = {
     clearInvisibleValues: "onHidden",
     checkErrorsMode: "onValueChanged",
     questionsOnPageMode: "singlePage"
-}
+};
 
 export default SurveyJSON;
