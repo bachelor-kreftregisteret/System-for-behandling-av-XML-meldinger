@@ -4,6 +4,8 @@ import com.Kreftregisteret.KreftregisteretApp.models.Melding;
 import jakarta.xml.bind.JAXBException;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
+import org.springframework.boot.test.context.SpringBootTest;
+import org.springframework.core.io.ClassPathResource;
 import org.xml.sax.SAXException;
 
 import javax.xml.parsers.ParserConfigurationException;
@@ -14,15 +16,15 @@ import java.nio.file.DirectoryIteratorException;
 import java.nio.file.Path;
 import java.util.List;
 
-import static org.junit.jupiter.api.Assertions.*;
-
+@SpringBootTest
 class MessageManagerTest {
 
     MessageManager messageManager = new MessageManager();
 
         @Test
         public void messageManagerTest() throws JAXBException, ParserConfigurationException, IOException, TransformerException, SAXException, ClassNotFoundException {
-            Melding melding = messageManager.getMeldingFromPath("Prostatapakke/Prostata_4_0_StraalebehandlingEksempelfil.xml");
+            ClassPathResource pathResource = new ClassPathResource("Prostatapakke/Prostata_4_0_StraalebehandlingEksempelfil.xml");
+            Melding melding = messageManager.getMeldingFromPath(pathResource.getPath());
             assert melding != null;
             //MessageManager.writeMeldingToPath(melding);
             System.out.println(melding.getSkjemaNavn() + " skjemanavn er null?=?");
