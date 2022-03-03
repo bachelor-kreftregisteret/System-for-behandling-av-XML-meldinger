@@ -29,9 +29,9 @@ public class MeldingController {
     //http://localhost:8080/api/v1/meldinger
     @GetMapping(path = "api/v1/meldinger")
     public Melding getMelding() throws IOException {
-        ClassPathResource path = new ClassPathResource("Prostatapakke/Prostata_4_0_UtredningEksempelfil.xml");
+        ClassPathResource pathResource = new ClassPathResource("Prostatapakke/Prostata_4_0_UtredningEksempelfil.xml");
         System.out.println("Er dette get:meldinger???");
-        Melding melding = messageManager.getMeldingFromPath(path.getPath());
+        Melding melding = messageManager.getMeldingFromPath(pathResource.getPath());
         msgList.put(melding, UUID.randomUUID());
         return melding;
     }
