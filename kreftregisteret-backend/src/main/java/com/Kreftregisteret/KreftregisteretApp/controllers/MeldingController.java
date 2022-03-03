@@ -21,7 +21,8 @@ public class MeldingController {
     HashMap<Melding, UUID> msgList = new HashMap<>();
 
     //http://localhost:8080/api/v1/meldinger
-    @RequestMapping(path = "/api/v1/meldinger")
+    @CrossOrigin(origins = "http://localhost:3000") //Denne merknaden tillater at frontend fetcher data - Hajin
+    @RequestMapping(path = "api/v1/meldinger")
     public Melding getMelding() {
         // Bør vurdere å hente fil fra resources mappen
         Melding melding = MessageManager.getMeldingFromPath("Prostatapakke/Prostata_4_0_UtredningEksempelfil.xml");

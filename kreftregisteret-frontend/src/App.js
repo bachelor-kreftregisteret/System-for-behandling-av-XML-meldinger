@@ -1,15 +1,15 @@
 import React from "react";
-import surveyJSON from "./survey/surveyProstataUtredning";
-import * as Survey from "survey-react";
+import SurveyDisplayProstataUtredning from "./surveyDisplay/surveyDisplayProstataUtredning";
+import RenderSurvey from "./surveyPostGet/surveyRender";
 
 function App() {
+
   return (
       <div className="App">
-        <main>
-          <Survey.Survey
-              json={surveyJSON}
-          />
-        </main>
+          <main>
+              <RenderSurvey/>
+          </main>
+
       </div>
   );
 }

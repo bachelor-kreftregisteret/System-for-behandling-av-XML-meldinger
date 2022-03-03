@@ -72,7 +72,7 @@
 		<ns1:Kreft>1</ns1:Kreft>
 	</ns1:InfiltrerendeKreft>
 	<ns1:Utredning>
-		<ns1:FunnUtredning>2</ns1:FunnUtredning>
+		<ns1:FunnUtredning>1</ns1:FunnUtredning>
 		<ns1:Diagnosedato>1957-08-13</ns1:Diagnosedato>
 		<ns1:Sykehistorie>
 			<ns1:Vannlatingsproblem/>
@@ -134,9 +134,9 @@
 				<ns1:UtredningsmetodeFjernmet>
 					<ns1:SkjelettscintigrafiMet>true</ns1:SkjelettscintigrafiMet>
 					<ns1:RtgThoraxMet>true</ns1:RtgThoraxMet>
-					<ns1:RtgBekkenMet>true</ns1:RtgBekkenMet>
+					<ns1:RtgBekkenMet>false</ns1:RtgBekkenMet>
 					<ns1:CTMet>true</ns1:CTMet>
-					<ns1:MRMet>true</ns1:MRMet>
+					<ns1:MRMet>false</ns1:MRMet>
 					<ns1:PETMet>true</ns1:PETMet>
 					<ns1:CytologiMet>true</ns1:CytologiMet>
 					<ns1:BiopsiMet>true</ns1:BiopsiMet>
