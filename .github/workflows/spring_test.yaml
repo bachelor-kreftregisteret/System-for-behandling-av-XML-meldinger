@@ -15,4 +15,4 @@ jobs:
           distribution: 'adopt'
       - name: Run all tests with Maven
         working-directory: ./kreftregisteret-backend
-        run: ./mvnw clean test
+        run: mvn -f pom.xml clean test --batch-mode
