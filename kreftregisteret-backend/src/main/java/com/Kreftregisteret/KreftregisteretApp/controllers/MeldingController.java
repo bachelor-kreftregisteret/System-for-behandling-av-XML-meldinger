@@ -25,14 +25,9 @@ public class MeldingController {
     @RequestMapping(path = "api/v1/meldinger")
     public Melding getMelding() {
         // Bør vurdere å hente fil fra resources mappen
-        Melding melding = MessageManager.getMeldingFromPath("Prostatapakke/Prostata_4_0_UtredningEksempelfil.xml");
+        Melding melding = MessageManager.getMeldingFromPath("kreftregisteret-backend/Prostatapakke/Prostata_4_0_UtredningEksempelfil.xml");
         msgList.put(melding, UUID.randomUUID());
         return melding;
-    }
-
-    @RequestMapping(path = "/")
-    public String helloWorld() {
-        return "Hello, World!";
     }
 
     @PatchMapping(
