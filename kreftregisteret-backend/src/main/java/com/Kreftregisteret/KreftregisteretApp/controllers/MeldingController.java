@@ -27,6 +27,7 @@ public class MeldingController {
 
 
     //http://localhost:8080/api/v1/meldinger
+    @CrossOrigin(origins = {"http://localhost:8080", "http://localhost:3000", "http://localhost:3001"})
     @GetMapping(path = "api/v1/meldinger")
     public Melding getMelding() throws IOException {
         ClassPathResource pathResource = new ClassPathResource("Prostatapakke/Prostata_4_0_UtredningEksempelfil.xml");
@@ -50,6 +51,7 @@ public class MeldingController {
 
 
     //i førstee omgang bør klienten sende hele json filen!! Så får vi se om vi klarer å lage patch senere...
+    @CrossOrigin(origins = {"http://localhost:8080", "http://localhost:3000", "http://localhost:3001"})
     @PostMapping(
             path = "/api/v1/meldinger",
             consumes="application/json")
