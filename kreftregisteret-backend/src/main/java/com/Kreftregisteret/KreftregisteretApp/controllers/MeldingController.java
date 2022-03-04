@@ -6,6 +6,8 @@ import com.Kreftregisteret.KreftregisteretApp.utils.xml.MessageManager;
 import com.github.fge.jsonpatch.JsonPatch;
 import com.google.gson.Gson;
 import jakarta.xml.bind.JAXBException;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.core.io.ClassPathResource;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 import org.xml.sax.SAXException;
@@ -20,19 +22,20 @@ import java.util.UUID;
 public class MeldingController {
     HashMap<Melding, UUID> msgList = new HashMap<>();
 
+    @Autowired
+    MessageManager messageManager = new MessageManager();
+
+
     //http://localhost:8080/api/v1/meldinger
-    @CrossOrigin(origins = "http://localhost:3000") //Denne merknaden tillater at frontend fetcher data - Hajin
-    @RequestMapping(path = "api/v1/meldinger")
-    public Melding getMelding() {
-        // Bør vurdere å hente fil fra resources mappen
-        Melding melding = MessageManager.getMeldingFromPath("Prostatapakke/Prostata_4_0_UtredningEksempelfil.xml");
+    @CrossOrigin(origins = {"http://localhost:8080", "http://localhost:3000", "http://localhost:3001"})
+    @GetMapping(path = "api/v1/meldinger")
+    public Melding getMelding() throws IOException {
+        ClassPathResource pathResource = new ClassPathResource("Prostatapakke/Prostata_4_0_UtredningEksempelfil.xml");
+        System.out.println("Er dette get:meldinger???");
+        System.out.println("pathResource.getPath(): " + pathResource.getURL().getPath());
+        Melding melding = messageManager.getMeldingFromPath(pathResource.getURL().getPath());
         msgList.put(melding, UUID.randomUUID());
         return melding;
-    }
-
-    @RequestMapping(path = "/")
-    public String helloWorld() {
-        return "Hello, World!";
     }
 
     @PatchMapping(
@@ -48,9 +51,10 @@ public class MeldingController {
 
 
     //i førstee omgang bør klienten sende hele json filen!! Så får vi se om vi klarer å lage patch senere...
+    @CrossOrigin(origins = {"http://localhost:8080", "http://localhost:3000", "http://localhost:3001"})
     @PostMapping(
             path = "/api/v1/meldinger",
-            consumes="application/json-patch+json")
+            consumes="application/json")
     public ResponseEntity<Melding> postMelding(@RequestBody Melding melding) throws JAXBException, ParserConfigurationException, IOException, ClassNotFoundException, TransformerException, SAXException {
         //vi får inn en "hel melding" her, så må vi se om vi klarer å direkte lagre en xml ut i fra dette
         //Melding melding = meldingService.
@@ -61,17 +65,5 @@ public class MeldingController {
         return ResponseEntity.ok(null);
     }
 
-//    @PatchMapping(
-//            path = "/api/v1/meldinger",
-//            consumes="application/json-patch+json")
-//    public ResponseEntity<Melding> patchMelding(@RequestBody Melding melding) throws JAXBException, ParserConfigurationException, IOException, ClassNotFoundException, TransformerException, SAXException {
-//        //vi får inn en "hel melding" her, så må vi se om vi klarer å direkte lagre en xml ut i fra dette
-//        //Melding melding = meldingService.
-//        //validering
-//        System.out.println(melding);
-//        System.out.println("treffer vu ger npå=?=?==?=");
-//        MessageManager.writeMeldingToPath(melding);
-//        return ResponseEntity.ok(null);
-//    }
 }
 
