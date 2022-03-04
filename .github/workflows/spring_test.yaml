@@ -18,5 +18,10 @@ jobs:
         working-directory: ./kreftregisteret-backend
         run: mvn -f pom.xml clean test --batch-mode
       - name: Make static react build in resources
+        uses: actions/setup-node@v3
+        with:
+          node-version: '16'
         working-directory: ./kreftregisteret-frontend
-        run: npm run build
+        run: |
+          npm ci
+          npm run build
