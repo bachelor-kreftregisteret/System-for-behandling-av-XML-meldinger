@@ -1,5 +1,5 @@
 # System-for-behandling-av-XML-meldinger
-
+[![Build and run Maven tests](https://github.com/bachelor-kreftregisteret/System-for-behandling-av-XML-meldinger/actions/workflows/spring_test.yaml/badge.svg)](https://github.com/bachelor-kreftregisteret/System-for-behandling-av-XML-meldinger/actions/workflows/spring_test.yaml)
 
 FRONTEND 
 gå til http://localhost:8080/api/v1/meldinger for å se en eksempelmelding (av typen utredning) når serveren kjører.
