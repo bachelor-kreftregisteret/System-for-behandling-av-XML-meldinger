@@ -26,3 +26,11 @@ jobs:
           chmod +x ./mv_build_to_resources.sh
           ./mv_build_to_resources.sh
         shell: bash
+
+      - name: Commit and push static build
+        run: |
+          git config user.name github-actions
+          git config user.email github-actions@github.com
+          git add ./kreftregisteret-backend/src/main/resources/static
+          git commit -m "🤖 Generated static build"
+          git push
