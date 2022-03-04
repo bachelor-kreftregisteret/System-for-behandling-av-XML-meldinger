@@ -35,6 +35,9 @@ const RenderSurvey = () => {
                 if (arrayOfNames) {
                     arrayOfNames.map((name) => {
                         if (key === name) {
+                            if (key === "SamletMRBasertKliniskT" || key === "SamletPalpatoriskTumor" || key === "cn" || key === "cm") {
+                                return
+                            }
                             survey.setValue(`${name}`, incomingDataObject[key])
                             survey.setValue("lokalisasjonFjernmet", getLokalisasjonValues(incomingDataObject))
                             survey.setValue("utredningsmetodeMetastaser", getUtredningsmetodeFjernmetValues(incomingDataObject))

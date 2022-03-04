@@ -94,7 +94,7 @@
 				<ns1:AnnetBildediagnostikk/>
 				<ns1:AnnetBildediagnostikkSpesifiser2/>
 			</ns1:BildediagnostikkUS>
-			<ns1:Vevsprover/>
+			<ns1:Vevsprover>1</ns1:Vevsprover>
 			<ns1:VevsproverUS>
 				<ns1:BiopsiVevsprover>true</ns1:BiopsiVevsprover>
 				<ns1:TURPVevsprover>true</ns1:TURPVevsprover>
