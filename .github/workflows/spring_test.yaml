@@ -17,7 +17,3 @@ jobs:
       - name: Run all tests with Maven
         working-directory: ./kreftregisteret-backend
         run: mvn -f pom.xml clean test --batch-mode
-      - name: Make static react build in resources
-        uses: actions/setup-node@v3
-        working-directory: ./kreftregisteret-frontend
-        run: npm run build
