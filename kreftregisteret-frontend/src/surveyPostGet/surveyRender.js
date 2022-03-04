@@ -255,6 +255,7 @@ const RenderSurvey = () => {
 
     //Sender tilbake det gamle skjemaet. Må fikses slik at det nye skjemaet sendes i gamle drakter..
     survey.onComplete.add(function (sender, options) {
+        console.log(data)
         //Show message about "Saving..." the results
         options.showDataSaving();//you may pass a text parameter to show your own text
         const headers = {
