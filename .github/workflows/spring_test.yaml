@@ -4,7 +4,7 @@ on:
     branches:
       - main
 jobs:
-  build:
+  maven-test:
     runs-on: ubuntu-18.04
     steps:
       - name: Checkout
@@ -17,3 +17,11 @@ jobs:
       - name: Run all tests with Maven
         working-directory: ./kreftregisteret-backend
         run: mvn -f pom.xml clean test --batch-mode
+  build-react:
+    runs-on: ubuntu-18.04
+    steps:
+      - name: Make static react build in resources
+        uses: actions/setup-node@v3
+        working-directory: ./kreftregisteret-frontend
+        run: npm run build
+
