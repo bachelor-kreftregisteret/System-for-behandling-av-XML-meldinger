@@ -15,8 +15,14 @@ jobs:
         with:
           node-version: '16'
 
-      - name: Make static react build in resources
+      - name: Make static react build
         working-directory: ./kreftregisteret-frontend
         run: |
           npm ci
           npm run build
+
+      - name: Copy to resources
+        run: |
+          chmod +x ./mv_build_to_resources.sh
+          ./mv_build_to_resources.sh
+        shell: bash

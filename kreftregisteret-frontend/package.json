@@ -19,7 +19,7 @@
   },
   "scripts": {
     "start": "react-scripts start",
-    "build": "react-scripts build && rm -rf ../kreftregisteret-backend/src/main/resources/static && mkdir ../kreftregisteret-backend/src/main/resources/static && cp -R build ../kreftregisteret-backend/src/main/resources/static",
+    "build": "react-scripts build",
     "test": "react-scripts test",
     "eject": "react-scripts eject"
   },
