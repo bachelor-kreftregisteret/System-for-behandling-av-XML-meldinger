@@ -10,6 +10,7 @@ import org.springframework.stereotype.Service;
 import org.xml.sax.SAXException;
 import javax.xml.parsers.ParserConfigurationException;
 import javax.xml.transform.TransformerException;
+import javax.xml.validation.Schema;
 import java.io.*;
 import java.net.URL;
 import java.nio.file.DirectoryIteratorException;
@@ -56,8 +57,8 @@ public class MessageManager {
         String formattedDate = formatter.format(date);
 
         // Validate against XSD, throws JAXBException if not valid
-        //Schema schema = MessageValidator.generateSchema(melding);
-        //jaxbMarshaller.setSchema(schema);
+        Schema schema = MessageValidator.generateSchema(melding);
+        jaxbMarshaller.setSchema(schema);
         // TODO: Legge utmappe i resources? Eller finne en ny path
         File file = new File( "utmappe/" + formattedDate + melding.getSkjemaNavn() + ".xml");
         jaxbMarshaller.marshal( melding, file );

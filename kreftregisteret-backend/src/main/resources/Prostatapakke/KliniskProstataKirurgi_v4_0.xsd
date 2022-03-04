@@ -29,7 +29,7 @@
 				</xs:element>
 				<xs:element name="VersjonsNr" type="xs:string" default="4.0"/>
 				<xs:element name="VersjonsNrOriginal" type="xs:string"/>
-				<xs:element name="KRG_GUID" type="xs:string" default=""/>        
+				<xs:element name="KRG_GUID" type="xs:string" default=""/>
 				<xs:element name="VersjonIP" type="xs:integer" default="0"/>
 				<xs:element name="VersjonBT" type="xs:integer" default="0"/>
 				<xs:element name="TidspunktSubmit">
