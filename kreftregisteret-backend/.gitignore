@@ -31,3 +31,4 @@ src/main/resources/static/
 
 ### VS Code ###
 .vscode/
+/src/main/resources/static/
