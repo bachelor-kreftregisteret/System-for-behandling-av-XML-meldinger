@@ -5,11 +5,13 @@ import jakarta.xml.bind.JAXBContext;
 import jakarta.xml.bind.JAXBException;
 import jakarta.xml.bind.Marshaller;
 import jakarta.xml.bind.Unmarshaller;
+import org.springframework.core.io.ClassPathResource;
 import org.springframework.stereotype.Service;
 import org.xml.sax.SAXException;
 import javax.xml.parsers.ParserConfigurationException;
 import javax.xml.transform.TransformerException;
 import java.io.*;
+import java.net.URL;
 import java.nio.file.DirectoryIteratorException;
 import java.nio.file.DirectoryStream;
 import java.nio.file.Files;
@@ -62,13 +64,14 @@ public class MessageManager {
     }
 
     HashMap<String, String> xsdDictionary = new HashMap();
-    public static File findXSDFromMelding(Melding melding){
+    public static File findXSDFromMelding(Melding melding) throws IOException {
         System.out.println(melding.toString());
         //todo Kanskje lag et hashmap med verdier for skjemanavn og .xSD, slik at man kan finne korrekt .xsd
         //
         String skjemanavn = melding.getSkjemaNavn(); //KliniskProstataUtredning
 
-        File dir = new File("XSD");
+        String path =  new ClassPathResource("XSD").getURL().getPath();
+        File dir = new File(path);
 
         File[] files = dir.listFiles();
 
