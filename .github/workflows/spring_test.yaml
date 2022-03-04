@@ -3,6 +3,8 @@ on:
   push:
     branches:
       - main
+    paths:
+      - 'kreftregisteret-backend/**'
 jobs:
   maven-test:
     runs-on: ubuntu-18.04
