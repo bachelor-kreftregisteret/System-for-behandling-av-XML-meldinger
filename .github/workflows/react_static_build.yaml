@@ -31,6 +31,6 @@ jobs:
         run: |
           git config user.name github-actions
           git config user.email github-actions@github.com
-          git add ./kreftregisteret-backend/src/main/resources/static
+          git add -f ./kreftregisteret-backend/src/main/resources/static
           git commit -m "🤖 Generated static build"
           git push
