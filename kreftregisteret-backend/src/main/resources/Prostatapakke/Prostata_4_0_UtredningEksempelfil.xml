@@ -102,7 +102,7 @@
 				<ns1:AnnetVevsproverSpesifiser2/>
 			</ns1:VevsproverUS>
 		</ns1:DiagnostiskeUS>
-		<ns1:DatoMetastaser>1957-08-13</ns1:DatoMetastaser>
+		<ns1:DatoMetastaser/>
 		<ns1:Sykdomsutbredelse>
 			<ns1:Tumor>
 				<ns1:PalpatoriskTumorHoyre>3</ns1:PalpatoriskTumorHoyre>
