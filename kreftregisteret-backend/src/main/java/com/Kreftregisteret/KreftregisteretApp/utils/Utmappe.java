@@ -15,9 +15,8 @@ public class Utmappe {
         String utmappe = "utmappe/";
         // Users path
         String path = Utmappe.class.getResource("").getPath();
-        // Remove target to get project root path
-        path = path.replaceAll("target/classes/com/Kreftregisteret/KreftregisteretApp/utils/", "");
-        path = path.replaceAll("target/test-classes/com/Kreftregisteret/KreftregisteretApp/utils/", "");
+        // Remove dir "target" and every dir after to get the project root path
+        path = path.replaceAll("target.*", "");
         // Append utmappe
         path = path + utmappe;
 //      System.out.println("AS URL: " + new File(path).toURI().toURL());
