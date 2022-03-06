@@ -7,7 +7,7 @@ import java.util.Arrays;
 public class Utmappe {
 
     /**
-     * Get path of utmappe. Ugly fix for windows, not tried on other environments.
+     * Get path of utmappe. Ugly fix for Windows and WSL2, not tried on other environments.
      ** */
 
     public static String getPath() throws MalformedURLException {
@@ -30,9 +30,11 @@ public class Utmappe {
      * @throws MalformedURLException
      */
 
-    public static void listFiles() throws MalformedURLException {
+    public static File[] listFiles() throws MalformedURLException {
         File dir = new File(Utmappe.getPath());
-        System.out.println(Arrays.toString(dir.listFiles()));
+        File[] files = dir.listFiles();
+        System.out.println("All files in utmappe: " + Arrays.toString(files));
+        return files;
     }
 
     public static void main(String[] args) throws MalformedURLException {
