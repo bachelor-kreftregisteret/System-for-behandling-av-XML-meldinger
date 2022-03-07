@@ -23,6 +23,7 @@ const SurveyJSON = {
                     validators: [
                         {
                             type: "regex",
+                            text: "Skriv inn gyldig fødselsnummer ",
                             regex: "((0[1-9]|[1-2]\\d|3[0-1])(0[1-9]|1[0-2])\\d{7})?"
                         }
                     ],
@@ -1866,24 +1867,6 @@ const SurveyJSON = {
             name: "sykdomsutbredelse",
             elements: [
                 {
-                    type: "html",
-                    name: "sykdomutbredelseTittel1",
-                    visible: false,
-                    visibleIf: "{funnUtredning} = 1",
-                    html: {
-                        no: "Sykdomsutbredelse etter ferdig primærutredning og før primærbehandling"
-                    }
-                },
-                {
-                    type: "html",
-                    name: "sykdomutbredelseTittel2",
-                    visible: false,
-                    visibleIf: "{funnUtredning} = 3",
-                    html: {
-                        no: "Sykdomsutbredelse ved utredning av metastase(r)"
-                    }
-                },
-                {
                     type: "dropdown",
                     name: "palpatoriskTumorHoyre",
                     visibleIf: "{funnUtredning} = 1",
@@ -2531,7 +2514,8 @@ const SurveyJSON = {
                     isRequired: true,
                     inputType: "date"
                 }
-            ]
+            ],
+            title: "{sykdomsutbredelseTitle}"
         },
         {
             name: "kliniskTNM",
@@ -2962,6 +2946,12 @@ const SurveyJSON = {
             expression: "{lokalisasjonFjernmet} contains 'annetFjernmet'",
             setToName: "cm",
             setValue: "1c"
+        }
+    ],
+    calculatedValues: [
+        {
+            name: "sykdomsutbredelseTitle",
+            expression: "iif({funnUtredning} = 1, 'Sykdomsutbredelse etter ferdig primærutredning og før primærbehandling', 'Sykdomsutbredelse ved utredning av metastase(r)')"
         }
     ],
     showQuestionNumbers: "off",

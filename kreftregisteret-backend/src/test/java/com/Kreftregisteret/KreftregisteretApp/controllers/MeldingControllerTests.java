@@ -23,7 +23,7 @@ import java.io.*;
 @SpringBootTest
 @AutoConfigureMockMvc
 public class MeldingControllerTests {
-    final String GET_MELDING_ENDPOINT = "/api/v1/meldinger";
+    final String GET_MELDING_ENDPOINT = "/api/v1/meldinger/1";
     final String POST_MELDING_ENDPOINT = "/api/v1/meldinger";
 
     @Autowired
