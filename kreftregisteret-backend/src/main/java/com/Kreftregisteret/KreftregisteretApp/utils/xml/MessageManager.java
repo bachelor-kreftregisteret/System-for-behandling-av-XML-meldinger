@@ -74,9 +74,8 @@ public class MessageManager {
         try {
             // Validate against XSD, throws JAXBException if not valid
             Schema schema = MessageValidator.generateSchema(melding);
-            //todo
+            //todo se på SKRIVINGEN av filene .. DEtte danner en XML som er halvferdig skrevet.
             jaxbMarshaller.setSchema(schema);
-            // TODO: Legge utmappe i resources? Eller finne en ny path
             File file = new File(Utmappe.getPath() + formattedDate + melding.getSkjemaNavn() + ".xml");
             jaxbMarshaller.marshal(melding, file);
         }catch(SAXException | UnmarshalException e){
@@ -125,12 +124,21 @@ public class MessageManager {
     public void addMeldingerFromUtFolderToMsgList() throws IOException {
 
         //ClassPathResource pathResource = new ClassPathResource("Ut");
-
-        //List<File> fileList = getFiles(Path.of(Utmappe.getPath()));
-        List<File> fileList = List.of(Utmappe.listFiles());
-        fileList.forEach(file -> {
-            msgMap.put(convertFileToMelding(file), createNewID());
-        });
+        try {
+            //List<File> fileList = getFiles(Path.of(Utmappe.getPath()));
+            List<File> fileList = List.of(Utmappe.listFiles());
+            fileList.forEach(file -> {
+                if(file != null) {
+                    Melding melding = convertFileToMelding(file);
+                    if(melding != null) {
+                        msgMap.put(melding, createNewID());
+                    }
+                }
+            });
+        }catch(Exception e){
+            System.out.println("er det her vi feiler???");
+            e.printStackTrace();
+        }
     }
 
     public static Melding getNewMelding() {
