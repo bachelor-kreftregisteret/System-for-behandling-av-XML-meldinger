@@ -5,12 +5,14 @@ import {Model, StylesManager, Survey } from "survey-react";
 import {dateValidator} from "./surveyValidator";
 import useFetch from "./useFetch";
 import axios from "axios";
+import {useParams} from "react-router-dom";
 
 StylesManager.applyTheme('default')
 
 const RenderSurvey = () => {
+    let { id } = useParams();
     //Henter data fra backend
-    const {data, loading, error} = useFetch('http://localhost:8080/api/v1/meldinger');
+    const {data, loading, error} = useFetch('http://localhost:8080/api/v1/meldinger/' + id);
 
     //Lager en modell av surveyen vi har laget
     const survey = new Model(SurveyJSON);

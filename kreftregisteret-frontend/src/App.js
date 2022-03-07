@@ -11,17 +11,18 @@ import Layout from "./Layout";
 
 function App() {
 
-  return (
-      <BrowserRouter>
-          <Routes>
-              <Route path="/" element={<Layout />}>
-                  <Route index element={<LandingPage />} />
-                  <Route path="utredning" element={<RenderSurvey  />} />
-              </Route>
-          </Routes>
-      </BrowserRouter>
+    return (
+        <BrowserRouter>
+            <Routes>
+                <Route path="/" element={<Layout/>}>
+                    <Route index element={<LandingPage/>}/>
+                    <Route path="utredning" element={<RenderSurvey/>}/>
+                    <Route path="utredning/:id" element={<RenderSurvey/>}/>
+                </Route>
+            </Routes>
+        </BrowserRouter>
 
-      );
+    );
 }
 
 export default App;
