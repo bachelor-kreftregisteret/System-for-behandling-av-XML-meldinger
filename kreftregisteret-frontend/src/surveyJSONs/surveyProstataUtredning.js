@@ -1246,7 +1246,7 @@ const SurveyJSON = {
                     type: "text",
                     name: "avdelingsnavnHFSpesifiser",
                     visible: false,
-                    visibleIf: "{avdelingsnavn} = 1",
+                    visibleIf: "{avdelingsnavn} = '1'",
                     startWithNewLine: false,
                     title: {
                         no: "Spesifiser"
@@ -1312,10 +1312,6 @@ const SurveyJSON = {
                         },
                         {
                             type: "numeric"
-                        },
-                        {
-                            type: "regex",
-                            regex: "([1-9]\\d{0,5}|\\d,\\d|[1-9]\\d{1,5},\\d)?"
                         }
                     ],
                     inputType: "number"
@@ -1846,7 +1842,7 @@ const SurveyJSON = {
                     type: "text",
                     name: "labnavnHFSpesifiser",
                     visible: false,
-                    visibleIf: "{labnavnHF} = 1",
+                    visibleIf: "{labnavnHF} = '1'",
                     title: {
                         no: "Spesifiser"
                     }
