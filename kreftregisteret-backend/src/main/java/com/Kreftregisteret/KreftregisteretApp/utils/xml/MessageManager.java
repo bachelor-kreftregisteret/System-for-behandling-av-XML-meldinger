@@ -2,10 +2,7 @@ package com.Kreftregisteret.KreftregisteretApp.utils.xml;
 
 import com.Kreftregisteret.KreftregisteretApp.models.Melding;
 import com.Kreftregisteret.KreftregisteretApp.utils.Utmappe;
-import jakarta.xml.bind.JAXBContext;
-import jakarta.xml.bind.JAXBException;
-import jakarta.xml.bind.Marshaller;
-import jakarta.xml.bind.Unmarshaller;
+import jakarta.xml.bind.*;
 import org.springframework.core.io.ClassPathResource;
 import org.springframework.stereotype.Service;
 import org.xml.sax.SAXException;
@@ -74,13 +71,17 @@ public class MessageManager {
         SimpleDateFormat formatter = new SimpleDateFormat("ddMMyyyy_'kl'HHmmss");
         Date date = new Date();
         String formattedDate = formatter.format(date);
+        try {
+            // Validate against XSD, throws JAXBException if not valid
+            Schema schema = MessageValidator.generateSchema(melding);
+            //todo se på SKRIVINGEN av filene .. DEtte danner en XML som er halvferdig skrevet.
+            jaxbMarshaller.setSchema(schema);
+            File file = new File(Utmappe.getPath() + formattedDate + melding.getSkjemaNavn() + ".xml");
+            jaxbMarshaller.marshal(melding, file);
+        }catch(SAXException | UnmarshalException e){
+            e.printStackTrace();
+        }
 
-        // Validate against XSD, throws JAXBException if not valid
-        Schema schema = MessageValidator.generateSchema(melding);
-        jaxbMarshaller.setSchema(schema);
-        // TODO: Legge utmappe i resources? Eller finne en ny path
-        File file = new File("utmappe/" + formattedDate + melding.getSkjemaNavn() + ".xml");
-        jaxbMarshaller.marshal(melding, file);
     }
 
     HashMap<String, String> xsdDictionary = new HashMap();
@@ -123,12 +124,21 @@ public class MessageManager {
     public void addMeldingerFromUtFolderToMsgList() throws IOException {
 
         //ClassPathResource pathResource = new ClassPathResource("Ut");
-
-        //List<File> fileList = getFiles(Path.of(Utmappe.getPath()));
-        List<File> fileList = List.of(Utmappe.listFiles());
-        fileList.forEach(file -> {
-            msgMap.put(convertFileToMelding(file), createNewID());
-        });
+        try {
+            //List<File> fileList = getFiles(Path.of(Utmappe.getPath()));
+            List<File> fileList = List.of(Utmappe.listFiles());
+            fileList.forEach(file -> {
+                if(file != null) {
+                    Melding melding = convertFileToMelding(file);
+                    if(melding != null) {
+                        msgMap.put(melding, createNewID());
+                    }
+                }
+            });
+        }catch(Exception e){
+            System.out.println("er det her vi feiler???");
+            e.printStackTrace();
+        }
     }
 
     public static Melding getNewMelding() {

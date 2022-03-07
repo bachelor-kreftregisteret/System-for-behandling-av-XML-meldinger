@@ -1,5 +1,7 @@
 <?xml version="1.0" encoding="UTF-8" standalone="yes"?>
-<KliniskProstataUtredning xmlns="http://www.kreftregisteret.no/kremt/KliniskProstataUtredning/v4_0">
+<KliniskProstataUtredning xmlns="http://www.kreftregisteret.no/kremt/KliniskProstataUtredning/v4_0"
+                          xmlns:ns2="http://www.kreftregisteret.no/kremt/KliniskProstataKirurgi/v4_0"
+                          xmlns:ns3="http://www.kreftregisteret.no/kremt/KliniskProstataStraale/v4_0">
     <Meldingsinformasjon>
         <Skjema>KliniskProstataUtredning</Skjema>
         <VersjonsNr>4.0</VersjonsNr>
@@ -9,7 +11,7 @@
         <VersjonBT>0</VersjonBT>
         <TidspunktSubmit>2001-12-17T09:30:47Z</TidspunktSubmit>
         <Brukernavn></Brukernavn>
-        <Filnavn></Filnavn>
+        <Filnavn>06032022_kl181735KliniskProstataUtredning.xml</Filnavn>
         <VersjonInternEkstern>1</VersjonInternEkstern>
         <FeilSkjema>true</FeilSkjema>
     </Meldingsinformasjon>
@@ -23,14 +25,14 @@
             <FodselsnummerHF></FodselsnummerHF>
             <FodselnummerUtland>true</FodselnummerUtland>
             <FodselsnummerUtlandSpesifiser>String</FodselsnummerUtlandSpesifiser>
-            <NavnPasient></NavnPasient>
+            <NavnPasient>Eksempelnavn Navnesen</NavnPasient>
             <Sykehuskode></Sykehuskode>
-            <SykehusnavnRHF>6</SykehusnavnRHF>
-            <SykehusnavnHFSorOst>0605</SykehusnavnHFSorOst>
-            <SykehusnavnHFVest>1</SykehusnavnHFVest>
-            <SykehusnavnHFMidt>1702</SykehusnavnHFMidt>
-            <SykehusnavnHFNord>1805</SykehusnavnHFNord>
-            <SykehusnavnSpesSenter>6002</SykehusnavnSpesSenter>
+            <SykehusnavnRHF>1</SykehusnavnRHF>
+            <SykehusnavnHFSorOst>0402</SykehusnavnHFSorOst>
+            <SykehusnavnHFVest></SykehusnavnHFVest>
+            <SykehusnavnHFMidt></SykehusnavnHFMidt>
+            <SykehusnavnHFNord></SykehusnavnHFNord>
+            <SykehusnavnSpesSenter></SykehusnavnSpesSenter>
             <SykehusnavnHFSpesifiser></SykehusnavnHFSpesifiser>
             <SykehusnavnKRGSpesifiser></SykehusnavnKRGSpesifiser>
             <Avdelingskode></Avdelingskode>
@@ -40,7 +42,7 @@
         </PasientInstitusjon>
         <Oppfolging>
             <OppfolgingBehandling>
-                <VidereTiltakUtredning>4</VidereTiltakUtredning>
+                <VidereTiltakUtredning>7</VidereTiltakUtredning>
                 <VidereTiltakUtredningSpesifiser>3</VidereTiltakUtredningSpesifiser>
                 <VidereTiltakUtredningSpesifiser2>String</VidereTiltakUtredningSpesifiser2>
                 <VidereTiltakUtredningDato>1957-08-13</VidereTiltakUtredningDato>
@@ -54,14 +56,14 @@
             <BildeNr></BildeNr>
         </FilmBilde>
         <Melder>
-            <MeldersNavn></MeldersNavn>
+            <MeldersNavn>serdtfy</MeldersNavn>
             <MeldeDato>1957-08-13</MeldeDato>
             <MelderID></MelderID>
         </Melder>
     </StdInfo>
     <Laboratorium>
         <LabnavnKRG></LabnavnKRG>
-        <LabnavnHF>28</LabnavnHF>
+        <LabnavnHF>07</LabnavnHF>
         <LabnavnHFIkkeRelevant>true</LabnavnHFIkkeRelevant>
         <LabnavnHFSpesifiser></LabnavnHFSpesifiser>
         <Preparatnummer></Preparatnummer>
@@ -71,10 +73,10 @@
         <Kreft>1</Kreft>
     </InfiltrerendeKreft>
     <Utredning>
-        <FunnUtredning>2</FunnUtredning>
-        <Diagnosedato>1997-08-13</Diagnosedato>
+        <FunnUtredning>1</FunnUtredning>
+        <Diagnosedato>1957-08-13</Diagnosedato>
         <Sykehistorie>
-            <Vannlatingsproblem></Vannlatingsproblem>
+            <Vannlatingsproblem>0</Vannlatingsproblem>
             <Kreftsymptomer>99</Kreftsymptomer>
             <WHOStatus>5</WHOStatus>
             <Prostatavolum></Prostatavolum>
@@ -82,7 +84,7 @@
             <SPSA>
                 <PSAVerdi></PSAVerdi>
                 <PSAVerdiIkkeTatt>true</PSAVerdiIkkeTatt>
-                <PSAVerdiUkjent>99</PSAVerdiUkjent>
+                <PSAVerdiUkjent></PSAVerdiUkjent>
             </SPSA>
         </Sykehistorie>
         <DiagnostiskeUS>
@@ -90,10 +92,10 @@
                 <DatoMRDiagnostikk>1957-08-13</DatoMRDiagnostikk>
                 <MRDiagnostikk>1</MRDiagnostikk>
                 <DatoMRDiagnostikkUkjent></DatoMRDiagnostikkUkjent>
-                <AnnetBildediagnostikk></AnnetBildediagnostikk>
+                <AnnetBildediagnostikk>0</AnnetBildediagnostikk>
                 <AnnetBildediagnostikkSpesifiser2></AnnetBildediagnostikkSpesifiser2>
             </BildediagnostikkUS>
-            <Vevsprover></Vevsprover>
+            <Vevsprover>1</Vevsprover>
             <VevsproverUS>
                 <BiopsiVevsprover>true</BiopsiVevsprover>
                 <TURPVevsprover>true</TURPVevsprover>
@@ -101,18 +103,18 @@
                 <AnnetVevsproverSpesifiser2></AnnetVevsproverSpesifiser2>
             </VevsproverUS>
         </DiagnostiskeUS>
-        <DatoMetastaser>1957-08-13</DatoMetastaser>
+        <DatoMetastaser></DatoMetastaser>
         <Sykdomsutbredelse>
             <Tumor>
-                <PalpatoriskTumorHoyre>3</PalpatoriskTumorHoyre>
-                <PalpatoriskTumorVenstre>2</PalpatoriskTumorVenstre>
-                <SamletPalpatoriskTumor></SamletPalpatoriskTumor>
-                <PIRADSHoyre></PIRADSHoyre>
-                <PIRADSVenstre>2</PIRADSVenstre>
+                <PalpatoriskTumorHoyre>5</PalpatoriskTumorHoyre>
+                <PalpatoriskTumorVenstre>5</PalpatoriskTumorVenstre>
+                <SamletPalpatoriskTumor>T4</SamletPalpatoriskTumor>
+                <PIRADSHoyre>4</PIRADSHoyre>
+                <PIRADSVenstre>4</PIRADSVenstre>
                 <MRBasertKliniskTHoyre>4</MRBasertKliniskTHoyre>
-                <MRBasertKliniskTVenstre>1</MRBasertKliniskTVenstre>
+                <MRBasertKliniskTVenstre>4</MRBasertKliniskTVenstre>
                 <SamletMRBasertKliniskT></SamletMRBasertKliniskT>
-                <TotalVurderingKliniskT>1</TotalVurderingKliniskT>
+                <TotalVurderingKliniskT>4</TotalVurderingKliniskT>
                 <KliniskVurdertAv>2</KliniskVurdertAv>
             </Tumor>
             <RegionaleLK>
@@ -146,7 +148,7 @@
             </UtredningsmetodeMetastaser>
         </Sykdomsutbredelse>
         <KliniskTNM>
-            <cT></cT>
+            <cT>4</cT>
             <cN></cN>
             <cM></cM>
         </KliniskTNM>

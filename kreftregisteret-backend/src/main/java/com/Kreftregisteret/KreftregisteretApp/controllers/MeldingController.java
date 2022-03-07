@@ -3,6 +3,7 @@ package com.Kreftregisteret.KreftregisteretApp.controllers;
 
 import com.Kreftregisteret.KreftregisteretApp.models.Melding;
 import com.Kreftregisteret.KreftregisteretApp.utils.xml.MessageManager;
+import com.fasterxml.jackson.databind.ObjectMapper;
 import com.github.fge.jsonpatch.JsonPatch;
 import com.google.gson.Gson;
 import jakarta.xml.bind.JAXBException;
@@ -75,6 +76,12 @@ public class MeldingController {
         //vi får inn en "hel melding" her, så må vi se om vi klarer å direkte lagre en xml ut i fra dette
         //Melding melding = meldingService.
         //validering
+        ObjectMapper mapper = new ObjectMapper();
+
+        //Object to JSON in String
+        String jsonInString = mapper.writeValueAsString(melding);
+        System.out.println(jsonInString);
+
         System.out.println(melding);
         System.out.println("treffer vu ger npå=?=?==?=");
         MessageManager.writeMeldingToPath(melding);
