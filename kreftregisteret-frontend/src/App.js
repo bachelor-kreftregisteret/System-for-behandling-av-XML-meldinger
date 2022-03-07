@@ -2,7 +2,6 @@ import React from "react";
 import RenderSurvey from "./surveyPostGet/surveyRender";
 import {
     Route,
-    NavLink,
     Routes,
     BrowserRouter
 } from "react-router-dom";
@@ -16,8 +15,7 @@ function App() {
             <Routes>
                 <Route path="/" element={<Layout/>}>
                     <Route index element={<LandingPage/>}/>
-                    <Route path="utredning" element={<RenderSurvey/>}/>
-                    <Route path="utredning/:id" element={<RenderSurvey/>}/>
+                    <Route path={`utredning/:id`} element={<RenderSurvey />}/>
                 </Route>
             </Routes>
         </BrowserRouter>

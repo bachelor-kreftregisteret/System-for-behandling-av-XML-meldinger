@@ -2,13 +2,17 @@ import React, {useEffect, useState} from "react";
 import 'survey-react/survey.css';
 import SurveyJSON from '../surveyJSONs/surveyProstataUtredning';
 import {Model, StylesManager, Survey } from "survey-react";
-import {dateValidator} from "./surveyValidator";
-import useFetch from "./useFetch";
 import axios from "axios";
+import {useParams} from "react-router-dom";
+import useFetch from "./useFetch";
 
 StylesManager.applyTheme('default')
 
-const RenderSurvey = (data, loading, error) => {
+const RenderSurvey = () => {
+    let { id } = useParams();
+    //Henter data fra backend
+    const {data, loading, error} = useFetch('http://localhost:8080/api/v1/meldinger/' + id);
+    console.log(id)
 
     //Lager en modell av surveyen vi har laget
     const survey = new Model(SurveyJSON);
