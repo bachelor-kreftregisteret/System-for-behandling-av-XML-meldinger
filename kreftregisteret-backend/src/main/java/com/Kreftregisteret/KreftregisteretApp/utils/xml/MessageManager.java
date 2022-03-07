@@ -125,7 +125,7 @@ public class MessageManager {
         //ClassPathResource pathResource = new ClassPathResource("Ut");
 
         //List<File> fileList = getFiles(Path.of(Utmappe.getPath()));
-        List<File> fileList = getFiles(Path.of("kreftregisteret-backend/utmappe"));
+        List<File> fileList = List.of(Utmappe.listFiles());
         fileList.forEach(file -> {
             msgMap.put(convertFileToMelding(file), createNewID());
         });
