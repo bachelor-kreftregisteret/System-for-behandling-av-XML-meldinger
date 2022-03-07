@@ -1,25 +1,28 @@
 package com.Kreftregisteret.KreftregisteretApp.controllers;
 
-import static org.assertj.core.api.Assertions.assertThat;
-
+import java.io.File;
+import java.util.Arrays;
+import com.Kreftregisteret.KreftregisteretApp.utils.Utmappe;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.MediaType;
 import org.springframework.test.web.servlet.MockMvc;
+import org.springframework.boot.test.autoconfigure.web.servlet.AutoConfigureMockMvc;
+import org.springframework.boot.test.context.SpringBootTest;
+import org.springframework.test.web.servlet.MvcResult;
 
+import static org.assertj.core.api.Assertions.assertThat;
+import static org.junit.jupiter.api.Assertions.assertTrue;
 import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.get;
 import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.post;
 import static org.springframework.test.web.servlet.result.MockMvcResultHandlers.print;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.status;
 
-import org.springframework.boot.test.autoconfigure.web.servlet.AutoConfigureMockMvc;
-import org.springframework.boot.test.context.SpringBootTest;
-
 @SpringBootTest
 @AutoConfigureMockMvc
 public class MeldingControllerTests {
-    final String GET_MELDING_ENDPOINT = "/api/v1/meldinger/1";
+    final String GET_ALL_MELDINGER_ENDPOINT = "/api/v1/meldinger/";
     final String POST_MELDING_ENDPOINT = "/api/v1/meldinger";
 
     @Autowired
@@ -33,19 +36,33 @@ public class MeldingControllerTests {
         assertThat(controller).isNotNull();
     }
 
+    // TODO: getMeldingTest()
+
     @Test
     @DisplayName("Test: getAllMeldingerTest()")
     public void getAllMeldingerTest() throws Exception {
-        // TODO: Validere json-data
-        this.mockMvc
-                .perform(get(GET_MELDING_ENDPOINT))
-                .andDo(print())
-                .andExpect(status().isOk());
-//                .andExpect(content().string());
-        // Todo: Traversere utmappe navn og sjekke om de finnes i output
-        // Filenames in utmappe
-        // File[] files = Utmappe.listFiles();
+        // Check status is OK and return mvcResult
+        MvcResult mvcResult =
+                this.mockMvc
+                        .perform(get(GET_ALL_MELDINGER_ENDPOINT))
+                        .andDo(print())
+                        .andExpect(status().isOk())
+                        .andReturn();
 
+        // Convert mvcResult response to string
+        String resultAsString = mvcResult.getResponse().getContentAsString();
+
+        // Get all filenames in utmappe
+        File[] files = Utmappe.listFiles();
+        String[] filenames = Arrays
+                .stream(files)
+                .map(File::getName)
+                .toArray(String[]::new);
+
+        // Check if getAllMeldinger() returns all filenames in utmappe
+        for (String filename : filenames) {
+            assertTrue(resultAsString.contains(filename), filename + " should be in " + resultAsString);
+        }
     }
 
     @Test
