@@ -178,4 +178,19 @@ public class KliniskProstataKirurgi extends Melding {
     public String getSkjemaNavn() {
         return this.meldingsinformasjon.getSkjema();
     }
+
+    @Override
+    public String getMetaData() {
+        return this.meldingsinformasjon.getTidspunktSubmit() + this.meldingsinformasjon.getVersjonsNr();
+    }
+
+    @Override
+    public void setFilnavn(String fnavn) {
+        this.meldingsinformasjon.setFilnavn(fnavn);
+    }
+
+    @Override
+    public String getFilnavn() {
+        return this.meldingsinformasjon.getFilnavn();
+    }
 }

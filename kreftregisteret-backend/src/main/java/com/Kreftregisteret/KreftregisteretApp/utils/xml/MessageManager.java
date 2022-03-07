@@ -1,6 +1,7 @@
 package com.Kreftregisteret.KreftregisteretApp.utils.xml;
 
 import com.Kreftregisteret.KreftregisteretApp.models.Melding;
+import com.Kreftregisteret.KreftregisteretApp.utils.Utmappe;
 import jakarta.xml.bind.JAXBContext;
 import jakarta.xml.bind.JAXBException;
 import jakarta.xml.bind.Marshaller;
@@ -8,41 +9,59 @@ import jakarta.xml.bind.Unmarshaller;
 import org.springframework.core.io.ClassPathResource;
 import org.springframework.stereotype.Service;
 import org.xml.sax.SAXException;
+
 import javax.xml.parsers.ParserConfigurationException;
 import javax.xml.transform.TransformerException;
 import javax.xml.validation.Schema;
 import java.io.*;
-import java.net.URL;
 import java.nio.file.DirectoryIteratorException;
 import java.nio.file.DirectoryStream;
 import java.nio.file.Files;
 import java.nio.file.Path;
 import java.text.SimpleDateFormat;
-import java.util.ArrayList;
-import java.util.Date;
-import java.util.HashMap;
-import java.util.List;
+import java.util.*;
 
 
 //er det bedre å ha EN jaxbcontext instance her? dvs ha en felles for alle metodene også injecte message manager istedenfor public static?
 @Service
 public class MessageManager {
-    public Melding getMeldingFromPath(String path) {
+    HashMap<Melding, Long> msgMap = new HashMap<>();
+
+
+    private static Long id = 1L;
+
+    //sikter på thread-safety
+    public static synchronized Long createNewID()
+    {
+        return id++;
+    }
+
+    public HashMap<Melding, Long> getMsgMap() {
+        return msgMap;
+    }
+    //kanskje legg til Optional<Melding> her istedenfor å kanskje returnere null (?)
+    private Melding convertFileToMelding(File file) {
         Melding melding = null;
         try {
-            File file = new File(path);
-            //usikker på hvilken måte som er enklest å maintaine..
-            //JAXBContext jaxbContext = JAXBContext.newInstance(KliniskProstataKirurgi.class, KliniskProstataStraale.class, KliniskProstataUtredning.class);
-            //JAXBContext jaxbContext = JAXBContext.newInstance("com.Kreftregisteret.KreftregisteretApp.models");
-            //JAXBContext jaxbContext = JAXBContextFactory.createContext(new Class[]{Melding.class, ObjectFactory.class}, properties);
             JAXBContext jaxbContext = JAXBContext.newInstance(Melding.class);
             Unmarshaller jaxbUnmarshaller = jaxbContext.createUnmarshaller();
             melding = (Melding) jaxbUnmarshaller.unmarshal(file);
+            melding.setFilnavn(file.getName());
             return melding;
         } catch (JAXBException e) {
             e.printStackTrace();
         }
         return null;
+    }
+
+    // ClassPathResource pathResource = new ClassPathResource("Prostatapakke/Prostata_4_0_UtredningEksempelfil.xml");
+//pathResource.getURL().getPath()
+    public Melding getMeldingFromPath(String path) {
+        Melding melding = null;
+        File file = new File(path);
+        melding = convertFileToMelding(file);
+        msgMap.put(melding, createNewID());
+        return melding;
     }
 
     //for å kjøre denne kan vi bruke melding.getClass().getName()
@@ -60,25 +79,26 @@ public class MessageManager {
         Schema schema = MessageValidator.generateSchema(melding);
         jaxbMarshaller.setSchema(schema);
         // TODO: Legge utmappe i resources? Eller finne en ny path
-        File file = new File( "utmappe/" + formattedDate + melding.getSkjemaNavn() + ".xml");
-        jaxbMarshaller.marshal( melding, file );
+        File file = new File("utmappe/" + formattedDate + melding.getSkjemaNavn() + ".xml");
+        jaxbMarshaller.marshal(melding, file);
     }
 
     HashMap<String, String> xsdDictionary = new HashMap();
+
     public static File findXSDFromMelding(Melding melding) throws IOException {
         System.out.println(melding.toString());
         //todo Kanskje lag et hashmap med verdier for skjemanavn og .xSD, slik at man kan finne korrekt .xsd
         //
         String skjemanavn = melding.getSkjemaNavn(); //KliniskProstataUtredning
 
-        String path =  new ClassPathResource("XSD").getURL().getPath();
+        String path = new ClassPathResource("XSD").getURL().getPath();
         File dir = new File(path);
 
         File[] files = dir.listFiles();
 
         for (File file : files) {
             //System.out.println(file.getAbsoluteFile());
-            if(file.isFile() && file.toPath().toString().contains(skjemanavn)){
+            if (file.isFile() && file.toPath().toString().contains(skjemanavn)) {
                 System.out.println("YES FOUND");
                 return file;
             }
@@ -100,14 +120,34 @@ public class MessageManager {
         return files;
     }
 
-    public static ArrayList<Melding> getAllMeldinger(){
-        ArrayList<Melding> liste = new ArrayList<>();
-        return liste;
+    public void addMeldingerFromUtFolderToMsgList() throws IOException {
+
+        //ClassPathResource pathResource = new ClassPathResource("Ut");
+
+        List<File> fileList = getFiles(Path.of(Utmappe.getPath()));
+        fileList.forEach(file -> {
+            msgMap.put(convertFileToMelding(file), createNewID());
+        });
     }
 
-    public static Melding getNewMelding(){
+    public static Melding getNewMelding() {
         //kanskje implementer kø-logikk her.
         return null;
     }
 
+    public Melding findMeldingById(Long idIn) {
+        for (Map.Entry<Melding, Long> entry : msgMap.entrySet()) {
+            Melding melding = entry.getKey();
+            Long value = entry.getValue();
+            if(Objects.equals(value, idIn)){
+                return melding;
+            }
+        }
+        /*msgList.forEach((melding, uid) ->{
+            if(idIn == uid){
+                return melding;
+            }
+        });*/
+        return null;
+    }
 }
