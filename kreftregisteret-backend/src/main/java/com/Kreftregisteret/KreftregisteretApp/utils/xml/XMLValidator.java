@@ -1,6 +1,7 @@
 package com.Kreftregisteret.KreftregisteretApp.utils.xml;
 
 import org.xml.sax.SAXException;
+import org.xml.sax.SAXParseException;
 
 import javax.xml.XMLConstants;
 import javax.xml.transform.Source;
