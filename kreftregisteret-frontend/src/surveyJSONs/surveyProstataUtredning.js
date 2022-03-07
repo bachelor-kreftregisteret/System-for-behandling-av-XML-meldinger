@@ -24,7 +24,7 @@ const SurveyJSON = {
                         {
                             type: "regex",
                             text: "Skriv inn gyldig fødselsnummer ",
-                            regex: "((0[1-9]|[1-2]\\d|3[0-1])(0[1-9]|1[0-2])\\d{7})?"
+                            regex: "((0[1-9]|[1-2]\\d|3[0-1])(0[1-9]|1[0-2])\\d{7})"
                         }
                     ],
                     inputType: "number"
@@ -1309,10 +1309,8 @@ const SurveyJSON = {
                     validators: [
                         {
                             type: "regex",
+                            text: "Må være mellom 0 og 1000000 med maks ett desimal",
                             regex: "([1-9]\\d{0,5}|\\d,\\d|[1-9]\\d{1,5},\\d)?"
-                        },
-                        {
-                            type: "numeric"
                         }
                     ],
                     inputType: "number"
@@ -1463,8 +1461,13 @@ const SurveyJSON = {
                     isRequired: true,
                     requiredIf: "{prostatavolumUkjent} empty",
                     inputType: "number",
-                    minValueExpression: "0",
-                    maxValueExpression: "999"
+                    validators: [
+                        {
+                            type: "regex",
+                            text: "Må være et tall mellom 0 og 1000",
+                            regex: "^([1-9]\d{0,2})"
+                        }
+                    ]
                 },
                 {
                     type: "checkbox",
@@ -2961,3 +2964,4 @@ const SurveyJSON = {
 };
 
 export default SurveyJSON;
+
