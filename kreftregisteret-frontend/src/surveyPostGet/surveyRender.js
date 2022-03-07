@@ -8,9 +8,7 @@ import axios from "axios";
 
 StylesManager.applyTheme('default')
 
-const RenderSurvey = () => {
-    //Henter data fra backend
-    const {data, loading, error} = useFetch('http://localhost:8080/api/v1/meldinger');
+const RenderSurvey = (data, loading, error) => {
 
     //Lager en modell av surveyen vi har laget
     const survey = new Model(SurveyJSON);
@@ -272,7 +270,7 @@ const RenderSurvey = () => {
 
     return (
         /*Render skjema*/
-        loading ? <div> Loader ...</div> : <Survey model={survey} />
+        <Survey model={survey} />
     )
 }
 
