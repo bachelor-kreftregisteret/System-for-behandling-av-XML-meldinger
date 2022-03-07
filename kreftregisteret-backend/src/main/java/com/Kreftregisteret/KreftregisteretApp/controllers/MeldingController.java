@@ -23,8 +23,6 @@ import java.util.List;
 
 @RestController
 public class MeldingController {
-
-
     MessageManager messageManager;
 
     @Autowired
@@ -41,7 +39,6 @@ public class MeldingController {
     @CrossOrigin(origins = {"http://localhost:8080", "http://localhost:3000", "http://localhost:3001"})
     @GetMapping(path = "api/v1/meldinger/{id}")
     public Melding getMelding(@PathVariable long id) throws IOException {
-
         return messageManager.findMeldingById(id);
     }
 

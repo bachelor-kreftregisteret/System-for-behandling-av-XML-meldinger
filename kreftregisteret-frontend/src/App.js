@@ -9,8 +9,8 @@ import {
 import LandingPage from "./LandingPage";
 import Layout from "./Layout";
 
-function App() {
 
+function App() {
     return (
         <BrowserRouter>
             <Routes>
