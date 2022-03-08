@@ -3,12 +3,10 @@ package com.Kreftregisteret.KreftregisteretApp.utils.xml;
 import com.Kreftregisteret.KreftregisteretApp.models.Melding;
 import com.Kreftregisteret.KreftregisteretApp.utils.Utmappe;
 import jakarta.xml.bind.*;
+import jakarta.xml.bind.util.JAXBSource;
 import org.springframework.core.io.ClassPathResource;
 import org.springframework.stereotype.Service;
 import org.xml.sax.SAXException;
-
-import javax.xml.parsers.ParserConfigurationException;
-import javax.xml.transform.TransformerException;
 import javax.xml.validation.Schema;
 import java.io.*;
 import java.nio.file.DirectoryIteratorException;
@@ -63,28 +61,23 @@ public class MessageManager {
 
     //for å kjøre denne kan vi bruke melding.getClass().getName()
     //https://docs.oracle.com/javase/7/docs/api/javax/xml/bind/Marshaller.html
-    public static void writeMeldingToPath(Melding melding) throws JAXBException, ParserConfigurationException, IOException, TransformerException, SAXException, ClassNotFoundException {
+    public static void writeMeldingToPath(Melding melding) throws JAXBException, IOException, SAXException {
         JAXBContext jaxbContext = JAXBContext.newInstance(Melding.class);
         Marshaller jaxbMarshaller = jaxbContext.createMarshaller();
-        System.out.println("vi klarer i allefall å lage en JAXBCONTEXT???");
-        System.out.println(melding.getSkjemaNavn() + " dette skjemaet kom akkuratt inn i writeMeldingToPath");
+        Schema schema = MessageValidator.generateSchema(melding);
+        JAXBSource jaxbSource = new JAXBSource(jaxbMarshaller, melding);
+
+        // Validate against schema, throws SAXParseException if not valid
+        XMLValidator.validate(schema, jaxbSource);
+
         SimpleDateFormat formatter = new SimpleDateFormat("ddMMyyyy_'kl'HHmmss");
         Date date = new Date();
         String formattedDate = formatter.format(date);
-        try {
-            // Validate against XSD, throws JAXBException if not valid
-            Schema schema = MessageValidator.generateSchema(melding);
-            //todo se på SKRIVINGEN av filene .. DEtte danner en XML som er halvferdig skrevet.
-            jaxbMarshaller.setSchema(schema);
-            File file = new File(Utmappe.getPath() + formattedDate + melding.getSkjemaNavn() + ".xml");
-            jaxbMarshaller.marshal(melding, file);
-        }catch(SAXException | UnmarshalException e){
-            e.printStackTrace();
-        }
 
+        File file = new File(Utmappe.getPath() + formattedDate + melding.getSkjemaNavn() + ".xml");
+        jaxbMarshaller.setSchema(schema);
+        jaxbMarshaller.marshal(melding, file); // Write to file
     }
-
-    HashMap<String, String> xsdDictionary = new HashMap();
 
     public static File findXSDFromMelding(Melding melding) throws IOException {
         System.out.println(melding.toString());
@@ -92,19 +85,10 @@ public class MessageManager {
         //
         String skjemanavn = melding.getSkjemaNavn(); //KliniskProstataUtredning
 
-        String path = new ClassPathResource("XSD").getURL().getPath();
-        File dir = new File(path);
-
-        File[] files = dir.listFiles();
-
-        for (File file : files) {
-            //System.out.println(file.getAbsoluteFile());
-            if (file.isFile() && file.toPath().toString().contains(skjemanavn)) {
-                System.out.println("YES FOUND");
-                return file;
-            }
-        }
-        return null;
+        String XSDfile = XMLValidator.XSD_MAP.get(skjemanavn);
+        String path = new ClassPathResource("XSD/" + XSDfile).getURL().getPath();
+        System.out.println("PATH: " + path);
+        return new File(path);
     }
 
     // Inspired by: https://docs.oracle.com/javase/tutorial/essential/io/dirs.html

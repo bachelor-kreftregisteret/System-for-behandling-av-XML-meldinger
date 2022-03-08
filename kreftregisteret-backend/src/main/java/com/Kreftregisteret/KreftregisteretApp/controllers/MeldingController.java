@@ -8,18 +8,14 @@ import com.github.fge.jsonpatch.JsonPatch;
 import com.google.gson.Gson;
 import jakarta.xml.bind.JAXBException;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.core.io.ClassPathResource;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
-import org.springframework.web.servlet.support.ServletUriComponentsBuilder;
 import org.xml.sax.SAXException;
 
 import javax.xml.parsers.ParserConfigurationException;
 import javax.xml.transform.TransformerException;
 import java.io.IOException;
-import java.net.URI;
 import java.util.HashMap;
-import java.util.List;
 
 
 @RestController
@@ -83,9 +79,15 @@ public class MeldingController {
         System.out.println(jsonInString);
 
         System.out.println(melding);
-        System.out.println("treffer vu ger npå=?=?==?=");
-        MessageManager.writeMeldingToPath(melding);
-        return ResponseEntity.ok(null);
+
+        try {
+            MessageManager.writeMeldingToPath(melding);
+            return ResponseEntity.ok(null);
+        } catch (SAXException | JAXBException e) {
+            // XML validation failed. Write error logic here:
+            e.printStackTrace();
+            return ResponseEntity.ok(null);
+        }
     }
 
 }
