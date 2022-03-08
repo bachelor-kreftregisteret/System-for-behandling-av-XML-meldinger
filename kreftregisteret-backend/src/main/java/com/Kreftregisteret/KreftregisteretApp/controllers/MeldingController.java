@@ -4,6 +4,7 @@ import com.Kreftregisteret.KreftregisteretApp.models.Melding;
 import com.Kreftregisteret.KreftregisteretApp.utils.xml.MessageManager;
 import jakarta.xml.bind.JAXBException;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 import org.xml.sax.SAXException;
@@ -44,14 +45,16 @@ public class MeldingController {
 
     @CrossOrigin(origins = {"http://localhost:8080", "http://localhost:3000", "http://localhost:3001"})
     @PostMapping(path = "/api/v1/meldinger", consumes = "application/json")
-    public ResponseEntity<Melding> postMelding(@RequestBody Melding melding) throws JAXBException, ParserConfigurationException, IOException, ClassNotFoundException, TransformerException, SAXException {
+    public ResponseEntity<String> postMelding(@RequestBody Melding melding) throws JAXBException, ParserConfigurationException, IOException, ClassNotFoundException, TransformerException, SAXException {
         try {
             MessageManager.writeMeldingToPath(melding); // Validation happens here
-            return ResponseEntity.ok(null);
+            return ResponseEntity.status(HttpStatus.OK).build();
         } catch (SAXException | JAXBException e) {
             // XML validation failed. Write error logic here:
-            e.printStackTrace();
-            return ResponseEntity.ok(null);
+            String error = "" + e.getCause();
+            System.out.println("Error: " + error);
+            // Error handler method that creates a json?
+            return ResponseEntity.status(HttpStatus.BAD_REQUEST).body(error);
         }
     }
 }
