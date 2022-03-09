@@ -5,7 +5,7 @@ import {
     Routes,
     BrowserRouter
 } from "react-router-dom";
-import LandingPage from "./LandingPage";
+import Navigation from "./Navigation";
 import Layout from "./Layout";
 
 
@@ -14,7 +14,8 @@ function App() {
         <BrowserRouter>
             <Routes>
                 <Route path="/" element={<Layout/>}>
-                    <Route index element={<LandingPage/>}/>
+                    <Route index element={<Navigation/>}/>
+                    <Route path={`utredning`} element={<RenderSurvey />}/>
                     <Route path={`utredning/:id`} element={<RenderSurvey />}/>
                 </Route>
             </Routes>

@@ -152,7 +152,7 @@ const RenderSurvey = () => {
 
     useEffect(() =>  {
         setDataValues(data);
-    }, [!loading]); //Dependent på loading. Når loading endrer seg, vil setValues kjøre. Altså da er dataene klare
+    }, [loading]); //Dependent på loading. Når loading endrer seg, vil setValues kjøre. Altså da er dataene klare
 
     const setChangedValue = (options, JSONdata, changed) => {
         for (const key in JSONdata) {
