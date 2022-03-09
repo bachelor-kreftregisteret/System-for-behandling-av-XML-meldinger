@@ -6,8 +6,8 @@ const Layout = () => {
         <>
             <nav>
                 <ul>
-                    <li>
-                        <Link to="/">Home</Link>
+                    <li style={{listStyle: "none", margin: "0", padding:"0"}}>
+                        <Link to="/">Forside</Link>
                     </li>
                 </ul>
             </nav>

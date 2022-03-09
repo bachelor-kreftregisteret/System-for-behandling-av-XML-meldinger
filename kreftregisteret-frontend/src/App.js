@@ -7,6 +7,8 @@ import {
 import Navigation from "./Navigation";
 import Layout from "./Layout";
 import ProstataUtredning from "./components/surveys/ProstataUtredning";
+import ProstataStraalebehandling from "./components/surveys/ProstataStraalebehandling";
+import ProstataKirurgi from "./components/surveys/ProstataKirurgi";
 
 
 function App() {
@@ -17,6 +19,8 @@ function App() {
                     <Route index element={<Navigation/>}/>
                     <Route path={`prostata-utredning`} element={<ProstataUtredning />}/>
                     <Route path={`prostata-utredning/:id`} element={<ProstataUtredning />}/>
+                    <Route path={`prostata-straalebehandling`} element={<ProstataStraalebehandling />}/>
+                    <Route path={`prostata-kirurgi`} element={<ProstataKirurgi />}/>
                 </Route>
             </Routes>
         </BrowserRouter>
