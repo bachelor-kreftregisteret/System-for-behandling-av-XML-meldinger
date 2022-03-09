@@ -1,6 +1,6 @@
 import 'survey-react/survey.css';
 
-const SurveyJSON = {
+const SurveyJsonUtredning = {
     locale: "no",
     title: "UTREDNING ",
     logoPosition: "right",
@@ -2963,5 +2963,5 @@ const SurveyJSON = {
     questionsOnPageMode: "singlePage"
 };
 
-export default SurveyJSON;
+export default SurveyJsonUtredning;
 

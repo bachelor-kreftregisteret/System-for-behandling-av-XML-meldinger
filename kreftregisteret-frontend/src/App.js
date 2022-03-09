@@ -1,5 +1,4 @@
 import React from "react";
-import RenderSurvey from "./surveyPostGet/surveyRender";
 import {
     Route,
     Routes,
@@ -7,6 +6,7 @@ import {
 } from "react-router-dom";
 import Navigation from "./Navigation";
 import Layout from "./Layout";
+import ProstataUtredning from "./components/surveys/ProstataUtredning";
 
 
 function App() {
@@ -15,8 +15,8 @@ function App() {
             <Routes>
                 <Route path="/" element={<Layout/>}>
                     <Route index element={<Navigation/>}/>
-                    <Route path={`utredning`} element={<RenderSurvey />}/>
-                    <Route path={`utredning/:id`} element={<RenderSurvey />}/>
+                    <Route path={`prostata-utredning`} element={<ProstataUtredning />}/>
+                    <Route path={`prostata-utredning/:id`} element={<ProstataUtredning />}/>
                 </Route>
             </Routes>
         </BrowserRouter>

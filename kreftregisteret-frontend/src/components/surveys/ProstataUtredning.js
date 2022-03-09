@@ -1,21 +1,21 @@
 import React, {useEffect, useState} from "react";
 import 'survey-react/survey.css';
-import SurveyJSON from '../surveyJSONs/surveyProstataUtredning';
 import {Model, StylesManager, Survey } from "survey-react";
 import axios from "axios";
 import {useParams} from "react-router-dom";
-import useFetch from "./useFetch";
+import useFetch from "../../api/useFetch";
+import SurveyJsonUtredning from "../../surveyJsons/ProstataUtredning";
 
 StylesManager.applyTheme('default')
 
-const RenderSurvey = () => {
+const ProstataUtredning = () => {
     let { id } = useParams();
     //Henter data fra backend
     const {data, loading, error} = useFetch('http://localhost:8080/api/v1/meldinger/' + id);
     console.log(id)
 
     //Lager en modell av surveyen vi har laget
-    const survey = new Model(SurveyJSON);
+    const survey = new Model(SurveyJsonUtredning);
 
     //templister for array
     let tempArr = [];
@@ -135,7 +135,7 @@ const RenderSurvey = () => {
 
     //Henter og lager en liste av alle navn fra surveyJS-skjemaet vårt
     const addPropertyNamesToArray = (obj) => {
-        obj = SurveyJSON.pages; //SurveyJSON.pages er et array med flere elementer i hvert object
+        obj = SurveyJsonUtredning.pages; //SurveyJSON.pages er et array med flere elementer i hvert object
         obj.map(el => {
             if (typeof (el) == "object") {
                 el.elements.map(ele =>
@@ -147,8 +147,8 @@ const RenderSurvey = () => {
 
     //Kjører metoden
     useEffect(() =>  {
-        addPropertyNamesToArray(SurveyJSON);
-    }, [SurveyJSON]);
+        addPropertyNamesToArray(SurveyJsonUtredning);
+    }, [SurveyJsonUtredning]);
 
     useEffect(() =>  {
         setDataValues(data);
@@ -268,7 +268,7 @@ const RenderSurvey = () => {
         axios.post('http://localhost:8080/api/v1/meldinger', data,{headers})
             .then(response => console.log(response))
             .finally(() => {
-                    options.showDataSavingSuccess();
+                    options.showDataSavingSuccess("Du har sent inn et skjema. Yay!");
             } );
     });
 
@@ -278,4 +278,4 @@ const RenderSurvey = () => {
     )
 }
 
-export default RenderSurvey;
+export default ProstataUtredning;
