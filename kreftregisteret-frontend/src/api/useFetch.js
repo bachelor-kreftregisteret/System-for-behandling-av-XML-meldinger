@@ -11,7 +11,7 @@ function useFetch(url) {
         try {
             let data = await axios.get(url);
             console.log(data.data);
-            setData(data.data)
+            setData(data.data);
             setError(null);
         } catch (err) {
             console.log(err);

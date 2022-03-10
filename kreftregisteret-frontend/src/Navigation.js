@@ -11,11 +11,11 @@ const Navigation = () => {
     const goToUtredning = useCallback(() => navigate('/prostata-utredning', {replace: true}), [navigate]);
     const goTostraalebehandling = useCallback(() => navigate('/prostata-straalebehandling', {replace: true}), [navigate]);
 
-    const {data, loading} = useFetch('http://localhost:8080/api/v1/meldinger');
+    const {data, loading, error} = useFetch('http://localhost:8080/api/v1/meldinger');
     let msgList = []
 
     function ShowData() {
-        if (!loading) {
+        if (!loading && data !== null) {
             msgList = Object.keys(data).map((key) => [key, data[key]]);
             console.log(msgList)
             return msgList.map((item, index) =>
@@ -28,8 +28,11 @@ const Navigation = () => {
                     {item[0].includes('ProstataKirurgi') &&
                         <Link to={"prostata-kirurgi/" + item[1]}><img src="https://img.icons8.com/cotton/26/000000/file.png"/> {item[0]} </Link> }
                 </li>)
+        } else if (error !== null) {
+            let string = " Noe gikk feil ved innlasting: " + error;
+            return <h4> {string} </h4>
         } else {
-            return <h4> Loading ... </h4>
+            return <h4> Laster ...</h4>
         }
     }
 
