@@ -2,14 +2,15 @@ import React, {useCallback, useEffect, useState} from 'react';
 import {Link, useNavigate} from 'react-router-dom';
 import useFetch from "./api/useFetch";
 //https://www.w3schools.com/react/react_router.asp
-//https://stackoverflow.com/questions/29244731/react-router-how-to-manually-invoke-link
+
 const Navigation = () => {
     const navigate = useNavigate();
     // //const [msgList, setMsgList] = useState([]);
-    // //hvordan kan jeg sende med
-    const goToKirurgi = useCallback(() => navigate('/prostata-kirurgi', {replace: true}), [navigate]);
-    const goToUtredning = useCallback(() => navigate('/prostata-utredning', {replace: true}), [navigate]);
-    const goTostraalebehandling = useCallback(() => navigate('/prostata-straalebehandling', {replace: true}), [navigate]);
+
+    //https://stackoverflow.com/questions/50644976/react-button-onclick-redirect-page
+    const routeChange = (url) =>{
+        navigate(url);
+    }
 
     const {data, loading, error} = useFetch('http://localhost:8080/api/v1/meldinger');
     let msgList = []
@@ -41,9 +42,9 @@ const Navigation = () => {
             <h2>Velg en fil du vil redigere</h2>
             <div> {ShowData()}</div>
             <div style={{ width: "50%", display: "flex", alignItems:"center", justifyItems: "center", justifyContent:"space-around", margin: "30px 0 0 0"}}>
-                <button onClick={goToUtredning}> Utredning </button>
-                <button onClick={goToKirurgi}> Kirurgi </button>
-                <button onClick={goTostraalebehandling}> Straalebehandling </button>
+                <button onClick={() => routeChange('/prostata-utredning/-1')}> Utredning </button>
+                <button onClick={() => routeChange('/prostata-kirurgi/')}> Kirurgi </button>
+                <button onClick={() => routeChange('/prostata-straalebehandling/')}> Straalebehandling </button>
             </div>
         </div>
     );
