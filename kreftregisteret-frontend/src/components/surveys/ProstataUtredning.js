@@ -228,16 +228,8 @@ const ProstataUtredning = () => {
                                 } else {
                                     JSONdata[key]['biopsiVevsprover'] = false;
                                 }
-                                if (options.value.includes("turpvevsprover")) {
-                                    JSONdata[key]["turpvevsprover"] = true;
-                                } else {
-                                    JSONdata[key]["turpvevsprover"] = false;
-                                }
-                                if (options.value.includes("annetVevsprover")) {
-                                    JSONdata[key]["annetVevsprover"] = true;
-                                } else {
-                                    JSONdata[key]["annetVevsprover"] = false;
-                                }
+                                JSONdata[key]["turpvevsprover"] = !!options.value.includes("turpvevsprover");
+                                JSONdata[key]["annetVevsprover"] = !!options.value.includes("annetVevsprover");
                             }
                         }
                     }
