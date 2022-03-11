@@ -7,10 +7,12 @@ const Navigation = () => {
     const navigate = useNavigate();
     // //const [msgList, setMsgList] = useState([]);
     // //hvordan kan jeg sende med
-    const goToKirurgi = useCallback(() => navigate('/prostata-kirurgi', {replace: true}), [navigate]);
-    const goToUtredning = useCallback(() => navigate('/prostata-utredning', {replace: true}), [navigate]);
-    const goTostraalebehandling = useCallback(() => navigate('/prostata-straalebehandling', {replace: true}), [navigate]);
-
+    const goToKirurgi = useCallback(() => navigate('/prostata-kirurgi/-1', {replace: true}), [navigate]);
+    const goToUtredning = useCallback(() => navigate('/prostata-utredning/-1', {replace: true}), [navigate]);
+    const goTostraalebehandling = useCallback(() => navigate('/prostata-straalebehandling/-1', {replace: true}), [navigate]);
+    const routeChange = (url) =>{
+        navigate(url);
+    }
     const {data, loading, error} = useFetch('http://localhost:8080/api/v1/meldinger');
     let msgList = []
 
@@ -41,9 +43,9 @@ const Navigation = () => {
             <h2>Velg en fil du vil redigere</h2>
             <div> {ShowData()}</div>
             <div style={{ width: "50%", display: "flex", alignItems:"center", justifyItems: "center", justifyContent:"space-around", margin: "30px 0 0 0"}}>
-                <button onClick={goToUtredning}> Utredning </button>
-                <button onClick={goToKirurgi}> Kirurgi </button>
-                <button onClick={goTostraalebehandling}> Straalebehandling </button>
+                <button onClick={() => routeChange('/prostata-utredning/-1')}> Utredning </button>
+                <button onClick={() => routeChange('/prostata-kirurgi/')}> Kirurgi </button>
+                <button onClick={() => routeChange('/prostata-straalebehandling/')}> Straalebehandling </button>
             </div>
         </div>
     );
