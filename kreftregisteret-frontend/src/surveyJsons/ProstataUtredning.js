@@ -1310,10 +1310,9 @@ const SurveyJsonUtredning = {
                         {
                             type: "regex",
                             text: "Må være mellom 0 og 1000000 med maks ett desimal",
-                            regex: "^([1-9]\\d{0,5}|[1-9]\\d{0,5},\\d)$"
+                            regex: "^[1-9]\\d{0,5}(,\\d)?$"
                         }
-                    ],
-                    inputType: "number"
+                    ]
                 },
                 {
                     type: "checkbox",
@@ -1538,7 +1537,7 @@ const SurveyJsonUtredning = {
                         {
                             type: "expression",
                             text: "Utført dato kan ikke være dagens eller senere dato",
-                            expression: '{mrdiagnostikk} > today()'
+                            expression: 'getDate({datoMRDiagnostikk}) < today()'
                         }
                     ]
                 },
@@ -1662,15 +1661,15 @@ const SurveyJsonUtredning = {
                     type: "text",
                     name: "diagnosedato",
                     title: {
-                        no: "Dato sykdommen ble bekreftet/diagnosedato (dd.mm.åååå)"
+                        no: "Dato sykdommen ble bekreftet/diagnosedato "
                     },
                     isRequired: true,
                     inputType: "date",
                     validators: [
                         {
                             type: "expression",
-                            text: "Dato sykdommen ble kan ikke være dagens eller senere dato",
-                            expression: '{mrdiagnostikk} > today()'
+                            text: "Dato sykdommen ble bekreftet/diagnosedato kan ikke være dagens eller senere dato",
+                            expression: 'getDate({diagnosedato}) < today()'
                         }
                     ]
                 }
@@ -2534,7 +2533,7 @@ const SurveyJsonUtredning = {
                         {
                             type: "expression",
                             text: "Dato for utredning kan ikke være dagens eller senere dato",
-                            expression: '{mrdiagnostikk} > today()'
+                            expression: 'getDate({datoMetastaser}) < today()'
                         }
                     ]
                 }
