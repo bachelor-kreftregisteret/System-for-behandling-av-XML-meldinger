@@ -1311,6 +1311,7 @@ const SurveyJsonUtredning = {
                             type: "regex",
                             text: "Må være mellom 0 og 1000000 med maks ett desimal",
                             regex: "^[1-9]\\d{0,5}(,\\d)?$"
+                            // Har ikke input type number siden surveyjs tillater "," som input, men ikke som gyldig nummer
                         }
                     ]
                 },

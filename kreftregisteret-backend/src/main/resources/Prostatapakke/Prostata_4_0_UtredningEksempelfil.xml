@@ -83,7 +83,7 @@
 			<ns1:SPSA>
 				<ns1:PSAVerdi/>
 				<ns1:PSAVerdiIkkeTatt>true</ns1:PSAVerdiIkkeTatt>
-				<ns1:PSAVerdiUkjent>99</ns1:PSAVerdiUkjent>
+				<ns1:PSAVerdiUkjent/>
 			</ns1:SPSA>
 		</ns1:Sykehistorie>
 		<ns1:DiagnostiskeUS>

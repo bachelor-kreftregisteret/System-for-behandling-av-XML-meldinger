@@ -163,8 +163,8 @@ const ProstataUtredning = () => {
                             let found = false;
                             for (const fieldInSurvey in options.value) {
                                 if (options.value[fieldInSurvey] === fieldInJSON) {
-                                    if (fieldInJSON === "utredningsmetodeFjernmetUkjent") {
-                                        JSONdata[key]["utredningsmetodeFjernmet"][fieldInJSON] = "99"
+                                    if (typeof (JSONdata[key]["utredningsmetodeFjernmet"][fieldInJSON]) === "string") {
+                                        JSONdata[key]["utredningsmetodeFjernmet"][fieldInJSON] = 99;
                                     } else {
                                         JSONdata[key]["utredningsmetodeFjernmet"][fieldInJSON] = true;
                                     }
@@ -172,7 +172,7 @@ const ProstataUtredning = () => {
                                 }
                             }
                             if (!found) {
-                                if (fieldInJSON === "utredningsmetodeFjernmetUkjent") {
+                                if (typeof (JSONdata[key]["utredningsmetodeFjernmet"][fieldInJSON]) === "string") {
                                     JSONdata[key]["utredningsmetodeFjernmet"][fieldInJSON] = "";
                                 } else {
                                     JSONdata[key]["utredningsmetodeFjernmet"][fieldInJSON] = false;
@@ -180,18 +180,11 @@ const ProstataUtredning = () => {
                             }
                         }
                     }
-                    if (options.name === "fodselnummerUtland" || options.name === "labnavnHFIkkeRelevant") {
-                        console.log(options.name, "==", options.value)
-                        if (options.value.length > 0) {
-                            JSONdata[key] = true;
-                            console.log("Json er endret: ", JSONdata[key])
-                        } else {
-                            JSONdata[key] = false;
-                            console.log("Json er endret: ", JSONdata[key])
-                        }
+                    else if (typeof (JSONdata[key]) === "boolean") {
+                        JSONdata[key] = options.value.length > 0;
                     }
-                    if (options.name === "spsa") {
-                        console.log(options.value)
+                    else if (options.name === "spsa") {
+                        console.log(typeof (JSONdata[key]))
                         for (const k in JSONdata[key]) {
                             if (options.value.length <= 1) {
                                 if (options.value.includes("psaverdiIkkeTatt")) {
@@ -209,25 +202,17 @@ const ProstataUtredning = () => {
                             }
                         }
                     }
-                    if (options.name === "prostatavolumUkjent" || options.name === "datoMRDiagnostikkUkjent") {
-                        console.log(options.name, "==", options.value)
+                    else if (typeof (JSONdata[key]) === "string") {
                         if (options.value.length > 0) {
                             JSONdata[key] = 99;
-                            console.log("Json er endret: ", JSONdata[key])
                         } else {
                             JSONdata[key] = "";
-                            console.log("Json er endret: ", JSONdata[key])
                         }
                     }
-                    if (options.name === "vevsproverUS") {
-                        console.log(options.value)
+                    else if (options.name === "vevsproverUS") {
                         for (const k in JSONdata[key]) {
                             if (options.value.length >= 0) {
-                                if (options.value.includes("biopsiVevsprover")) {
-                                    JSONdata[key][`biopsiVevsprover`] = true;
-                                } else {
-                                    JSONdata[key]['biopsiVevsprover'] = false;
-                                }
+                                JSONdata[key]['biopsiVevsprover'] = !!options.value.includes("biopsiVevsprover");
                                 JSONdata[key]["turpvevsprover"] = !!options.value.includes("turpvevsprover");
                                 JSONdata[key]["annetVevsprover"] = !!options.value.includes("annetVevsprover");
                             }
@@ -245,7 +230,9 @@ const ProstataUtredning = () => {
 
     useEffect(() =>  {
         survey.onValueChanged.add(function (sender, options) {
+            console.log(data)
             setChangedValue(options, data, false);
+            console.log(data)
         });
     }, [setDataValues]);
 
