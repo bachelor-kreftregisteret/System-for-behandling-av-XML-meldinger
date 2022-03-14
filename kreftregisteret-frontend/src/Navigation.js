@@ -12,7 +12,7 @@ const Navigation = () => {
         navigate(url);
     }
 
-    const {data, loading, error} = useFetch('http://localhost:8080/api/v1/meldinger');
+    const {data, loading, error} = useFetch('/api/v1/meldinger');
     let msgList = []
 
     function ShowData() {

@@ -11,7 +11,7 @@ StylesManager.applyTheme('default')
 const ProstataUtredning = () => {
     let { id } = useParams();
     //Henter data fra backend
-    const {data, loading, error} = useFetch('http://localhost:8080/api/v1/meldinger/' + id);
+    const {data, loading, error} = useFetch('/api/v1/meldinger/' + id);
     console.log(id)
 
     //Lager en modell av surveyen vi har laget
@@ -244,7 +244,7 @@ const ProstataUtredning = () => {
         options.showDataSaving();//you may pass a text parameter to show your own text
         const headers = {
             'Content-Type': 'application/json'}
-        axios.post('http://localhost:8080/api/v1/meldinger', data,{headers})
+        axios.post('/api/v1/meldinger', data,{headers})
             .then(response => console.log(response))
             .finally(() => {
                     options.showDataSavingSuccess("Du har sent inn et skjema. Yay!");
