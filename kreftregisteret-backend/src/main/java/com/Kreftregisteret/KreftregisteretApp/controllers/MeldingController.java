@@ -18,6 +18,7 @@ public class MeldingController {
     @Autowired
     public MeldingController(MessageManager messageManager) throws IOException {
         this.messageManager = messageManager;
+        messageManager.addMeldingerFromUtFolderToMsgList();
     }
 
     //http://localhost:8080/api/v1/meldinger

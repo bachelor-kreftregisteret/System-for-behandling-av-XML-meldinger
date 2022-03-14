@@ -22,7 +22,7 @@ import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.
 @SpringBootTest
 @AutoConfigureMockMvc
 public class MeldingControllerTests {
-    final String GET_ALL_MELDINGER_ENDPOINT = "/api/v1/meldinger/";
+    final String GET_ALL_MELDINGER_ENDPOINT = "/api/v1/meldinger";
     final String POST_MELDING_ENDPOINT = "/api/v1/meldinger";
 
     @Autowired
