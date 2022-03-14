@@ -8,8 +8,6 @@ import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 import org.xml.sax.SAXException;
-import javax.xml.parsers.ParserConfigurationException;
-import javax.xml.transform.TransformerException;
 import java.io.IOException;
 import java.util.HashMap;
 
@@ -20,11 +18,6 @@ public class MeldingController {
     @Autowired
     public MeldingController(MessageManager messageManager) throws IOException {
         this.messageManager = messageManager;
-        messageManager.addMeldingerFromUtFolderToMsgList();
-        /*messageManager.getMsgMap().forEach((melding, id) ->{
-            URI location = ServletUriComponentsBuilder.path("/{id}")
-                    .buildAndExpand(id).toUri();
-        });*/
     }
 
     //http://localhost:8080/api/v1/meldinger
@@ -42,10 +35,9 @@ public class MeldingController {
         return messageManager.getMsgMap();
     }
 
-
     @CrossOrigin(origins = {"http://localhost:8080", "http://localhost:3000", "http://localhost:3001"})
     @PostMapping(path = "/api/v1/meldinger", consumes = "application/json")
-    public ResponseEntity<String> postMelding(@RequestBody Melding melding) throws JAXBException, ParserConfigurationException, IOException, ClassNotFoundException, TransformerException, SAXException {
+    public ResponseEntity<String> postMelding(@RequestBody Melding melding) {
         try {
             MessageManager.writeMeldingToPath(melding); // Validation happens here
             return ResponseEntity.status(HttpStatus.OK).build();
@@ -54,8 +46,11 @@ public class MeldingController {
             String error = "" + e.getCause();
             System.out.println("Error: " + error);
             // Error handler method that creates a json?
-            return ResponseEntity.status(HttpStatus.BAD_REQUEST).body(error);
+            return new ResponseEntity<>(error, HttpStatus.BAD_REQUEST);
+        } catch (IOException e) {
+            String error = "" + e.getCause();
+            System.out.println("Error: " + error);
+            return new ResponseEntity<>(error, HttpStatus.INTERNAL_SERVER_ERROR);
         }
     }
 }
-
