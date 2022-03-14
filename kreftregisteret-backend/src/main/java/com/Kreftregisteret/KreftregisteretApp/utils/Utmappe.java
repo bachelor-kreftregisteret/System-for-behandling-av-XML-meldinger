@@ -35,8 +35,4 @@ public class Utmappe {
         System.out.println("All files in utmappe: " + Arrays.toString(files));
         return files;
     }
-
-    public static void main(String[] args) throws MalformedURLException {
-        Utmappe.listFiles();
-    }
 }
