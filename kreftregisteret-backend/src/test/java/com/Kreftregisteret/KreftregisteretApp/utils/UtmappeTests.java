@@ -6,7 +6,6 @@ import org.springframework.boot.test.context.SpringBootTest;
 
 import java.io.File;
 import java.net.MalformedURLException;
-import java.util.Arrays;
 
 import static org.junit.jupiter.api.Assertions.*;
 
@@ -17,8 +16,7 @@ public class UtmappeTests {
     void listFiles() throws MalformedURLException {
         File[] files = Utmappe.listFiles();
         assertNotNull(files);
-        // Contains a file that ends with KliniskProstataUtredning.xml
-        assertTrue(Arrays.toString(files).contains("KliniskProstataUtredning.xml"));
+        // Filenames get tested at MeldingControllerTests.getAllMeldingerTest
     }
 
     @Test
