@@ -14,7 +14,6 @@ import java.util.HashMap;
 @RestController
 public class MeldingController {
     MessageManager messageManager;
-
     @Autowired
     public MeldingController(MessageManager messageManager) throws IOException {
         this.messageManager = messageManager;
@@ -22,21 +21,21 @@ public class MeldingController {
     }
 
     //http://localhost:8080/api/v1/meldinger
-    @CrossOrigin(origins = {"http://localhost:8080", "http://localhost:3000", "http://localhost:3001"})
+    @CrossOrigin(origins = {"https://demokrg.herokuapp.com", "http://localhost:8080", "http://localhost:3000", "http://localhost:3001"})
     @GetMapping(path = "api/v1/meldinger/{id}")
     public Melding getMelding(@PathVariable long id) throws IOException {
         return messageManager.findMeldingById(id);
     }
 
 
-    @CrossOrigin(origins = {"http://localhost:8080", "http://localhost:3000", "http://localhost:3001"})
+    @CrossOrigin(origins = {"https://demokrg.herokuapp.com", "http://localhost:8080", "http://localhost:3000", "http://localhost:3001"})
     @GetMapping(path = "api/v1/meldinger")
     public HashMap<Melding, Long> getAllMeldinger() throws IOException {
         //Kanskje vi bør vi ved lokasjonen til hver ID istedenfor ID? eller begge?
         return messageManager.getMsgMap();
     }
 
-    @CrossOrigin(origins = {"http://localhost:8080", "http://localhost:3000", "http://localhost:3001"})
+    @CrossOrigin(origins = {"https://demokrg.herokuapp.com", "http://localhost:8080", "http://localhost:3000", "http://localhost:3001"})
     @PostMapping(path = "/api/v1/meldinger", consumes = "application/json")
     public ResponseEntity<String> postMelding(@RequestBody Melding melding) {
         try {
