@@ -62,6 +62,7 @@ const SurveyJsonUtredning = {
                 {
                     type: "dropdown",
                     name: "sykehusnavnRHF",
+                    isRequired: true,
                     title: {
                         no: "Sykehus"
                     },
@@ -105,6 +106,9 @@ const SurveyJsonUtredning = {
                     ],
                     optionsCaption: {
                         no: "Velg..."
+                    },
+                    requiredErrorText: {
+                        no: "Velg et sykehus"
                     }
                 },
                 {
