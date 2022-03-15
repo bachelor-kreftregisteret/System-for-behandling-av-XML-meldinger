@@ -5,6 +5,7 @@ import com.Kreftregisteret.KreftregisteretApp.utils.Utmappe;
 import jakarta.xml.bind.*;
 import jakarta.xml.bind.util.JAXBSource;
 import org.springframework.core.io.ClassPathResource;
+import org.springframework.core.io.Resource;
 import org.springframework.stereotype.Service;
 import org.xml.sax.SAXException;
 import javax.xml.validation.Schema;
@@ -21,7 +22,6 @@ import java.util.*;
 @Service
 public class MessageManager {
     HashMap<Melding, Long> msgMap = new HashMap<>();
-
 
     private static Long id = 1L;
 
@@ -51,17 +51,19 @@ public class MessageManager {
 
     // ClassPathResource pathResource = new ClassPathResource("Prostatapakke/Prostata_4_0_UtredningEksempelfil.xml");
 //pathResource.getURL().getPath()
+    // IKKE I BRUK!!!!!!
     public Melding getMeldingFromPath(String path) {
         Melding melding = null;
         File file = new File(path);
         melding = convertFileToMelding(file);
+        // METODEN ER IKKE I BRUK!!!!!!
         msgMap.put(melding, createNewID());
         return melding;
     }
 
     //for å kjøre denne kan vi bruke melding.getClass().getName()
     //https://docs.oracle.com/javase/7/docs/api/javax/xml/bind/Marshaller.html
-    public static void writeMeldingToPath(Melding melding) throws JAXBException, IOException, SAXException {
+    public void writeMeldingToPath(Melding melding) throws JAXBException, IOException, SAXException {
         JAXBContext jaxbContext = JAXBContext.newInstance(Melding.class);
         Marshaller jaxbMarshaller = jaxbContext.createMarshaller();
         Schema schema = MessageValidator.generateSchema(melding);
@@ -69,17 +71,23 @@ public class MessageManager {
 
         // Validate against schema, throws SAXParseException if not valid
         XMLValidator.validate(schema, jaxbSource);
-
+        System.out.println("Melding skjemanavn: " + melding.getSkjemaNavn());
         SimpleDateFormat formatter = new SimpleDateFormat("ddMMyyyy_'kl'HHmmss");
         Date date = new Date();
         String formattedDate = formatter.format(date);
 
-        File file = new File(Utmappe.getPath() + formattedDate + melding.getSkjemaNavn() + ".xml");
-        jaxbMarshaller.setSchema(schema);
+        // Set filnavn
+        String newFilnavn =  formattedDate + melding.getSkjemaNavn() + ".xml";
+        melding.setFilnavn(newFilnavn);
+        File file = new File(Utmappe.getPath() + newFilnavn);
         jaxbMarshaller.marshal(melding, file); // Write to file
+        System.out.println("Melding: " + melding);
+        System.out.println("Melding skjemanavn 2: " + melding.getSkjemaNavn());
+        msgMap.put(melding, createNewID());
+        System.out.println("I write: " + msgMap);
     }
 
-    public static File findXSDFromMelding(Melding melding) throws IOException {
+    public File findXSDFromMelding(Melding melding) throws IOException {
         System.out.println(melding.toString());
         //todo Kanskje lag et hashmap med verdier for skjemanavn og .xSD, slik at man kan finne korrekt .xsd
         //
@@ -92,7 +100,7 @@ public class MessageManager {
     }
 
     // Inspired by: https://docs.oracle.com/javase/tutorial/essential/io/dirs.html
-    public static List<File> getFiles(Path directory) throws IOException, DirectoryIteratorException {
+    public List<File> getFiles(Path directory) throws IOException, DirectoryIteratorException {
         if (!Files.isDirectory(directory)) {
             throw new IOException("Directory does not exist");
         }
@@ -105,29 +113,17 @@ public class MessageManager {
         return files;
     }
 
-    public void addMeldingerFromUtFolderToMsgList() throws IOException {
-
-        //ClassPathResource pathResource = new ClassPathResource("Ut");
+    public void addMeldingerFromUtFolderToMsgList() {
         try {
             //List<File> fileList = getFiles(Path.of(Utmappe.getPath()));
-            List<File> fileList = List.of(Utmappe.listFiles());
-            fileList.forEach(file -> {
-                if(file != null) {
-                    Melding melding = convertFileToMelding(file);
-                    if(melding != null) {
-                        msgMap.put(melding, createNewID());
-                    }
-                }
-            });
+            Resource resource = new ClassPathResource("Ut/VALID_07032022_kl141937KliniskProstataUtredning.xml");
+            File file = resource.getFile();
+            Melding melding = convertFileToMelding(file);
+            msgMap.put(melding, createNewID());
         }catch(Exception e){
             System.out.println("er det her vi feiler???");
             e.printStackTrace();
         }
-    }
-
-    public static Melding getNewMelding() {
-        //kanskje implementer kø-logikk her.
-        return null;
     }
 
     public Melding findMeldingById(Long idIn) {
@@ -138,11 +134,6 @@ public class MessageManager {
                 return melding;
             }
         }
-        /*msgList.forEach((melding, uid) ->{
-            if(idIn == uid){
-                return melding;
-            }
-        });*/
         return null;
     }
 }

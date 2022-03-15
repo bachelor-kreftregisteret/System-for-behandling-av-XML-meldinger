@@ -39,7 +39,7 @@ public class MeldingController {
     @PostMapping(path = "/api/v1/meldinger", consumes = "application/json")
     public ResponseEntity<String> postMelding(@RequestBody Melding melding) {
         try {
-            MessageManager.writeMeldingToPath(melding); // Validation happens here
+            messageManager.writeMeldingToPath(melding); // Validation happens here
             return ResponseEntity.status(HttpStatus.OK).build();
         } catch (SAXException | JAXBException e) {
             // XML validation failed. Write error logic here:

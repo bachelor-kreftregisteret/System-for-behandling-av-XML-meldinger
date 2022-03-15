@@ -28,7 +28,7 @@ class MessageManagerTest {
             assert melding != null;
             //MessageManager.writeMeldingToPath(melding);
             System.out.println(melding.getSkjemaNavn() + " skjemanavn er null?=?");
-            File file = MessageManager.findXSDFromMelding(melding);
+            File file = messageManager.findXSDFromMelding(melding);
             if(file != null) {
                 System.out.println(file.toPath().toString());
             }
@@ -38,7 +38,7 @@ class MessageManagerTest {
     @DisplayName("Test: getFiles()")
     void getFilesTest() throws IOException, DirectoryIteratorException {
         Path path = Path.of("./In");
-        List<File> files = MessageManager.getFiles(path);
+        List<File> files = messageManager.getFiles(path);
 
         for (File file : files) {
             System.out.println(file.getName());
