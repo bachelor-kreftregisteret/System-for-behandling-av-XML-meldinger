@@ -2,6 +2,7 @@ package com.Kreftregisteret.KreftregisteretApp.utils.xml;
 
 import com.Kreftregisteret.KreftregisteretApp.KreftregisteretAppApplication;
 import com.Kreftregisteret.KreftregisteretApp.models.Melding;
+import com.Kreftregisteret.KreftregisteretApp.utils.StreamUtil;
 import com.Kreftregisteret.KreftregisteretApp.utils.Utmappe;
 import jakarta.xml.bind.*;
 import jakarta.xml.bind.util.JAXBSource;
@@ -80,8 +81,8 @@ public class MessageManager {
         // Set filnavn
         String newFilnavn =  formattedDate + melding.getSkjemaNavn() + ".xml";
         melding.setFilnavn(newFilnavn);
-        File file = new File(Utmappe.getPath() + newFilnavn);
-        jaxbMarshaller.marshal(melding, file); // Write to file
+//        File file = new File(Utmappe.getPath() + newFilnavn);
+//        jaxbMarshaller.marshal(melding, file); // Write to file'
         System.out.println("Melding: " + melding);
         System.out.println("Melding skjemanavn 2: " + melding.getSkjemaNavn());
         msgMap.put(melding, createNewID());
@@ -96,7 +97,8 @@ public class MessageManager {
 
         String XSDfile = XMLValidator.XSD_MAP.get(skjemanavn);
 //        Resource resource = new ClassPathResource("XSD/" + XSDfile);
-        File file = new File(KreftregisteretAppApplication.class.getClassLoader().getResource("XSD/" + XSDfile).getFile());
+
+        File file = StreamUtil.stream2file(KreftregisteretAppApplication.class.getClassLoader().getResourceAsStream("XSD/" + XSDfile));
         return file;
     }
 
@@ -121,7 +123,9 @@ public class MessageManager {
 //            Resource resource = new ClassPathResource("Ut/VALID_07032022_kl141937KliniskProstataUtredning.xml");
 //            File file = resource.getFile();
 
-            File file = new File(KreftregisteretAppApplication.class.getClassLoader().getResource("Ut/VALID_07032022_kl141937KliniskProstataUtredning.xml").getFile());
+            InputStream is = KreftregisteretAppApplication.class.getClassLoader().getResourceAsStream("Ut/VALID_07032022_kl141937KliniskProstataUtredning.xml");
+            File file = StreamUtil.stream2file(is);
+
             Melding melding = convertFileToMelding(file);
             msgMap.put(melding, createNewID());
         }catch(Exception e){
