@@ -53,7 +53,7 @@ const SurveyJsonUtredning = {
                     title: {
                         no: "Navn"
                     },
-                    defaultValue: "Halla balla",
+                    defaultValue: "Navn Navnesen",
                     isRequired: true,
                     requiredErrorText: {
                         no: "Skriv inn gyldig navn"
