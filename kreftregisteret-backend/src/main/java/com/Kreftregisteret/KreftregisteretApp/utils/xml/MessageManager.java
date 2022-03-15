@@ -94,9 +94,9 @@ public class MessageManager {
         String skjemanavn = melding.getSkjemaNavn(); //KliniskProstataUtredning
 
         String XSDfile = XMLValidator.XSD_MAP.get(skjemanavn);
-        String path = new ClassPathResource("XSD/" + XSDfile).getURL().getPath();
-        System.out.println("PATH: " + path);
-        return new File(path);
+        Resource resource = new ClassPathResource("XSD/" + XSDfile);
+
+        return resource.getFile();
     }
 
     // Inspired by: https://docs.oracle.com/javase/tutorial/essential/io/dirs.html
