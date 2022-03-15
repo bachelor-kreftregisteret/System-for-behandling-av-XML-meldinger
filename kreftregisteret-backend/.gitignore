@@ -25,10 +25,8 @@ target/
 /dist/
 /nbdist/
 /.nb-gradle/
-src/main/resources/static/
 !**/src/main/**/build/
 !**/src/test/**/build/
 
 ### VS Code ###
 .vscode/
-/src/main/resources/static/
