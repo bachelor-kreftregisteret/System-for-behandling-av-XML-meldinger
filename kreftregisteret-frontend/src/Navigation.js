@@ -1,4 +1,4 @@
-import React, {useCallback, useEffect, useState} from 'react';
+import React from 'react';
 import {Link, useNavigate} from 'react-router-dom';
 import useFetch from "./api/useFetch";
 //https://www.w3schools.com/react/react_router.asp
@@ -23,11 +23,11 @@ const Navigation = () => {
 
                 <li key={index} style={{listStyle: "none", margin: "0", padding: "10px", display: "flex", alignItems:"center" }}>
                     {item[0].includes('ProstataUtredning') &&
-                        <Link style={{textDecoration: "none"}} to={"prostata-utredning/" + item[1]}><img src="https://img.icons8.com/cotton/26/000000/file.png"/> {item[0]} </Link> }
+                        <Link style={{textDecoration: "none"}} to={"prostata-utredning/" + item[1]}>{item[0]} </Link> }
                     {item[0].includes('ProstataStraalebehandling') &&
-                        <Link to={"prostata-straalebehandling/" + item[1]}><img src="https://img.icons8.com/cotton/26/000000/file.png"/> {item[0]} </Link> }
+                        <Link to={"prostata-straalebehandling/" + item[1]}>{item[0]} </Link> }
                     {item[0].includes('ProstataKirurgi') &&
-                        <Link to={"prostata-kirurgi/" + item[1]}><img src="https://img.icons8.com/cotton/26/000000/file.png"/> {item[0]} </Link> }
+                        <Link to={"prostata-kirurgi/" + item[1]}> {item[0]} </Link> }
                 </li>)
         } else if (error !== null) {
             let string = " Noe gikk feil ved innlasting: " + error;

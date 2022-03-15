@@ -5,6 +5,7 @@ import axios from "axios";
 import {useParams} from "react-router-dom";
 import useFetch from "../../api/useFetch";
 import SurveyJsonUtredning from "../../surveyJsons/ProstataUtredning";
+import {onHidden} from "web-vitals/dist/modules/lib/onHidden";
 
 StylesManager.applyTheme('default')
 
@@ -59,7 +60,9 @@ const ProstataUtredning = () => {
                         }
                     })
                 }
+
             }
+
         }
     }
 
@@ -152,6 +155,7 @@ const ProstataUtredning = () => {
 
     useEffect(() =>  {
         setDataValues(data);
+
     }, [loading]); //Dependent på loading. Når loading endrer seg, vil setValues kjøre. Altså da er dataene klare
 
     const setChangedValue = (options, JSONdata, changed) => {

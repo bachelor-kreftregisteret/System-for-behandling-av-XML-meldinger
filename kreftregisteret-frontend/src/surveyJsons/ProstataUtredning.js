@@ -53,7 +53,6 @@ const SurveyJsonUtredning = {
                     title: {
                         no: "Navn"
                     },
-                    defaultValue: "Halla balla",
                     isRequired: true,
                     requiredErrorText: {
                         no: "Skriv inn gyldig navn"
@@ -62,10 +61,10 @@ const SurveyJsonUtredning = {
                 {
                     type: "dropdown",
                     name: "sykehusnavnRHF",
-                    isRequired: true,
                     title: {
                         no: "Sykehus"
                     },
+                    isRequired: true,
                     choices: [
                         {
                             value: "1",
@@ -106,9 +105,6 @@ const SurveyJsonUtredning = {
                     ],
                     optionsCaption: {
                         no: "Velg..."
-                    },
-                    requiredErrorText: {
-                        no: "Velg et sykehus"
                     }
                 },
                 {
@@ -1314,10 +1310,10 @@ const SurveyJsonUtredning = {
                         {
                             type: "regex",
                             text: "Må være mellom 0 og 1000000 med maks ett desimal",
-                            regex: "^[1-9]\\d{0,5}(,\\d)?$"
-                            // Har ikke input type number siden surveyjs tillater "," som input, men ikke som gyldig nummer
+                            regex: "^([1-9]\\d{0,5}|[1-9]\\d{0,5},\\d)$"
                         }
-                    ]
+                    ],
+                    inputType: "number"
                 },
                 {
                     type: "checkbox",
@@ -1464,14 +1460,14 @@ const SurveyJsonUtredning = {
                     enableIf: "{prostatavolumUkjent} empty",
                     isRequired: true,
                     requiredIf: "{prostatavolumUkjent} empty",
-                    inputType: "number",
                     validators: [
                         {
                             type: "regex",
                             text: "Må være et tall mellom 0 og 1000",
                             regex: "^[1-9]\\d{0,2}$"
                         }
-                    ]
+                    ],
+                    inputType: "number"
                 },
                 {
                     type: "checkbox",
@@ -1537,14 +1533,7 @@ const SurveyJsonUtredning = {
                     enableIf: "{datoMRDiagnostikkUkjent} empty",
                     isRequired: true,
                     requiredIf: "{datoMRDiagnostikkUkjent} empty",
-                    inputType: "date",
-                    validators: [
-                        {
-                            type: "expression",
-                            text: "Utført dato kan ikke være dagens eller senere dato",
-                            expression: 'getDate({datoMRDiagnostikk}) < today()'
-                        }
-                    ]
+                    inputType: "date"
                 },
                 {
                     type: "checkbox",
@@ -1666,17 +1655,10 @@ const SurveyJsonUtredning = {
                     type: "text",
                     name: "diagnosedato",
                     title: {
-                        no: "Dato sykdommen ble bekreftet/diagnosedato "
+                        no: "Dato sykdommen ble bekreftet/diagnosedato (dd.mm.åååå)"
                     },
                     isRequired: true,
-                    inputType: "date",
-                    validators: [
-                        {
-                            type: "expression",
-                            text: "Dato sykdommen ble bekreftet/diagnosedato kan ikke være dagens eller senere dato",
-                            expression: 'getDate({diagnosedato}) < today()'
-                        }
-                    ]
+                    inputType: "date"
                 }
             ],
             visible: false,
@@ -2533,14 +2515,7 @@ const SurveyJsonUtredning = {
                         no: "Dato for utredning av metastaser (dd.mm.åååå)"
                     },
                     isRequired: true,
-                    inputType: "date",
-                    validators: [
-                        {
-                            type: "expression",
-                            text: "Dato for utredning kan ikke være dagens eller senere dato",
-                            expression: 'getDate({datoMetastaser}) < today()'
-                        }
-                    ]
+                    inputType: "date"
                 }
             ],
             title: "{sykdomsutbredelseTitle}"
@@ -2766,10 +2741,9 @@ const SurveyJsonUtredning = {
                     title: {
                         no: "Meldedato"
                     },
+                    defaultValueExpression: "today()",
                     isRequired: true,
-                    inputType: "date",
-                    defaultValue: "=today()"
-
+                    inputType: "date"
                 },
                 {
                     type: "text",
@@ -2988,7 +2962,7 @@ const SurveyJsonUtredning = {
     clearInvisibleValues: "onHidden",
     checkErrorsMode: "onValueChanged",
     questionsOnPageMode: "singlePage"
-};
+}
 
 export default SurveyJsonUtredning;
 
