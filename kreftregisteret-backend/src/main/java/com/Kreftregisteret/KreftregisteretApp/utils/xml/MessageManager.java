@@ -1,5 +1,6 @@
 package com.Kreftregisteret.KreftregisteretApp.utils.xml;
 
+import com.Kreftregisteret.KreftregisteretApp.KreftregisteretAppApplication;
 import com.Kreftregisteret.KreftregisteretApp.models.Melding;
 import com.Kreftregisteret.KreftregisteretApp.utils.Utmappe;
 import jakarta.xml.bind.*;
@@ -94,9 +95,9 @@ public class MessageManager {
         String skjemanavn = melding.getSkjemaNavn(); //KliniskProstataUtredning
 
         String XSDfile = XMLValidator.XSD_MAP.get(skjemanavn);
-        Resource resource = new ClassPathResource("XSD/" + XSDfile);
-
-        return resource.getFile();
+//        Resource resource = new ClassPathResource("XSD/" + XSDfile);
+        File file = new File(KreftregisteretAppApplication.class.getClassLoader().getResource("XSD/" + XSDfile).getFile());
+        return file;
     }
 
     // Inspired by: https://docs.oracle.com/javase/tutorial/essential/io/dirs.html
@@ -116,8 +117,11 @@ public class MessageManager {
     public void addMeldingerFromUtFolderToMsgList() {
         try {
             //List<File> fileList = getFiles(Path.of(Utmappe.getPath()));
-            Resource resource = new ClassPathResource("Ut/VALID_07032022_kl141937KliniskProstataUtredning.xml");
-            File file = resource.getFile();
+
+//            Resource resource = new ClassPathResource("Ut/VALID_07032022_kl141937KliniskProstataUtredning.xml");
+//            File file = resource.getFile();
+
+            File file = new File(KreftregisteretAppApplication.class.getClassLoader().getResource("Ut/VALID_07032022_kl141937KliniskProstataUtredning.xml").getFile());
             Melding melding = convertFileToMelding(file);
             msgMap.put(melding, createNewID());
         }catch(Exception e){
