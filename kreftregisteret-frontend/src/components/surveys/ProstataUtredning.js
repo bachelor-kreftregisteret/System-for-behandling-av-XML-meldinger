@@ -1,11 +1,10 @@
 import React, {useEffect, useState} from "react";
 import 'survey-react/survey.css';
-import {Model, StylesManager, Survey } from "survey-react";
+import {Model, StylesManager, Survey} from "survey-react";
 import axios from "axios";
 import {useParams} from "react-router-dom";
 import useFetch from "../../api/useFetch";
 import SurveyJsonUtredning from "../../surveyJsons/ProstataUtredning";
-import {onHidden} from "web-vitals/dist/modules/lib/onHidden";
 
 StylesManager.applyTheme('default')
 
@@ -13,17 +12,21 @@ const ProstataUtredning = () => {
     let { id } = useParams();
     //Henter data fra backend
     const {data, loading, error} = useFetch('/api/v1/meldinger/' + id);
-    console.log(id)
-
+    const [showSuccess, setShowSuccess] = useState(false);
     //Lager en modell av surveyen vi har laget
     const survey = new Model(SurveyJsonUtredning);
+    const storageName = "Meldiiiiiing";
+
 
     //templister for array
     let tempArr = [];
-    let lokalisasjonsListe = [];
-    let utredningsmetodeFjernmetValues = [];
-    let vevsproverUSValues = [];
+    const lokalisasjonsListe = [];
+    const utredningsmetodeFjernmetValues = [];
+    const vevsproverUSValues = [];
+    const prevData = localStorage.getItem(storageName) || null;
 
+    prevData && (survey.data = JSON.parse(prevData));
+    console.log("setter data",survey.data )
     //Lager en array av navnene i skjemaet fra surveyjs
     const [arrayOfNames, setArrayOfNames] = useState([]);
 
@@ -155,8 +158,12 @@ const ProstataUtredning = () => {
 
     useEffect(() =>  {
         setDataValues(data);
-
     }, [loading]); //Dependent på loading. Når loading endrer seg, vil setValues kjøre. Altså da er dataene klare
+
+    function saveSurveyData(survey) {
+        localStorage.setItem(storageName, JSON.stringify(survey.data));
+    }
+
 
     const setChangedValue = (options, JSONdata, changed) => {
         for (const key in JSONdata) {
@@ -234,30 +241,31 @@ const ProstataUtredning = () => {
 
     useEffect(() =>  {
         survey.onValueChanged.add(function (sender, options) {
-            console.log(data)
             setChangedValue(options, data, false);
-            console.log(data)
         });
     }, [setDataValues]);
 
 
     //Sender tilbake det gamle skjemaet. Må fikses slik at det nye skjemaet sendes i gamle drakter..
     survey.onComplete.add(function (sender, options) {
-        console.log(data)
-        //Show message about "Saving..." the results
-        options.showDataSaving();//you may pass a text parameter to show your own text
+        saveSurveyData(survey);
+        console.log("Hva har vi her? ", localStorage.getItem("Meldiiiiiing"))
+
         const headers = {
-            'Content-Type': 'application/json'}
-        axios.post('/api/v1/meldinger', data,{headers})
-            .then(response => console.log(response))
-            .finally(() => {
-                    options.showDataSavingSuccess("Du har sent inn et skjema. Yay!");
-            } );
-    });
+            'Content-Type': 'application/json'
+        }
+        axios.post('api/v1/meldinger', data, {headers})
+            .then(response => { options.showDataSavingSuccess("Dataene var korrekte og er nå lagret på serveren"); localStorage.clear()})
+            .catch(error => {
+                options.showDataSavingError(error.response.data);
+                console.log(error.response.data)
+            })
+    })
 
     return (
         /*Render skjema*/
-        <Survey model={survey} />
+       <Survey model={survey} />
+
     )
 }
 
