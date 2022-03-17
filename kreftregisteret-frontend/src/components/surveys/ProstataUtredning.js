@@ -254,7 +254,7 @@ const ProstataUtredning = () => {
         const headers = {
             'Content-Type': 'application/json'
         }
-        axios.post('api/v1/meldinger', data, {headers})
+        axios.post('/api/v1/meldinger', data, {headers})
             .then(response => { options.showDataSavingSuccess("Dataene var korrekte og er nå lagret på serveren"); localStorage.clear()})
             .catch(error => {
                 options.showDataSavingError(error.response.data);
