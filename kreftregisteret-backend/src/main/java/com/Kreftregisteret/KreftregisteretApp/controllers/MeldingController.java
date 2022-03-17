@@ -29,7 +29,7 @@ public class MeldingController {
 
 
     @CrossOrigin(origins = {"https://demokrg.herokuapp.com", "http://localhost:8080", "http://localhost:3000", "http://localhost:3001"})
-    @GetMapping(path = "api/v1/meldinger")
+    @GetMapping(path = "/api/v1/meldinger")
     public HashMap<Melding, Long> getAllMeldinger() throws IOException {
         //Kanskje vi bør vi ved lokasjonen til hver ID istedenfor ID? eller begge?
         return messageManager.getMsgMap();
