@@ -65,6 +65,9 @@ const SurveyJsonUtredning = {
                         no: "Sykehus"
                     },
                     isRequired: true,
+                    requiredErrorText: {
+                        no: "Velg et sykehus"
+                    },
                     choices: [
                         {
                             value: "1",
@@ -105,9 +108,6 @@ const SurveyJsonUtredning = {
                     ],
                     optionsCaption: {
                         no: "Velg..."
-                    },
-                    requiredErrorText: {
-                        no: "Velg et sykehus"
                     }
                 },
                 {
@@ -2054,7 +2054,10 @@ const SurveyJsonUtredning = {
                                 no: "T4 - Tumor er fiksert eller vokser inn i nabostruktur(er) annet enn sædblære(r) "
                             }
                         }
-                    ]
+                    ],
+                    optionsCaption: {
+                        no: "Velg..."
+                    }
                 },
                 {
                     type: "dropdown",
@@ -2766,7 +2769,7 @@ const SurveyJsonUtredning = {
                     title: {
                         no: "Meldedato"
                     },
-                    defaultValue: "=today()",
+                    defaultValueExpression: "today()",
                     isRequired: true,
                     inputType: "date"
                 },
