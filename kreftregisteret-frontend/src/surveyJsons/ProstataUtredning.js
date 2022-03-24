@@ -1686,205 +1686,6 @@ const SurveyJsonUtredning = {
             }
         },
         {
-            name: "laboratorium",
-            elements: [
-                {
-                    type: "dropdown",
-                    name: "labnavnHF",
-                    title: {
-                        no: "Laboratorium"
-                    },
-                    enableIf: "{labnavnHFIkkeRelevant} empty",
-                    isRequired: true,
-                    requiredIf: "{labnavnHFIkkeRelevant} empty",
-                    choices: [
-                        {
-                            value: "21",
-                            text: {
-                                no: "AHUS, Akershus universitetssykehus"
-                            }
-                        },
-                        {
-                            value: "03",
-                            text: {
-                                no: "Fürst Patologi"
-                            }
-                        },
-                        {
-                            value: "07",
-                            text: {
-                                no: "Haukeland universitetssjukehus"
-                            }
-                        },
-                        {
-                            value: "34",
-                            text: {
-                                no: "Helse Fonna, Haugesund sjukehus"
-                            }
-                        },
-                        {
-                            value: "Helse Førde, Førde sjukehus26",
-                            text: {
-                                no: "Helse Førde, Førde sjukehus"
-                            }
-                        },
-                        {
-                            value: "10",
-                            text: {
-                                no: "Helse Møre og Romsdal, Molde sjukehus"
-                            }
-                        },
-                        {
-                            value: "17",
-                            text: {
-                                no: "Helse Sunnmøre, Ålesund sjukehus"
-                            }
-                        },
-                        {
-                            value: "18",
-                            text: {
-                                no: "Nordlandssykehuset, Bodø"
-                            }
-                        },
-                        {
-                            value: "06",
-                            text: {
-                                no: "Oslo universitetssykehus, Aker"
-                            }
-                        },
-                        {
-                            value: "01",
-                            text: {
-                                no: "Oslo universitetssykehus, Radiumhospitalet"
-                            }
-                        },
-                        {
-                            value: "02",
-                            text: {
-                                no: "Oslo universitetssykehus, Rikshospitalet"
-                            }
-                        },
-                        {
-                            value: "05",
-                            text: {
-                                no: "Oslo universitetssykehus, Ullevål"
-                            }
-                        },
-                        {
-                            value: "19",
-                            text: {
-                                no: "Stavanger universitetssjukehus"
-                            }
-                        },
-                        {
-                            value: "08",
-                            text: {
-                                no: "St. Olavs Hospital"
-                            }
-                        },
-                        {
-                            value: "15",
-                            text: {
-                                no: "Sykehuset Innlandet, Lillehammer"
-                            }
-                        },
-                        {
-                            value: "14",
-                            text: {
-                                no: "Sykehuset i Telemark, Skien"
-                            }
-                        },
-                        {
-                            value: "23",
-                            text: {
-                                no: "Sykehuset i Vestfold, Tønsberg"
-                            }
-                        },
-                        {
-                            value: "12",
-                            text: {
-                                no: "Sykehuset Østfold, Kalnes"
-                            }
-                        },
-                        {
-                            value: "20",
-                            text: {
-                                no: "Sørlandet sykehus, Kristiansand"
-                            }
-                        },
-                        {
-                            value: "11",
-                            text: {
-                                no: "Unilabs Laboratoriemedisin"
-                            }
-                        },
-                        {
-                            value: "13",
-                            text: {
-                                no: "UNN, Universitetssykehuset i Nord-Norge"
-                            }
-                        },
-                        {
-                            value: "16",
-                            text: {
-                                no: "Vestre Viken HF, Sykehuset Buskerud, Drammen"
-                            }
-                        },
-                        {
-                            value: "1",
-                            text: {
-                                no: "Annet laboratorium"
-                            }
-                        },
-                        {
-                            value: "99",
-                            text: {
-                                no: "Ukjent"
-                            }
-                        }
-                    ]
-                },
-                {
-                    type: "checkbox",
-                    name: "labnavnHFIkkeRelevant",
-                    startWithNewLine: false,
-                    title: {
-                        no: "ㅤ"
-                    },
-                    choices: [
-                        {
-                            value: "true",
-                            text: {
-                                no: "Ikke relevant"
-                            }
-                        }
-                    ]
-                },
-                {
-                    type: "text",
-                    name: "labnavnHFSpesifiser",
-                    visible: false,
-                    visibleIf: "{labnavnHF} = '1'",
-                    title: {
-                        no: "Spesifiser"
-                    }
-                },
-                {
-                    type: "text",
-                    name: "preparatnummer",
-                    visible: false,
-                    visibleIf: "{labnavnHF} notempty",
-                    startWithNewLine: false,
-                    title: {
-                        no: "Preparatnummer"
-                    }
-                }
-            ],
-            title: {
-                no: "Patologilaboratorium"
-            }
-        },
-        {
             name: "sykdomsutbredelse",
             elements: [
                 {
@@ -2544,6 +2345,205 @@ const SurveyJsonUtredning = {
                 }
             ],
             title: "{sykdomsutbredelseTitle}"
+        },
+        {
+            name: "laboratorium",
+            elements: [
+                {
+                    type: "dropdown",
+                    name: "labnavnHF",
+                    title: {
+                        no: "Laboratorium"
+                    },
+                    enableIf: "{labnavnHFIkkeRelevant} empty",
+                    isRequired: true,
+                    requiredIf: "{labnavnHFIkkeRelevant} empty",
+                    choices: [
+                        {
+                            value: "21",
+                            text: {
+                                no: "AHUS, Akershus universitetssykehus"
+                            }
+                        },
+                        {
+                            value: "03",
+                            text: {
+                                no: "Fürst Patologi"
+                            }
+                        },
+                        {
+                            value: "07",
+                            text: {
+                                no: "Haukeland universitetssjukehus"
+                            }
+                        },
+                        {
+                            value: "34",
+                            text: {
+                                no: "Helse Fonna, Haugesund sjukehus"
+                            }
+                        },
+                        {
+                            value: "Helse Førde, Førde sjukehus26",
+                            text: {
+                                no: "Helse Førde, Førde sjukehus"
+                            }
+                        },
+                        {
+                            value: "10",
+                            text: {
+                                no: "Helse Møre og Romsdal, Molde sjukehus"
+                            }
+                        },
+                        {
+                            value: "17",
+                            text: {
+                                no: "Helse Sunnmøre, Ålesund sjukehus"
+                            }
+                        },
+                        {
+                            value: "18",
+                            text: {
+                                no: "Nordlandssykehuset, Bodø"
+                            }
+                        },
+                        {
+                            value: "06",
+                            text: {
+                                no: "Oslo universitetssykehus, Aker"
+                            }
+                        },
+                        {
+                            value: "01",
+                            text: {
+                                no: "Oslo universitetssykehus, Radiumhospitalet"
+                            }
+                        },
+                        {
+                            value: "02",
+                            text: {
+                                no: "Oslo universitetssykehus, Rikshospitalet"
+                            }
+                        },
+                        {
+                            value: "05",
+                            text: {
+                                no: "Oslo universitetssykehus, Ullevål"
+                            }
+                        },
+                        {
+                            value: "19",
+                            text: {
+                                no: "Stavanger universitetssjukehus"
+                            }
+                        },
+                        {
+                            value: "08",
+                            text: {
+                                no: "St. Olavs Hospital"
+                            }
+                        },
+                        {
+                            value: "15",
+                            text: {
+                                no: "Sykehuset Innlandet, Lillehammer"
+                            }
+                        },
+                        {
+                            value: "14",
+                            text: {
+                                no: "Sykehuset i Telemark, Skien"
+                            }
+                        },
+                        {
+                            value: "23",
+                            text: {
+                                no: "Sykehuset i Vestfold, Tønsberg"
+                            }
+                        },
+                        {
+                            value: "12",
+                            text: {
+                                no: "Sykehuset Østfold, Kalnes"
+                            }
+                        },
+                        {
+                            value: "20",
+                            text: {
+                                no: "Sørlandet sykehus, Kristiansand"
+                            }
+                        },
+                        {
+                            value: "11",
+                            text: {
+                                no: "Unilabs Laboratoriemedisin"
+                            }
+                        },
+                        {
+                            value: "13",
+                            text: {
+                                no: "UNN, Universitetssykehuset i Nord-Norge"
+                            }
+                        },
+                        {
+                            value: "16",
+                            text: {
+                                no: "Vestre Viken HF, Sykehuset Buskerud, Drammen"
+                            }
+                        },
+                        {
+                            value: "1",
+                            text: {
+                                no: "Annet laboratorium"
+                            }
+                        },
+                        {
+                            value: "99",
+                            text: {
+                                no: "Ukjent"
+                            }
+                        }
+                    ]
+                },
+                {
+                    type: "checkbox",
+                    name: "labnavnHFIkkeRelevant",
+                    startWithNewLine: false,
+                    title: {
+                        no: "ㅤ"
+                    },
+                    choices: [
+                        {
+                            value: "true",
+                            text: {
+                                no: "Ikke relevant"
+                            }
+                        }
+                    ]
+                },
+                {
+                    type: "text",
+                    name: "labnavnHFSpesifiser",
+                    visible: false,
+                    visibleIf: "{labnavnHF} = '1'",
+                    title: {
+                        no: "Spesifiser"
+                    }
+                },
+                {
+                    type: "text",
+                    name: "preparatnummer",
+                    visible: false,
+                    visibleIf: "{labnavnHF} notempty",
+                    startWithNewLine: false,
+                    title: {
+                        no: "Preparatnummer"
+                    }
+                }
+            ],
+            title: {
+                no: "Patologilaboratorium"
+            }
         },
         {
             name: "kliniskTNM",
