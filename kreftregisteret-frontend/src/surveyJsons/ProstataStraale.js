@@ -1,6 +1,6 @@
-const SurveyJSONKirugi = {
+const SurveyJSONStraale = {
     locale: "no",
-    title: "RADIKAL PROSTATEKTOMI",
+    title: "STRÅLEBEHANDLING ",
     logoPosition: "right",
     pages: [
         {
@@ -1257,7 +1257,36 @@ const SurveyJSONKirugi = {
             }
         },
         {
-            name: "preoperativInformasjon",
+            name: "behandling",
+            elements: [
+                {
+                    type: "radiogroup",
+                    name: "primaerEllerPostop",
+                    titleLocation: "hidden",
+                    isRequired: true,
+                    choices: [
+                        {
+                            value: "1",
+                            text: {
+                                no: "Primær strålebehandling"
+                            }
+                        },
+                        {
+                            value: "2",
+                            text: {
+                                no: "Postoperativ strålebehandling"
+                            }
+                        }
+                    ],
+                    colCount: 2
+                }
+            ],
+            title: {
+                no: "Årsak til melding"
+            }
+        },
+        {
+            name: "preStraaleInformasjon",
             elements: [
                 {
                     type: "radiogroup",
@@ -1286,7 +1315,7 @@ const SurveyJSONKirugi = {
                     type: "radiogroup",
                     name: "revurderingSykdomsutrbredelse",
                     title: {
-                        no: "Er det gjort ny vurdering av sykdomsutbredelse (restaging) etter primær diagnose?"
+                        no: "Er det gjort ny vurdering av sykdomsutbredelse (restaging) etter primær diagnose?"
                     },
                     isRequired: true,
                     choices: [
@@ -1307,7 +1336,7 @@ const SurveyJSONKirugi = {
                 }
             ],
             title: {
-                no: "Preoperativ informasjon"
+                no: "Informasjon før strålebehandling"
             }
         },
         {
@@ -2015,31 +2044,33 @@ const SurveyJSONKirugi = {
             ],
             visible: false,
             visibleIf: "{revurderingSykdomsutrbredelse} = 1",
-            title: "Sykdomsutbredelse før prostatektomi"
+            title: {
+                no: "Sykdomsutbredelse før strålebehandling"
+            }
         },
         {
-            name: "behandling",
+            name: "preStraaleInformasjonBehandling",
             elements: [
                 {
                     type: "text",
-                    name: "preoprPSAVerdi",
+                    name: "preStraalePSAVerdi",
                     title: {
-                        no: "PSA før prostatektomi og eventuell neoadjuvant endokrin behandling"
+                        no: "PSA før strålebehandling og eventuell neoadjuvant endokrin behandling"
                     },
-                    enableIf: "{preoprPSAVerdiUkjent} empty",
+                    enableIf: "{preStraalePSAVerdiUkjent} empty",
                     isRequired: true,
-                    requiredIf: "{preoprPSAVerdiUkjent} empty",
+                    requiredIf: "{preStraalePSAVerdiUkjent} empty",
                     validators: [
                         {
                             type: "regex",
-                            text: "Må være mellom 0 og 1000000 med maks ett desimal",
-                            regex: "^([1-9]\\d{0,5}|\\d{1,6},\\d)$"
+                            text: "Må være mellom 0 og 1000000 med maks to desimaler",
+                            regex: "^([1-9]\\d{0,5}|\\d{1,6},\\d{1,2})$"
                         }
                     ]
                 },
                 {
                     type: "checkbox",
-                    name: "preoprPSAVerdiUkjent",
+                    name: "preStraalePSAVerdiUkjent",
                     startWithNewLine: false,
                     title: {
                         no: "⠀"
@@ -2055,9 +2086,9 @@ const SurveyJSONKirugi = {
                 },
                 {
                     type: "radiogroup",
-                    name: "neoadjuvantEndokrinBehandling",
+                    name: "endokrinBehandling",
                     title: {
-                        no: "Er det utført neoadjuvant endokrin behandling?"
+                        no: "Skal det gis endokrin behandling i tillegg til strålebehandling?"
                     },
                     isRequired: true,
                     choices: [
@@ -2084,32 +2115,74 @@ const SurveyJSONKirugi = {
                 },
                 {
                     type: "text",
-                    name: "datoOppstartNeoadjBeh",
+                    name: "datoOppstartEndokrinBeh",
                     visible: false,
-                    visibleIf: "{neoadjuvantEndokrinBehandling} = 1",
+                    visibleIf: "{endokrinBehandling} = 1",
                     title: {
-                        no: "Startdato for neoadjuvant endokrin behandling"
+                        no: "Dato for oppstart av endokrin behandling"
                     },
-                    enableIf: "{datoOppstartNeoadjBehUkjent} empty",
+                    enableIf: "{datoOppstartEndokrinBehUkjent} empty",
                     isRequired: true,
-                    requiredIf: "{datoOppstartNeoadjBehUkjent} empty",
+                    requiredIf: "{datoOppstartEndokrinBehUkjent} empty",
                     validators: [
                         {
                             type: "expression",
                             text: "Startdato ikke være dagens eller senere dato",
-                            expression: "getDate({datoOppstartNeoadjBeh}) < today()"
+                            expression: "getDate({datoOppstartEndokrinBeh}) < today()"
                         }
                     ],
                     inputType: "date"
                 },
                 {
                     type: "checkbox",
-                    name: "datoOppstartNeoadjBehUkjent",
+                    name: "datoOppstartEndokrinBehUkjent",
                     visible: false,
-                    visibleIf: "{neoadjuvantEndokrinBehandling} = 1",
+                    visibleIf: "{endokrinBehandling} = 1",
                     startWithNewLine: false,
                     title: {
                         no: "​⠀"
+                    },
+                    choices: [
+                        {
+                            value: "99",
+                            text: {
+                                no: "Ukjent"
+                            }
+                        }
+                    ]
+                },
+                {
+                    type: "text",
+                    name: "varighetEndokrinBehandling",
+                    visible: false,
+                    visibleIf: "{endokrinBehandling} = 1",
+                    title: {
+                        no: "Planlagt varighet av endokrin behandling gitt i antall månder"
+                    },
+                    enableIf: "{varighetEndokrinBehUkjent} empty",
+                    isRequired: true,
+                    requiredIf: "{varighetEndokrinBehUkjent} empty",
+                    requiredErrorText: {
+                        no: "Må være heltall mellom 0 og 1000"
+                    },
+                    inputType: "number",
+                    min: 1,
+                    max: 999,
+                    minErrorText: {
+                        no: "Kan ikke være mindre enn {0}"
+                    },
+                    maxErrorText: {
+                        no: "Kan ikke være større enn {0}"
+                    }
+                },
+                {
+                    type: "checkbox",
+                    name: "varighetEndokrinBehUkjent",
+                    visible: false,
+                    visibleIf: "{endokrinBehandling} = 1",
+                    startWithNewLine: false,
+                    title: {
+                        no: "⠀"
                     },
                     choices: [
                         {
@@ -2126,364 +2199,341 @@ const SurveyJSONKirugi = {
             }
         },
         {
-            name: "kirurgiskBehPrimaer",
+            name: "straalebehandling",
             elements: [
                 {
                     type: "text",
-                    name: "operasjonsdatoPrimaer",
+                    name: "datoOppstartStraale",
                     title: {
-                        no: "Operasjonsdato "
+                        no: "Dato for oppstart av strålebehandling"
                     },
                     isRequired: true,
-                    validators: [
-                        {
-                            type: "expression",
-                            text: "Operasjonsdato ikke være dagens eller senere dato",
-                            expression: "getDate({operasjonsdatoPrimaer}) < today()"
-                        }
-                    ],
                     inputType: "date"
                 },
                 {
-                    type: "dropdown",
-                    name: "typeKirurgi",
+                    type: "radiogroup",
+                    name: "eksternStraalebehandling",
                     title: {
-                        no: "Kirurgi"
+                        no: "Ekstern strålebehandling"
                     },
                     isRequired: true,
                     choices: [
-                        {
-                            value: "6",
-                            text: {
-                                no: "Åpen retropubisk"
-                            }
-                        },
-                        {
-                            value: "7",
-                            text: {
-                                no: "Perineal"
-                            }
-                        },
-                        {
-                            value: "2",
-                            text: {
-                                no: "Laparoskopisk"
-                            }
-                        },
-                        {
-                            value: "4",
-                            text: {
-                                no: "Robotassistert kirurgi"
-                            }
-                        },
-                        {
-                            value: "5",
-                            text: {
-                                no: "Annet"
-                            }
-                        }
-                    ],
-                    optionsCaption: {
-                        no: "Velg..."
-                    }
-                },
-                {
-                    type: "text",
-                    name: "typeKirurgiSpesifiser",
-                    visible: false,
-                    visibleIf: "{typeKirurgi} = 5",
-                    title: {
-                        no: "Spesifiser"
-                    }
-                },
-                {
-                    type: "dropdown",
-                    name: "nervesparendeIntensjon",
-                    title: {
-                        no: "Nervesparende intensjon"
-                    },
-                    isRequired: true,
-                    choices: [
-                        {
-                            value: "0",
-                            text: {
-                                no: "Nei"
-                            }
-                        },
-                        {
-                            value: "3",
-                            text: {
-                                no: "Ja, høyre"
-                            }
-                        },
-                        {
-                            value: "4",
-                            text: {
-                                no: "Ja, venstre"
-                            }
-                        },
-                        {
-                            value: "2",
-                            text: {
-                                no: "Ja, bilateralt"
-                            }
-                        },
-                        {
-                            value: "99",
-                            text: {
-                                no: "Ukjent"
-                            }
-                        }
-                    ],
-                    optionsCaption: {
-                        no: "Velg..."
-                    }
-                },
-                {
-                    type: "dropdown",
-                    name: "samtidigLymfadenektomi",
-                    title: {
-                        no: "Er det foretatt lymfadenektomi samtidig?"
-                    },
-                    isRequired: true,
-                    choices: [
-                        {
-                            value: "0",
-                            text: {
-                                no: "Nei"
-                            }
-                        },
-                        {
-                            value: "3",
-                            text: {
-                                no: "Ja, høyre"
-                            }
-                        },
-                        {
-                            value: "4",
-                            text: {
-                                no: "Ja, venstre"
-                            }
-                        },
-                        {
-                            value: "2",
-                            text: {
-                                no: "Ja, bilateralt"
-                            }
-                        },
-                        {
-                            value: "99",
-                            text: {
-                                no: "Ukjent"
-                            }
-                        }
-                    ],
-                    optionsCaption: {
-                        no: "Velg..."
-                    }
-                }
-            ],
-            title: {
-                no: "Radikal prostatektomi"
-            }
-        },
-        {
-            name: "laboratorium",
-            elements: [
-                {
-                    type: "dropdown",
-                    name: "labnavnHF",
-                    title: {
-                        no: "Laboratorium"
-                    },
-                    enableIf: "{labnavnHFIkkeRelevant} empty",
-                    isRequired: true,
-                    requiredIf: "{labnavnHFIkkeRelevant} empty",
-                    choices: [
-                        {
-                            value: "21",
-                            text: {
-                                no: "AHUS, Akershus universitetssykehus"
-                            }
-                        },
-                        {
-                            value: "03",
-                            text: {
-                                no: "Fürst Patologi"
-                            }
-                        },
-                        {
-                            value: "07",
-                            text: {
-                                no: "Haukeland universitetssjukehus"
-                            }
-                        },
-                        {
-                            value: "34",
-                            text: {
-                                no: "Helse Fonna, Haugesund sjukehus"
-                            }
-                        },
-                        {
-                            value: "Helse Førde, Førde sjukehus26",
-                            text: {
-                                no: "Helse Førde, Førde sjukehus"
-                            }
-                        },
-                        {
-                            value: "10",
-                            text: {
-                                no: "Helse Møre og Romsdal, Molde sjukehus"
-                            }
-                        },
-                        {
-                            value: "17",
-                            text: {
-                                no: "Helse Sunnmøre, Ålesund sjukehus"
-                            }
-                        },
-                        {
-                            value: "18",
-                            text: {
-                                no: "Nordlandssykehuset, Bodø"
-                            }
-                        },
-                        {
-                            value: "06",
-                            text: {
-                                no: "Oslo universitetssykehus, Aker"
-                            }
-                        },
-                        {
-                            value: "01",
-                            text: {
-                                no: "Oslo universitetssykehus, Radiumhospitalet"
-                            }
-                        },
-                        {
-                            value: "02",
-                            text: {
-                                no: "Oslo universitetssykehus, Rikshospitalet"
-                            }
-                        },
-                        {
-                            value: "05",
-                            text: {
-                                no: "Oslo universitetssykehus, Ullevål"
-                            }
-                        },
-                        {
-                            value: "19",
-                            text: {
-                                no: "Stavanger universitetssjukehus"
-                            }
-                        },
-                        {
-                            value: "08",
-                            text: {
-                                no: "St. Olavs Hospital"
-                            }
-                        },
-                        {
-                            value: "15",
-                            text: {
-                                no: "Sykehuset Innlandet, Lillehammer"
-                            }
-                        },
-                        {
-                            value: "14",
-                            text: {
-                                no: "Sykehuset i Telemark, Skien"
-                            }
-                        },
-                        {
-                            value: "23",
-                            text: {
-                                no: "Sykehuset i Vestfold, Tønsberg"
-                            }
-                        },
-                        {
-                            value: "12",
-                            text: {
-                                no: "Sykehuset Østfold, Kalnes"
-                            }
-                        },
-                        {
-                            value: "20",
-                            text: {
-                                no: "Sørlandet sykehus, Kristiansand"
-                            }
-                        },
-                        {
-                            value: "11",
-                            text: {
-                                no: "Unilabs Laboratoriemedisin"
-                            }
-                        },
-                        {
-                            value: "13",
-                            text: {
-                                no: "UNN, Universitetssykehuset i Nord-Norge"
-                            }
-                        },
-                        {
-                            value: "16",
-                            text: {
-                                no: "Vestre Viken HF, Sykehuset Buskerud, Drammen"
-                            }
-                        },
                         {
                             value: "1",
                             text: {
-                                no: "Annet laboratorium"
+                                no: "Ja"
                             }
                         },
                         {
-                            value: "99",
+                            value: "0",
                             text: {
-                                no: "Ukjent"
+                                no: "Nei"
                             }
+                        }
+                    ],
+                    colCount: 2
+                },
+                {
+                    type: "text",
+                    name: "prostataFRDoseGY",
+                    visible: false,
+                    visibleIf: "{eksternStraalebehandling} = 1",
+                    title: {
+                        no: "Dose per fraksjon, prostata"
+                    },
+                    enableIf: "{prostataFRDoseUkjent} empty",
+                    isRequired: true,
+                    requiredIf: "{prostataFRDoseUkjent} empty",
+                    validators: [
+                        {
+                            type: "regex",
+                            text: "Må være mellom 0 og 100 med maks to desimaler",
+                            regex: "^([1-9]\\d{0,1}|\\d{1,2},\\d{1,2})$"
                         }
                     ]
                 },
                 {
                     type: "checkbox",
-                    name: "labnavnHFIkkeRelevant",
+                    name: "prostataFRDoseUkjent",
+                    visible: false,
+                    visibleIf: "{eksternStraalebehandling} = 1",
                     startWithNewLine: false,
                     title: {
-                        no: "ㅤ"
+                        no: "⠀"
                     },
                     choices: [
                         {
-                            value: "true",
+                            value: "99",
                             text: {
-                                no: "Ikke relevant"
+                                no: "Ukjent"
                             }
                         }
                     ]
                 },
                 {
                     type: "text",
-                    name: "labnavnHFSpesifiser",
+                    name: "prostataAntFR",
                     visible: false,
-                    visibleIf: "{labnavnHF} = '1'",
+                    visibleIf: "{eksternStraalebehandling} = 1",
+                    startWithNewLine: false,
                     title: {
-                        no: "Spesifiser"
+                        no: "Antall fraksjoner"
+                    },
+                    enableIf: "{prostataAntFRUkjent} empty",
+                    isRequired: true,
+                    requiredIf: "{prostataAntFRUkjent} empty",
+                    requiredErrorText: {
+                        no: "Må være heltall mellom 0 og 100"
+                    },
+                    inputType: "number",
+                    min: 1,
+                    max: 99,
+                    minErrorText: {
+                        no: "Kan ikke være mindre enn {0}"
+                    },
+                    maxErrorText: {
+                        no: "Kan ikke være større enn {0}"
                     }
                 },
                 {
-                    type: "text",
-                    name: "preparatnummer",
+                    type: "checkbox",
+                    name: "prostataAntFRUkjent",
                     visible: false,
-                    visibleIf: "{labnavnHF} notempty",
+                    visibleIf: "{eksternStraalebehandling} = 1",
                     startWithNewLine: false,
                     title: {
-                        no: "Preparatnummer"
+                        no: "⠀"
+                    },
+                    choices: [
+                        {
+                            value: "99",
+                            text: {
+                                no: "Ukjent"
+                            }
+                        }
+                    ]
+                },
+                {
+                    type: "radiogroup",
+                    name: "lkbekkenStraalebehandling",
+                    visible: false,
+                    visibleIf: "{eksternStraalebehandling} = 1",
+                    title: {
+                        no: "Er det utført stråling mot lymfeknuter i bekkenet?"
+                    },
+                    isRequired: true,
+                    choices: [
+                        {
+                            value: "1",
+                            text: {
+                                no: "Ja"
+                            }
+                        },
+                        {
+                            value: "0",
+                            text: {
+                                no: "Nei"
+                            }
+                        }
+                    ],
+                    colCount: 2
+                },
+                {
+                    type: "radiogroup",
+                    name: "hdbrachyterapi",
+                    title: {
+                        no: "Høydoserate brachyterapi"
+                    },
+                    isRequired: true,
+                    choices: [
+                        {
+                            value: "1",
+                            text: {
+                                no: "Ja"
+                            }
+                        },
+                        {
+                            value: "0",
+                            text: {
+                                no: "Nei"
+                            }
+                        }
+                    ],
+                    colCount: 2
+                },
+                {
+                    type: "text",
+                    name: "hdbrachyterapiFRDoseGY",
+                    visible: false,
+                    visibleIf: "{hdbrachyterapi} = 1",
+                    title: {
+                        no: "Dose per fraksjon (foreskreven dose, prostata)"
+                    },
+                    enableIf: "{hdbrachyterapiFRDoseUkjent} empty",
+                    isRequired: true,
+                    requiredIf: "{hdbrachyterapiFRDoseUkjent} empty",
+                    validators: [
+                        {
+                            type: "regex",
+                            text: "Må være mellom 0 og 100 med maks to desimaler",
+                            regex: "^([1-9]\\d{0,1}|\\d{1,2},\\d{1,2})$"
+                        }
+                    ]
+                },
+                {
+                    type: "checkbox",
+                    name: "hdbrachyterapiFRDoseUkjent",
+                    visible: false,
+                    visibleIf: "{hdbrachyterapi} = 1",
+                    startWithNewLine: false,
+                    title: {
+                        no: "⠀"
+                    },
+                    choices: [
+                        {
+                            value: "99",
+                            text: {
+                                no: "Ukjent"
+                            }
+                        }
+                    ]
+                },
+                {
+                    type: "text",
+                    name: "hdbrachyterapiAntFR",
+                    visible: false,
+                    visibleIf: "{hdbrachyterapi} = 1",
+                    startWithNewLine: false,
+                    title: {
+                        no: "Antall fraksjoner"
+                    },
+                    enableIf: "{hdbrachyterapiAntFRUkjent} empty",
+                    isRequired: true,
+                    requiredIf: "{hdbrachyterapiAntFRUkjent} empty",
+                    requiredErrorText: {
+                        no: "Må være heltall mellom 0 og 10"
+                    },
+                    inputType: "number",
+                    min: 1,
+                    max: 9,
+                    minErrorText: {
+                        no: "Kan ikke være mindre enn {0}"
+                    },
+                    maxErrorText: {
+                        no: "Kan ikke være større enn {0}"
                     }
+                },
+                {
+                    type: "checkbox",
+                    name: "hdbrachyterapiAntFRUkjent",
+                    visible: false,
+                    visibleIf: "{hdbrachyterapi} = 1",
+                    startWithNewLine: false,
+                    title: {
+                        no: "⠀"
+                    },
+                    choices: [
+                        {
+                            value: "99",
+                            text: {
+                                no: "Ukjent"
+                            }
+                        }
+                    ]
+                },
+                {
+                    type: "radiogroup",
+                    name: "ldbrachyterapi",
+                    title: {
+                        no: "Lavdoserate brachyterapi"
+                    },
+                    isRequired: true,
+                    choices: [
+                        {
+                            value: "1",
+                            text: {
+                                no: "Ja"
+                            }
+                        },
+                        {
+                            value: "0",
+                            text: {
+                                no: "Nei"
+                            }
+                        }
+                    ],
+                    colCount: 2
+                },
+                {
+                    type: "text",
+                    name: "behandlingssted",
+                    visible: false,
+                    visibleIf: "{ldbrachyterapi} = 1",
+                    title: {
+                        no: "Behandlingssted"
+                    },
+                    enableIf: "{behandlingsstedUkjent} empty",
+                    isRequired: true,
+                    requiredIf: "{behandlingsstedUkjent} empty"
+                },
+                {
+                    type: "checkbox",
+                    name: "behandlingsstedUkjent",
+                    visible: false,
+                    visibleIf: "{ldbrachyterapi} = 1",
+                    startWithNewLine: false,
+                    title: {
+                        no: "⠀"
+                    },
+                    choices: [
+                        {
+                            value: "99",
+                            text: {
+                                no: "Ukjent"
+                            }
+                        }
+                    ]
+                },
+                {
+                    type: "text",
+                    name: "ldbrachyterapiFRDoseGY",
+                    visible: false,
+                    visibleIf: "{ldbrachyterapi} = 1",
+                    startWithNewLine: false,
+                    title: {
+                        no: "Dose (foreskreven dose, prostata)"
+                    },
+                    enableIf: "{ldbrachyterapiFRDoseUkjent} empty",
+                    isRequired: true,
+                    requiredIf: "{ldbrachyterapiFRDoseUkjent} empty",
+                    validators: [
+                        {
+                            type: "regex",
+                            text: "Må være mellom 0 og 1000 med maks to desimaler",
+                            regex: "^([1-9]\\d{0,2}|\\d{1,3},\\d{1,2})$"
+                        }
+                    ]
+                },
+                {
+                    type: "checkbox",
+                    name: "ldbrachyterapiFRDoseUkjent",
+                    visibleIf: "{ldbrachyterapi} = 1",
+                    startWithNewLine: false,
+                    title: {
+                        no: "⠀"
+                    },
+                    choices: [
+                        {
+                            value: "99",
+                            text: {
+                                no: "Ukjent"
+                            }
+                        }
+                    ]
                 }
             ],
             title: {
-                no: "Patologilaboratorium"
+                no: "Strålebehandling (kurativ strålebehandling)"
             }
         },
         {
@@ -2545,18 +2595,48 @@ const SurveyJSONKirugi = {
         },
         {
             type: "setvalue",
-            expression: "{labnavnHFIkkeRelevant} notempty",
-            setToName: "labnavnHF"
+            expression: "{preStraalePSAVerdiUkjent} notempty",
+            setToName: "preStraalePSAVerdi"
         },
         {
             type: "setvalue",
-            expression: "{preoprPSAVerdiUkjent} notempty",
-            setToName: "preoprPSAVerdi"
+            expression: "{datoOppstartEndokrinBehUkjent} notempty",
+            setToName: "datoOppstartEndokrinBeh"
         },
         {
             type: "setvalue",
-            expression: "{datoOppstartNeoadjBehUkjent} notempty",
-            setToName: "datoOppstartNeoadjBeh"
+            expression: "{varighetEndokrinBehUkjent} notempty",
+            setToName: "varighetEndokrinBehandling"
+        },
+        {
+            type: "setvalue",
+            expression: "{prostataFRDoseUkjent} notempty",
+            setToName: "prostataFRDoseGY"
+        },
+        {
+            type: "setvalue",
+            expression: "{prostataAntFRUkjent} notempty",
+            setToName: "prostataAntFR"
+        },
+        {
+            type: "setvalue",
+            expression: "{hdbrachyterapiFRDoseUkjent} notempty",
+            setToName: "hdbrachyterapiFRDoseGY"
+        },
+        {
+            type: "setvalue",
+            expression: "{hdbrachyterapiAntFRUkjent} notempty",
+            setToName: "hdbrachyterapiAntFR"
+        },
+        {
+            type: "setvalue",
+            expression: "{behandlingsstedUkjent} notempty",
+            setToName: "behandlingssted"
+        },
+        {
+            type: "setvalue",
+            expression: "{ldbrachyterapiFRDoseUkjent} notempty",
+            setToName: "ldbrachyterapiFRDoseGY"
         },
         {
             type: "setvalue",
@@ -2651,4 +2731,4 @@ const SurveyJSONKirugi = {
     questionsOnPageMode: "singlePage"
 };
 
-export default SurveyJSONKirugi;
+export default SurveyJSONStraale;
