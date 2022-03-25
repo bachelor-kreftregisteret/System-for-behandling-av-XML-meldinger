@@ -1640,7 +1640,7 @@ const SurveyJsonUtredning = {
                         {
                             value: "turpvevsprover",
                             text: {
-                                no: " TUR-P"
+                                no: "TUR-P"
                             }
                         },
                         {

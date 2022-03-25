@@ -20,142 +20,68 @@ const ProstataUtredning = () => {
 
 
     //templister for array
-    let tempArr = [];
-    const lokalisasjonsListe = [];
-    const utredningsmetodeFjernmetValues = [];
-    const vevsproverUSValues = [];
+    let checkboxes = [];
+    let flattenedJSON = [];
     const prevData = localStorage.getItem(storageName) || null;
 
     // prevData && (survey.data = JSON.parse(prevData));
     console.log("setter data",survey.data )
-    //Lager en array av navnene i skjemaet fra surveyjs
-    const [arrayOfNames, setArrayOfNames] = useState([]);
 
-    const setDataValues = (incomingDataObject) => {
-        if (incomingDataObject === undefined) console.log(error)
-        for (const key in incomingDataObject) {
-            if (typeof (incomingDataObject[key]) === "object") {
-                setDataValues(incomingDataObject[key]);
-                // Hvis det er et objekt vil denne funksjonen rekursivt
-                // fortsette å lete til det ikke lenger er det slik at vi kommer til siste objekt i strukturen.
-            } else {
-                if (arrayOfNames) {
-                    arrayOfNames.map((name) => {
-                        if (key === name) {
-                            if (key === "SamletMRBasertKliniskT" || key === "SamletPalpatoriskTumor" || key === "cn" || key === "cm") {
-                                return
-                            }
-                            survey.setValue(`${name}`, incomingDataObject[key])
-                            survey.setValue("lokalisasjonFjernmet", getLokalisasjonValues(incomingDataObject))
-                            survey.setValue("utredningsmetodeMetastaser", getUtredningsmetodeFjernmetValues(incomingDataObject))
-                            survey.setValue("vevsproverUS", getVevsproverUSValues(incomingDataObject))
-                            if (key === "funnUtredning" && incomingDataObject[key] === "2") { //2 eksisterer ikke som verdi lenger.
-                                survey.setValue(`${name}`, "1");
-                            }
-                        }
-                        //psaverdiIkkeTatt eksisterer ikke som navn i nytt skjema
-                        if (key === "psaverdiIkkeTatt") {
-                            console.log("OBJEKT", key)
-                            if (incomingDataObject[key] === true) {
-                                survey.setValue(`spsa`, "psaverdiIkkeTatt")
-                            } else if (incomingDataObject[key] === "99") {
-                                survey.setValue(`spsa`, "psaverdiUkjent")
-                            }
-                        }
-                    })
+    // Finds checkboxes with more than one box in the given surveyJS json
+    const findCheckboxes = (JSONdata) => {
+        for (const key in JSONdata) {
+            if (JSONdata[key].type === "checkbox" && JSONdata[key].choices.length > 1) {
+                let checkboxChoices = [JSONdata[key].name];
+                for (let i = 0; i < JSONdata[key].choices.length; i++) {
+                    checkboxChoices.push(JSONdata[key].choices[i].value);
                 }
-
+                checkboxes.push(checkboxChoices);
+            } else if (typeof (JSONdata[key]) === "object") {
+                findCheckboxes(JSONdata[key]);
             }
-
         }
     }
 
-    const getVevsproverUSValues = (incomingDataObject) => {
-        for (const key in incomingDataObject)
-            if (incomingDataObject[key] === true) {
-                if (key === "biopsiVevsprover") {
-                    vevsproverUSValues.push(key);
-                }
-                if (key === "turpvevsprover") {
-                    vevsproverUSValues.push(key);
-                }
-                if (key === "annetVevsprover") {
-                    vevsproverUSValues.push(key);
+    // Adds excluded checkbox data to the flattened JSON
+    const addCheckboxToFlattenedJSON = (JSONdata, checkboxGroup) => {
+        let values = []
+        for (const key in JSONdata) {
+            if (JSONdata[key] === true || JSONdata[key] === 99) {
+                for (const checkbox in checkboxes[checkboxGroup]) {
+                    if (key === checkboxes[checkboxGroup][checkbox]) {
+                        values.push(key)
+                        break
+                    }
                 }
             }
-        return vevsproverUSValues;
+        }
+        flattenedJSON[checkboxes[checkboxGroup][0]] = values;
     }
 
-    const getLokalisasjonValues = (incomingDataObject) => {
-        for (const key in incomingDataObject)
-            if (incomingDataObject[key] === true) {
-                if (key === "annetFjernmet") {
-                    lokalisasjonsListe.push(key);
+    // Loops through input JSON and flattens the JSON, but excludes checkboxes with more than one box
+    const flatten = (JSONdata) => {
+        for (const key in JSONdata) {
+            if (typeof JSONdata[key] !== "object") {
+                for (const checkboxGroup in checkboxes) {
+                    for (const checkbox in checkboxes[checkboxGroup]) {
+                        if (key === checkboxes[checkboxGroup][checkbox]) {
+                            addCheckboxToFlattenedJSON(JSONdata, checkboxGroup)
+                            return
+                        }
+                    }
                 }
-                if (key === "fjerneLKmet") {
-                    lokalisasjonsListe.push(key);
-                }
-                if (key === "skjelettmet") {
-                    lokalisasjonsListe.push(key);
-                }
+                flattenedJSON[key] = JSONdata[key];
+            } else {
+                flatten(JSONdata[key]);
             }
-        return lokalisasjonsListe;
+        }
     }
 
-    const getUtredningsmetodeFjernmetValues = (incomingDataObject) => {
-        for (const key in incomingDataObject)
-            if (incomingDataObject[key] === true) {
-                if (key === "annenDiagnostikkMet")
-                    utredningsmetodeFjernmetValues.push(key);
-
-                if (key === "biopsiMet") {
-                    utredningsmetodeFjernmetValues.push(key);
-                }
-                if (key === "ctmet") {
-                    utredningsmetodeFjernmetValues.push(key);
-                }
-                if (key === "mrmet")
-                    utredningsmetodeFjernmetValues.push(key);
-
-                if (key === "petmet") {
-                    utredningsmetodeFjernmetValues.push(key);
-                }
-                if (key === "rtgBekkenMet") {
-                    utredningsmetodeFjernmetValues.push(key);
-                }
-                if (key === "utredningsmetodeFjernmetUkjent") {
-                    utredningsmetodeFjernmetValues.push(key);
-                }
-                if (key === "skjelettscintigrafiMet") {
-                    utredningsmetodeFjernmetValues.push(key);
-                }
-                if (key === "rtgThoraxMet") {
-                    utredningsmetodeFjernmetValues.push(key);
-                }
-                if (key === "cytologiMet") {
-                    utredningsmetodeFjernmetValues.push(key);
-                }
-
-            }
-        return utredningsmetodeFjernmetValues;
+    const setDataValues = (data) => {
+        findCheckboxes(SurveyJsonUtredning);
+        flatten(data);
+        survey.data = flattenedJSON;
     }
-
-    //Henter og lager en liste av alle navn fra surveyJS-skjemaet vårt
-    const addPropertyNamesToArray = (obj) => {
-        obj = SurveyJsonUtredning.pages; //SurveyJSON.pages er et array med flere elementer i hvert object
-        obj.map(el => {
-            if (typeof (el) == "object") {
-                el.elements.map(ele =>
-                    tempArr.push(ele.name));
-            }
-        });
-        setArrayOfNames(tempArr);
-    };
-
-    //Kjører metoden
-    useEffect(() =>  {
-        addPropertyNamesToArray(SurveyJsonUtredning);
-    }, [SurveyJsonUtredning]);
 
     useEffect(() =>  {
         setDataValues(data);
@@ -164,7 +90,6 @@ const ProstataUtredning = () => {
     function saveSurveyData(survey) {
         localStorage.setItem(storageName, JSON.stringify(survey.data));
     }
-
 
     const setChangedValue = (options, JSONdata, changed) => {
         for (const key in JSONdata) {
@@ -261,7 +186,6 @@ const ProstataUtredning = () => {
     survey.onComplete.add(function (sender, options) {
         replaceUndefined(data);
         saveSurveyData(survey);
-        console.log(survey.data)
         console.log("Hva har vi her? ", localStorage.getItem("Meldiiiiiing"))
 
         const headers = {
