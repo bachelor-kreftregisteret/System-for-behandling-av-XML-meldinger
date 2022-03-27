@@ -30,6 +30,19 @@ public class MessageManager {
         return id++;
     }
 
+    public void updateMsgMap(Melding melding) {
+        Melding oldmelding = this.findMeldingById(melding.getId());
+        msgMap.remove(oldmelding);
+        //oppdater tidspunktendret
+        // "2001-12-17T09:30:47Z"
+        //er formatet
+        SimpleDateFormat formatter = new SimpleDateFormat("yyyy-MM-dd'kl'HHmmss");
+        Date date = new Date();
+        String formattedDate = formatter.format(date);
+        melding.setLastChangedTime(formattedDate);
+        msgMap.put(melding, melding.getId());
+    }
+
     public HashMap<Melding, Long> getMsgMap() {
         return msgMap;
     }
@@ -70,7 +83,7 @@ public class MessageManager {
     //for å kjøre denne kan vi bruke melding.getClass().getName()
     //inni i denne metoden bør vi også erstatte den gamle meldingen med den nye
     //https://docs.oracle.com/javase/7/docs/api/javax/xml/bind/Marshaller.html
-    public static void writeMeldingToPath(Melding melding) throws JAXBException, IOException, SAXException {
+    public void writeMeldingToPath(Melding melding) throws JAXBException, IOException, SAXException {
         JAXBContext jaxbContext = JAXBContext.newInstance(Melding.class);
         Marshaller jaxbMarshaller = jaxbContext.createMarshaller();
         Schema schema = MessageValidator.generateSchema(melding);

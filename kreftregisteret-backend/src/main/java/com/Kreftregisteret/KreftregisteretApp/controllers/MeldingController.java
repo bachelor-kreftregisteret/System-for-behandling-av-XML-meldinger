@@ -1,19 +1,26 @@
 package com.Kreftregisteret.KreftregisteretApp.controllers;
 
 
+import com.Kreftregisteret.KreftregisteretApp.models.KliniskProstataUtredning.KliniskProstataUtredning;
 import com.Kreftregisteret.KreftregisteretApp.models.Melding;
 import com.Kreftregisteret.KreftregisteretApp.utils.xml.MessageManager;
+import com.fasterxml.jackson.core.JacksonException;
 import com.fasterxml.jackson.databind.ObjectMapper;
+import com.google.gson.Gson;
 import jakarta.xml.bind.JAXBException;
+import org.apache.tomcat.util.http.fileupload.IOUtils;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpEntity;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 import org.xml.sax.SAXException;
 
+import javax.servlet.http.HttpServletRequest;
 import javax.xml.parsers.ParserConfigurationException;
 import javax.xml.transform.TransformerException;
 import java.io.IOException;
+import java.nio.charset.StandardCharsets;
 import java.util.HashMap;
 
 
@@ -45,24 +52,41 @@ public class MeldingController {
     @PostMapping(path = "/api/v1/meldinger", consumes = "application/json")
     public ResponseEntity<String> postMelding(@RequestBody Melding melding) throws JAXBException, ParserConfigurationException, IOException, ClassNotFoundException, TransformerException, SAXException {
         try {
-            ObjectMapper mapper = new ObjectMapper();
-
-            //Object to JSON in String
-            String jsonInString = mapper.writeValueAsString(melding);
-            System.out.println(jsonInString);
-            MessageManager.writeMeldingToPath(melding); // Validation happens here
+            System.out.println("WTF SKJER1??????" + melding);
+            //String jsonInString = mapper.writeValueAsString(melding);
+            // System.out.println(jsonInString);
+            if (melding == null) {
+                System.out.println("yikes, melding er null");
+            }
+            System.out.println("kommer vi engang etter dette? wtfs");
+            messageManager.writeMeldingToPath(melding); // Validation happens here
+            messageManager.updateMsgMap(melding);
             return ResponseEntity.status(HttpStatus.OK).build();
         } catch (SAXException | JAXBException e) {
             // XML validation failed. Write error logic here:
             String error = "" + e.getCause();
-            System.out.println("Error: " + error);
+            System.out.println("Sax/jaxbError: " + error);
             // Error handler method that creates a json?
             return new ResponseEntity<>(error, HttpStatus.BAD_REQUEST);
+        } catch (JacksonException e) {
+            String error = "" + e.getCause();
+            System.out.println("JacksonError: " + error);
+            return new ResponseEntity<>(error, HttpStatus.INTERNAL_SERVER_ERROR);
         } catch (IOException e) {
             String error = "" + e.getCause();
-            System.out.println("Error: " + error);
+            System.out.println("IoexceptionError: " + error);
             return new ResponseEntity<>(error, HttpStatus.INTERNAL_SERVER_ERROR);
         }
+
     }
+/*
+    @CrossOrigin(origins = {"https://demokrg.herokuapp.com", "http://localhost:8080", "http://localhost:3000", "http://localhost:3001"})
+    @PostMapping(path = "/api/v1/meldinger", consumes = "application/json")
+    public ResponseEntity<String> postMelding(@RequestBody String json) throws JAXBException, ParserConfigurationException, IOException, ClassNotFoundException, TransformerException, SAXException {
+        System.out.println("json = " + json);
+
+        return new ResponseEntity<>(json, HttpStatus.INTERNAL_SERVER_ERROR);
+
+    }*/
 }
 
