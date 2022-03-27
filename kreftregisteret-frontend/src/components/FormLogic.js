@@ -4,7 +4,7 @@ import React from 'react';
 import "../App.css";
 
 
-const ShowData = () => {
+const ShowMeldingList = () => {
     const {data, loading, error} = useFetch('/api/v1/meldinger');
     let msgList = []
 
@@ -16,10 +16,14 @@ const ShowData = () => {
     }
 
     const formatDate = (date) => {
-        const newDate = new Date(date)
-        const dateString = `${newDate.getDate()}-${newDate.getMonth()}-${newDate.getFullYear()} 
+            const newDate = new Date(date)
+            const dateString = `${newDate.getDate()}-${newDate.getMonth()}-${newDate.getFullYear()} 
         kl.${newDate.getHours()}:${newDate.getMinutes()} `
-        return dateString;
+        if(dateString.includes("NaN")) {
+            return date;
+        }
+            return dateString;
+
     }
 
     if (!loading && data !== null) {
@@ -41,12 +45,12 @@ const ShowData = () => {
                         } else if (item.Skjemanavn === 'KliniskProstataKirurgi') {
                             routeChange("prostata-kirurgi/" + item.id)
                         }
-                    } }> Rediger </button></td>
+                    } }> Endre </button></td>
                 </tr>
             ))
 
         return (
-        <div>
+        <div className={"centeredFlex"}>
             <table>
                 <thead style={{textAlign: "left"}}>
                 <tr>
@@ -80,4 +84,4 @@ const ShowData = () => {
     }
 }
 
-export default ShowData;
+export default ShowMeldingList;
