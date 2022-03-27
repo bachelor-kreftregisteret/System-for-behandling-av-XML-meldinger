@@ -7,6 +7,7 @@ import jakarta.xml.bind.util.JAXBSource;
 import org.springframework.core.io.ClassPathResource;
 import org.springframework.stereotype.Service;
 import org.xml.sax.SAXException;
+
 import javax.xml.validation.Schema;
 import java.io.*;
 import java.nio.file.DirectoryIteratorException;
@@ -22,26 +23,31 @@ import java.util.*;
 public class MessageManager {
     HashMap<Melding, Long> msgMap = new HashMap<>();
 
-
     private static Long id = 1L;
 
     //sikter på thread-safety
-    public static synchronized Long createNewID()
-    {
+    public static synchronized Long createNewID() {
         return id++;
     }
 
     public HashMap<Melding, Long> getMsgMap() {
         return msgMap;
     }
+
     //kanskje legg til Optional<Melding> her istedenfor å kanskje returnere null (?)
     private Melding convertFileToMelding(File file) {
         Melding melding = null;
         try {
             JAXBContext jaxbContext = JAXBContext.newInstance(Melding.class);
             Unmarshaller jaxbUnmarshaller = jaxbContext.createUnmarshaller();
+
             melding = (Melding) jaxbUnmarshaller.unmarshal(file);
-            melding.setFilnavn(file.getName());
+            if (melding != null) {
+                melding.setId(id);
+                melding.setLastChangedTime(melding.getMetaData());
+                melding.setFilnavn(file.getName());
+            }
+
             return melding;
         } catch (JAXBException e) {
             e.printStackTrace();
@@ -55,11 +61,14 @@ public class MessageManager {
         Melding melding = null;
         File file = new File(path);
         melding = convertFileToMelding(file);
+        Long id = createNewID();
+
         msgMap.put(melding, createNewID());
         return melding;
     }
 
     //for å kjøre denne kan vi bruke melding.getClass().getName()
+    //inni i denne metoden bør vi også erstatte den gamle meldingen med den nye
     //https://docs.oracle.com/javase/7/docs/api/javax/xml/bind/Marshaller.html
     public static void writeMeldingToPath(Melding melding) throws JAXBException, IOException, SAXException {
         JAXBContext jaxbContext = JAXBContext.newInstance(Melding.class);
@@ -80,6 +89,7 @@ public class MessageManager {
     }
 
     public static File findXSDFromMelding(Melding melding) throws IOException {
+        System.out.println("er det her??");
         System.out.println(melding.toString());
         //todo Kanskje lag et hashmap med verdier for skjemanavn og .xSD, slik at man kan finne korrekt .xsd
         //
@@ -112,14 +122,15 @@ public class MessageManager {
             //List<File> fileList = getFiles(Path.of(Utmappe.getPath()));
             List<File> fileList = List.of(Utmappe.listFiles());
             fileList.forEach(file -> {
-                if(file != null) {
+                if (file != null) {
                     Melding melding = convertFileToMelding(file);
-                    if(melding != null) {
+                    System.out.println(melding);
+                    if (melding != null) {
                         msgMap.put(melding, createNewID());
                     }
                 }
             });
-        }catch(Exception e){
+        } catch (Exception e) {
             System.out.println("er det her vi feiler???");
             e.printStackTrace();
         }
@@ -134,7 +145,7 @@ public class MessageManager {
         for (Map.Entry<Melding, Long> entry : msgMap.entrySet()) {
             Melding melding = entry.getKey();
             Long value = entry.getValue();
-            if(Objects.equals(value, idIn)){
+            if (Objects.equals(value, idIn)) {
                 return melding;
             }
         }

@@ -1,19 +1,26 @@
 package com.Kreftregisteret.KreftregisteretApp.controllers;
 
+
 import com.Kreftregisteret.KreftregisteretApp.models.Melding;
 import com.Kreftregisteret.KreftregisteretApp.utils.xml.MessageManager;
+import com.fasterxml.jackson.databind.ObjectMapper;
 import jakarta.xml.bind.JAXBException;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 import org.xml.sax.SAXException;
+
+import javax.xml.parsers.ParserConfigurationException;
+import javax.xml.transform.TransformerException;
 import java.io.IOException;
 import java.util.HashMap;
+
 
 @RestController
 public class MeldingController {
     MessageManager messageManager;
+
     @Autowired
     public MeldingController(MessageManager messageManager) throws IOException {
         this.messageManager = messageManager;
@@ -31,14 +38,18 @@ public class MeldingController {
     @CrossOrigin(origins = {"https://demokrg.herokuapp.com", "http://localhost:8080", "http://localhost:3000", "http://localhost:3001"})
     @GetMapping(path = "api/v1/meldinger")
     public HashMap<Melding, Long> getAllMeldinger() throws IOException {
-        //Kanskje vi bør vi ved lokasjonen til hver ID istedenfor ID? eller begge?
         return messageManager.getMsgMap();
     }
 
     @CrossOrigin(origins = {"https://demokrg.herokuapp.com", "http://localhost:8080", "http://localhost:3000", "http://localhost:3001"})
     @PostMapping(path = "/api/v1/meldinger", consumes = "application/json")
-    public ResponseEntity<String> postMelding(@RequestBody Melding melding) {
+    public ResponseEntity<String> postMelding(@RequestBody Melding melding) throws JAXBException, ParserConfigurationException, IOException, ClassNotFoundException, TransformerException, SAXException {
         try {
+            ObjectMapper mapper = new ObjectMapper();
+
+            //Object to JSON in String
+            String jsonInString = mapper.writeValueAsString(melding);
+            System.out.println(jsonInString);
             MessageManager.writeMeldingToPath(melding); // Validation happens here
             return ResponseEntity.status(HttpStatus.OK).build();
         } catch (SAXException | JAXBException e) {
@@ -54,3 +65,4 @@ public class MeldingController {
         }
     }
 }
+

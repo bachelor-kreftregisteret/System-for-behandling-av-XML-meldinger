@@ -23,7 +23,7 @@ class MessageManagerTest {
 
         @Test
         public void messageManagerTest() throws JAXBException, ParserConfigurationException, IOException, TransformerException, SAXException, ClassNotFoundException {
-            ClassPathResource pathResource = new ClassPathResource("Prostatapakke/Prostata_4_0_StraalebehandlingEksempelfil.xml");
+            ClassPathResource pathResource = new ClassPathResource("utmappe/Prostata_4_0_StraalebehandlingEksempelfil.xml");
             Melding melding = messageManager.getMeldingFromPath(pathResource.getURL().getPath());
             assert melding != null;
             //MessageManager.writeMeldingToPath(melding);

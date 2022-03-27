@@ -9,7 +9,7 @@ import com.fasterxml.jackson.databind.annotation.JsonDeserialize;
 import jakarta.xml.bind.annotation.XmlSeeAlso;
 import jakarta.xml.bind.annotation.XmlTransient;
 
-@JsonTypeInfo( use = JsonTypeInfo.Id.NAME, include = JsonTypeInfo.As.PROPERTY)
+@JsonTypeInfo(use = JsonTypeInfo.Id.NAME, include = JsonTypeInfo.As.PROPERTY)
 @JsonSubTypes({
         @JsonSubTypes.Type(value = KliniskProstataStraale.class),
         @JsonSubTypes.Type(value = KliniskProstataUtredning.class),
@@ -18,11 +18,33 @@ import jakarta.xml.bind.annotation.XmlTransient;
 @XmlSeeAlso({KliniskProstataUtredning.class, KliniskProstataKirurgi.class, KliniskProstataStraale.class})
 @XmlTransient
 public abstract class Melding {
-    //todo kanskje all meldingsinformasjon kan trekkes opp hit? hvordan vil det fungere? blir det mye jobb i fremtiden?
+    //Denne tostringen vises i listen over meldinger som klienten har på landingpage
     @Override
     public String toString() {
-        return getFilnavn();
+        return "{\"id\" : " + getId() + ", \"Filnavn\" :" + "\"" + getFilnavn() + "\"" + ",  \"Skjemanavn\": " + "\"" + getSkjemaNavn() + "\"" + ", \"Endrettidspunkt\": " + "\"" + lastChangedTime + "\"" + "}";
     }
+
+    public Long getId() {
+        return id;
+    }
+
+    public void setId(Long id) {
+        this.id = id;
+    }
+
+    public String getLastChangedTime() {
+        return lastChangedTime;
+    }
+
+    public void setLastChangedTime(String lastChangedTime) {
+        this.lastChangedTime = lastChangedTime;
+    }
+
+    @XmlTransient
+    private Long id;
+
+    @XmlTransient
+    public String lastChangedTime;
 
     public abstract String getSkjemaNavn();
 
@@ -32,5 +54,4 @@ public abstract class Melding {
 
     public abstract String getFilnavn();
 
-    //todo LAG EN MELDINGSINFORMASJONSINTERFACE?????? for å kunne hente ut data om hver melding..
 }

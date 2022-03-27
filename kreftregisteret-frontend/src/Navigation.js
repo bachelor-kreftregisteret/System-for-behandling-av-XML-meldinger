@@ -15,6 +15,7 @@ const Navigation = () => {
     const {data, loading, error} = useFetch('http://localhost:8080/api/v1/meldinger');
     let msgList = []
 
+
     function ShowData() {
         if (!loading && data !== null) {
             msgList = Object.keys(data).map((key) => [key, data[key]]);

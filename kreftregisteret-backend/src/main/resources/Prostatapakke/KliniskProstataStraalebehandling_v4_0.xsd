@@ -4,7 +4,7 @@
 	<xs:element name="KliniskProstataStraale">
 		<xs:annotation>
 			<xs:documentation>Rotelement</xs:documentation>
-		</xs:annotation>
+		</xs:annotation>	
 		<xs:complexType>
 			<xs:sequence>
 				<xs:element ref="ns1:Meldingsinformasjon"/>

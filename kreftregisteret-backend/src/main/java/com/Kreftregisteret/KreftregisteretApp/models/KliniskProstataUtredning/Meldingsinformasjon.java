@@ -70,6 +70,7 @@ import jakarta.xml.bind.annotation.XmlType;
  */
 @XmlAccessorType(XmlAccessType.FIELD)
 @XmlType(name = "", propOrder = {
+
     "skjema",
     "versjonsNr",
     "versjonsNrOriginal",

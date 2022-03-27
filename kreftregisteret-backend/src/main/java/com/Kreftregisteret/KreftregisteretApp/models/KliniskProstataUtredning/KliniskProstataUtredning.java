@@ -216,7 +216,7 @@ public class KliniskProstataUtredning extends Melding implements Serializable {
 
     @Override
     public String getMetaData() {
-        return this.meldingsinformasjon.getTidspunktSubmit() + this.meldingsinformasjon.getVersjonsNr();
+        return this.meldingsinformasjon.getTidspunktSubmit();
     }
 
     @Override

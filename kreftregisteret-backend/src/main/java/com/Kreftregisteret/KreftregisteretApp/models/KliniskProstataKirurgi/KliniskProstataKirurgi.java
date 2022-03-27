@@ -181,7 +181,7 @@ public class KliniskProstataKirurgi extends Melding {
 
     @Override
     public String getMetaData() {
-        return this.meldingsinformasjon.getTidspunktSubmit() + this.meldingsinformasjon.getVersjonsNr();
+        return this.meldingsinformasjon.getTidspunktSubmit();
     }
 
     @Override
