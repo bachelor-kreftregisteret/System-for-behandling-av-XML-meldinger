@@ -1,6 +1,6 @@
-import {Outlet, Link, useParams} from "react-router-dom";
+import {Outlet, Link} from "react-router-dom";
 
-const Layout = () => {
+const Header = () => {
 
     return (
         <>
@@ -17,4 +17,4 @@ const Layout = () => {
     )
 };
 
-export default Layout;
+export default Header;

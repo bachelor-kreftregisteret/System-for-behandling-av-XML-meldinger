@@ -15,16 +15,12 @@ const ProstataUtredning = () => {
     const [showSuccess, setShowSuccess] = useState(false);
     //Lager en modell av surveyen vi har laget
     const survey = new Model(SurveyJsonUtredning);
-    const storageName = "Meldiiiiiing";
 
 
     //templister for array
     let checkboxes = [];
     let flattenedJSON = [];
-    const prevData = localStorage.getItem(storageName) || null;
 
-    // prevData && (survey.data = JSON.parse(prevData));
-    console.log("setter data",survey.data )
 
     // Finds checkboxes with more than one box in the given surveyJS json
     const findCheckboxes = (JSONdata) => {
@@ -86,9 +82,7 @@ const ProstataUtredning = () => {
         setDataValues(data);
     }, [loading]); //Dependent på loading. Når loading endrer seg, vil setValues kjøre. Altså da er dataene klare
 
-    function saveSurveyData(survey) {
-        localStorage.setItem(storageName, JSON.stringify(survey.data));
-    }
+
 
     const setChangedValue = (options, JSONdata, changed) => {
         for (const key in JSONdata) {
