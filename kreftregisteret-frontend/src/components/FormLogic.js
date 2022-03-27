@@ -17,8 +17,9 @@ const ShowData = () => {
 
     const formatDate = (date) => {
         const newDate = new Date(date)
-        const stringDate = `${newDate.getDate()}-${newDate.getMonth()}-${newDate.getFullYear()} ${newDate.getHours()}:${newDate.getMinutes()} `
-        return stringDate;
+        const dateString = `${newDate.getDate()}-${newDate.getMonth()}-${newDate.getFullYear()} 
+        kl.${newDate.getHours()}:${newDate.getMinutes()} `
+        return dateString;
     }
 
     if (!loading && data !== null) {
@@ -26,7 +27,7 @@ const ShowData = () => {
             msgList.push(JSON.parse(key))
         }
 
-        const rows = msgList.map((item, index) => (
+        const rows = msgList.sort((a, b) => a.id > b.id ? 1 : -1).map((item, index) => (
                 <tr key={index}>
                     <td >{item.id}</td>
                     <td>{item.Skjemanavn}</td>
