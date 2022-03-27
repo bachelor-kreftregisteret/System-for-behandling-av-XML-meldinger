@@ -9,7 +9,7 @@ function useFetch(url) {
 
     useEffect(async () => {
         try {
-            let data = await axios.get(url);
+            let data = await axios.get(url); //'http://localhost:8080' + url
             console.log(data.data);
             setData(data.data);
             setError(null);

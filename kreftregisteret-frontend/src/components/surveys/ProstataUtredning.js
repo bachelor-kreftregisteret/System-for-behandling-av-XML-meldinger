@@ -5,7 +5,6 @@ import axios from "axios";
 import {useParams} from "react-router-dom";
 import useFetch from "../../api/useFetch";
 import SurveyJsonUtredning from "../../surveyJsons/ProstataUtredning";
-import SurveyJSONKirugi from "../../surveyJsons/ProstataKirurgi";
 
 StylesManager.applyTheme('default')
 
@@ -185,14 +184,12 @@ const ProstataUtredning = () => {
     //Sender tilbake det gamle skjemaet. Må fikses slik at det nye skjemaet sendes i gamle drakter..
     survey.onComplete.add(function (sender, options) {
         replaceUndefined(data);
-        saveSurveyData(survey);
-        console.log("Hva har vi her? ", localStorage.getItem("Meldiiiiiing"))
 
         const headers = {
             'Content-Type': 'application/json'
         }
         axios.post('http://localhost:8080/api/v1/meldinger', data, {headers})
-            .then(response => { options.showDataSavingSuccess("Dataene var korrekte og er nå lagret på serveren"); localStorage.clear()})
+            .then(response => { options.showDataSavingSuccess("Dataene var korrekte og er nå lagret på serveren"); })
             .catch(error => {
                 options.showDataSavingError(error.response.data);
                 console.log(error.response.data)
