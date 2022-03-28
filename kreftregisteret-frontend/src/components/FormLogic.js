@@ -3,6 +3,20 @@ import { useNavigate} from "react-router-dom";
 import React from 'react';
 import "../App.css";
 
+const enumRoutes = {
+    utredning: {
+        skjemanavn: "KliniskProstataUtredning",
+        url: "prostata-utredning/"
+    },
+    straalebehandling: {
+        skjemanavn: "KliniskProstataStraale",
+        url: "prostata-straale/"
+    },
+    kirurgi: {
+        skjemanavn: "KliniskProstataKirurgi",
+        url: "prostata-kirurgi/"
+    }
+}
 
 const ShowMeldingList = () => {
     const {data, loading, error} = useFetch('/api/v1/meldinger');
@@ -17,7 +31,7 @@ const ShowMeldingList = () => {
 
     const formatDate = (date) => {
             const newDate = new Date(date)
-            const dateString = `${newDate.getDate()}-${newDate.getMonth()}-${newDate.getFullYear()} 
+            const dateString = `${newDate.getFullYear()}-${newDate.getMonth()+1}-${newDate.getDate()} 
         kl.${newDate.getHours()}:${newDate.getMinutes()} `
         if(dateString.includes("NaN")) {
             return date;
@@ -38,12 +52,12 @@ const ShowMeldingList = () => {
                     <td>{item.Filnavn}</td>
                     <td>{formatDate(item.Endrettidspunkt)}</td>
                     <td ><button onClick={()=> {
-                        if (item.Skjemanavn === 'KliniskProstataUtredning') {
-                            routeChange("prostata-utredning/" + item.id)
-                        } else if (item.Skjemanavn === 'KliniskProstataStraale') {
-                            routeChange("prostata-straale/" + item.id)
-                        } else if (item.Skjemanavn === 'KliniskProstataKirurgi') {
-                            routeChange("prostata-kirurgi/" + item.id)
+                        if (item.Skjemanavn === enumRoutes.utredning.skjemanavn) {
+                            routeChange(enumRoutes.utredning.url + item.id)
+                        } else if (item.Skjemanavn === enumRoutes.straalebehandling.skjemanavn) {
+                            routeChange(enumRoutes.straalebehandling.url + item.id)
+                        } else if (item.Skjemanavn === enumRoutes.kirurgi.skjemanavn) {
+                            routeChange(enumRoutes.kirurgi.url + item.id)
                         }
                     } }> Endre </button></td>
                 </tr>
