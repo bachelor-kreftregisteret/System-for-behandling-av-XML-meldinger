@@ -1415,13 +1415,20 @@ const SurveyJSONKirugi = {
                     }
                 },
                 {
-                    type: "text",
+                    type: "expression",
                     name: "samletPalpatoriskTumor",
+                    visibleIf: "{funnUtredning} = 1",
                     minWidth: "450px",
                     title: {
                         no: "Samlet palpatorisk T-stadium"
                     },
-                    readOnly: true
+                    expression: "" +
+                        "iif({palpatoriskTumorHoyre} = 5 or {palpatoriskTumorVenstre} = 5, 'T4', " +
+                        "iif({palpatoriskTumorHoyre} = 4 or {palpatoriskTumorVenstre} = 4, 'T3b', " +
+                        "iif({palpatoriskTumorHoyre} = 3 or {palpatoriskTumorVenstre} = 3, 'T2b', " +
+                        "iif({palpatoriskTumorHoyre} = 2 or {palpatoriskTumorVenstre} = 2, 'T2', " +
+                        "iif({palpatoriskTumorHoyre} = 1 or {palpatoriskTumorVenstre} = 1, 'T0/T1', " +
+                        "iif({palpatoriskTumorHoyre} = 6 or {palpatoriskTumorVenstre} = 6, 'TX', ''))))))"
                 },
                 {
                     type: "radiogroup",
@@ -1636,16 +1643,19 @@ const SurveyJSONKirugi = {
                     }
                 },
                 {
-                    type: "text",
+                    type: "expression",
                     name: "samletMRBasertKliniskT",
                     visible: false,
                     visibleIf: "{piradshoyre} = 4 or {piradshoyre} = 5 or {piradsvenstre} = 4 or {piradsvenstre} = 5",
-                    minWidth: "200px",
-                    maxWidth: "250px",
                     title: {
                         no: "Samlet MR-basert T-stadium"
                     },
-                    readOnly: true
+                    expression: "" +
+                        "iif({mrbasertKliniskTHoyre} = 4 or {mrbasertKliniskTVenstre} = 4, 'T4', " +
+                        "iif({mrbasertKliniskTHoyre} = 3 or {mrbasertKliniskTVenstre} = 3, 'T3b', " +
+                        "iif({mrbasertKliniskTHoyre} = 2 or {mrbasertKliniskTVenstre} = 2, 'T3a', " +
+                        "iif({mrbasertKliniskTHoyre} = 1 or {mrbasertKliniskTVenstre} = 1, 'T2', " +
+                        "iif({mrbasertKliniskTHoyre} = 5 or {mrbasertKliniskTVenstre} = 5, 'TX', '')))))"
                 },
                 {
                     type: "dropdown",
@@ -2557,92 +2567,6 @@ const SurveyJSONKirugi = {
             type: "setvalue",
             expression: "{datoOppstartNeoadjBehUkjent} notempty",
             setToName: "datoOppstartNeoadjBeh"
-        },
-        {
-            type: "setvalue",
-            expression: "{palpatoriskTumorHoyre} = 6 or {palpatoriskTumorVenstre} = 6",
-            setToName: "samletPalpatoriskTumor",
-            setValue: "TX"
-        },
-        {
-            type: "setvalue",
-            expression: "{palpatoriskTumorHoyre} = 1 or {palpatoriskTumorVenstre} = 1",
-            setToName: "samletPalpatoriskTumor",
-            setValue: "T0/T1"
-        },
-        {
-            type: "setvalue",
-            expression: "{palpatoriskTumorHoyre} = 2 or {palpatoriskTumorVenstre} = 2",
-            setToName: "samletPalpatoriskTumor",
-            setValue: "T2"
-        },
-        {
-            type: "setvalue",
-            expression: "{palpatoriskTumorHoyre} = 3 or {palpatoriskTumorVenstre} = 3",
-            setToName: "samletPalpatoriskTumor",
-            setValue: "T3a"
-        },
-        {
-            type: "setvalue",
-            expression: "{palpatoriskTumorHoyre} = 4 or {palpatoriskTumorVenstre} = 4",
-            setToName: "samletPalpatoriskTumor",
-            setValue: "T3b"
-        },
-        {
-            type: "setvalue",
-            expression: "{palpatoriskTumorHoyre} = 5 or {palpatoriskTumorVenstre} = 5",
-            setToName: "samletPalpatoriskTumor",
-            setValue: "T4"
-        },
-        {
-            type: "setvalue",
-            expression: "{PpalpatoriskTumorHoyre} empty and {palpatoriskTumorVenstre} empty",
-            setToName: "samletPalpatoriskTumor"
-        },
-        {
-            type: "setvalue",
-            expression: "{mrbasertKliniskTHoyre} = 5 or {mrbasertKliniskTVenstre} = 5",
-            setToName: "samletMRBasertKliniskT",
-            setValue: "TX"
-        },
-        {
-            type: "setvalue",
-            expression: "{mrbasertKliniskTHoyre} = 1 or {mrbasertKliniskTVenstre} = 1",
-            setToName: "samletMRBasertKliniskT",
-            setValue: "T2"
-        },
-        {
-            type: "setvalue",
-            expression: "{mrbasertKliniskTHoyre} = 2 or {mrbasertKliniskTVenstre} = 2",
-            setToName: "samletMRBasertKliniskT",
-            setValue: "T3a"
-        },
-        {
-            type: "setvalue",
-            expression: "{mrbasertKliniskTHoyre} = 3 or {mrbasertKliniskTVenstre} = 3",
-            setToName: "samletMRBasertKliniskT",
-            setValue: "T3b"
-        },
-        {
-            type: "setvalue",
-            expression: "{mrbasertKliniskTHoyre} = 4 or {mrbasertKliniskTVenstre} = 4",
-            setToName: "samletMRBasertKliniskT",
-            setValue: "T4"
-        },
-        {
-            type: "setvalue",
-            expression: "{mrbasertKliniskTHoyre} empty and {mrbasertKliniskTVenstre} empty",
-            setToName: "samletMRBasertKliniskT"
-        },
-        {
-            type: "setvalue",
-            expression: "{piradshoyre} <> 4 and {piradshoyre} <> 5",
-            setToName: "mrbasertKliniskTHoyre"
-        },
-        {
-            type: "setvalue",
-            expression: "{piradsvenstre} <> 4 and {piradsvenstre} <> 5",
-            setToName: "mrbasertKliniskTVenstre"
         }
     ],
     showQuestionNumbers: "off",
