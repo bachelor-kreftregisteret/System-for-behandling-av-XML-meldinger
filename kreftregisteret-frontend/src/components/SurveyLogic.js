@@ -3,15 +3,15 @@ import 'survey-react/survey.css';
 import {Model, StylesManager, Survey} from "survey-react";
 import axios from "axios";
 import {useParams} from "react-router-dom";
-import useFetch from "../../api/useFetch";
-import SurveyJsonUtredning from "../../surveyJsons/ProstataUtredning";
+import useFetch from "../api/useFetch";
+import SurveyJsonUtredning from "../surveyJsons/ProstataUtredning";
 
 StylesManager.applyTheme('default')
 
-const ProstataUtredning = () => {
+const SurveyLogic = () => {
     let { id } = useParams();
     //Henter data fra backend
-    const {data, loading, error} = useFetch('http://localhost:8080/api/v1/meldinger/' + id);
+    const {data, loading, error} = useFetch('/api/v1/meldinger/' + id);
     const [showSuccess, setShowSuccess] = useState(false);
     //Lager en modell av surveyen vi har laget
     const survey = new Model(SurveyJsonUtredning);
@@ -182,7 +182,7 @@ const ProstataUtredning = () => {
         const headers = {
             'Content-Type': 'application/json'
         }
-        axios.post('http://localhost:8080/api/v1/meldinger', data, {headers})
+        axios.post('/api/v1/meldinger', data, {headers})
             .then(response => { options.showDataSavingSuccess("Dataene var korrekte og er nå lagret på serveren"); })
             .catch(error => {
                 options.showDataSavingError(error.response.data);
@@ -197,4 +197,4 @@ const ProstataUtredning = () => {
     )
 }
 
-export default ProstataUtredning;
+export default SurveyLogic;

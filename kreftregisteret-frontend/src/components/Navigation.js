@@ -1,7 +1,8 @@
 import React from 'react';
 import {useNavigate} from 'react-router-dom';
-import FormLogic from "./FormLogic";
+import MeldingList, {EnumRoutes} from "./MeldingList";
 //https://www.w3schools.com/react/react_router.asp
+
 
 const Navigation = () => {
     const navigate = useNavigate();
@@ -14,11 +15,11 @@ const Navigation = () => {
     return (
         <div style={{display: "flex", alignItems: "center", flexDirection: "column"}}>
             <h2>Velg en fil du vil redigere</h2>
-            <FormLogic/>
+            <MeldingList/>
             <div style={{ width: "100%", display: "flex", alignItems:"center", justifyItems: "center", justifyContent:"space-around", margin: "30px 0 0 0"}}>
-                <button onClick={() => routeChange('/prostata-utredning/-1')}> Utredning </button>
-                <button onClick={() => routeChange('/prostata-kirurgi/')}> Kirurgi </button>
-                <button onClick={() => routeChange('/prostata-straale/')}> Straalebehandling </button>
+                <button onClick={() => routeChange(EnumRoutes.utredning.url + "-1")}> Utredning </button>
+                <button onClick={() => routeChange(EnumRoutes.kirurgi.url + "-1")}> Kirurgi </button>
+                <button onClick={() => routeChange(EnumRoutes.straalebehandling.url + "-1")}> Straalebehandling </button>
             </div>
         </div>
     );

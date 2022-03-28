@@ -1,13 +1,25 @@
-import useFetch from "../api/useFetch";
-import { useNavigate} from "react-router-dom";
 import React from 'react';
 import "../App.css";
+import useFetch from "../api/useFetch";
+import {useNavigate} from "react-router-dom";
 
 
-const ShowData = () => {
-    const {data, loading, error} = useFetch('/api/v1/meldinger');
-    let msgList = []
+export const EnumRoutes = {
+    utredning: {
+        skjemanavn: "KliniskProstataUtredning",
+        url: "prostata-utredning/"
+    },
+    straalebehandling: {
+        skjemanavn: "KliniskProstataStraale",
+        url: "prostata-straale/"
+    },
+    kirurgi: {
+        skjemanavn: "KliniskProstataKirurgi",
+        url: "prostata-kirurgi/"
+    }
+}
 
+const MeldingList = () => {
     const navigate = useNavigate();
 
     //https://stackoverflow.com/questions/50644976/react-button-onclick-redirect-page
@@ -15,12 +27,19 @@ const ShowData = () => {
         navigate(url);
     }
 
+    const {data, loading, error} = useFetch('/api/v1/meldinger');
+    let msgList = []
+
     const formatDate = (date) => {
-        const newDate = new Date(date)
-        const dateString = `${newDate.getDate()}-${newDate.getMonth()}-${newDate.getFullYear()} 
+            const newDate = new Date(date)
+            const dateString = `${newDate.getFullYear()}-${newDate.getMonth()+1}-${newDate.getDate()} 
         kl.${newDate.getHours()}:${newDate.getMinutes()} `
-        return dateString;
+        if(dateString.includes("NaN")) {
+            return date;
+        }
+            return dateString;
     }
+
 
     if (!loading && data !== null) {
         for (const key in data) {
@@ -34,19 +53,18 @@ const ShowData = () => {
                     <td>{item.Filnavn}</td>
                     <td>{formatDate(item.Endrettidspunkt)}</td>
                     <td ><button onClick={()=> {
-                        if (item.Skjemanavn === 'KliniskProstataUtredning') {
-                            routeChange("prostata-utredning/" + item.id)
-                        } else if (item.Skjemanavn === 'KliniskProstataStraale') {
-                            routeChange("prostata-straale/" + item.id)
-                        } else if (item.Skjemanavn === 'KliniskProstataKirurgi') {
-                            routeChange("prostata-kirurgi/" + item.id)
+                        if (item.Skjemanavn === EnumRoutes.utredning.skjemanavn) {
+                            routeChange(EnumRoutes.utredning.url + item.id)
+                        } else if (item.Skjemanavn === EnumRoutes.straalebehandling.skjemanavn) {
+                            routeChange(EnumRoutes.straalebehandling.url + item.id)
+                        } else if (item.Skjemanavn === EnumRoutes.kirurgi.skjemanavn) {
+                            routeChange(EnumRoutes.kirurgi.url + item.id)
                         }
-                    } }> Rediger </button></td>
+                    } }> Endre </button></td>
                 </tr>
             ))
 
-        return (
-        <div>
+        const table = (<div className={"centeredFlex"}>
             <table>
                 <thead style={{textAlign: "left"}}>
                 <tr>
@@ -72,6 +90,9 @@ const ShowData = () => {
                 </tbody>
             </table>
         </div>)
+
+        return table
+
     } else if (error !== null) {
         let string = " Noe gikk feil ved innlasting: " + error;
         return <h4> {string} </h4>
@@ -80,4 +101,4 @@ const ShowData = () => {
     }
 }
 
-export default ShowData;
+export default MeldingList;
