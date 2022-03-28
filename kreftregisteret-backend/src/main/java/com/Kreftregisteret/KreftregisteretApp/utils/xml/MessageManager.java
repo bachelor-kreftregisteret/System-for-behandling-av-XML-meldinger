@@ -91,7 +91,6 @@ public class MessageManager {
         // Validate against schema, throws SAXParseException if not valid
         XMLValidator.validate(schema, jaxbSource);
         //SimpleDateFormat formatter = new SimpleDateFormat("ddMMyyyy_'kl'HHmmss"); format vi tidligere brukte
-
         SimpleDateFormat formatter = new SimpleDateFormat("yyyy-MM-dd'T'HH:mm:ss'Z'");//formatet KR bruker i XMLfilene.
         Date date = new Date();
         String formattedDate = formatter.format(date);

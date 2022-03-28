@@ -40,7 +40,6 @@ public class MeldingController {
         return messageManager.findMeldingById(id);
     }
 
-
     @CrossOrigin(origins = {"https://demokrg.herokuapp.com", "http://localhost:8080", "http://localhost:3000", "http://localhost:3001"})
     @GetMapping(path = "api/v1/meldinger")
     public HashMap<Melding, Long> getAllMeldinger() throws IOException {
