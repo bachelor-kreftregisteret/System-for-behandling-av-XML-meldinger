@@ -1,5 +1,3 @@
-import 'survey-react/survey.css';
-
 const SurveyJsonUtredning = {
     locale: "no",
     title: "UTREDNING",

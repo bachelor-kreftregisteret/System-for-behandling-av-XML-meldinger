@@ -1,26 +1,22 @@
-import React, {useEffect, useState} from "react";
+import React, {useEffect} from "react";
 import 'survey-react/survey.css';
 import {Model, StylesManager, Survey} from "survey-react";
 import axios from "axios";
 import {useParams} from "react-router-dom";
 import useFetch from "../api/useFetch";
-import SurveyJsonUtredning from "../surveyJsons/ProstataUtredning";
 
 StylesManager.applyTheme('default')
 
-const SurveyLogic = () => {
+const SurveyLogic = ({SurveyType}) => {
     let { id } = useParams();
     //Henter data fra backend
     const {data, loading, error} = useFetch('/api/v1/meldinger/' + id);
-    const [showSuccess, setShowSuccess] = useState(false);
     //Lager en modell av surveyen vi har laget
-    const survey = new Model(SurveyJsonUtredning);
-
+    const survey = new Model(SurveyType);
 
     //templister for array
     let checkboxes = [];
     let flattenedJSON = [];
-
 
     // Finds checkboxes with more than one box in the given surveyJS json
     const findCheckboxes = (JSONdata) => {
@@ -72,16 +68,15 @@ const SurveyLogic = () => {
         }
     }
 
-    const setDataValues = (data) => {
-        findCheckboxes(SurveyJsonUtredning);
+    const setDataValues = (data, JSONType) => {
+        findCheckboxes(JSONType);
         flatten(data);
         survey.data = flattenedJSON;
     }
 
     useEffect(() =>  {
-        setDataValues(data);
+        setDataValues(data, SurveyType);
     }, [loading]); //Dependent på loading. Når loading endrer seg, vil setValues kjøre. Altså da er dataene klare
-
 
 
     const setChangedValue = (options, JSONdata, changed) => {
