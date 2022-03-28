@@ -1,9 +1,10 @@
-import useFetch from "../api/useFetch";
-import { useNavigate} from "react-router-dom";
 import React from 'react';
 import "../App.css";
+import useFetch from "../api/useFetch";
+import { useNavigate} from "react-router-dom";
 
-const enumRoutes = {
+
+export const enumRoutes = {
     utredning: {
         skjemanavn: "KliniskProstataUtredning",
         url: "prostata-utredning/"
@@ -18,16 +19,16 @@ const enumRoutes = {
     }
 }
 
-const ShowMeldingList = () => {
-    const {data, loading, error} = useFetch('/api/v1/meldinger');
-    let msgList = []
-
+const MeldingList = () => {
     const navigate = useNavigate();
 
     //https://stackoverflow.com/questions/50644976/react-button-onclick-redirect-page
     const routeChange = (url) =>{
         navigate(url);
     }
+
+    const {data, loading, error} = useFetch('/api/v1/meldinger');
+    let msgList = []
 
     const formatDate = (date) => {
             const newDate = new Date(date)
@@ -37,8 +38,8 @@ const ShowMeldingList = () => {
             return date;
         }
             return dateString;
-
     }
+
 
     if (!loading && data !== null) {
         for (const key in data) {
@@ -63,8 +64,7 @@ const ShowMeldingList = () => {
                 </tr>
             ))
 
-        return (
-        <div className={"centeredFlex"}>
+        const table = (<div className={"centeredFlex"}>
             <table>
                 <thead style={{textAlign: "left"}}>
                 <tr>
@@ -90,6 +90,9 @@ const ShowMeldingList = () => {
                 </tbody>
             </table>
         </div>)
+
+        return table
+
     } else if (error !== null) {
         let string = " Noe gikk feil ved innlasting: " + error;
         return <h4> {string} </h4>
@@ -98,4 +101,4 @@ const ShowMeldingList = () => {
     }
 }
 
-export default ShowMeldingList;
+export default MeldingList;
