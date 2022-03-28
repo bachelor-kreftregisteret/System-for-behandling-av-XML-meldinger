@@ -16,7 +16,7 @@ const Navigation = () => {
 
     return (
         <div style={{display: "flex", placeItems:"center", flexDirection: "column"}}>
-            <div>
+            <div style={{width: "90%"}}>
                 <h4>Velg en fil du vil redigere</h4>
                 <MeldingList/>
                 <UncontrolledButtonDropdown >

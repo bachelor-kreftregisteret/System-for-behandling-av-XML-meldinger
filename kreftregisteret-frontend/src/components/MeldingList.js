@@ -70,10 +70,10 @@ const MeldingList = () => {
                 </tr>
             ))
 
-        const table = (<div className={"centeredFlex"}>
+        const table = (
             <Table hover
                    responsive
-                   size="lg"
+                   size="xl"
                    striped>
                 <thead style={{textAlign: "left", backgroundColor: Color.king_blue, color: "white"}}>
                 <tr>
@@ -98,7 +98,7 @@ const MeldingList = () => {
                 {rows}
                 </tbody>
             </Table>
-        </div>)
+        )
 
         return table
 
