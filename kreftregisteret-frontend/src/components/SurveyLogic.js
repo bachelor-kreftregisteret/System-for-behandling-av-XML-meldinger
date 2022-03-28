@@ -8,7 +8,7 @@ import SurveyJsonUtredning from "../surveyJsons/ProstataUtredning";
 
 StylesManager.applyTheme('default')
 
-const SurveyLogikk = () => {
+const SurveyLogic = () => {
     let { id } = useParams();
     //Henter data fra backend
     const {data, loading, error} = useFetch('/api/v1/meldinger/' + id);
@@ -197,4 +197,4 @@ const SurveyLogikk = () => {
     )
 }
 
-export default SurveyLogikk;
+export default SurveyLogic;
