@@ -8,9 +8,9 @@ import {
 import SurveyLogic from "./components/SurveyLogic";
 import Header from "./components/Header";
 import Navigation from "./components/Navigation";
-import SurveyJsonUtredning from "./surveyJsons/ProstataUtredning";
-import SurveyJSONKirugi from "./surveyJsons/ProstataKirurgi";
-import SurveyJSONStraale from "./surveyJsons/ProstataStraale";
+import SurveyJsonUtredning from "./surveys/prostata/ProstataUtredning";
+import SurveyJSONKirugi from "./surveys/prostata/ProstataKirurgi";
+import SurveyJSONStraale from "./surveys/prostata/ProstataStraale";
 
 
 function App() {
