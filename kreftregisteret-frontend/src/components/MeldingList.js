@@ -4,7 +4,7 @@ import useFetch from "../api/useFetch";
 import { useNavigate} from "react-router-dom";
 
 
-export const enumRoutes = {
+export const EnumRoutes = {
     utredning: {
         skjemanavn: "KliniskProstataUtredning",
         url: "prostata-utredning/"
@@ -53,12 +53,12 @@ const MeldingList = () => {
                     <td>{item.Filnavn}</td>
                     <td>{formatDate(item.Endrettidspunkt)}</td>
                     <td ><button onClick={()=> {
-                        if (item.Skjemanavn === enumRoutes.utredning.skjemanavn) {
-                            routeChange(enumRoutes.utredning.url + item.id)
-                        } else if (item.Skjemanavn === enumRoutes.straalebehandling.skjemanavn) {
-                            routeChange(enumRoutes.straalebehandling.url + item.id)
-                        } else if (item.Skjemanavn === enumRoutes.kirurgi.skjemanavn) {
-                            routeChange(enumRoutes.kirurgi.url + item.id)
+                        if (item.Skjemanavn === EnumRoutes.utredning.skjemanavn) {
+                            routeChange(EnumRoutes.utredning.url + item.id)
+                        } else if (item.Skjemanavn === EnumRoutes.straalebehandling.skjemanavn) {
+                            routeChange(EnumRoutes.straalebehandling.url + item.id)
+                        } else if (item.Skjemanavn === EnumRoutes.kirurgi.skjemanavn) {
+                            routeChange(EnumRoutes.kirurgi.url + item.id)
                         }
                     } }> Endre </button></td>
                 </tr>
