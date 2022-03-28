@@ -1,6 +1,6 @@
 const SurveyJSONStraale = {
     locale: "no",
-    title: "STRÅLEBEHANDLING ",
+    title: "STRÅLEBEHANDLING",
     logoPosition: "right",
     pages: [
         {
@@ -1335,6 +1335,9 @@ const SurveyJSONStraale = {
                     colCount: 2
                 }
             ],
+            visible: false,
+            visibleIf: "{primaerEllerPostop} = 1",
+
             title: {
                 no: "Informasjon før strålebehandling"
             }
@@ -1446,7 +1449,6 @@ const SurveyJSONStraale = {
                 {
                     type: "expression",
                     name: "samletPalpatoriskTumor",
-                    visibleIf: "{funnUtredning} = 1",
                     minWidth: "450px",
                     title: {
                         no: "Samlet palpatorisk T-stadium"

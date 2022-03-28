@@ -1417,7 +1417,6 @@ const SurveyJSONKirugi = {
                 {
                     type: "expression",
                     name: "samletPalpatoriskTumor",
-                    visibleIf: "{funnUtredning} = 1",
                     minWidth: "450px",
                     title: {
                         no: "Samlet palpatorisk T-stadium"
