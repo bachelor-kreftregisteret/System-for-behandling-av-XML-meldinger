@@ -170,7 +170,8 @@ const SurveyLogic = ({SurveyType}) => {
         });
     }, [setDataValues]);
 
-    //Sender tilbake det gamle skjemaet. Må fikses slik at det nye skjemaet sendes i gamle drakter..
+    // Todo
+    // Sender tilbake det gamle skjemaet. Må fikses slik at det nye skjemaet sendes i gamle drakter..
     survey.onComplete.add(function (sender, options) {
         replaceUndefined(data);
 
