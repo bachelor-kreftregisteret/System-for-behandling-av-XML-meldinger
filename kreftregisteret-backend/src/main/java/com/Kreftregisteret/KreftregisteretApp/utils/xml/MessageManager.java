@@ -36,7 +36,7 @@ public class MessageManager {
         //oppdater tidspunktendret
         // "2001-12-17T09:30:47Z"
         //er formatet
-        SimpleDateFormat formatter = new SimpleDateFormat("yyyy-MM-dd'kl'HHmmss");
+        SimpleDateFormat formatter = new SimpleDateFormat("yyyy-MM-dd'T'HH:mm:ss'Z'");
         Date date = new Date();
         String formattedDate = formatter.format(date);
         melding.setLastChangedTime(formattedDate);
@@ -88,11 +88,11 @@ public class MessageManager {
         Marshaller jaxbMarshaller = jaxbContext.createMarshaller();
         Schema schema = MessageValidator.generateSchema(melding);
         JAXBSource jaxbSource = new JAXBSource(jaxbMarshaller, melding);
-
         // Validate against schema, throws SAXParseException if not valid
         XMLValidator.validate(schema, jaxbSource);
+        //SimpleDateFormat formatter = new SimpleDateFormat("ddMMyyyy_'kl'HHmmss"); format vi tidligere brukte
 
-        SimpleDateFormat formatter = new SimpleDateFormat("ddMMyyyy_'kl'HHmmss");
+        SimpleDateFormat formatter = new SimpleDateFormat("yyyy-MM-dd'T'HH:mm:ss'Z'");//formatet KR bruker i XMLfilene.
         Date date = new Date();
         String formattedDate = formatter.format(date);
 
@@ -149,10 +149,7 @@ public class MessageManager {
         }
     }
 
-    public static Melding getNewMelding() {
-        //kanskje implementer kø-logikk her.
-        return null;
-    }
+
 
     public Melding findMeldingById(Long idIn) {
         for (Map.Entry<Melding, Long> entry : msgMap.entrySet()) {

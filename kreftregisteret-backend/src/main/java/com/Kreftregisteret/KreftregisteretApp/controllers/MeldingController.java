@@ -15,7 +15,6 @@ import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 import org.xml.sax.SAXException;
-
 import javax.servlet.http.HttpServletRequest;
 import javax.xml.parsers.ParserConfigurationException;
 import javax.xml.transform.TransformerException;
@@ -52,13 +51,6 @@ public class MeldingController {
     @PostMapping(path = "/api/v1/meldinger", consumes = "application/json")
     public ResponseEntity<String> postMelding(@RequestBody Melding melding) throws JAXBException, ParserConfigurationException, IOException, ClassNotFoundException, TransformerException, SAXException {
         try {
-            System.out.println("WTF SKJER1??????" + melding);
-            //String jsonInString = mapper.writeValueAsString(melding);
-            // System.out.println(jsonInString);
-            if (melding == null) {
-                System.out.println("yikes, melding er null");
-            }
-            System.out.println("kommer vi engang etter dette? wtfs");
             messageManager.writeMeldingToPath(melding); // Validation happens here
             messageManager.updateMsgMap(melding);
             return ResponseEntity.status(HttpStatus.OK).build();
@@ -77,7 +69,6 @@ public class MeldingController {
             System.out.println("IoexceptionError: " + error);
             return new ResponseEntity<>(error, HttpStatus.INTERNAL_SERVER_ERROR);
         }
-
     }
 /*
     @CrossOrigin(origins = {"https://demokrg.herokuapp.com", "http://localhost:8080", "http://localhost:3000", "http://localhost:3001"})
