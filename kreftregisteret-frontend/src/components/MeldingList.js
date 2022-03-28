@@ -1,7 +1,7 @@
 import React from 'react';
 import "../App.css";
 import useFetch from "../api/useFetch";
-import { useNavigate} from "react-router-dom";
+import {useNavigate} from "react-router-dom";
 
 
 export const EnumRoutes = {

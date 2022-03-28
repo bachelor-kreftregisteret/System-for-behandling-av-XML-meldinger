@@ -18,7 +18,7 @@ const Navigation = () => {
             <MeldingList/>
             <div style={{ width: "100%", display: "flex", alignItems:"center", justifyItems: "center", justifyContent:"space-around", margin: "30px 0 0 0"}}>
                 <button onClick={() => routeChange(EnumRoutes.utredning.url + "-1")}> Utredning </button>
-                <button onClick={() => routeChange(EnumRoutes.kirurgi.url) + "-1"}> Kirurgi </button>
+                <button onClick={() => routeChange(EnumRoutes.kirurgi.url + "-1")}> Kirurgi </button>
                 <button onClick={() => routeChange(EnumRoutes.straalebehandling.url + "-1")}> Straalebehandling </button>
             </div>
         </div>
