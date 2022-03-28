@@ -1,7 +1,9 @@
 import React from 'react';
 import "../App.css";
 import useFetch from "../api/useFetch";
+import {Button, Table} from "reactstrap";
 import {useNavigate} from "react-router-dom";
+import {Color} from "./DesignVariables";
 
 
 export const EnumRoutes = {
@@ -52,7 +54,11 @@ const MeldingList = () => {
                     <td>{item.Skjemanavn}</td>
                     <td>{item.Filnavn}</td>
                     <td>{formatDate(item.Endrettidspunkt)}</td>
-                    <td ><button onClick={()=> {
+                    <td ><Button  block
+                                  className={"Button"}
+                                  style={{backgroundColor: Color.king_blue, hover:"white"}}
+                                  size={"sm"}
+                                  onClick={()=> {
                         if (item.Skjemanavn === EnumRoutes.utredning.skjemanavn) {
                             routeChange(EnumRoutes.utredning.url + item.id)
                         } else if (item.Skjemanavn === EnumRoutes.straalebehandling.skjemanavn) {
@@ -60,27 +66,30 @@ const MeldingList = () => {
                         } else if (item.Skjemanavn === EnumRoutes.kirurgi.skjemanavn) {
                             routeChange(EnumRoutes.kirurgi.url + item.id)
                         }
-                    } }> Endre </button></td>
+                    } }> Endre </Button></td>
                 </tr>
             ))
 
         const table = (<div className={"centeredFlex"}>
-            <table>
-                <thead style={{textAlign: "left"}}>
+            <Table hover
+                   responsive
+                   size="lg"
+                   striped>
+                <thead style={{textAlign: "left", backgroundColor: Color.king_blue, color: "white"}}>
                 <tr>
-                    <th style={{minWidth: "50px", maxWidth: "100px"}}>
+                    <th scope="row">
                         Id
                     </th>
-                    <th style={{ maxWidth: "150px"}}>
+                    <th scope="row">
                         Type
                     </th>
-                    <th style={{ maxWidth: "150px"}}>
+                    <th scope="row">
                         Filnavn
                     </th>
-                    <th style={{ maxWidth: "150px"}}>
-                        Endret
+                    <th scope="row">
+                        Sist endret
                     </th>
-                    <th style={{ maxWidth: "150px"}}>
+                    <th scope="row">
                         Handling
                     </th>
                 </tr>
@@ -88,7 +97,7 @@ const MeldingList = () => {
                 <tbody>
                 {rows}
                 </tbody>
-            </table>
+            </Table>
         </div>)
 
         return table

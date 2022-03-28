@@ -1,6 +1,8 @@
 import React from 'react';
 import {useNavigate} from 'react-router-dom';
 import MeldingList, {EnumRoutes} from "./MeldingList";
+import {ButtonDropdown, DropdownItem, DropdownMenu, DropdownToggle, UncontrolledButtonDropdown} from "reactstrap";
+import {Color} from "./DesignVariables";
 //https://www.w3schools.com/react/react_router.asp
 
 
@@ -13,13 +15,26 @@ const Navigation = () => {
     }
 
     return (
-        <div style={{display: "flex", alignItems: "center", flexDirection: "column"}}>
-            <h2>Velg en fil du vil redigere</h2>
-            <MeldingList/>
-            <div style={{ width: "100%", display: "flex", alignItems:"center", justifyItems: "center", justifyContent:"space-around", margin: "30px 0 0 0"}}>
-                <button onClick={() => routeChange(EnumRoutes.utredning.url + "-1")}> Utredning </button>
-                <button onClick={() => routeChange(EnumRoutes.kirurgi.url + "-1")}> Kirurgi </button>
-                <button onClick={() => routeChange(EnumRoutes.straalebehandling.url + "-1")}> Straalebehandling </button>
+        <div style={{display: "flex", placeItems:"center", flexDirection: "column"}}>
+            <div>
+                <h4>Velg en fil du vil redigere</h4>
+                <MeldingList/>
+                <UncontrolledButtonDropdown >
+                    <DropdownToggle style={{backgroundColor: Color.king_blue, width: "200px"}} caret>
+                        Velg nytt skjema
+                    </DropdownToggle>
+                    <DropdownMenu>
+                        <DropdownItem onClick={() => routeChange(EnumRoutes.utredning.url + "-1")}>
+                            {EnumRoutes.utredning.skjemanavn}
+                        </DropdownItem>
+                        <DropdownItem onClick={() => routeChange(EnumRoutes.kirurgi.url + "-1")}>
+                            {EnumRoutes.kirurgi.skjemanavn}
+                        </DropdownItem>
+                        <DropdownItem onClick={() => routeChange(EnumRoutes.straalebehandling.url + "-1")}>
+                            {EnumRoutes.straalebehandling.skjemanavn}
+                        </DropdownItem>
+                    </DropdownMenu>
+                </UncontrolledButtonDropdown>
             </div>
         </div>
     );

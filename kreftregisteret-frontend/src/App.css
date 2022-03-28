@@ -7,3 +7,11 @@
   align-items: center;
   justify-content: center;
 }
+
+.btn:hover {
+  font-weight: 600;
+}
+
+.table-hover>tbody>tr:hover {
+  background-color: rgba(0, 90, 255, 0.05);
+}
