@@ -3,23 +3,8 @@ import "../App.css";
 import useFetch from "../api/useFetch";
 import {Button, Table} from "reactstrap";
 import {useNavigate} from "react-router-dom";
-import {Color} from "./DesignVariables";
+import {Color, EnumRoutes} from "../utils/utils";
 
-
-export const EnumRoutes = {
-    utredning: {
-        skjemanavn: "KliniskProstataUtredning",
-        url: "prostata-utredning/"
-    },
-    straalebehandling: {
-        skjemanavn: "KliniskProstataStraale",
-        url: "prostata-straale/"
-    },
-    kirurgi: {
-        skjemanavn: "KliniskProstataKirurgi",
-        url: "prostata-kirurgi/"
-    }
-}
 
 const MeldingList = () => {
     const navigate = useNavigate();

@@ -7,7 +7,7 @@ import {
 
 import SurveyLogic from "./components/SurveyLogic";
 import Header from "./components/Header";
-import Navigation from "./components/Navigation";
+import Index from "./components";
 import SurveyJsonUtredning from "./surveys/prostata/ProstataUtredning";
 import SurveyJSONKirugi from "./surveys/prostata/ProstataKirurgi";
 import SurveyJSONStraale from "./surveys/prostata/ProstataStraale";
@@ -18,7 +18,7 @@ function App() {
         <BrowserRouter>
             <Routes>
                 <Route path="/" element={<Header />}>
-                    <Route index element={<Navigation />}/>
+                    <Route index element={<Index />}/>
                     <Route path={`prostata-utredning`} element={<SurveyLogic SurveyType={SurveyJsonUtredning} />}/>
                     <Route path={`prostata-utredning/:id`} element={<SurveyLogic SurveyType={SurveyJsonUtredning} />}/>
                     <Route path={`prostata-straale`} element={<SurveyLogic SurveyType={SurveyJSONStraale} />}/>

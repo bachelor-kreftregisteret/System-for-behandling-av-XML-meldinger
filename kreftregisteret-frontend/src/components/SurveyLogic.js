@@ -1,16 +1,19 @@
-import React, {useEffect} from "react";
+import React, {useEffect, useState} from "react";
 import 'survey-react/survey.css';
 import {Model, StylesManager, Survey} from "survey-react";
 import axios from "axios";
 import {useParams} from "react-router-dom";
 import useFetch from "../api/useFetch";
+import SurveyComplete from "./SurveyComplete";
 
 StylesManager.applyTheme('default')
 
 const SurveyLogic = ({SurveyType}) => {
-    let { id } = useParams();
     //Henter data fra backend
+    let { id } = useParams();
     const {data, loading, error} = useFetch('/api/v1/meldinger/' + id);
+    const [isSuccess, setIsSuccess] = useState(false);
+
     //Lager en modell av surveyen vi har laget
     const survey = new Model(SurveyType);
 
@@ -68,15 +71,15 @@ const SurveyLogic = ({SurveyType}) => {
         }
     }
 
-    const setDataValues = (data, JSONType) => {
+    const setDataValues = (data, JSONType, flattenedJSON) => {
         findCheckboxes(JSONType);
         flatten(data);
         survey.data = flattenedJSON;
     }
 
     useEffect(() =>  {
-        setDataValues(data, SurveyType);
-    }, [loading]); //Dependent på loading. Når loading endrer seg, vil setValues kjøre. Altså da er dataene klare
+        setDataValues(data, SurveyType, flattenedJSON);
+    }, [data, SurveyType, flattenedJSON]); //Dependent på loading. Når loading endrer seg, vil setValues kjøre. Altså da er dataene klare | Good practice å ha parameterne i dependency array
 
 
     const setChangedValue = (options, JSONdata, changed) => {
@@ -109,7 +112,6 @@ const SurveyLogic = ({SurveyType}) => {
                         JSONdata[key] = options.value.length > 0;
                     }
                     else if (options.name === "spsa") {
-                        console.log(typeof (JSONdata[key]))
                         for (const k in JSONdata[key]) {
                             if (options.value.length <= 1) {
                                 if (options.value.includes("psaverdiIkkeTatt")) {
@@ -168,28 +170,39 @@ const SurveyLogic = ({SurveyType}) => {
         survey.onValueChanged.add(function (sender, options) {
             setChangedValue(options, data, false);
         });
-    }, [setDataValues]);
+    }, [setDataValues]); //Dependent on setValues so it doesnt override
 
-    // Todo
-    // Sender tilbake det gamle skjemaet. Må fikses slik at det nye skjemaet sendes i gamle drakter..
-    survey.onComplete.add(function (sender, options) {
-        replaceUndefined(data);
 
-        const headers = {
-            'Content-Type': 'application/json'
-        }
-        axios.post('/api/v1/meldinger', data, {headers})
-            .then(response => { options.showDataSavingSuccess("Dataene var korrekte og er nå lagret på serveren"); })
-            .catch(error => {
-                options.showDataSavingError(error.response.data);
-                console.log(error.response.data)
+
+        survey
+            .onCompleting
+            .add(function (sender, options) {
+                options.allowComplete = false;
+                const headers = {
+                    'Content-Type': 'application/json'
+                }
+                axios.post('http://localhost:8080/api/v1/meldinger', data, {headers})
+                    .then(response => {
+                        setIsSuccess(true);
+                        console.log("Kommer vi hit: ", response)
+                        options.allowComplete = true;
+                    })
+                    .catch(error => {
+                        console.log("Eller hit")
+                        alert(error.response.data)
+                        setIsSuccess(false);
+                    })
             })
-    })
+
+
+    // Todo: Oncomplete function - Legg til en modal eller annet som kan beskrive feilen
+
 
     return (
         /*Render skjema*/
-       <Survey model={survey} />
-
+       <div>
+           {!isSuccess ? <Survey model={survey} showCompletedPage={false}/> : <SurveyComplete/>}
+       </div>
     )
 }
 

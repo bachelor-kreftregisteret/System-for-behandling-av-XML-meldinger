@@ -1,5 +1,5 @@
 import {Outlet, Link} from "react-router-dom";
-import {Color} from "./DesignVariables";
+import {Color} from "../utils/utils";
 
 const Header = () => {
 
