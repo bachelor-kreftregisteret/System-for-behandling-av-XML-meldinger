@@ -17,12 +17,21 @@ const MeldingList = () => {
     const {data, loading, error} = useFetch('/api/v1/meldinger');
     let msgList = []
 
-    const formatDate = (date) => {
+    const formatSurveyDate = (date) => {
+        let year = date.slice(0, 4);
+        let month = date.slice(5,7);
+        let day = date.slice(8, 10);
+        let hour = date.slice(12, 14);
+        let minute = date.slice(14, 16);
+        return `${year}-${month}-${day} kl.${hour}:${minute}`
+    }
+
+    const formatJsonDate = (date) => {
             const newDate = new Date(date)
             const dateString = `${newDate.getFullYear()}-${newDate.getMonth()+1}-${newDate.getDate()} 
         kl.${newDate.getHours()}:${newDate.getMinutes()} `
         if(dateString.includes("NaN")) {
-            return date;
+            return formatSurveyDate(date);
         }
             return dateString;
     }
@@ -38,7 +47,7 @@ const MeldingList = () => {
                     <td >{item.id}</td>
                     <td>{item.Skjemanavn}</td>
                     <td>{item.Filnavn}</td>
-                    <td>{formatDate(item.Endrettidspunkt)}</td>
+                    <td>{formatJsonDate(item.Endrettidspunkt)}</td>
                     <td ><Button  block
                                   className={"Button"}
                                   style={{backgroundColor: Color.king_blue, hover:"white"}}
