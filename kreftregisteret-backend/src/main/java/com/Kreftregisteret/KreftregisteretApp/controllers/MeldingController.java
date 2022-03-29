@@ -36,14 +36,14 @@ public class MeldingController {
 
     //http://localhost:8080/api/v1/meldinger
     @CrossOrigin(origins = {"https://demokrg.herokuapp.com", "http://localhost:8080", "http://localhost:3000", "http://localhost:3001"})
-    @GetMapping(path = "api/v1/meldinger/{id}")
+    @GetMapping(path = "/api/v1/meldinger/{id}")
     public Melding getMelding(@PathVariable long id) throws IOException {
         return messageManager.findMeldingById(id);
     }
 
 
     @CrossOrigin(origins = {"https://demokrg.herokuapp.com", "http://localhost:8080", "http://localhost:3000", "http://localhost:3001"})
-    @GetMapping(path = "api/v1/meldinger")
+    @GetMapping(path = "/api/v1/meldinger")
     public HashMap<Melding, Long> getAllMeldinger() throws IOException {
         return messageManager.getMsgMap();
     }
