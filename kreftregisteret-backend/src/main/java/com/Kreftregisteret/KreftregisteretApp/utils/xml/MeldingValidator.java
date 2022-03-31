@@ -9,10 +9,9 @@ import javax.xml.validation.Schema;
 import javax.xml.validation.SchemaFactory;
 import java.io.File;
 import java.io.IOException;
-import com.Kreftregisteret.KreftregisteretApp.utils.xml.XMLValidator;
 
-public class MessageValidator {
-    private MessageValidator() {}
+public class MeldingValidator {
+    private MeldingValidator() {}
 
     public static Schema generateSchema(Melding melding) throws SAXException, IOException {
         final String PROSTATAPAKKE = new ClassPathResource("Prostatapakke").getURL().getPath() + "/";

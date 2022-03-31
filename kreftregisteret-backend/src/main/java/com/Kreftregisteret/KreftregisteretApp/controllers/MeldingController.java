@@ -1,57 +1,49 @@
 package com.Kreftregisteret.KreftregisteretApp.controllers;
 
 
-import com.Kreftregisteret.KreftregisteretApp.models.KliniskProstataUtredning.KliniskProstataUtredning;
 import com.Kreftregisteret.KreftregisteretApp.models.Melding;
-import com.Kreftregisteret.KreftregisteretApp.utils.xml.MessageManager;
+import com.Kreftregisteret.KreftregisteretApp.utils.xml.MeldingManager;
 import com.fasterxml.jackson.core.JacksonException;
-import com.fasterxml.jackson.databind.ObjectMapper;
-import com.google.gson.Gson;
 import jakarta.xml.bind.JAXBException;
-import org.apache.tomcat.util.http.fileupload.IOUtils;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.http.HttpEntity;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 import org.xml.sax.SAXException;
-import javax.servlet.http.HttpServletRequest;
 import javax.xml.parsers.ParserConfigurationException;
 import javax.xml.transform.TransformerException;
 import java.io.IOException;
-import java.nio.charset.StandardCharsets;
 import java.util.HashMap;
 
 
 @RestController
 public class MeldingController {
-    MessageManager messageManager;
+    MeldingManager meldingManager;
 
     @Autowired
-    public MeldingController(MessageManager messageManager) throws IOException {
-        this.messageManager = messageManager;
-        messageManager.addMeldingerFromUtFolderToMsgList();
+    public MeldingController(MeldingManager meldingManager) throws IOException {
+        this.meldingManager = meldingManager;
+        meldingManager.addMeldingerFromUtFolderToMeldingList();
     }
 
     //http://localhost:8080/api/v1/meldinger
     @CrossOrigin(origins = {"https://demokrg.herokuapp.com", "http://localhost:8080", "http://localhost:3000", "http://localhost:3001"})
     @GetMapping(path = "/api/v1/meldinger/{id}")
     public Melding getMelding(@PathVariable long id) throws IOException {
-        return messageManager.findMeldingById(id);
+        return meldingManager.findMeldingById(id);
     }
 
     @CrossOrigin(origins = {"https://demokrg.herokuapp.com", "http://localhost:8080", "http://localhost:3000", "http://localhost:3001"})
     @GetMapping(path = "/api/v1/meldinger")
     public HashMap<Melding, Long> getAllMeldinger() throws IOException {
-        return messageManager.getMsgMap();
+        return meldingManager.getMeldingMap();
     }
 
     @CrossOrigin(origins = {"https://demokrg.herokuapp.com", "http://localhost:8080", "http://localhost:3000", "http://localhost:3001"})
     @PostMapping(path = "/api/v1/meldinger", consumes = "application/json")
     public ResponseEntity<String> postMelding(@RequestBody Melding melding) throws JAXBException, ParserConfigurationException, IOException, ClassNotFoundException, TransformerException, SAXException {
         try {
-            messageManager.writeMeldingToPath(melding); // Validation happens here
-            messageManager.updateMsgMap(melding);
+            meldingManager.writeMeldingToPath(melding); // Validation happens here
             return ResponseEntity.status(HttpStatus.OK).build();
         } catch (SAXException | JAXBException e) {
             // XML validation failed. Write error logic here:

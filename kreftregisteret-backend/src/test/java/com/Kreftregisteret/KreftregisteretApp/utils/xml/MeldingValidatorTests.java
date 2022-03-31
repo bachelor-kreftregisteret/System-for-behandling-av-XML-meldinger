@@ -10,7 +10,7 @@ import java.io.File;
 
 import static org.junit.Assert.assertEquals;
 
-public class MessageValidatorTests {
+public class MeldingValidatorTests {
     @Test
     public void generateSchemaTest() throws SAXException {
         // Create correct schema

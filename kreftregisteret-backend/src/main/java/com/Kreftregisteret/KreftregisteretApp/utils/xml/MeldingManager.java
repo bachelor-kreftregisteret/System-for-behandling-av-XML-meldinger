@@ -20,8 +20,8 @@ import java.util.*;
 
 //er det bedre å ha EN jaxbcontext instance her? dvs ha en felles for alle metodene også injecte message manager istedenfor public static?
 @Service
-public class MessageManager {
-    HashMap<Melding, Long> msgMap = new HashMap<>();
+public class MeldingManager {
+    private HashMap<Melding, Long> meldingMap = new HashMap<>();
 
     private static Long id = 1L;
 
@@ -30,21 +30,19 @@ public class MessageManager {
         return id++;
     }
 
-    public void updateMsgMap(Melding melding) {
+    private void updateMsgMap(Melding melding) {
         Melding oldmelding = this.findMeldingById(melding.getId());
-        msgMap.remove(oldmelding);
+        meldingMap.remove(oldmelding);
         //oppdater tidspunktendret
         // "2001-12-17T09:30:47Z"
         //er formatet
-        SimpleDateFormat formatter = new SimpleDateFormat("yyyy-MM-dd'T'HH:mm:ss'Z'");
-        Date date = new Date();
-        String formattedDate = formatter.format(date);
+        String formattedDate = getDate();
         melding.setLastChangedTime(formattedDate);
-        msgMap.put(melding, melding.getId());
+        meldingMap.put(melding, melding.getId());
     }
 
-    public HashMap<Melding, Long> getMsgMap() {
-        return msgMap;
+    public HashMap<Melding, Long> getMeldingMap() {
+        return meldingMap;
     }
 
     //kanskje legg til Optional<Melding> her istedenfor å kanskje returnere null (?)
@@ -60,24 +58,11 @@ public class MessageManager {
                 melding.setLastChangedTime(melding.getMetaData());
                 melding.setFilnavn(file.getName());
             }
-
             return melding;
         } catch (JAXBException e) {
             e.printStackTrace();
         }
         return null;
-    }
-
-    // ClassPathResource pathResource = new ClassPathResource("Prostatapakke/Prostata_4_0_UtredningEksempelfil.xml");
-//pathResource.getURL().getPath()
-    public Melding getMeldingFromPath(String path) {
-        Melding melding = null;
-        File file = new File(path);
-        melding = convertFileToMelding(file);
-        Long id = createNewID();
-
-        msgMap.put(melding, createNewID());
-        return melding;
     }
 
     //for å kjøre denne kan vi bruke melding.getClass().getName()
@@ -86,48 +71,25 @@ public class MessageManager {
     public void writeMeldingToPath(Melding melding) throws JAXBException, IOException, SAXException {
         JAXBContext jaxbContext = JAXBContext.newInstance(Melding.class);
         Marshaller jaxbMarshaller = jaxbContext.createMarshaller();
-        Schema schema = MessageValidator.generateSchema(melding);
+        Schema schema = MeldingValidator.generateSchema(melding);
         JAXBSource jaxbSource = new JAXBSource(jaxbMarshaller, melding);
         // Validate against schema, throws SAXParseException if not valid
         XMLValidator.validate(schema, jaxbSource);
-        //SimpleDateFormat formatter = new SimpleDateFormat("ddMMyyyy_'kl'HHmmss"); format vi tidligere brukte
-        SimpleDateFormat formatter = new SimpleDateFormat("yyyy-MM-dd'T'HH:mm:ss'Z'");//formatet KR bruker i XMLfilene.
-        Date date = new Date();
-        String formattedDate = formatter.format(date);
-
+        String formattedDate = getDate();
         File file = new File(Utmappe.getPath() + formattedDate + melding.getSkjemaNavn() + ".xml");
         jaxbMarshaller.setSchema(schema);
+        updateMsgMap(melding);
         jaxbMarshaller.marshal(melding, file); // Write to file
     }
 
-    public static File findXSDFromMelding(Melding melding) throws IOException {
-        System.out.println("er det her??");
-        System.out.println(melding.toString());
-        //todo Kanskje lag et hashmap med verdier for skjemanavn og .xSD, slik at man kan finne korrekt .xsd
-        //
-        String skjemanavn = melding.getSkjemaNavn(); //KliniskProstataUtredning
-
-        String XSDfile = XMLValidator.XSD_MAP.get(skjemanavn);
-        String path = new ClassPathResource("XSD/" + XSDfile).getURL().getPath();
-        System.out.println("PATH: " + path);
-        return new File(path);
+    private String getDate() {
+        SimpleDateFormat formatter = new SimpleDateFormat("yyyy-MM-dd'T'HH:mm:ss'Z'");//formatet KR bruker i XMLfilene.
+        Date date = new Date();
+        return formatter.format(date);
     }
 
-    // Inspired by: https://docs.oracle.com/javase/tutorial/essential/io/dirs.html
-    public static List<File> getFiles(Path directory) throws IOException, DirectoryIteratorException {
-        if (!Files.isDirectory(directory)) {
-            throw new IOException("Directory does not exist");
-        }
 
-        ArrayList<File> files = new ArrayList<>();
-        DirectoryStream<Path> stream = Files.newDirectoryStream(directory);
-        for (Path file : stream) {
-            files.add(new File(file.toUri()));
-        }
-        return files;
-    }
-
-    public void addMeldingerFromUtFolderToMsgList() throws IOException {
+    public void addMeldingerFromUtFolderToMeldingList() throws IOException {
 
         //ClassPathResource pathResource = new ClassPathResource("Ut");
         try {
@@ -138,7 +100,7 @@ public class MessageManager {
                     Melding melding = convertFileToMelding(file);
                     System.out.println(melding);
                     if (melding != null) {
-                        msgMap.put(melding, createNewID());
+                        meldingMap.put(melding, createNewID());
                     }
                 }
             });
@@ -151,7 +113,7 @@ public class MessageManager {
 
 
     public Melding findMeldingById(Long idIn) {
-        for (Map.Entry<Melding, Long> entry : msgMap.entrySet()) {
+        for (Map.Entry<Melding, Long> entry : meldingMap.entrySet()) {
             Melding melding = entry.getKey();
             Long value = entry.getValue();
             if (Objects.equals(value, idIn)) {
