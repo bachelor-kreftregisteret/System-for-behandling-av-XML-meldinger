@@ -6,10 +6,11 @@ import {
 } from "react-router-dom";
 
 import SurveyLogic from "./components/SurveyLogic";
-import ProstataStraalebehandling from "./components/surveys/ProstataStraalebehandling";
-import ProstataKirurgi from "./components/surveys/ProstataKirurgi";
 import Header from "./components/Header";
-import Navigation from "./components/Navigation";
+import Index from "./components/Index";
+import SurveyJsonUtredning from "./surveys/prostata/ProstataUtredning";
+import SurveyJSONKirugi from "./surveys/prostata/ProstataKirurgi";
+import SurveyJSONStraale from "./surveys/prostata/ProstataStraale";
 
 
 function App() {
@@ -17,13 +18,13 @@ function App() {
         <BrowserRouter>
             <Routes>
                 <Route path="/" element={<Header />}>
-                    <Route index element={<Navigation />}/>
-                    <Route path={`prostata-utredning`} element={<SurveyLogic />}/>
-                    <Route path={`prostata-utredning/:id`} element={<SurveyLogic />}/>
-                    <Route path={`prostata-straale`} element={<ProstataStraalebehandling />}/>
-                    <Route path={`prostata-straale/:id`} element={<ProstataStraalebehandling />}/>
-                    <Route path={`prostata-kirurgi`} element={<ProstataKirurgi />}/>
-                    <Route path={`prostata-kirurgi/:id`} element={<ProstataKirurgi />}/>
+                    <Route index element={<Index />}/>
+                    <Route path={`prostata-utredning`} element={<SurveyLogic SurveyType={SurveyJsonUtredning} />}/>
+                    <Route path={`prostata-utredning/:id`} element={<SurveyLogic SurveyType={SurveyJsonUtredning} />}/>
+                    <Route path={`prostata-straale`} element={<SurveyLogic SurveyType={SurveyJSONStraale} />}/>
+                    <Route path={`prostata-straale/:id`} element={<SurveyLogic SurveyType={SurveyJSONStraale} />}/>
+                    <Route path={`prostata-kirurgi`} element={<SurveyLogic SurveyType={SurveyJSONKirugi} />}/>
+                    <Route path={`prostata-kirurgi/:id`} element={<SurveyLogic SurveyType={SurveyJSONKirugi} />}/>
                 </Route>
             </Routes>
         </BrowserRouter>

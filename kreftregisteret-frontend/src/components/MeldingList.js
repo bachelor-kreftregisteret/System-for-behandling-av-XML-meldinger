@@ -1,23 +1,10 @@
 import React from 'react';
 import "../App.css";
 import useFetch from "../api/useFetch";
+import {Button, Table} from "reactstrap";
 import {useNavigate} from "react-router-dom";
+import {Color, EnumRoutes} from "../utils/utils";
 
-
-export const EnumRoutes = {
-    utredning: {
-        skjemanavn: "KliniskProstataUtredning",
-        url: "prostata-utredning/"
-    },
-    straalebehandling: {
-        skjemanavn: "KliniskProstataStraale",
-        url: "prostata-straale/"
-    },
-    kirurgi: {
-        skjemanavn: "KliniskProstataKirurgi",
-        url: "prostata-kirurgi/"
-    }
-}
 
 const MeldingList = () => {
     const navigate = useNavigate();
@@ -30,12 +17,21 @@ const MeldingList = () => {
     const {data, loading, error} = useFetch('/api/v1/meldinger');
     let msgList = []
 
-    const formatDate = (date) => {
+    const formatSurveyDate = (date) => {
+        let year = date.slice(0, 4);
+        let month = date.slice(5,7);
+        let day = date.slice(8, 10);
+        let hour = date.slice(12, 14);
+        let minute = date.slice(14, 16);
+        return `${year}-${month}-${day} kl.${hour}:${minute}`
+    }
+
+    const formatJsonDate = (date) => {
             const newDate = new Date(date)
             const dateString = `${newDate.getFullYear()}-${newDate.getMonth()+1}-${newDate.getDate()} 
         kl.${newDate.getHours()}:${newDate.getMinutes()} `
         if(dateString.includes("NaN")) {
-            return date;
+            return formatSurveyDate(date);
         }
             return dateString;
     }
@@ -51,8 +47,12 @@ const MeldingList = () => {
                     <td >{item.id}</td>
                     <td>{item.Skjemanavn}</td>
                     <td>{item.Filnavn}</td>
-                    <td>{formatDate(item.Endrettidspunkt)}</td>
-                    <td ><button onClick={()=> {
+                    <td>{formatJsonDate(item.Endrettidspunkt)}</td>
+                    <td ><Button  block
+                                  className={"Button"}
+                                  style={{backgroundColor: Color.king_blue, hover:"white"}}
+                                  size={"sm"}
+                                  onClick={()=> {
                         if (item.Skjemanavn === EnumRoutes.utredning.skjemanavn) {
                             routeChange(EnumRoutes.utredning.url + item.id)
                         } else if (item.Skjemanavn === EnumRoutes.straalebehandling.skjemanavn) {
@@ -60,27 +60,30 @@ const MeldingList = () => {
                         } else if (item.Skjemanavn === EnumRoutes.kirurgi.skjemanavn) {
                             routeChange(EnumRoutes.kirurgi.url + item.id)
                         }
-                    } }> Endre </button></td>
+                    } }> Endre </Button></td>
                 </tr>
             ))
 
-        const table = (<div className={"centeredFlex"}>
-            <table>
-                <thead style={{textAlign: "left"}}>
+        const table = (
+            <Table hover
+                   responsive
+                   size="xl"
+                   striped>
+                <thead style={{textAlign: "left", backgroundColor: Color.king_blue, color: "white"}}>
                 <tr>
-                    <th style={{minWidth: "50px", maxWidth: "100px"}}>
+                    <th scope="row">
                         Id
                     </th>
-                    <th style={{ maxWidth: "150px"}}>
+                    <th scope="row">
                         Type
                     </th>
-                    <th style={{ maxWidth: "150px"}}>
+                    <th scope="row">
                         Filnavn
                     </th>
-                    <th style={{ maxWidth: "150px"}}>
-                        Endret
+                    <th scope="row">
+                        Sist endret
                     </th>
-                    <th style={{ maxWidth: "150px"}}>
+                    <th scope="row">
                         Handling
                     </th>
                 </tr>
@@ -88,8 +91,8 @@ const MeldingList = () => {
                 <tbody>
                 {rows}
                 </tbody>
-            </table>
-        </div>)
+            </Table>
+        )
 
         return table
 
