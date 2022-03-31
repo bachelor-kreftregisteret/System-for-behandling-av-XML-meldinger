@@ -107,7 +107,6 @@ const SurveyLogic = ({SurveyType}) => {
                                 for (let i = 1; i < checkboxes[checkboxGroup].length; i++) {
                                     for (const key2 in JSONdata[key]) {
                                         if (checkboxes[checkboxGroup][i] === key2) {
-                                            console.log(options.value.length)
                                             if (typeof (JSONdata[key][key2]) === "boolean") {
                                                 JSONdata[key][key2] = options.value.includes(key2) && options.value.length > 0;
                                                 break;
