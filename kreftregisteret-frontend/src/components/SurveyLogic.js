@@ -151,7 +151,6 @@ const SurveyLogic = ({SurveyType}) => {
     useEffect(() =>  {
         survey.onValueChanged.add(function (sender, options) {
             setChangedValue(options, data, false);
-            console.log(data)
         });
     }, [setDataValues]); //Dependent on setValues so it doesnt override
 
