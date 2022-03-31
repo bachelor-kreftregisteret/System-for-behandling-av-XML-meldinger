@@ -1974,7 +1974,7 @@ const SurveyJSONStraale = {
                 },
                 {
                     type: "checkbox",
-                    name: "utredningsmetodeMetastaser",
+                    name: "utredningsmetodeFjernmet",
                     visibleIf: "{fjernmetPaavist} = 1",
                     title: {
                         no: "Utredningsmetode"
@@ -2048,7 +2048,7 @@ const SurveyJSONStraale = {
                     type: "text",
                     name: "annenDiagnostikkMetSpesifiser",
                     visible: false,
-                    visibleIf: "{utredningsmetodeMetastaser} contains 'annenDiagnostikkMet'",
+                    visibleIf: "{utredningsmetodeFjernmet} contains 'annenDiagnostikkMet'",
                     title: {
                         no: "Spesifiser"
                     }
@@ -2604,6 +2604,14 @@ const SurveyJSONStraale = {
             type: "setvalue",
             expression: "{fodselnummerUtland} notempty",
             setToName: "fodselsnummerHF"
+        },
+        {
+            type: "setvalue",
+            expression: "{utredningsmetodeFjernmet} contains 'utredningsmetodeFjernmetUkjent'",
+            setToName: "utredningsmetodeFjernmet",
+            setValue: [
+                "utredningsmetodeFjernmetUkjent"
+            ]
         },
         {
             type: "setvalue",

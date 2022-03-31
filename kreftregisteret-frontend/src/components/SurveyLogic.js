@@ -82,75 +82,57 @@ const SurveyLogic = ({SurveyType}) => {
     }, [data, SurveyType, flattenedJSON]); //Dependent på loading. Når loading endrer seg, vil setValues kjøre. Altså da er dataene klare | Good practice å ha parameterne i dependency array
 
 
-    const setChangedValue = (options, JSONdata, changed) => {
+    const setChangedValue = (options, JSONdata) => {
         for (const key in JSONdata) {
             if (key === options.name) {
                 if (options.question.getType() === "checkbox") {
-                    if (options.name === "utredningsmetodeMetastaser") {
-                        for (const fieldInJSON in JSONdata[key]["utredningsmetodeFjernmet"]) {
-                            let found = false;
-                            for (const fieldInSurvey in options.value) {
-                                if (options.value[fieldInSurvey] === fieldInJSON) {
-                                    if (typeof (JSONdata[key]["utredningsmetodeFjernmet"][fieldInJSON]) === "string") {
-                                        JSONdata[key]["utredningsmetodeFjernmet"][fieldInJSON] = 99;
-                                    } else {
-                                        JSONdata[key]["utredningsmetodeFjernmet"][fieldInJSON] = true;
-                                    }
-                                    found = true;
-                                }
-                            }
-                            if (!found) {
-                                if (typeof (JSONdata[key]["utredningsmetodeFjernmet"][fieldInJSON]) === "string") {
-                                    JSONdata[key]["utredningsmetodeFjernmet"][fieldInJSON] = "";
-                                } else {
-                                    JSONdata[key]["utredningsmetodeFjernmet"][fieldInJSON] = false;
-                                }
-                            }
-                        }
-                    }
-                    else if (typeof (JSONdata[key]) === "boolean") {
+                    // Singel checkbox med lagringsverdi true/false
+                    if (typeof (JSONdata[key]) === "boolean") {
                         JSONdata[key] = options.value.length > 0;
+                        return;
                     }
-                    else if (options.name === "spsa") {
-                        for (const k in JSONdata[key]) {
-                            if (options.value.length <= 1) {
-                                if (options.value.includes("psaverdiIkkeTatt")) {
-                                    JSONdata[key][`psaverdiIkkeTatt`] = true;
-                                } else {
-                                    JSONdata[key]['psaverdiIkkeTatt'] = false;
-                                }
-                                if (options.value.includes("psaverdiUkjent")) {
-                                    JSONdata[key]["psaverdiUkjent"] = 99;
-                                } else {
-                                    JSONdata[key]["psaverdiUkjent"] = "";
-                                }
-                            } else {
-                                break;
-                            }
-                        }
-                    }
-                    else if (typeof (JSONdata[key]) === "string") {
+                    // Singel checkbox med lagringsverdi 99/""
+                    else if (typeof (JSONdata[key]) === "string" || typeof (JSONdata[key]) === "number") {
                         if (options.value.length > 0) {
                             JSONdata[key] = 99;
                         } else {
                             JSONdata[key] = "";
                         }
+                        return;
                     }
-                    else if (options.name === "vevsproverUS") {
-                        for (const k in JSONdata[key]) {
-                            if (options.value.length >= 0) {
-                                JSONdata[key]['biopsiVevsprover'] = !!options.value.includes("biopsiVevsprover");
-                                JSONdata[key]["turpvevsprover"] = !!options.value.includes("turpvevsprover");
-                                JSONdata[key]["annetVevsprover"] = !!options.value.includes("annetVevsprover");
+                    // Checkbox gruppe med flere checkboxer
+                    else {
+                        for (const checkboxGroup in checkboxes) {
+                            if (checkboxes[checkboxGroup][0] === key) {
+                                for (let i = 1; i < checkboxes[checkboxGroup].length; i++) {
+                                    for (const key2 in JSONdata[key]) {
+                                        if (checkboxes[checkboxGroup][i] === key2) {
+                                            console.log(options.value.length)
+                                            if (typeof (JSONdata[key][key2]) === "boolean") {
+                                                JSONdata[key][key2] = options.value.includes(key2) && options.value.length > 0;
+                                                break;
+                                            }
+                                            else if (typeof (JSONdata[key][key2]) === "string" || typeof (JSONdata[key][key2]) === "number") {
+                                                if (options.value.includes(key2) && options.value.length > 0) {
+                                                    JSONdata[key][key2] = 99;
+                                                } else {
+                                                    JSONdata[key][key2] = "";
+                                                }
+                                                break;
+                                            }
+                                        }
+                                    }
+                                }
+                                return;
                             }
                         }
                     }
                 } else {
                     JSONdata[key] = options.value;
+                    return;
                 }
-                changed = true;
-            } else if (typeof (JSONdata[key]) === "object" && !changed) {
-                setChangedValue(options, JSONdata[key], changed);
+            } else if (typeof (JSONdata[key]) === "object") {
+                setChangedValue(options, JSONdata[key],);
             }
         }
     }
@@ -169,6 +151,7 @@ const SurveyLogic = ({SurveyType}) => {
     useEffect(() =>  {
         survey.onValueChanged.add(function (sender, options) {
             setChangedValue(options, data, false);
+            console.log(data)
         });
     }, [setDataValues]); //Dependent on setValues so it doesnt override
 

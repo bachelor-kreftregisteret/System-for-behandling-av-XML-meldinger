@@ -1942,7 +1942,7 @@ const SurveyJSONKirugi = {
                 },
                 {
                     type: "checkbox",
-                    name: "utredningsmetodeMetastaser",
+                    name: "utredningsmetodeFjernmet",
                     visibleIf: "{fjernmetPaavist} = 1",
                     title: {
                         no: "Utredningsmetode"
@@ -2016,7 +2016,7 @@ const SurveyJSONKirugi = {
                     type: "text",
                     name: "annenDiagnostikkMetSpesifiser",
                     visible: false,
-                    visibleIf: "{utredningsmetodeMetastaser} contains 'annenDiagnostikkMet'",
+                    visibleIf: "{utredningsmetodeFjernmet} contains 'annenDiagnostikkMet'",
                     title: {
                         no: "Spesifiser"
                     }
@@ -2556,6 +2556,14 @@ const SurveyJSONKirugi = {
             type: "setvalue",
             expression: "{labnavnHFIkkeRelevant} notempty",
             setToName: "labnavnHF"
+        },
+        {
+            type: "setvalue",
+            expression: "{utredningsmetodeFjernmet} contains 'utredningsmetodeFjernmetUkjent'",
+            setToName: "utredningsmetodeFjernmet",
+            setValue: [
+                "utredningsmetodeFjernmetUkjent"
+            ]
         },
         {
             type: "setvalue",

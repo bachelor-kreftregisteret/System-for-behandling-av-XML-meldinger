@@ -2256,7 +2256,7 @@ const SurveyJsonUtredning = {
                 },
                 {
                     type: "checkbox",
-                    name: "utredningsmetodeMetastaser",
+                    name: "utredningsmetodeFjernmet",
                     visibleIf: "{fjernmetPaavist} = 1",
                     title: {
                         no: "Utredningsmetode"
@@ -2330,7 +2330,7 @@ const SurveyJsonUtredning = {
                     type: "text",
                     name: "annenDiagnostikkMetSpesifiser",
                     visible: false,
-                    visibleIf: "{utredningsmetodeMetastaser} contains 'annenDiagnostikkMet'",
+                    visibleIf: "{utredningsmetodeFjernmet} contains 'annenDiagnostikkMet'",
                     title: {
                         no: "Spesifiser"
                     }
@@ -2826,8 +2826,8 @@ const SurveyJsonUtredning = {
         },
         {
             type: "setvalue",
-            expression: "{utredningsmetodeMetastaser} contains 'utredningsmetodeFjernmetUkjent'",
-            setToName: "utredningsmetodeMetastaser",
+            expression: "{utredningsmetodeFjernmet} contains 'utredningsmetodeFjernmetUkjent'",
+            setToName: "utredningsmetodeFjernmet",
             setValue: [
                 "utredningsmetodeFjernmetUkjent"
             ]
