@@ -17,22 +17,14 @@ const MeldingList = () => {
     const {data, loading, error} = useFetch('/api/v1/meldinger');
     let msgList = []
 
-    const formatSurveyDate = (date) => {
-        let year = date.slice(0, 4);
-        let month = date.slice(5,7);
-        let day = date.slice(8, 10);
-        let hour = date.slice(12, 14);
-        let minute = date.slice(14, 16);
-        return `${year}-${month}-${day} kl.${hour}:${minute}`
-    }
+
+    // https://dd.engineering/blog/a-guide-to-handling-date-and-time-for-full-stack-javascript-developers 31.03
+    const addZero = (num) => `${num}`.padStart(2, '0');
 
     const formatJsonDate = (date) => {
             const newDate = new Date(date)
-            const dateString = `${newDate.getFullYear()}-${newDate.getMonth()+1}-${newDate.getDate()} 
-        kl.${newDate.getHours()}:${newDate.getMinutes()} `
-        if(dateString.includes("NaN")) {
-            return formatSurveyDate(date);
-        }
+            const dateString = `${newDate.getFullYear()}-${addZero(newDate.getMonth()+1)}-${addZero(newDate.getDate())} 
+        kl.${addZero(newDate.getUTCHours())}:${addZero(newDate.getMinutes())} `
             return dateString;
     }
 
