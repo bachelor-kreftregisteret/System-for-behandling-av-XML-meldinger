@@ -11,6 +11,7 @@ import Index from "./components/Index";
 import SurveyJsonUtredning from "./surveys/prostata/ProstataUtredning";
 import SurveyJSONKirugi from "./surveys/prostata/ProstataKirurgi";
 import SurveyJSONStraale from "./surveys/prostata/ProstataStraale";
+import SidebarNav from "./components/SidebarNav";
 
 
 function App() {
@@ -25,6 +26,7 @@ function App() {
                     <Route path={`prostata-straale/:id`} element={<SurveyLogic SurveyType={SurveyJSONStraale} />}/>
                     <Route path={`prostata-kirurgi`} element={<SurveyLogic SurveyType={SurveyJSONKirugi} />}/>
                     <Route path={`prostata-kirurgi/:id`} element={<SurveyLogic SurveyType={SurveyJSONKirugi} />}/>
+                    <Route path={`sidebar`} element={<SidebarNav SurveyType={SurveyJSONKirugi} />}/>
                 </Route>
             </Routes>
         </BrowserRouter>

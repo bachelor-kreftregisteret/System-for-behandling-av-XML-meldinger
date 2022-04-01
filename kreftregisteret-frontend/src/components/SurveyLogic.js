@@ -5,6 +5,9 @@ import axios from "axios";
 import {useParams} from "react-router-dom";
 import useFetch from "../api/useFetch";
 import SurveyComplete from "./SurveyComplete";
+import index from "./Index";
+import {Button} from "reactstrap";
+import {Color} from "../utils/utils";
 
 StylesManager.applyTheme('default')
 
@@ -16,6 +19,8 @@ const SurveyLogic = ({SurveyType}) => {
 
     //Lager en modell av surveyen vi har laget
     const survey = new Model(SurveyType);
+    console.log(survey.visiblePages[0].elementsValue.map((item) => item.name))
+
 
     //templister for array
     let checkboxes = [];
@@ -154,7 +159,7 @@ const SurveyLogic = ({SurveyType}) => {
     }, [setDataValues]); //Dependent on setValues so it doesnt override
 
 
-
+    // Todo: Oncomplete function - Legg til en modal eller annet som kan beskrive feilen
         survey
             .onCompleting
             .add(function (sender, options) {
@@ -176,13 +181,22 @@ const SurveyLogic = ({SurveyType}) => {
             })
 
 
-    // Todo: Oncomplete function - Legg til en modal eller annet som kan beskrive feilen
+
 
 
     return (
         /*Render skjema*/
        <div>
-           {!isSuccess ? <Survey model={survey} showCompletedPage={false}/> : <SurveyComplete/>}
+           {!isSuccess ? <Survey model={survey} showCompletedPage={false} showNavigationButtons={false}/> : <SurveyComplete/>}
+
+           {/*TODO: Fix new function for customized complete button*/}
+           {/*TODO: create a CSS-file for styling | maybe create SCSS files for use of constants*/}
+
+           <footer className="surveyjs-footer" style={{position: "fixed", left:0, bottom: 0, width:"100%", backgroundColor:Color.king_blue, zIndex: 1000, display: "flex", justifyContent: "flex-end"}}>
+               <Button >Avslutt</Button>
+               <Button >Lagre utkast</Button>
+               <Button >Lagre</Button>
+           </footer>
        </div>
     )
 }
