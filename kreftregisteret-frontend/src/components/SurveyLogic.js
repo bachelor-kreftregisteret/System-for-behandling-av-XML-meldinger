@@ -79,7 +79,7 @@ const SurveyLogic = ({SurveyType}) => {
 
     useEffect(() =>  {
         setDataValues(data, SurveyType, flattenedJSON);
-    }, [data, SurveyType, flattenedJSON]); //Dependent på loading. Når loading endrer seg, vil setValues kjøre. Altså da er dataene klare | Good practice å ha parameterne i dependency array
+    }, [data, SurveyType, flattenedJSON]);
 
 
     const setChangedValue = (options, JSONdata) => {

@@ -63,44 +63,11 @@ const SurveyJSONKirugi = {
                         no: "Sykehus"
                     },
                     isRequired: true,
-                    choices: [
-                        {
-                            value: "1",
-                            text: {
-                                no: "Helse Sør-Øst"
-                            }
-                        },
-                        {
-                            value: "2",
-                            text: {
-                                no: "Helse Vest"
-                            }
-                        },
-                        {
-                            value: "3",
-                            text: {
-                                no: "Helse Midt"
-                            }
-                        },
-                        {
-                            value: "4",
-                            text: {
-                                no: "Helse Nord"
-                            }
-                        },
-                        {
-                            value: "5",
-                            text: {
-                                no: "Spesialistsentre og private"
-                            }
-                        },
-                        {
-                            value: "6",
-                            text: {
-                                no: "Annet"
-                            }
-                        }
-                    ],
+                    choicesByUrl: {
+                        url: 'https://metadata.kreftregisteret.no/rest/v1/metadata/values/s_helseregion',
+                        valueName: "value",
+                        titleName: "description"
+                    },
                     optionsCaption: {
                         no: "Velg..."
                     }
