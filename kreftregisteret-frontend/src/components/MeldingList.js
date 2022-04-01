@@ -28,72 +28,69 @@ const MeldingList = () => {
             return dateString;
     }
 
+    const tableOfMeldinger = (data) => {
+            for (const key in data) {
+                msgList.push(JSON.parse(key))
+            }
 
-    if (!loading && data !== null) {
-        for (const key in data) {
-            msgList.push(JSON.parse(key))
-        }
-
-        const rows = msgList.sort((a, b) => a.id > b.id ? 1 : -1).map((item, index) => (
+            const rows = msgList.sort((a, b) => a.id > b.id ? 1 : -1).map((item, index) => (
                 <tr key={index}>
-                    <td >{item.id}</td>
+                    <td>{item.id}</td>
                     <td>{item.Skjemanavn}</td>
                     <td>{item.Filnavn}</td>
                     <td>{formatJsonDate(item.Endrettidspunkt)}</td>
-                    <td ><Button  block
-                                  className={"Button"}
-                                  style={{backgroundColor: Color.king_blue, hover:"white"}}
-                                  size={"sm"}
-                                  onClick={()=> {
-                        if (item.Skjemanavn === EnumRoutes.utredning.skjemanavn) {
-                            routeChange(EnumRoutes.utredning.url + item.id)
-                        } else if (item.Skjemanavn === EnumRoutes.straalebehandling.skjemanavn) {
-                            routeChange(EnumRoutes.straalebehandling.url + item.id)
-                        } else if (item.Skjemanavn === EnumRoutes.kirurgi.skjemanavn) {
-                            routeChange(EnumRoutes.kirurgi.url + item.id)
-                        }
-                    } }> Endre </Button></td>
+                    <td><Button block
+                                className={"Button"}
+                                style={{backgroundColor: Color.king_blue, hover: "white"}}
+                                size={"sm"}
+                                onClick={() => {
+                                    if (item.Skjemanavn === EnumRoutes.utredning.skjemanavn) {
+                                        routeChange(EnumRoutes.utredning.url + item.id)
+                                    } else if (item.Skjemanavn === EnumRoutes.straalebehandling.skjemanavn) {
+                                        routeChange(EnumRoutes.straalebehandling.url + item.id)
+                                    } else if (item.Skjemanavn === EnumRoutes.kirurgi.skjemanavn) {
+                                        routeChange(EnumRoutes.kirurgi.url + item.id)
+                                    }
+                                }}> Endre </Button></td>
                 </tr>
             ))
 
-        const table = (
-            <Table hover
-                   responsive
-                   size="xl"
-                   striped>
-                <thead style={{textAlign: "left", backgroundColor: Color.king_blue, color: "white"}}>
-                <tr>
-                    <th scope="row">
-                        Id
-                    </th>
-                    <th scope="row">
-                        Type
-                    </th>
-                    <th scope="row">
-                        Filnavn
-                    </th>
-                    <th scope="row">
-                        Sist endret
-                    </th>
-                    <th scope="row">
-                        Handling
-                    </th>
-                </tr>
-                </thead>
-                <tbody>
-                {rows}
-                </tbody>
-            </Table>
-        )
-
-        return table
-
-    } else if (error !== null) {
-        let string = " Noe gikk feil ved innlasting: " + error;
-        return <h4> {string} </h4>
-    } else {
-        return <h4> Laster ...</h4>
+            return (
+                <Table hover
+                       responsive
+                       size="xl"
+                       striped>
+                    <thead style={{textAlign: "left", backgroundColor: Color.king_blue, color: "white"}}>
+                    <tr>
+                        <th scope="row">
+                            Id
+                        </th>
+                        <th scope="row">
+                            Type
+                        </th>
+                        <th scope="row">
+                            Filnavn
+                        </th>
+                        <th scope="row">
+                            Sist endret
+                        </th>
+                        <th scope="row">
+                            Handling
+                        </th>
+                    </tr>
+                    </thead>
+                    <tbody>
+                    {rows}
+                    </tbody>
+                </Table>
+            );
     }
+
+    return (!loading && data !== null ?
+        tableOfMeldinger(data) :
+        error !== null ?
+            <h4>Noe gikk galt ved innlasting `${error}`</h4> :
+            <h4>Laster ...</h4>);
 }
 
 export default MeldingList;
