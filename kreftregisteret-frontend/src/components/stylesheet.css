@@ -8,7 +8,11 @@
 }
 
 .sidebar {
+    position: sticky;
+
     grid-area: sidebar;
+    align-self: start;
+    top: 5rem;
 }
 
 .sidebar .sidebarTitles:hover{
