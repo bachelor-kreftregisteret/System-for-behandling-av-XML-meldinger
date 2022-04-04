@@ -4,16 +4,10 @@ import com.Kreftregisteret.KreftregisteretApp.models.Melding;
 import com.Kreftregisteret.KreftregisteretApp.utils.Utmappe;
 import jakarta.xml.bind.*;
 import jakarta.xml.bind.util.JAXBSource;
-import org.springframework.core.io.ClassPathResource;
 import org.springframework.stereotype.Service;
 import org.xml.sax.SAXException;
-
 import javax.xml.validation.Schema;
 import java.io.*;
-import java.nio.file.DirectoryIteratorException;
-import java.nio.file.DirectoryStream;
-import java.nio.file.Files;
-import java.nio.file.Path;
 import java.text.SimpleDateFormat;
 import java.util.*;
 
@@ -75,7 +69,8 @@ public class MeldingManager {
         JAXBSource jaxbSource = new JAXBSource(jaxbMarshaller, melding);
         // Validate against schema, throws SAXParseException if not valid
         XMLValidator.validate(schema, jaxbSource);
-        String formattedDate = getDate();
+
+        String formattedDate = getFileDate();
         File file = new File(Utmappe.getPath() + formattedDate + melding.getSkjemaNavn() + ".xml");
         jaxbMarshaller.setSchema(schema);
         updateMsgMap(melding);
@@ -88,9 +83,14 @@ public class MeldingManager {
         return formatter.format(date);
     }
 
+    private String getFileDate() {
+        // Husk! : er ikke gyldig i filnavn i Windows
+        SimpleDateFormat formatter = new SimpleDateFormat("yyyy-MM-dd'T'HH-mm-ss'Z'");
+        Date date = new Date();
+        return formatter.format(date);
+    }
 
     public void addMeldingerFromUtFolderToMeldingList() throws IOException {
-
         //ClassPathResource pathResource = new ClassPathResource("Ut");
         try {
             //List<File> fileList = getFiles(Path.of(Utmappe.getPath()));
@@ -120,11 +120,7 @@ public class MeldingManager {
                 return melding;
             }
         }
-        /*msgList.forEach((melding, uid) ->{
-            if(idIn == uid){
-                return melding;
-            }
-        });*/
+
         return null;
     }
 }
