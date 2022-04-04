@@ -11,6 +11,7 @@ import Index from "./components/Index";
 import SurveyJsonUtredning from "./surveys/prostata/ProstataUtredning";
 import SurveyJSONKirugi from "./surveys/prostata/ProstataKirurgi";
 import SurveyJSONStraale from "./surveys/prostata/ProstataStraale";
+import 'bootstrap/dist/css/bootstrap.min.css';
 
 
 function App() {
