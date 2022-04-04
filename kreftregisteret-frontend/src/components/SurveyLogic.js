@@ -1,13 +1,14 @@
 import React, {useEffect, useState} from "react";
 import 'survey-react/survey.css';
+import './stylesheet.css'
 import {Model, StylesManager, Survey} from "survey-react";
 import axios from "axios";
 import {useParams} from "react-router-dom";
 import useFetch from "../api/useFetch";
 import SurveyComplete from "./SurveyComplete";
-import index from "./Index";
 import {Button} from "reactstrap";
 import {Color} from "../utils/utils";
+import SidebarNav from "./SidebarNav";
 
 StylesManager.applyTheme('default')
 
@@ -182,11 +183,14 @@ const SurveyLogic = ({SurveyType}) => {
 
 
 
+    const titles = [...document.querySelectorAll("h4")]
+    const elements = document.querySelectorAll("h4");
 
 
     return (
         /*Render skjema*/
-       <div>
+       <div className={"surveyContainer"}>
+        <SidebarNav className={"sidebar"} titles={titles} elements={elements}/>
            {!isSuccess ? <Survey model={survey} showCompletedPage={false} showNavigationButtons={false}/> : <SurveyComplete/>}
 
            {/*TODO: Fix new function for customized complete button*/}
@@ -194,7 +198,7 @@ const SurveyLogic = ({SurveyType}) => {
 
            <footer className="surveyjs-footer" style={{position: "fixed", left:0, bottom: 0, width:"100%", backgroundColor:Color.king_blue, zIndex: 1000, display: "flex", justifyContent: "flex-end"}}>
                <Button >Avslutt</Button>
-               <Button >Lagre utkast</Button>
+               <Button onClick={() => document.getElementsByTagName("h4")[1].scrollIntoView()} >Lagre utkast</Button>
                <Button >Lagre</Button>
            </footer>
        </div>

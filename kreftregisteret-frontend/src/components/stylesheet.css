@@ -1,0 +1,17 @@
+.surveyContainer {
+    display: grid;
+    grid-template-areas: "survey survey sidebar"
+"survey survey sidebar"
+"survey survey sidebar";
+    grid-template-columns: auto;
+    grid-template-rows: auto ;
+}
+
+.sidebar {
+    grid-area: sidebar;
+}
+
+.sidebar .sidebarTitles:hover{
+    background-color: red;
+
+}
