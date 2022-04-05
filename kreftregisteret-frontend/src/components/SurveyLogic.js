@@ -6,8 +6,6 @@ import axios from "axios";
 import {useParams} from "react-router-dom";
 import useFetch from "../api/useFetch";
 import SurveyComplete from "./SurveyComplete";
-import {Button} from "reactstrap";
-import {Color} from "../utils/utils";
 import SidebarNav from "./SidebarNav";
 
 StylesManager.applyTheme('default')
@@ -16,6 +14,8 @@ const SurveyLogic = ({SurveyType}) => {
     //Henter data fra backend
     let { id } = useParams();
     const {data, loading, error} = useFetch('/api/v1/meldinger/' + id);
+
+    //Booleans for showing other components
     const [isSuccess, setIsSuccess] = useState(false);
     const [showSidebar, setShowSidebar] = useState(true);
 
@@ -84,6 +84,7 @@ const SurveyLogic = ({SurveyType}) => {
         findCheckboxes(JSONType);
         flatten(data);
         survey.data = flattenedJSON;
+        survey.setValue("survey")
     }
 
 
@@ -156,7 +157,7 @@ const SurveyLogic = ({SurveyType}) => {
 
     useEffect(() =>  {
         setDataValues(data, SurveyType, flattenedJSON);
-    }, [data, SurveyType, flattenedJSON]);
+    }, [ SurveyType, flattenedJSON]);
 
     useEffect(() =>  {
         survey.onValueChanged.add(function (sender, options) {
@@ -166,28 +167,28 @@ const SurveyLogic = ({SurveyType}) => {
 
 
     // Todo: Oncomplete function - Legg til en modal eller annet som kan beskrive feilen
-       const complete = () => {
-                   const headers = {
-                       'Content-Type': 'application/json'
-                   }
-                   axios.post('http://localhost:8080/api/v1/meldinger', data, {headers})
-                       .then(response => {
-                           setIsSuccess(true);
-                           console.log("Kommer vi hit: ", response)
-                       })
-                       .catch(error => {
-                           console.log("Eller hit")
-                           alert(error.response.data)
-                           setIsSuccess(false);
-                       })
-       }
+    const complete = () => {
+        const headers = {
+            'Content-Type': 'application/json'
+        }
+        axios.post('http://localhost:8080/api/v1/meldinger', data, {headers})
+            .then(response => {
+                setIsSuccess(true);
+                console.log("Kommer vi hit: ", response)
+            })
+            .catch(error => {
+                console.log("Eller hit")
+                alert(error.response.data)
+                setIsSuccess(false);
+            })
+    }
 
     return (
         /*Render skjema*/
         !isSuccess ?
             <div className={showSidebar ? "surveyContainerGrid" : "surveyContainer"}>
                 <Survey model={survey} showCompletedPage={false} showNavigationButtons={false}/>
-                <button className={ showSidebar ? "showSidebarBtn" : "hideSidebarBtn"} onClick={() => setShowSidebar(!showSidebar)}>{showSidebar ? "x" : "<"}</button>
+                <button className={ showSidebar ? "showSidebarBtn" : "hideSidebarBtn"} onClick={() => setShowSidebar(!showSidebar)}>{showSidebar ? "✕" : "<"}</button>
                 {showSidebar && <SidebarNav className={"sidebar"} titles={titles} loading={loading}/>}
                 <footer className="surveyFooter">
                     <button className={"footerBtn toTopBtn"} onClick={() => document.getElementById("root").scrollIntoView({behavior: "smooth"})}>Til topp</button>
@@ -199,8 +200,8 @@ const SurveyLogic = ({SurveyType}) => {
                 </footer>
             </div> : <SurveyComplete/>)
 
-           {/*TODO: Fix new function for customized complete button*/}
-           {/*TODO: create a CSS-file for styling | maybe create SCSS files for use of constants*/}
+    {/*TODO: Fix new function for customized complete button*/}
+    {/*TODO: create a CSS-file for styling | maybe create SCSS files for use of constants*/}
 
 }
 

@@ -26,6 +26,17 @@
     grid-area: survey;
 }
 
+.sv_main .sv_body {
+    grid-area: survey;
+    border: none;
+}
+
+
+.sv_header {
+    all:unset;
+    border: none;
+}
+
 /*Button for showing/hiding sidebar has different layout based on state*/
 .showSidebarBtn {
     width: 26px;
@@ -35,15 +46,17 @@
     background-color: transparent;
     border: none;
     z-index: 100;
+    align-self: start;
+    position: sticky;
+    top: 0.1em;
+    margin: 15px 0 0 -13px;
 }
 
 .hideSidebarBtn {
     position: absolute;
-    tab-index: -1;
     background-color: transparent;
     border: none;
     z-index: 100;
-
 }
 
 /*Sidebar styling*/
@@ -56,7 +69,7 @@
     width: 16em;
     line-height: 3rem;
     padding: 0;
-    margin: 20px;
+    margin: 40px 0 10px -9.5px;
     font-family: "Segoe UI", "Helvetica Neue", Helvetica, Arial, sans-serif;
     font-size: 0.8em;
     display: flex;
@@ -79,6 +92,10 @@
     background-color: #F2F0EA;
     border-color: #21314d;
     margin: 0 0.3em 0 0.1em;
+}
+
+.sidebarBtn:focus {
+    background-color: #76b5cb;
 }
 
 .sidebar .sidebarTitles {
@@ -131,7 +148,7 @@
     padding: 0.1em 0.5em;
     font-weight: 600;
     border-radius: 4px;
-    color: #21314d;
+    color: #fffffe;
     border: none;
 }
 
@@ -140,16 +157,28 @@
 }
 
 .footerBtn:hover {
-    background-color: #93c9dd;
+    background-color: #003E69;
+    transition: 300ms;
+}
+
+.footerBtn:focus {
+    background-color: #003E69;
     transition: 300ms;
 }
 
 .submitBtn {
-    background-color: #76b5cb;
+    background-color: #46658A;
 }
 
 .cancelBtn {
     background-color: #F2F0EA;
+    color: #21314d;
+}
+.cancelBtn:focus  {
+    color: #F2F0EA;
+}
+.cancelBtn:hover {
+    color: #F2F0EA;
 }
 
 .toTopBtn {
