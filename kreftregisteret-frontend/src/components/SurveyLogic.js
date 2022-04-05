@@ -19,6 +19,8 @@ const SurveyLogic = ({SurveyType}) => {
     const [isSuccess, setIsSuccess] = useState(false);
     const [showSidebar, setShowSidebar] = useState(true);
 
+
+
     //Lager en modell av surveyen vi har laget
     const survey = new Model(SurveyType);
 
@@ -82,9 +84,7 @@ const SurveyLogic = ({SurveyType}) => {
         survey.data = flattenedJSON;
     }
 
-    useEffect(() =>  {
-        setDataValues(data, SurveyType, flattenedJSON);
-    }, [data, SurveyType, flattenedJSON]);
+
 
 
     const setChangedValue = (options, JSONdata) => {
@@ -153,6 +153,10 @@ const SurveyLogic = ({SurveyType}) => {
     }
 
     useEffect(() =>  {
+        setDataValues(data, SurveyType, flattenedJSON);
+    }, [data, SurveyType, flattenedJSON]);
+
+    useEffect(() =>  {
         survey.onValueChanged.add(function (sender, options) {
             setChangedValue(options, data, false);
         });
@@ -189,10 +193,13 @@ const SurveyLogic = ({SurveyType}) => {
                 <Survey model={survey} showCompletedPage={false} showNavigationButtons={false}/>
                 <button className={ showSidebar ? "showSidebarBtn" : "hideSidebarBtn"} onClick={() => setShowSidebar(!showSidebar)}>{showSidebar ? "x" : "<"}</button>
                 {showSidebar && <SidebarNav className={"sidebar"} titles={titles} elements={elements}/>}
-                <footer className="surveyjs-footer" style={{position: "fixed", left:0, bottom: 0, width:"100%", backgroundColor:Color.king_blue, zIndex: 1000, display: "flex", justifyContent: "flex-end"}}>
-                    <Button >Avslutt</Button>
-                    <Button  >Lagre utkast</Button>
-                    <Button onClick={() => complete() }>Lagre</Button>
+                <footer className="surveyFooter">
+                    <button className={"footerBtn toTopBtn"} onClick={() => document.getElementById("root").scrollIntoView()}>Til topp</button>
+                    <span className={"actionBtnContainer "}>
+                        <button type={"reset"} className={"footerBtn cancelBtn"} >Avslutt</button>
+                        <button type={"submit"} className={"footerBtn submitBtn"} >Lagre utkast</button>
+                        <button type={"submit"} className={"footerBtn submitBtn"} onClick={() => complete() }>Lagre</button>
+                    </span>
                 </footer>
             </div> : <SurveyComplete/>)
 

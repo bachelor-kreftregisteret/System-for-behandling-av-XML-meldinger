@@ -15,7 +15,7 @@ const SidebarNav = (props) => {
     const titleList = () => {
         return ( <div className={"sidebar"}>
             {props.titles.map((title, index) => {return (
-                <span className={"sidebarTitles"} key={index} onClick={()=> {scrollToTitle(title)} }><button className={"sidebarBtn"}/> {title.innerText}</span>)}
+                <span className={"sidebarTitles"} key={index} onClick={()=> {scrollToTitle(title)} }><button className={"sidebarBtn"}/><span> {title.innerText} </span></span>)}
             )}
         </div>)
     }

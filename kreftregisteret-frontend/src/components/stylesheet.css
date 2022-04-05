@@ -1,5 +1,4 @@
-
-
+/* Container for survey, sidebar and footer */
 .surveyContainer {
     display: flex;
     width: 100%;
@@ -8,11 +7,7 @@
     justify-content: flex-end;
 
 }
-
-.surveyContainer:last-child{
-    tab-index: -1;
-}
-
+/* When sidebar is showing, the container will use grid for allocating space*/
 .surveyContainerGrid {
     display: grid;
     grid-template-columns: repeat(9, 1fr);
@@ -29,8 +24,9 @@
 .sv_main {
     grid-area: survey;
 }
+
+/*Button for showing/hiding sidebar has different layout based on state*/
 .showSidebarBtn {
-    z-index: 1000;
     width: 26px;
     height: 26px;
     grid-column: 9;
@@ -46,11 +42,13 @@
     border: none;
 }
 
+/*Sidebar styling*/
+
 .sidebar {
     position: sticky;
     grid-area: sidebar;
+    top: 2rem;
     align-self: start;
-    top: 5rem;
     width: 16em;
     line-height: 3rem;
     padding: 0;
@@ -63,24 +61,85 @@
 }
 
 .sidebar .sidebarTitles .sidebarBtn {
-    width: 16px;
+    width: fit-content;
     height: 16px;
     border-radius: 100%;
     background-color: #F2F0EA;
     border-color: #21314d;
+    margin: 0 0.3em 0 0;
 }
 
 .sidebar .sidebarTitles {
-    list-style-type: none;
-    margin: 0;
+    display: flex;
+    align-items: baseline;
     padding: 0;
+    cursor: auto;
 }
-.sidebar .sidebarTitles:hover{
-    background-color: rgba(155, 172, 199, 0.58);
-}
+
+/*Gives "melder" element some bottom-margin to give better visibility*/
 .sv_p_root:last-child:last-child {
     margin-bottom: 0.5em;
 }
+
+
+/* Footer */
+.surveyFooter {
+    display: flex;
+    justify-content: space-between;
+    position: fixed;
+    left: 0;
+    bottom: 0;
+    width: 100%;
+    background-color: #21314d;
+    z-index: 1000;
+}
+
+
+.actionBtnContainer {
+    display: flex;
+    justify-content: space-evenly;
+}
+
+.footerBtn {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin: 10px;
+    height: 26px;
+    width: fit-content;
+    outline: none;
+    padding: 0.1em 0.5em;
+    font-weight: 600;
+    border-radius: 5px;
+    color: #21314d;
+    border: none;
+}
+
+.footerBtn:hover {
+    background-color: #93c9dd;
+    transition: 300ms;
+}
+
+.submitBtn {
+    background-color: #76b5cb;
+}
+
+.cancelBtn {
+    background-color: #F2F0EA;
+}
+
+.toTopBtn {
+    background-color: transparent;
+    color: #F2F0EA;
+    font-size: 12px;
+}
+
+.toTopBtn:hover {
+    background-color: transparent;
+    color: #93c9dd;
+}
+
+
 
 
 /*Media something for this
