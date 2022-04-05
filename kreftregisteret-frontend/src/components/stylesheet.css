@@ -34,6 +34,7 @@
     grid-row: 1;
     background-color: transparent;
     border: none;
+    z-index: 100;
 }
 
 .hideSidebarBtn {
@@ -41,6 +42,8 @@
     tab-index: -1;
     background-color: transparent;
     border: none;
+    z-index: 100;
+
 }
 
 /*Sidebar styling*/
@@ -59,6 +62,15 @@
     display: flex;
     flex-direction: column;
     align-items: flex-start;
+}
+
+.sidebarLine {
+    position: absolute;
+    z-index: -1;
+    top: 16px;
+    left: 8px;
+    width: 2px;
+    background-color: #2c3034;
 }
 
 .sidebarBtn {
@@ -118,9 +130,13 @@
     outline: none;
     padding: 0.1em 0.5em;
     font-weight: 600;
-    border-radius: 5px;
+    border-radius: 4px;
     color: #21314d;
     border: none;
+}
+
+.sv_q_checkbox .sv-q-col-1 .checked {
+    background-color: #76b5cb;
 }
 
 .footerBtn:hover {

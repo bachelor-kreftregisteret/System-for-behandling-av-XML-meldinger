@@ -17,7 +17,7 @@ const Index = () => {
     return (
         <div style={{display: "flex", placeItems:"center", flexDirection: "column", marginTop: "2%"}}>
             <div style={{width: "90%"}}>
-                <h4>Velg en fil du vil redigere</h4>
+                <h3>Velg en fil du vil redigere</h3>
                 <MeldingList/>
                 <UncontrolledButtonDropdown >
                     <DropdownToggle style={{backgroundColor: Color.king_blue, width: "200px"}} caret>

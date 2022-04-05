@@ -19,6 +19,8 @@ const SurveyLogic = ({SurveyType}) => {
     const [isSuccess, setIsSuccess] = useState(false);
     const [showSidebar, setShowSidebar] = useState(true);
 
+    //Sidebar props
+    const titles = [...document.querySelectorAll("h4")]
 
 
     //Lager en modell av surveyen vi har laget
@@ -180,19 +182,13 @@ const SurveyLogic = ({SurveyType}) => {
                        })
        }
 
-
-    const titles = [...document.querySelectorAll("h4")]
-    const elements = document.querySelectorAll("h4");
-
-
     return (
         /*Render skjema*/
-
         !isSuccess ?
             <div className={showSidebar ? "surveyContainerGrid" : "surveyContainer"}>
                 <Survey model={survey} showCompletedPage={false} showNavigationButtons={false}/>
                 <button className={ showSidebar ? "showSidebarBtn" : "hideSidebarBtn"} onClick={() => setShowSidebar(!showSidebar)}>{showSidebar ? "x" : "<"}</button>
-                {showSidebar && <SidebarNav className={"sidebar"} titles={titles} elements={elements}/>}
+                {showSidebar && <SidebarNav className={"sidebar"} titles={titles} loading={loading}/>}
                 <footer className="surveyFooter">
                     <button className={"footerBtn toTopBtn"} onClick={() => document.getElementById("root").scrollIntoView({behavior: "smooth"})}>Til topp</button>
                     <span className={"actionBtnContainer "}>
