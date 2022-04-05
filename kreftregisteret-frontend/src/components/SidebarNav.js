@@ -3,6 +3,7 @@ import 'survey-react/survey.css';
 import "./stylesheet.css"
 
 const SidebarNav = (props) => {
+
     const scrollToTitle = (title) => {
         for(let i=0; i < props.titles.length; i++) {
             if(props.elements[i].innerText === title.innerText){
@@ -12,11 +13,11 @@ const SidebarNav = (props) => {
     }
 
     const titleList = () => {
-        return ( <ul className={"sidebar"}>
+        return ( <div className={"sidebar"}>
             {props.titles.map((title, index) => {return (
-                <li className={"sidebarTitles"} key={index} onClick={()=> {scrollToTitle(title)} }>{title.innerText}</li>)}
+                <span className={"sidebarTitles"} key={index} onClick={()=> {scrollToTitle(title)} }><button className={"sidebarBtn"}/> {title.innerText}</span>)}
             )}
-        </ul>)
+        </div>)
     }
 
     return titleList();

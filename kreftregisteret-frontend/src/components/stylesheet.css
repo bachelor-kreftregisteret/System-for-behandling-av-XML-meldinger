@@ -1,21 +1,92 @@
+
+
 .surveyContainer {
+    display: flex;
+    width: 100%;
+    padding: 0;
+    margin: 0;
+    justify-content: flex-end;
+
+}
+
+.surveyContainer:last-child{
+    tab-index: -1;
+}
+
+.surveyContainerGrid {
     display: grid;
-    grid-template-areas: "survey survey sidebar"
-"survey survey sidebar"
-"survey survey sidebar";
-    grid-template-columns: auto;
+    grid-template-columns: repeat(9, 1fr);
+    grid-template-areas:
+            "survey survey survey survey survey survey survey survey sidebar"
+            "survey survey survey survey survey survey survey survey sidebar"
+            "survey survey survey survey survey survey survey survey sidebar";
     grid-template-rows: auto ;
+    width: 100%;
+    padding: 0;
+    margin: 0;
+}
+
+.sv_main {
+    grid-area: survey;
+}
+.showSidebarBtn {
+    z-index: 1000;
+    width: 26px;
+    height: 26px;
+    grid-column: 9;
+    grid-row: 1;
+    background-color: transparent;
+    border: none;
+}
+
+.hideSidebarBtn {
+    position: absolute;
+    tab-index: -1;
+    background-color: transparent;
+    border: none;
 }
 
 .sidebar {
     position: sticky;
-
     grid-area: sidebar;
     align-self: start;
     top: 5rem;
+    width: 16em;
+    line-height: 3rem;
+    padding: 0;
+    margin: 20px;
+    font-family: "Segoe UI", "Helvetica Neue", Helvetica, Arial, sans-serif;
+    font-size: 0.8em;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
 }
 
+.sidebar .sidebarTitles .sidebarBtn {
+    width: 16px;
+    height: 16px;
+    border-radius: 100%;
+    background-color: #F2F0EA;
+    border-color: #21314d;
+}
+
+.sidebar .sidebarTitles {
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+}
 .sidebar .sidebarTitles:hover{
-    background-color: red;
-
+    background-color: rgba(155, 172, 199, 0.58);
 }
+.sv_p_root:last-child:last-child {
+    margin-bottom: 0.5em;
+}
+
+
+/*Media something for this
+
+#sq_1082_ariaTitle{
+    height: 0;
+    margin: 0;
+    padding: 0;
+}*/

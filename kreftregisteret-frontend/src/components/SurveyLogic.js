@@ -17,11 +17,10 @@ const SurveyLogic = ({SurveyType}) => {
     let { id } = useParams();
     const {data, loading, error} = useFetch('/api/v1/meldinger/' + id);
     const [isSuccess, setIsSuccess] = useState(false);
+    const [showSidebar, setShowSidebar] = useState(true);
 
     //Lager en modell av surveyen vi har laget
     const survey = new Model(SurveyType);
-    console.log(survey.visiblePages[0].elementsValue.map((item) => item.name))
-
 
     //templister for array
     let checkboxes = [];
@@ -161,26 +160,21 @@ const SurveyLogic = ({SurveyType}) => {
 
 
     // Todo: Oncomplete function - Legg til en modal eller annet som kan beskrive feilen
-        survey
-            .onCompleting
-            .add(function (sender, options) {
-                options.allowComplete = false;
-                const headers = {
-                    'Content-Type': 'application/json'
-                }
-                axios.post('http://localhost:8080/api/v1/meldinger', data, {headers})
-                    .then(response => {
-                        setIsSuccess(true);
-                        console.log("Kommer vi hit: ", response)
-                        options.allowComplete = true;
-                    })
-                    .catch(error => {
-                        console.log("Eller hit")
-                        alert(error.response.data)
-                        setIsSuccess(false);
-                    })
-            })
-
+       const complete = () => {
+                   const headers = {
+                       'Content-Type': 'application/json'
+                   }
+                   axios.post('http://localhost:8080/api/v1/meldinger', data, {headers})
+                       .then(response => {
+                           setIsSuccess(true);
+                           console.log("Kommer vi hit: ", response)
+                       })
+                       .catch(error => {
+                           console.log("Eller hit")
+                           alert(error.response.data)
+                           setIsSuccess(false);
+                       })
+       }
 
 
     const titles = [...document.querySelectorAll("h4")]
@@ -189,20 +183,22 @@ const SurveyLogic = ({SurveyType}) => {
 
     return (
         /*Render skjema*/
-       <div className={"surveyContainer"}>
-        <SidebarNav className={"sidebar"} titles={titles} elements={elements}/>
-           {!isSuccess ? <Survey model={survey} showCompletedPage={false} showNavigationButtons={false}/> : <SurveyComplete/>}
+
+        !isSuccess ?
+            <div className={showSidebar ? "surveyContainerGrid" : "surveyContainer"}>
+                <Survey model={survey} showCompletedPage={false} showNavigationButtons={false}/>
+                <button className={ showSidebar ? "showSidebarBtn" : "hideSidebarBtn"} onClick={() => setShowSidebar(!showSidebar)}>{showSidebar ? "x" : "<"}</button>
+                {showSidebar && <SidebarNav className={"sidebar"} titles={titles} elements={elements}/>}
+                <footer className="surveyjs-footer" style={{position: "fixed", left:0, bottom: 0, width:"100%", backgroundColor:Color.king_blue, zIndex: 1000, display: "flex", justifyContent: "flex-end"}}>
+                    <Button >Avslutt</Button>
+                    <Button  >Lagre utkast</Button>
+                    <Button onClick={() => complete() }>Lagre</Button>
+                </footer>
+            </div> : <SurveyComplete/>)
 
            {/*TODO: Fix new function for customized complete button*/}
            {/*TODO: create a CSS-file for styling | maybe create SCSS files for use of constants*/}
 
-           <footer className="surveyjs-footer" style={{position: "fixed", left:0, bottom: 0, width:"100%", backgroundColor:Color.king_blue, zIndex: 1000, display: "flex", justifyContent: "flex-end"}}>
-               <Button >Avslutt</Button>
-               <Button onClick={() => document.getElementsByTagName("h4")[1].scrollIntoView()} >Lagre utkast</Button>
-               <Button >Lagre</Button>
-           </footer>
-       </div>
-    )
 }
 
 export default SurveyLogic;
