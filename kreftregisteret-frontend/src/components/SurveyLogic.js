@@ -194,7 +194,7 @@ const SurveyLogic = ({SurveyType}) => {
                 <button className={ showSidebar ? "showSidebarBtn" : "hideSidebarBtn"} onClick={() => setShowSidebar(!showSidebar)}>{showSidebar ? "x" : "<"}</button>
                 {showSidebar && <SidebarNav className={"sidebar"} titles={titles} elements={elements}/>}
                 <footer className="surveyFooter">
-                    <button className={"footerBtn toTopBtn"} onClick={() => document.getElementById("root").scrollIntoView()}>Til topp</button>
+                    <button className={"footerBtn toTopBtn"} onClick={() => document.getElementById("root").scrollIntoView({behavior: "smooth"})}>Til topp</button>
                     <span className={"actionBtnContainer "}>
                         <button type={"reset"} className={"footerBtn cancelBtn"} >Avslutt</button>
                         <button type={"submit"} className={"footerBtn submitBtn"} >Lagre utkast</button>
