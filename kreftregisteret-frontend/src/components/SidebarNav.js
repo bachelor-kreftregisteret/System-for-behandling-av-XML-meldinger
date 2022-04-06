@@ -22,14 +22,14 @@ const SidebarNav = (props) => {
             <div id={"sidebar"} className={"sidebar"}>
                 {props.titles.map((title, index) => {
                     return (
-                        <span id={index} className={"sidebarTitles"} key={index}
+                        <span id={index} className={"sidebarNav"} key={index}
                               onClick={() => {
                                   scrollToTitle(title);
                                   setActiveId(index)
                               }}>
                     <button className={activeId === index ?
                         "sidebarBtn activeSidebarBtn" : "sidebarBtn"}/>
-                    <span> {title.innerText} </span>
+                    <span className={"sidebarTitle"}> {title.innerText} </span>
                 </span>)
                 })}
             </div>
