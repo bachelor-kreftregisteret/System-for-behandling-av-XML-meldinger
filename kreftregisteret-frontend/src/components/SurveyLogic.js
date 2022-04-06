@@ -189,8 +189,8 @@ const SurveyLogic = ({SurveyType}) => {
         /*Render skjema*/
         !isSuccess ?
             <div className={showSidebar ? "surveyContainerGrid" : "surveyContainer"}>
-                <button className={ showSidebar ? "hideSidebarBtn" : "showSidebarBtn"} onClick={() => setShowSidebar(!showSidebar)}>{showSidebar ? "Lukk sidemeny >" : "< Sidemeny"}</button>
-                {showSidebar && <SidebarNav className={"sidebar"} titles={titles} loading={loading}/>}
+                <button tabIndex={-1} className={ showSidebar ? "hideSidebarBtn" : "showSidebarBtn"} onClick={() => setShowSidebar(!showSidebar)}>{showSidebar ? "Lukk sidemeny >" : "< Sidemeny"}</button>
+                {showSidebar && <SidebarNav tabIndex={-1} className={"sidebar"} titles={titles} loading={loading}/>}
                 <Survey model={survey} showCompletedPage={false} showNavigationButtons={false}/>
 
                 <footer className="surveyFooter">

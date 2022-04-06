@@ -39,7 +39,7 @@ const SidebarNav = (props) => {
     //Obs,
     return (
         !props.loading ? <div className={"sidebarContainer"} style={{height: "fit-content"}}> {listOfTitles()} </div>
-            : <h6 style={{marginLeft:"10px"}}>Laster inn..</h6>
+            : <p style={{marginLeft:"10px"}}>Laster inn..</p>
     )
 
 }
