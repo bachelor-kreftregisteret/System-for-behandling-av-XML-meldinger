@@ -90,7 +90,7 @@ h5 {
 
 .sv_main .sv_container .sv_body .sv_p_root .sv_p_title {
     margin:0;
-    padding: 0.8em 0 10px 0;
+    padding: 0.8em 0 0.1em 0;
 }
 
 /*SurveyJS focus change color*/
@@ -139,6 +139,7 @@ h5 {
     align-self: flex-start;
     border-left: 2px solid black;
     z-index: 1000;
+    height: 90vh;
 }
 
 .sidebar {

@@ -38,7 +38,7 @@ const SidebarNav = (props) => {
 
     //Obs,
     return (
-        !props.loading ? <div className={"sidebarContainer"} style={{height: "fit-content"}}> {listOfTitles()} </div>
+        !props.loading ? <div className={"sidebarContainer"}> {listOfTitles()} </div>
             : <p style={{marginLeft:"10px"}}>Laster inn..</p>
     )
 
