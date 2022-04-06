@@ -26,11 +26,15 @@
     grid-area: survey;
 }
 
-.sv_main .sv_body {
+.sv_main .sv_container .sv_body {
     grid-area: survey;
     border: none;
+    background-color: #0a53be;
 }
-
+.sv_main .sv_default_css .sv_body {
+    border: none;
+    background-color: #0a53be;
+}
 
 .sv_header {
     all:unset;
@@ -49,7 +53,8 @@
     align-self: start;
     position: sticky;
     top: 0.1em;
-    margin: 15px 0 0 -13px;
+    margin: 40px 0 0 -12.5px;
+
 }
 
 .hideSidebarBtn {
@@ -57,33 +62,26 @@
     background-color: transparent;
     border: none;
     z-index: 100;
+
 }
 
 /*Sidebar styling*/
+.sidebarContainer {
+    top: 1.5em;
+    position: sticky;
+    align-self: flex-start;
+    border-left: 2px solid black;
+}
 
 .sidebar {
-    position: sticky;
     grid-area: sidebar;
-    top: 2rem;
-    align-self: start;
-    width: 16em;
     line-height: 3rem;
     padding: 0;
-    margin: 40px 0 10px -9.5px;
+    margin: 0 0 10px -10.5px;
     font-family: "Segoe UI", "Helvetica Neue", Helvetica, Arial, sans-serif;
     font-size: 0.8em;
     display: flex;
     flex-direction: column;
-    align-items: flex-start;
-}
-
-.sidebarLine {
-    position: absolute;
-    z-index: -1;
-    top: 16px;
-    left: 8px;
-    width: 2px;
-    background-color: #2c3034;
 }
 
 .sidebarBtn {
@@ -192,13 +190,42 @@
     color: #93c9dd;
 }
 
+.sv_main .sv_default_css{
+    background-color:red;
+}
 
+.sv_main.sv_default_css .sv_p_root > .sv_row:nth-child(2n) {
+    all: unset;
+}
 
-
-/*Media something for this
-
-#sq_1082_ariaTitle{
-    height: 0;
+.sv_main .sv_p_root > .sv_row {
     margin: 0;
     padding: 0;
-}*/
+}
+
+::-webkit-scrollbar {
+    width: 8px;
+}
+
+/* Track */
+::-webkit-scrollbar-track {
+    background: #f1f1f1;
+}
+
+/* Handle */
+::-webkit-scrollbar-thumb {
+    background: #7f868b;
+    border-radius: 10px;
+}
+
+/* Handle on hover */
+::-webkit-scrollbar-thumb:hover {
+    background: #555;
+}
+
+
+@media screen and (max-height: 687px) {
+    .sidebar {
+    overflow-y: auto;
+    }
+}

@@ -1,13 +1,10 @@
-import React, {useState} from "react";
+import React, {useEffect, useState} from "react";
 import 'survey-react/survey.css';
 import "./stylesheet.css"
 
 const SidebarNav = (props) => {
 
     const [activeId, setActiveId] = useState(0)
-
-    const el = document.getElementById("sidebar");
-    const height = el && el.offsetHeight-40;
 
     const scrollToTitle = (title) => {
         props.titles.map((_, index) => {
@@ -23,7 +20,6 @@ const SidebarNav = (props) => {
     const listOfTitles = () => {
         return (
             <div id={"sidebar"} className={"sidebar"}>
-                <div className={"sidebarLine"} style={{height: `${height}px`}} />
                 {props.titles.map((title, index) => {
                     return (
                         <span id={index} className={"sidebarTitles"} key={index}
@@ -40,9 +36,9 @@ const SidebarNav = (props) => {
         )
     }
 
-//Obs,
+    //Obs,
     return (
-        !props.loading ? listOfTitles()
+        !props.loading ? <div className={"sidebarContainer"} style={{height: "fit-content"}}> {listOfTitles()} </div>
             : <h6 style={{marginLeft:"10px"}}>Laster inn..</h6>
     )
 

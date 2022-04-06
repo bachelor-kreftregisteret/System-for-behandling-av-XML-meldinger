@@ -157,7 +157,7 @@ const SurveyLogic = ({SurveyType}) => {
 
     useEffect(() =>  {
         setDataValues(data, SurveyType, flattenedJSON);
-    }, [ SurveyType, flattenedJSON]);
+    }, [data, SurveyType, flattenedJSON]);
 
     useEffect(() =>  {
         survey.onValueChanged.add(function (sender, options) {
@@ -167,7 +167,7 @@ const SurveyLogic = ({SurveyType}) => {
 
 
     // Todo: Oncomplete function - Legg til en modal eller annet som kan beskrive feilen
-    const complete = () => {
+    const submit = () => {
         const headers = {
             'Content-Type': 'application/json'
         }
@@ -183,6 +183,9 @@ const SurveyLogic = ({SurveyType}) => {
             })
     }
 
+    /*TODO: Fix new function for customized submit button*/
+    /*TODO: create a CSS-file for styling | maybe create SCSS files for use of constants*/
+
     return (
         /*Render skjema*/
         !isSuccess ?
@@ -195,13 +198,10 @@ const SurveyLogic = ({SurveyType}) => {
                     <span className={"actionBtnContainer "}>
                         <button type={"reset"} className={"footerBtn cancelBtn"} >Avslutt</button>
                         <button type={"submit"} className={"footerBtn submitBtn"} >Lagre utkast</button>
-                        <button type={"submit"} className={"footerBtn submitBtn"} onClick={() => complete() }>Lagre</button>
+                        <button type={"submit"} className={"footerBtn submitBtn"} onClick={() => submit() }>Lagre</button>
                     </span>
                 </footer>
             </div> : <SurveyComplete/>)
-
-    {/*TODO: Fix new function for customized complete button*/}
-    {/*TODO: create a CSS-file for styling | maybe create SCSS files for use of constants*/}
 
 }
 
