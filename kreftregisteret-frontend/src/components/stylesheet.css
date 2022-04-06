@@ -86,7 +86,7 @@ h5 {
 
 .sv_main .sv_container .sv_body .sv_p_root .sv_p_title {
     margin:0;
-    padding: 0 0 10px 0;
+    padding: 0.8em 0 10px 0;
 }
 
 /*SurveyJS focus change color*/
