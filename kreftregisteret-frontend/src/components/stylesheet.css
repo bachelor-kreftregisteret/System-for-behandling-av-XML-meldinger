@@ -22,28 +22,64 @@
     background-color: white;
 }
 
+/*SurveyJS container*/
 .sv_main {
     grid-area: survey;
 }
 
+/*Ensures that the last fields does not hide behind the footer*/
 .sv_main .sv_container .sv_body {
-    grid-area: survey;
-    border: none;
-    background-color: #0a53be;
+    padding-bottom: 3em;
 }
-.sv_main .sv_default_css .sv_body {
+
+/*Removing default lines*/
+.sv_main .sv_p_root > .sv_row {
     border: none;
-    background-color: #0a53be;
+}
+
+/*Header background color*/
+.sv_main .sv_container {
+    background-color: white;
+    color: rgba(33, 49, 77, 0.82);
+}
+
+/*Survey header text*/
+.sv_main .sv_header {
+    border:none;
+    color: #21314d;
+    font-weight: bolder;
 }
 
 .sv_main .sv_container .sv_header {
-    all:unset;
-    border: none;
-    margin: 0;
-    padding: 0;
+    padding: 10px 0 0 15px;
 }
 
+h3 .sv-string-viewer {
+    font-size: x-large;
+    font-weight: 500;
+    color: #21314d;
+}
 
+/*Removing border-bottom header*/
+.sv_main .sv_body {
+    border:none;
+}
+
+/*survey titles*/
+h4 {
+    font-size: 1.2em;
+    color: #21314d;
+}
+
+/*question title*/
+h5 {
+    font-size: 1em;
+}
+
+/*question container*/
+.sv_main .sv_container .sv_body .sv_p_root .sv_q {
+    padding: 0.5em 0.5em 0.5em 1em;
+}
 .sv_row {
     background-color: #F7F6F3;
 }
@@ -51,6 +87,20 @@
 .sv_main .sv_container .sv_body .sv_p_root .sv_p_title {
     margin:0;
     padding: 0 0 10px 0;
+}
+
+/*SurveyJS focus change color*/
+.sv_main .sv_q_other input:focus, .sv_main .sv_q_text_root:focus, .sv_main .sv_q_dropdown_control:focus, .sv_main input:not([type=button]):not([type=reset]):not([type=submit]):not([type=image]):not([type=checkbox]):not([type=radio]):focus, .sv_main select:focus, .sv_main textarea:focus {
+    border: 1px solid #46658A;
+}
+
+.sv_main .sv_container .sv_body .sv_p_root .sv_q input[type=radio]:focus, .sv_main .sv_container .sv_body .sv_p_root .sv_q input[type=checkbox]:focus {
+    outline: 2px dotted #46658A;
+}
+
+/*Dropdown arrow design*/
+.sv_main .sv_select_wrapper:before {
+    background-color: #46658A;
 }
 
 /*Button for showing/hiding sidebar has different layout based on state*/
@@ -61,9 +111,10 @@
     align-self: start;
     position: sticky;
     top: 0.1em;
-    margin: 17px 0 17px 10px;
+    padding: 17px 0 17px 10px;
     font-weight: bold;
     font-size: 0.8em;
+    border-left: 2px solid #21314d;
 
 }
 
@@ -79,10 +130,11 @@
 
 /*Sidebar styling*/
 .sidebarContainer {
-    top: 1.8em;
+    top: 2.8em;
     position: sticky;
     align-self: flex-start;
     border-left: 2px solid black;
+    z-index: 1000;
 }
 
 .sidebar {
@@ -104,7 +156,7 @@
     margin: 0 0.3em 0 0.1em;
 }
 
-.sidebarBtn:focus {
+.sidebarBtn:focus, .sidebarBtn:hover {
     background-color: #76b5cb;
 }
 
@@ -117,6 +169,10 @@
 
 .sidebarTitle {
     margin-left: 2px;
+}
+
+.sidebarTitle:focus, .sidebarTitle:hover{
+    color: #46658A;
 }
 
 .activeSidebarBtn {

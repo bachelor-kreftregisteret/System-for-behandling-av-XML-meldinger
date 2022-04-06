@@ -27,7 +27,7 @@ const SidebarNav = (props) => {
                                   scrollToTitle(title);
                                   setActiveId(index)
                               }}>
-                    <button className={activeId === index ?
+                    <button aria-label={`${title.innerText}`} className={activeId === index ?
                         "sidebarBtn activeSidebarBtn" : "sidebarBtn"}/>
                     <span className={"sidebarTitle"}> {title.innerText} </span>
                 </span>)

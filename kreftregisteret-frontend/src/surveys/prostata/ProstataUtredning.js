@@ -1,6 +1,6 @@
 const SurveyJsonUtredning = {
     locale: "no",
-    title: "UTREDNING",
+    title: "Melding etter avsluttet utredning",
     logoPosition: "right",
     pages: [
         {
