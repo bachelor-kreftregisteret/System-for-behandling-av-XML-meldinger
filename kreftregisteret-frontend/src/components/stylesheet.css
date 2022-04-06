@@ -29,7 +29,7 @@
 
 /*Ensures that the last fields does not hide behind the footer*/
 .sv_main .sv_container .sv_body {
-    padding-bottom: 3em;
+    padding-bottom: 4em;
 }
 
 /*Removing default lines*/
@@ -182,12 +182,6 @@ h5 {
     margin: 0;
 }
 
-/*Gives "melder" element some bottom-margin to give better visibility*/
-.sv_p_root .sv_row:last-child {
-    margin-bottom: 1em;
-}
-
-
 /* Footer */
 .surveyFooter {
     display: flex;
@@ -199,7 +193,6 @@ h5 {
     background-color: #21314d;
     z-index: 1000;
 }
-
 
 .actionBtnContainer {
     display: flex;
@@ -221,16 +214,7 @@ h5 {
     border: none;
 }
 
-.sv_q_checkbox .sv-q-col-1 .checked {
-    background-color: #76b5cb;
-}
-
-.footerBtn:hover {
-    background-color: #003E69;
-    transition: 300ms;
-}
-
-.footerBtn:focus {
+.footerBtn:hover, .footerBtn:focus {
     background-color: #003E69;
     transition: 300ms;
 }
@@ -243,10 +227,7 @@ h5 {
     background-color: #F2F0EA;
     color: #21314d;
 }
-.cancelBtn:focus  {
-    color: #F2F0EA;
-}
-.cancelBtn:hover {
+.cancelBtn:focus, .cancelBtn:hover {
     color: #F2F0EA;
 }
 
@@ -261,17 +242,17 @@ h5 {
     color: #93c9dd;
 }
 
+/*Resets background and other styling from the titles in the survey*/
 .sv_main.sv_default_css .sv_p_root > .sv_row:nth-child(2n) {
     all: unset;
 }
 
-.sv_main .sv_p_root > .sv_row {
-    margin: 0;
-    padding: 0;
-}
+
+/*Scroller design*/
 
 ::-webkit-scrollbar {
     width: 8px;
+    height: 8px;
 }
 
 /* Track */
@@ -281,13 +262,13 @@ h5 {
 
 /* Handle */
 ::-webkit-scrollbar-thumb {
-    background: #7f868b;
-    border-radius: 10px;
+    background: #c4c4c6;
+    border-radius: 2px;
 }
 
 /* Handle on hover */
 ::-webkit-scrollbar-thumb:hover {
-    background: #555;
+    background: #7a7979;
 }
 
 
