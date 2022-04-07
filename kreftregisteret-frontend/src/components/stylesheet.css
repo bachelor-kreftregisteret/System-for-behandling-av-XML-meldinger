@@ -12,8 +12,6 @@
     display: grid;
     grid-template-columns: repeat(9, 1fr);
     grid-template-areas:
-            "survey survey survey survey survey survey survey survey sidebar"
-            "survey survey survey survey survey survey survey survey sidebar"
             "survey survey survey survey survey survey survey survey sidebar";
     grid-template-rows: auto ;
     width: 100%;
@@ -30,6 +28,7 @@
 /*Ensures that the last fields does not hide behind the footer*/
 .sv_main .sv_container .sv_body {
     padding-bottom: 4em;
+    background-color: white;
 }
 
 /*Removing default lines*/
@@ -39,7 +38,6 @@
 
 /*Header background color*/
 .sv_main .sv_container {
-    background-color: white;
     color: rgba(33, 49, 77, 0.82);
 }
 
@@ -48,6 +46,7 @@
     border:none;
     color: #21314d;
     font-weight: bolder;
+    background-color: white;
 }
 
 .sv_main .sv_container .sv_header {
@@ -84,6 +83,12 @@ h5 {
 .sv_main .sv_container .sv_body .sv_p_root .sv_q {
     padding: 0.5em 0.5em 0.5em 1em;
 }
+
+/*Resets background and other styling from the titles in the survey*/
+.sv_main.sv_default_css .sv_p_root > .sv_row:nth-child(2n) {
+    background-color: red;
+}
+
 .sv_row {
     background-color: #F7F6F3;
 }
@@ -107,18 +112,25 @@ h5 {
     background-color: #46658A;
 }
 
+.sidebarContainer {
+    grid-area: sidebar;
+    top: 0;
+    position: sticky;
+    align-self: start;
+    border-left: 0.2em solid #21314d;
+    z-index: 1000;
+    height: 100vh;
+}
+
 /*Button for showing/hiding sidebar has different layout based on state*/
 .hideSidebarBtn {
     background-color: transparent;
     border: none;
     z-index: 100;
-    align-self: start;
-    position: sticky;
     top: 0.1em;
     padding: 17px 0 17px 10px;
     font-weight: bold;
     font-size: 0.8em;
-    border-left: 2px solid #21314d;
 
 }
 
@@ -131,127 +143,6 @@ h5 {
     margin-top: 15px;
     font-size: 0.8em;
 }
-
-/*Sidebar styling*/
-.sidebarContainer {
-    top: 2.8em;
-    position: sticky;
-    align-self: flex-start;
-    border-left: 2px solid black;
-    z-index: 1000;
-    height: 90vh;
-}
-
-.sidebar {
-    grid-area: sidebar;
-    line-height: 3rem;
-    padding: 0;
-    margin: 0 10px 10px -10.5px;
-    font-family: "Segoe UI", "Helvetica Neue", Helvetica, Arial, sans-serif;
-    font-size: 0.8em;
-    display: flex;
-    flex-direction: column;
-}
-
-.sidebarBtn {
-    height: 16px;
-    border-radius: 100%;
-    background-color: #F2F0EA;
-    border-color: #21314d;
-    margin: 0 0.3em 0 0.1em;
-}
-
-.sidebarBtn:focus, .sidebarBtn:hover {
-    background-color: #76b5cb;
-}
-
-.sidebarNav {
-    display: flex;
-    align-items: baseline;
-    padding: 0;
-    cursor: pointer;
-}
-
-.sidebarTitle {
-    margin-left: 2px;
-}
-
-.sidebarTitle:focus, .sidebarTitle:hover{
-    color: #46658A;
-}
-
-.activeSidebarBtn {
-    height: 20px;
-    background-color: #76b5cb;
-    border: 4px solid #21314d;
-    margin: 0;
-}
-
-/* Footer */
-.surveyFooter {
-    display: flex;
-    justify-content: space-between;
-    position: fixed;
-    left: 0;
-    bottom: 0;
-    width: 100%;
-    background-color: #21314d;
-    z-index: 1000;
-}
-
-.actionBtnContainer {
-    display: flex;
-    justify-content: space-evenly;
-}
-
-.footerBtn {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    margin: 10px;
-    height: 26px;
-    width: fit-content;
-    outline: none;
-    padding: 0.1em 0.5em;
-    font-weight: 600;
-    border-radius: 4px;
-    color: #fffffe;
-    border: none;
-}
-
-.footerBtn:hover, .footerBtn:focus {
-    background-color: #003E69;
-    transition: 300ms;
-}
-
-.submitBtn {
-    background-color: #46658A;
-}
-
-.cancelBtn {
-    background-color: #F2F0EA;
-    color: #21314d;
-}
-.cancelBtn:focus, .cancelBtn:hover {
-    color: #F2F0EA;
-}
-
-.toTopBtn {
-    background-color: transparent;
-    color: #F2F0EA;
-    font-size: 12px;
-}
-
-.toTopBtn:hover {
-    background-color: transparent;
-    color: #93c9dd;
-}
-
-/*Resets background and other styling from the titles in the survey*/
-.sv_main.sv_default_css .sv_p_root > .sv_row:nth-child(2n) {
-    all: unset;
-}
-
 
 /*Scroller design*/
 

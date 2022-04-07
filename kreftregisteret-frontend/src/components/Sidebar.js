@@ -1,8 +1,8 @@
-import React, {useEffect, useState} from "react";
+import React, { useState} from "react";
 import 'survey-react/survey.css';
-import "./stylesheet.css"
+import "./css/sidebar.css"
 
-const SidebarNav = (props) => {
+const Sidebar = (props) => {
 
     const [activeId, setActiveId] = useState(0)
 
@@ -38,10 +38,10 @@ const SidebarNav = (props) => {
 
     //Obs,
     return (
-        !props.loading ? <div className={"sidebarContainer"}> {listOfTitles()} </div>
+        !props.loading ? listOfTitles()
             : <p style={{marginLeft:"10px"}}>Laster inn..</p>
     )
 
 }
 
-export default SidebarNav;
+export default Sidebar;

@@ -1,13 +1,15 @@
 import React, {useEffect, useState} from "react";
 import 'survey-react/survey.css';
 import './stylesheet.css';
-import {Model, Survey} from "survey-react";
+import {Model, Survey, StylesManager} from "survey-react";
 import axios from "axios";
 import {useParams} from "react-router-dom";
 import useFetch from "../api/useFetch";
 import SurveyComplete from "./SurveyComplete";
-import SidebarNav from "./SidebarNav";
+import Sidebar from "./Sidebar";
+import Footer from "./Footer";
 
+StylesManager.applyTheme("default")
 
 const SurveyLogic = ({SurveyType}) => {
     //Henter data fra backend
@@ -189,19 +191,25 @@ const SurveyLogic = ({SurveyType}) => {
         /*Render skjema*/
         !isSuccess ?
             <div className={showSidebar ? "surveyContainerGrid" : "surveyContainer"}>
-                <button tabIndex={-1} className={ showSidebar ? "hideSidebarBtn" : "showSidebarBtn"} onClick={() => setShowSidebar(!showSidebar)}>{showSidebar ? "Lukk sidemeny >" : "< Sidemeny"}</button>
-                {showSidebar && <SidebarNav tabIndex={-1} className={"sidebar"} titles={titles} loading={loading}/>}
-                <Survey model={survey} showCompletedPage={false} showNavigationButtons={false}/>
-
-                <footer className="surveyFooter">
-                    <button className={"footerBtn toTopBtn"} onClick={() => document.getElementById("root").scrollIntoView({behavior: "smooth"})}>Til topp</button>
-                    <span className={"actionBtnContainer "}>
-                        <button type={"reset"} className={"footerBtn cancelBtn"} >Avslutt</button>
-                        <button type={"submit"} className={"footerBtn submitBtn"} >Lagre utkast</button>
-                        <button type={"submit"} className={"footerBtn submitBtn"} onClick={() => submit() }>Lagre</button>
-                    </span>
-                </footer>
-            </div> : <SurveyComplete/>)
+                <div className={"sidebarContainer"}>
+                    <button
+                        className={ showSidebar ? "hideSidebarBtn" : "showSidebarBtn"}
+                        onClick={() => setShowSidebar(!showSidebar)}>
+                        {showSidebar ? "Lukk sidemeny >" : "< Sidemeny"}
+                    </button>
+                {showSidebar &&
+                    <Sidebar
+                        className={"sidebar"}
+                        titles={titles}
+                        loading={loading}/>}
+                </div>
+                <Survey
+                    model={survey}
+                    showCompletedPage={false}
+                    showNavigationButtons={false}/>
+                <Footer onSubmit={submit}/>
+            </div>
+            : <SurveyComplete/>)
 
 }
 

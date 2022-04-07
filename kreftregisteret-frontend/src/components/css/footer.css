@@ -1,0 +1,60 @@
+/* Footer */
+.surveyFooter {
+    display: flex;
+    justify-content: space-between;
+    position: fixed;
+    left: 0;
+    bottom: 0;
+    width: 100%;
+    background-color: #21314d;
+    z-index: 1000;
+}
+
+.actionBtnContainer {
+    display: flex;
+    justify-content: space-evenly;
+}
+
+.footerBtn {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin: 10px;
+    height: 26px;
+    width: fit-content;
+    outline: none;
+    padding: 0.1em 0.5em;
+    font-weight: 600;
+    border-radius: 4px;
+    color: #fffffe;
+    border: none;
+}
+
+.footerBtn:hover, .footerBtn:focus {
+    background-color: #003E69;
+    transition: 300ms;
+}
+
+.submitBtn {
+    background-color: #46658A;
+}
+
+.cancelBtn {
+    background-color: #F2F0EA;
+    color: #21314d;
+}
+.cancelBtn:focus, .cancelBtn:hover {
+    color: #F2F0EA;
+}
+
+.toTopBtn {
+    background-color: transparent;
+    color: #F2F0EA;
+    font-size: 12px;
+}
+
+.toTopBtn:hover {
+    background-color: transparent;
+    color: #93c9dd;
+}
+

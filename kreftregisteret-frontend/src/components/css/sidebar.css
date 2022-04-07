@@ -1,0 +1,48 @@
+/*Sidebar styling*/
+
+.sidebar {
+    line-height: 3rem;
+    padding: 0;
+    margin: 0 10px 10px -10.5px;
+    font-family: "Segoe UI", "Helvetica Neue", Helvetica, Arial, sans-serif;
+    font-size: 0.8em;
+    display: flex;
+    flex-direction: column;
+}
+
+/*Buttons*/
+.sidebarNav {
+    display: flex;
+    align-items: baseline;
+    padding: 0;
+    cursor: pointer;
+}
+
+.sidebarBtn {
+    height: 16px;
+    border-radius: 100%;
+    background-color: #F2F0EA;
+    border-color: #21314d;
+    margin: 0 0.3em 0 0.1em;
+}
+
+.sidebarBtn:focus, .sidebarBtn:hover {
+    background-color: #76b5cb;
+}
+
+.sidebarTitle {
+    margin-left: 2px;
+}
+
+.sidebarTitle:focus, .sidebarTitle:hover{
+    color: #46658A;
+}
+
+.activeSidebarBtn {
+    height: 20px;
+    background-color: #76b5cb;
+    border: 4px solid #21314d;
+    margin: 0 0.2em 0 0;
+}
+
+
