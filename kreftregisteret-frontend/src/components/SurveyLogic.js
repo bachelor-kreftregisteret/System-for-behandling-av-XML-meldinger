@@ -1,10 +1,12 @@
 import React, {useEffect, useState} from "react";
 import 'survey-react/survey.css';
 import {Model, StylesManager, Survey} from "survey-react";
+import * as SurveyReact from "survey-react";
 import axios from "axios";
 import {useParams} from "react-router-dom";
 import useFetch from "../api/useFetch";
 import SurveyComplete from "./SurveyComplete";
+import SurveyCustomSelect from "./SurveyCustomSelect";
 
 StylesManager.applyTheme('default')
 
@@ -14,6 +16,16 @@ const SurveyLogic = ({SurveyType}) => {
     const {data, loading, error} = useFetch('/api/v1/meldinger/' + id);
     const [isSuccess, setIsSuccess] = useState(false);
 
+
+    // Register the CustomSelect component as a renderer under a custom name "sv-dropdown-react"
+    SurveyReact.ReactQuestionFactory.Instance.registerQuestion("sv-dropdown-react", (props) => {
+        return React.createElement(SurveyCustomSelect, props);
+    });
+    // Register "sv-dropdown-react" as a renderer for questions whose `type` is "dropdown" and `renderAs` property is "dropdown-react"
+    SurveyReact
+        .RendererFactory
+        .Instance
+        .registerRenderer("dropdown", "dropdown-react", "sv-dropdown-react");
     //Lager en modell av surveyen vi har laget
     const survey = new Model(SurveyType);
 
@@ -21,7 +33,7 @@ const SurveyLogic = ({SurveyType}) => {
     let checkboxes = [];
     let flattenedJSON = [];
 
-    // Finds checkboxes with more than one box in the given surveyJS json
+    // Finner checkboxene med mer enn en boks i JSON-en til en survey
     const findCheckboxes = (JSONdata) => {
         for (const key in JSONdata) {
             if (JSONdata[key].type === "checkbox" && JSONdata[key].choices.length > 1) {
@@ -36,7 +48,7 @@ const SurveyLogic = ({SurveyType}) => {
         }
     }
 
-    // Adds excluded checkbox data to the flattened JSON
+    // Legger til checkboxer med flere enn en checkbox til den flate JSON-en
     const addCheckboxToFlattenedJSON = (JSONdata, checkboxGroup) => {
         let values = []
         for (const key in JSONdata) {
@@ -52,7 +64,7 @@ const SurveyLogic = ({SurveyType}) => {
         flattenedJSON[checkboxes[checkboxGroup][0]] = values;
     }
 
-    // Loops through input JSON and flattens the JSON, but excludes checkboxes with more than one box
+    // Går gjennom input JSON og gjør den flat
     const flatten = (JSONdata) => {
         for (const key in JSONdata) {
             if (typeof JSONdata[key] !== "object") {
@@ -136,6 +148,8 @@ const SurveyLogic = ({SurveyType}) => {
         }
     }
 
+    // Når et felt i JSON er undefined og det koverteres til XML så blir feltet borte i XML-en.
+    // Bytter derfor ut undefined med en tom string slik at feltet ikke blir borte.
     const replaceUndefined = (JSONdata) => {
         for (const key in JSONdata) {
             if (JSONdata[key] === undefined) {
@@ -149,6 +163,7 @@ const SurveyLogic = ({SurveyType}) => {
 
     useEffect(() =>  {
         survey.onValueChanged.add(function (sender, options) {
+            console.log(options)
             setChangedValue(options, data, false);
         });
     }, [setDataValues]); //Dependent on setValues so it doesnt override

@@ -58,7 +58,6 @@ const SurveyJSONKirugi = {
                 },
                 {
                     type: "dropdown",
-                    renderAs: "select2",
                     name: "sykehuskode",
                     title: {
                         no: "Sykehus"
@@ -71,7 +70,8 @@ const SurveyJSONKirugi = {
                     },
                     optionsCaption: {
                         no: "Velg..."
-                    }
+                    },
+                    renderAs: "dropdown-react"
                 },
                 {
                     type: "text",
