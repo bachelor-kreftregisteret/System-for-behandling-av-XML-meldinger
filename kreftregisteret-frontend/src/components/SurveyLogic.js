@@ -191,7 +191,7 @@ const SurveyLogic = ({SurveyType}) => {
         /*Render skjema*/
         !isSuccess ?
             <div className={showSidebar ? "surveyContainerGrid" : "surveyContainer"}>
-                <div className={"sidebarContainer"}>
+                <div className={showSidebar ? "sidebarContainer" : "showSidebarContainer"}>
                     <button
                         className={ showSidebar ? "hideSidebarBtn" : "showSidebarBtn"}
                         onClick={() => setShowSidebar(!showSidebar)}>

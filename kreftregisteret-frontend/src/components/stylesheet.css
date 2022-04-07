@@ -135,13 +135,20 @@ h5 {
 }
 
 .showSidebarBtn {
-    position: absolute;
-    background-color: transparent;
+    background-color: #46658A;
     border: none;
     z-index: 100;
     font-weight: bold;
     margin-top: 15px;
     font-size: 0.8em;
+    color: #fffffe;
+}
+
+.showSidebarContainer {
+    display: flex;
+    justify-content: flex-end;
+    width: 100%;
+    position: absolute;
 }
 
 /*Scroller design*/
