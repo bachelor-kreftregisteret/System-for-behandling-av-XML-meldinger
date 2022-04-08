@@ -43,7 +43,7 @@ public class MeldingManager {
     private Melding convertFileToMelding(File file) {
         Melding melding = null;
         try {
-            JAXBContext jaxbContext = JAXBContext.newInstance(Melding.class);
+            JAXBContext jaxbContext = JAXBContextManager.getInstance();
             Unmarshaller jaxbUnmarshaller = jaxbContext.createUnmarshaller();
 
             melding = (Melding) jaxbUnmarshaller.unmarshal(file);
@@ -63,7 +63,7 @@ public class MeldingManager {
     //inni i denne metoden bør vi også erstatte den gamle meldingen med den nye
     //https://docs.oracle.com/javase/7/docs/api/javax/xml/bind/Marshaller.html
     public void writeMeldingToPath(Melding melding) throws JAXBException, IOException, SAXException {
-        JAXBContext jaxbContext = JAXBContext.newInstance(Melding.class);
+        JAXBContext jaxbContext = JAXBContextManager.getInstance();
         Marshaller jaxbMarshaller = jaxbContext.createMarshaller();
         Schema schema = MeldingValidator.generateSchema(melding);
         JAXBSource jaxbSource = new JAXBSource(jaxbMarshaller, melding);
@@ -109,8 +109,6 @@ public class MeldingManager {
             e.printStackTrace();
         }
     }
-
-
 
     public Melding findMeldingById(Long idIn) {
         for (Map.Entry<Melding, Long> entry : meldingMap.entrySet()) {
