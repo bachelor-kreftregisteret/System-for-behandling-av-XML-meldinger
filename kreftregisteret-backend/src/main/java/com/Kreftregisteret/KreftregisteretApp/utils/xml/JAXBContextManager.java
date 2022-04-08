@@ -1,5 +1,6 @@
 package com.Kreftregisteret.KreftregisteretApp.utils.xml;
 
+import com.Kreftregisteret.KreftregisteretApp.models.Melding;
 import jakarta.xml.bind.JAXBContext;
 import jakarta.xml.bind.JAXBException;
 
@@ -7,24 +8,23 @@ import jakarta.xml.bind.JAXBException;
     Inspired by the Singleton pattern to keep static methods as well as initializing only one JAXBContext, and ensuring thread-safety
     https://en.wikipedia.org/wiki/Singleton_pattern
     https://en.wikipedia.org/wiki/Initialization-on-demand_holder_idiom
+    https://stackoverflow.com/questions/7400422/jaxb-creating-context-and-marshallers-cost
 */
 
-public class JAXBContextFactory {
+public class JAXBContextManager {
     private static volatile JAXBContext instance = null;
 
-    private JAXBContextFactory() {}
+    private JAXBContextManager() {}
 
-    private static <T> JAXBContext getInstance(Class<T> tClass) throws JAXBException {
+    public static <T> JAXBContext getInstance() throws JAXBException {
         if (instance == null) {
-            synchronized (JAXBContextFactory.class) {
+            synchronized (JAXBContextManager.class) {
                 if (instance == null) {
-                    instance = JAXBContext.newInstance(tClass);
+                    instance = JAXBContext.newInstance(Melding.class);
                 }
             }
         }
 
         return instance;
     }
-
-    // Kanskje også lage en egen unmarshaller og marshaller context her?
 }
