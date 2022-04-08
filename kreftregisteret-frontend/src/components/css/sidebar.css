@@ -1,0 +1,78 @@
+/*Sidebar styling*/
+.hide {
+    display: none;
+}
+
+.sidebarContainer {
+    top: 0;
+    position: sticky;
+    align-self: start;
+    border-left: 0.2em solid #21314d;
+    height: 100vh;
+}
+
+.sidebar {
+    margin:0 0.4em 0 -11px;
+    line-height: 2.8em;
+    width: min-content;
+}
+
+/*Buttons*/
+.sidebarNav {
+    display: flex;
+    align-items: baseline;
+    padding: 0;
+    cursor: pointer;
+}
+
+.titleBtn {
+    height: 16px;
+    border-radius: 100%;
+    background-color: #F2F0EA;
+    border-color: #21314d;
+    margin: 0 0.3em 0 0.1em;
+}
+
+.titleBtn:focus, .titleBtn:hover {
+    background-color: #46658A;
+}
+
+.sidebarTitle {
+    margin-left: 2px;
+}
+
+.sidebarTitle:focus, .sidebarTitle:hover{
+    color: #46658A;
+}
+
+.activeTitleBtn {
+    height: 20px;
+    background-color: #46658A;
+    border: 4px solid #21314d;
+    margin: 0 0.2em 0 0;
+}
+
+
+/*Button for showing/hiding sidebar has different layout based on state*/
+
+
+.showSidebarBtn, .hideSidebarBtn {
+    background-color: #21314d;
+    color: #fffffe;
+    border: none;
+    font-weight: bold;
+    margin: 10px 0 17px 0;
+    font-size: 1em;
+
+}
+.showSidebarBtn {
+     margin-left: -26px;
+ }
+
+.showSidebarBtn:hover, .showSidebarBtn:focus, .hideSidebarBtn:hover, .hideSidebarBtn:focus {
+    background-color: #46658A;
+    color: #F2F0EA;
+
+}
+
+

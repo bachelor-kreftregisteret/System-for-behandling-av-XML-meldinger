@@ -1,0 +1,130 @@
+/* Container for survey, sidebar and footer */
+.surveyContainer {
+    display: flex;
+    width: 100%;
+    padding: 0;
+    margin: 0;
+    justify-content: flex-end;
+
+}
+/*SurveyJS container*/
+.sv_main {
+    grid-area: survey;
+}
+
+/*Ensures that the last fields does not hide behind the footer*/
+.sv_main .sv_container .sv_body {
+    padding-bottom: 4em;
+    background-color: white;
+}
+
+/*Removing default lines*/
+.sv_main .sv_p_root > .sv_row {
+    border: none;
+}
+
+/*Header background color*/
+.sv_main .sv_container {
+    color: rgba(33, 49, 77, 0.82);
+}
+
+/*Survey header text*/
+.sv_main .sv_header {
+    border:none;
+    color: #21314d;
+    font-weight: bolder;
+    background-color: white;
+}
+
+.sv_main .sv_container .sv_header {
+    padding: 10px 0 0 15px;
+}
+
+h3 .sv-string-viewer {
+    font-size: x-large;
+    font-weight: 500;
+    color: #21314d;
+}
+
+/*Removing border-bottom header*/
+.sv_main .sv_body {
+    border:none;
+}
+
+/*survey titles*/
+h4 {
+    font-size: 1.2em;
+    color: #21314d;
+}
+
+/*question title*/
+h5 {
+    font-size: 1em;
+}
+
+.sv_main .sv_container .sv_body .sv_p_root .sv_q_title {
+    margin: 0.2em 0 0.2em 0;
+}
+
+/*question container*/
+.sv_main .sv_container .sv_body .sv_p_root .sv_q {
+    padding: 0.5em 0.5em 0.5em 1em;
+}
+
+/*Resets background and other styling from the titles in the survey*/
+.sv_main.sv_default_css .sv_p_root > .sv_row:nth-child(2n) {
+    background-color: red;
+}
+
+.sv_row {
+    background-color: #F7F6F3;
+}
+
+.sv_main .sv_container .sv_body .sv_p_root .sv_p_title {
+    margin:0;
+    padding: 0.8em 0 0.1em 0;
+}
+
+/*SurveyJS focus change color*/
+.sv_main .sv_q_other input:focus, .sv_main .sv_q_text_root:focus, .sv_main .sv_q_dropdown_control:focus, .sv_main input:not([type=button]):not([type=reset]):not([type=submit]):not([type=image]):not([type=checkbox]):not([type=radio]):focus, .sv_main select:focus, .sv_main textarea:focus {
+    border: 1px solid #46658A;
+}
+
+.sv_main .sv_container .sv_body .sv_p_root .sv_q input[type=radio]:focus, .sv_main .sv_container .sv_body .sv_p_root .sv_q input[type=checkbox]:focus {
+    outline: 2px dotted #46658A;
+}
+
+/*Dropdown arrow design*/
+.sv_main .sv_select_wrapper:before {
+    background-color: #46658A;
+}
+
+/*Scroller design*/
+
+::-webkit-scrollbar {
+    width: 8px;
+    height: 8px;
+}
+
+/* Track */
+::-webkit-scrollbar-track {
+    background: #f1f1f1;
+}
+
+/* Handle */
+::-webkit-scrollbar-thumb {
+    background: #c4c4c6;
+    border-radius: 2px;
+}
+
+/* Handle on hover */
+::-webkit-scrollbar-thumb:hover {
+    background: #7a7979;
+}
+
+
+@media screen and (max-height: 687px) {
+    .sidebar {
+    overflow-y: auto;
+    }
+}

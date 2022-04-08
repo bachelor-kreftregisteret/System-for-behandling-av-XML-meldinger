@@ -2,19 +2,26 @@ import React, {useEffect, useState, createElement} from "react";
 import 'survey-react/survey.css';
 import {Model, StylesManager, Survey} from "survey-react";
 import * as SurveyReact from "survey-react";
+import './stylesheet.css';
 import axios from "axios";
 import {useParams} from "react-router-dom";
 import useFetch from "../api/useFetch";
 import SurveyComplete from "./SurveyComplete";
 import SurveyCustomSelect from "./SurveyCustomSelect";
+import Sidebar from "./Sidebar";
+import Footer from "./Footer";
 
-StylesManager.applyTheme('default')
+StylesManager.applyTheme("default")
 
 const SurveyLogic = ({SurveyType}) => {
     // Henter data fra backend
     let {id} = useParams();
     const {data, loading, error} = useFetch('/api/v1/meldinger/' + id);
     const [isSuccess, setIsSuccess] = useState(false);
+// endre css class
+    //Sidebar props
+    const titles = [...document.querySelectorAll("h4")]
+
 
     // Registrerer CustomSelect komponenten som en render type under navnet "sv-dropdown-react"
     SurveyReact.ReactQuestionFactory.Instance.registerQuestion("sv-dropdown-react", (props) => {
@@ -99,10 +106,6 @@ const SurveyLogic = ({SurveyType}) => {
         survey.data = flattenedJSON;
     }
 
-    useEffect(() => {
-        setDataValues(data, SurveyType, flattenedJSON);
-    }, [data, SurveyType, flattenedJSON]);
-
 
     const setChangedValue = (options, JSONdata) => {
         for (const key in JSONdata) {
@@ -169,44 +172,54 @@ const SurveyLogic = ({SurveyType}) => {
         }
     }
 
-    useEffect(() => {
+
+    useEffect(() =>  {
+        setDataValues(data, SurveyType, flattenedJSON);
+    }, [data, SurveyType, flattenedJSON]);
+
+    useEffect(() =>  {
         survey.onValueChanged.add(function (sender, options) {
-            console.log(options)
             setChangedValue(options, data, false);
         });
     }, [setDataValues]); // Venter på setValues så den ikke skriver over data mens data blir satt inn
 
-
-    survey
-        .onCompleting
-        .add(function (sender, options) {
-            options.allowComplete = false;
-            const headers = {
-                'Content-Type': 'application/json'
-            }
-            axios.post('http://localhost:8080/api/v1/meldinger', data, {headers})
-                .then(response => {
-                    setIsSuccess(true);
-                    console.log("Kommer vi hit: ", response)
-                    options.allowComplete = true;
-                })
-                .catch(error => {
-                    console.log("Eller hit")
-                    alert(error.response.data)
-                    setIsSuccess(false);
-                })
-        })
-
+    // Todo: Oncomplete function - Legg til en modal eller annet som kan beskrive feilen
+    const submit = () => {
+        const headers = {
+            'Content-Type': 'application/json'
+        }
+        axios.post('http://localhost:8080/api/v1/meldinger', data, {headers})
+            .then(response => {
+                setIsSuccess(true);
+                console.log("Kommer vi hit: ", response)
+            })
+            .catch(error => {
+                console.log("Eller hit")
+                alert(error.response.data)
+                setIsSuccess(false);
+            })
+    }
 
     // Todo: Oncomplete function - Legg til en modal eller annet som kan beskrive feilen
 
 
     return (
-        // Render skjema
-        <div>
-            {!isSuccess ? <Survey model={survey} showCompletedPage={false}/> : <SurveyComplete/>}
-        </div>
-    )
+        /*Render skjema*/
+        !isSuccess ?
+            <div className={"surveyContainer"}>
+                <Survey
+                model={survey}
+                showCompletedPage={false}
+                showNavigationButtons={false}/>
+                <Sidebar
+                        className={"sidebar"}
+                        titles={titles}
+                        loading={loading}/>
+
+                <Footer onSubmit={submit}/>
+            </div>
+            : <SurveyComplete/>)
+
 }
 
 export default SurveyLogic;

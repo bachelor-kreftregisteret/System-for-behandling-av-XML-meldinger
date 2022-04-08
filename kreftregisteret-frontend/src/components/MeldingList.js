@@ -23,9 +23,8 @@ const MeldingList = () => {
 
     const formatJsonDate = (date) => {
             const newDate = new Date(date)
-            const dateString = `${newDate.getFullYear()}-${addZero(newDate.getMonth()+1)}-${addZero(newDate.getDate())} 
-        kl.${addZero(newDate.getUTCHours())}:${addZero(newDate.getMinutes())} `
-            return dateString;
+        return `${newDate.getFullYear()}-${addZero(newDate.getMonth() + 1)}-${addZero(newDate.getDate())} 
+        kl.${addZero(newDate.getUTCHours())}:${addZero(newDate.getMinutes())} `;
     }
 
     const tableOfMeldinger = (data) => {
