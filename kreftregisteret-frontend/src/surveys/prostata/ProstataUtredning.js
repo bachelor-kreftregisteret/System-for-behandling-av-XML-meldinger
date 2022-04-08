@@ -90,6 +90,9 @@ const SurveyJsonUtredning = {
                     title: {
                         no: "Avdeling"
                     },
+                    description: {
+                        no: "Dette er en standard avdelingsliste for Kreftregisteret. Dersom din spesifikke avdeling ikke finnes i listen, velg den avdelingen som passer best ut fra alternativene"
+                    },
                     isRequired: true,
                     choices: [
                         {
@@ -151,12 +154,14 @@ const SurveyJsonUtredning = {
         },
         {
             name: "utredning",
+            description: {
+                no: "Utredning av primærtumor og samtidig utredning av regionale lymfeknutemetastaser/fjernmetastaser før igangsetting av primærbehandling \n" +
+                    "Utredning av regionale lymfeknutemetastaser og/eller fjernmetastaser uten samtidig utredning av primærtumor"
+            },
             elements: [
                 {
                     type: "radiogroup",
                     name: "funnUtredning",
-                    minWidth: "350px",
-                    maxWidth: "550px",
                     titleLocation: "hidden",
                     defaultValue: "1",
                     requiredErrorText: {
@@ -560,6 +565,9 @@ const SurveyJsonUtredning = {
                     title: {
                         no: "Dato sykdommen ble bekreftet/diagnosedato"
                     },
+                    description: {
+                        no: "Dato sykdommen ble bekreftet er prøvetakingsdato for første positive histologi/cytologi. Dersom det ikke er tatt vevsprøve, benyttes den dato man ved hjelp av andre undersøkelser (bildediagnostikk, blodprøve etc.) bestemmer seg for at pasienten har kreft"
+                    },
                     isRequired: true,
                     validators: [
                         {
@@ -710,6 +718,14 @@ const SurveyJsonUtredning = {
                     title: {
                         no: "PI-RADS høyre side (laveste stadium velges ved tvil)"
                     },
+                    description: {
+                        no: "* PI-RADS 5 = Høy sannsynlighet for klinisk signifikant malign tumor som er 15 mm eller større, eller som har ekstraprostatisk vekst.\n" +
+                            "* PI-RADS 4 = Høy sannsynlighet for klinisk signifikant malign tumor som er mindre enn 15 mm og uten suspekt ekstraprostatisk vekst.\n" +
+                            "* PI-RADS 3 = Intermediær sannsynlighet for klinisk signifikant malign tumor, usikker lesjon, 50/50%.\n" +
+                            "* PI-RADS 2 = Lav sannsynlighet for klinisk signifikant malign tumor, benigne funn.\n" +
+                            "* PI-RADS 1 = Svært lav sannsynlighet for klinisk signifikant malign tumor, normale funn.\n" +
+                            "Klinisk signifikant tumor er definert som histologisk Gleason score 7 eller høyere, og/eller volum større enn 0,5 ccm, og/eller ekstraprostatisk vekst."
+                    },
                     isRequired: true,
                     choices: [
                         "1",
@@ -738,6 +754,14 @@ const SurveyJsonUtredning = {
                     startWithNewLine: false,
                     title: {
                         no: "PI-RADS venstre side (laveste stadium velges ved tvil)"
+                    },
+                    description: {
+                        no: "* PI-RADS 5 = Høy sannsynlighet for klinisk signifikant malign tumor som er 15 mm eller større, eller som har ekstraprostatisk vekst.\n" +
+                            "* PI-RADS 4 = Høy sannsynlighet for klinisk signifikant malign tumor som er mindre enn 15 mm og uten suspekt ekstraprostatisk vekst.\n" +
+                            "* PI-RADS 3 = Intermediær sannsynlighet for klinisk signifikant malign tumor, usikker lesjon, 50/50%.\n" +
+                            "* PI-RADS 2 = Lav sannsynlighet for klinisk signifikant malign tumor, benigne funn.\n" +
+                            "* PI-RADS 1 = Svært lav sannsynlighet for klinisk signifikant malign tumor, normale funn.\n" +
+                            "Klinisk signifikant tumor er definert som histologisk Gleason score 7 eller høyere, og/eller volum større enn 0,5 ccm, og/eller ekstraprostatisk vekst."
                     },
                     isRequired: true,
                     choices: [
@@ -875,6 +899,9 @@ const SurveyJsonUtredning = {
                     title: {
                         no: "Totalvurdering av klinisk T (laveste stadium velges ved tvil)"
                     },
+                    description: {
+                        no: "TNM på diagnosetidspunktet baseres på all relevant utredning som er gjort før primærbehandling inkludert klinisk undersøkelse, bildediagnostikk, endoskopi, biopsi og kirurgisk eksplorasjon.\n"
+                    },
                     isRequired: true,
                     choices: [
                         {
@@ -1007,6 +1034,9 @@ const SurveyJsonUtredning = {
                     title: {
                         no: "Er regionale lymfeknutemetastaser påvist (N-sykdom)?"
                     },
+                    description: {
+                        no: "Grensen mellom regionale lymfeknutemetastaser og fjernmetastaser går ved delingsstedet til arteria iliaca communis. Ved tvil om korrekt N-kategori skal den laveste (minst avanserte) kategorien velges"
+                    },
                     isRequired: true,
                     choices: [
                         {
@@ -1094,6 +1124,9 @@ const SurveyJsonUtredning = {
                     name: "fjernmetPaavist",
                     title: {
                         no: "Er fjernmetastaser, inkludert fjerne lymfeknutemetastaser, påvist (M-sykdom)?"
+                    },
+                    description: {
+                        no: "Grensen mellom regionale lymfeknutemetastaser og fjernmetastaser går ved delingsstedet til arteria iliaca communis. Ved tvil om korrekt M-kategori skal den laveste (minst avanserte) kategorien velges"
                     },
                     isRequired: true,
                     choices: [
@@ -1248,6 +1281,9 @@ const SurveyJsonUtredning = {
                     title: {
                         no: "Dato for utredning av metastaser"
                     },
+                    description: {
+                        no: "Dato for første undersøkelse som bekrefter metastasen. Dersom meldingen gjelder flere metastaser benyttes den tidligste datoen"
+                    },
                     isRequired: true,
                     validators: [
                         {
@@ -1364,6 +1400,9 @@ const SurveyJsonUtredning = {
                     title: {
                         no: "Klinisk sikker kreft"
                     },
+                    description: {
+                        no: "Uavhengig av cytologisk/histologisk prøvesvar, kan tilstanden basert på kliniske undersøkelser (inkludert bildediagnostikk og blodprøver) alene klassifiseres som sikker kreft. Sikre pre maligne tilfeller skal ikke meldes Kreftregisteret"
+                    },
                     isRequired: true,
                     choices: [
                         {
@@ -1390,6 +1429,11 @@ const SurveyJsonUtredning = {
         },
         {
             name: "oppfolging",
+            description: {
+                no: "Fortsatt kandidat for kirurgisk behandling",
+                visible: false,
+                visibleIf: "{videreTiltakUtredning} = 5"
+            },
             elements: [
                 {
                     type: "dropdown",
@@ -1635,7 +1679,7 @@ const SurveyJsonUtredning = {
     calculatedValues: [
         {
             name: "sykdomsutbredelseTitle",
-            expression: "iif({funnUtredning} = 1, 'Sykdomsutbredelse før og etter primærbehandling', 'Sykdomsutbredelse ved utredning av metastase(r)')"
+            expression: "iif({funnUtredning} = 1, 'Sykdomsutbredelse etter ferdig primærutredning og før primærbehandling', 'Sykdomsutbredelse ved utredning av metastase(r)')"
         }
     ],
     showQuestionNumbers: "off",

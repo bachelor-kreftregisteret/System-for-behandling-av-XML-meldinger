@@ -90,6 +90,9 @@ const SurveyJSONStraale = {
                     title: {
                         no: "Avdeling"
                     },
+                    description: {
+                        no: "Dette er en standard avdelingsliste for Kreftregisteret. Dersom din spesifikke avdeling ikke finnes i listen, velg den avdelingen som passer best ut fra alternativene"
+                    },
                     isRequired: true,
                     choices: [
                         {
@@ -429,6 +432,14 @@ const SurveyJSONStraale = {
                     title: {
                         no: "PI-RADS høyre side (laveste stadium velges ved tvil)"
                     },
+                    description: {
+                        no: "* PI-RADS 5 = Høy sannsynlighet for klinisk signifikant malign tumor som er 15 mm eller større, eller som har ekstraprostatisk vekst.\n" +
+                            "* PI-RADS 4 = Høy sannsynlighet for klinisk signifikant malign tumor som er mindre enn 15 mm og uten suspekt ekstraprostatisk vekst.\n" +
+                            "* PI-RADS 3 = Intermediær sannsynlighet for klinisk signifikant malign tumor, usikker lesjon, 50/50%.\n" +
+                            "* PI-RADS 2 = Lav sannsynlighet for klinisk signifikant malign tumor, benigne funn.\n" +
+                            "* PI-RADS 1 = Svært lav sannsynlighet for klinisk signifikant malign tumor, normale funn.\n" +
+                            "Klinisk signifikant tumor er definert som histologisk Gleason score 7 eller høyere, og/eller volum større enn 0,5 ccm, og/eller ekstraprostatisk vekst."
+                    },
                     isRequired: true,
                     choices: [
                         "1",
@@ -457,6 +468,14 @@ const SurveyJSONStraale = {
                     startWithNewLine: false,
                     title: {
                         no: "PI-RADS venstre side (laveste stadium velges ved tvil)"
+                    },
+                    description: {
+                        no: "* PI-RADS 5 = Høy sannsynlighet for klinisk signifikant malign tumor som er 15 mm eller større, eller som har ekstraprostatisk vekst.\n" +
+                            "* PI-RADS 4 = Høy sannsynlighet for klinisk signifikant malign tumor som er mindre enn 15 mm og uten suspekt ekstraprostatisk vekst.\n" +
+                            "* PI-RADS 3 = Intermediær sannsynlighet for klinisk signifikant malign tumor, usikker lesjon, 50/50%.\n" +
+                            "* PI-RADS 2 = Lav sannsynlighet for klinisk signifikant malign tumor, benigne funn.\n" +
+                            "* PI-RADS 1 = Svært lav sannsynlighet for klinisk signifikant malign tumor, normale funn.\n" +
+                            "Klinisk signifikant tumor er definert som histologisk Gleason score 7 eller høyere, og/eller volum større enn 0,5 ccm, og/eller ekstraprostatisk vekst."
                     },
                     isRequired: true,
                     choices: [
@@ -580,6 +599,10 @@ const SurveyJSONStraale = {
                     title: {
                         no: "Samlet MR-basert T-stadium"
                     },
+                    description: {
+                        no: "TNM på diagnosetidspunktet baseres på all relevant utredning som er gjort før primærbehandling inkludert klinisk undersøkelse, bildediagnostikk, endoskopi, biopsi og kirurgisk eksplorasjon."
+                    }
+                    ,
                     expression: "" +
                         "iif({mrbasertKliniskTHoyre} = 4 or {mrbasertKliniskTVenstre} = 4, 'T4', " +
                         "iif({mrbasertKliniskTHoyre} = 3 or {mrbasertKliniskTVenstre} = 3, 'T3b', " +
@@ -723,6 +746,9 @@ const SurveyJSONStraale = {
                     title: {
                         no: "Er regionale lymfeknutemetastaser påvist (N-sykdom)?"
                     },
+                    description: {
+                        no: "Grensen mellom regionale lymfeknutemetastaser og fjernmetastaser går ved delingsstedet til arteria iliaca communis. Ved tvil om korrekt N-kategori skal den laveste (minst avanserte) kategorien velges"
+                    },
                     isRequired: true,
                     choices: [
                         {
@@ -810,6 +836,9 @@ const SurveyJSONStraale = {
                     name: "fjernmetPaavist",
                     title: {
                         no: "Er fjernmetastaser, inkludert fjerne lymfeknutemetastaser, påvist (M-sykdom)?"
+                    },
+                    description: {
+                        no: "Grensen mellom regionale lymfeknutemetastaser og fjernmetastaser går ved delingsstedet til arteria iliaca communis. Ved tvil om korrekt M-kategori skal den laveste (minst avanserte) kategorien velges"
                     },
                     isRequired: true,
                     choices: [
@@ -1235,6 +1264,9 @@ const SurveyJSONStraale = {
                     visibleIf: "{eksternStraalebehandling} = 1",
                     title: {
                         no: "Er det utført stråling mot lymfeknuter i bekkenet?"
+                    },
+                    description: {
+                        no: "Lymfeknutestasjoner opptil promontorium, 2 Gy doseekvivalent > 45 Gy"
                     },
                     isRequired: true,
                     choices: [
