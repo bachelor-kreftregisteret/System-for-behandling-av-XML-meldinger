@@ -72,8 +72,6 @@ h5 {
 }
 
 /*Resets background and other styling from the titles in the survey*/
-
-
 .sv_main.sv_default_css .sv_p_root > .sv_row {
     background-color: white;
 }
