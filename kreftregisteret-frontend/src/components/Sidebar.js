@@ -5,6 +5,8 @@ import "./css/sidebar.css"
 const Sidebar = (props) => {
 
     const [activeId, setActiveId] = useState(0)
+    const [showSidebar, setShowSidebar] = useState(true);
+
 
     const scrollToTitle = (title) => {
         props.titles.map((_, index) => {
@@ -19,7 +21,14 @@ const Sidebar = (props) => {
 
     const listOfTitles = () => {
         return (
-            <div id={"sidebar"} className={"sidebar"}>
+            <div className={"sidebarContainer"}>
+            <button
+                className={ showSidebar ? "hideSidebarBtn" : "showSidebarBtn"}
+                onClick={() => {setShowSidebar(!showSidebar)}}>
+                {showSidebar ? ">" : "<"}
+            </button>
+                    <div className={showSidebar ? "sidebar" : "hide"}>
+
                 {props.titles.map((title, index) => {
                     return (
                         <span id={index} className={"sidebarNav"} key={index}
@@ -28,10 +37,11 @@ const Sidebar = (props) => {
                                   setActiveId(index)
                               }}>
                     <button aria-label={`${title.innerText}`} className={activeId === index ?
-                        "sidebarBtn activeSidebarBtn" : "sidebarBtn"}/>
+                        "titleBtn activeTitleBtn" : "titleBtn"}/>
                     <span className={"sidebarTitle"}> {title.innerText} </span>
                 </span>)
                 })}
+            </div>
             </div>
         )
     }

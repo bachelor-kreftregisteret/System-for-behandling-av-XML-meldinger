@@ -51,6 +51,7 @@
     background-color: transparent;
     color: #F2F0EA;
     font-size: 12px;
+    text-decoration: underline;
 }
 
 .toTopBtn:hover {

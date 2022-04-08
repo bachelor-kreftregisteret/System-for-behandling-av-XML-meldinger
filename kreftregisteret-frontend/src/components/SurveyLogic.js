@@ -1,4 +1,4 @@
-import React, {useEffect, useState} from "react";
+import React, {useEffect, useRef, useState} from "react";
 import 'survey-react/survey.css';
 import './stylesheet.css';
 import {Model, Survey, StylesManager} from "survey-react";
@@ -18,8 +18,7 @@ const SurveyLogic = ({SurveyType}) => {
 
     //Booleans for showing other components
     const [isSuccess, setIsSuccess] = useState(false);
-    const [showSidebar, setShowSidebar] = useState(true);
-
+// endre css class
     //Sidebar props
     const titles = [...document.querySelectorAll("h4")]
 
@@ -190,23 +189,16 @@ const SurveyLogic = ({SurveyType}) => {
     return (
         /*Render skjema*/
         !isSuccess ?
-            <div className={showSidebar ? "surveyContainerGrid" : "surveyContainer"}>
-                <div className={showSidebar ? "sidebarContainer" : "showSidebarContainer"}>
-                    <button
-                        className={ showSidebar ? "hideSidebarBtn" : "showSidebarBtn"}
-                        onClick={() => setShowSidebar(!showSidebar)}>
-                        {showSidebar ? "Lukk sidemeny >" : "< Sidemeny"}
-                    </button>
-                {showSidebar &&
-                    <Sidebar
+            <div className={"surveyContainer"}>
+                <Survey
+                model={survey}
+                showCompletedPage={false}
+                showNavigationButtons={false}/>
+                <Sidebar
                         className={"sidebar"}
                         titles={titles}
-                        loading={loading}/>}
-                </div>
-                <Survey
-                    model={survey}
-                    showCompletedPage={false}
-                    showNavigationButtons={false}/>
+                        loading={loading}/>
+
                 <Footer onSubmit={submit}/>
             </div>
             : <SurveyComplete/>)

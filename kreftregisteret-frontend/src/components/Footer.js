@@ -27,7 +27,7 @@ const Footer = (props) => {
                         <button
                             type={"submit"}
                             className={"footerBtn submitBtn"}
-                            onClick={() => props.submit() }
+                            onClick={() => props.onSubmit() }
                         >Lagre</button>
                     </span>
         </footer>

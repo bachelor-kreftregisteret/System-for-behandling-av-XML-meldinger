@@ -1,13 +1,20 @@
 /*Sidebar styling*/
+.hide {
+    display: none;
+}
+
+.sidebarContainer {
+    top: 0;
+    position: sticky;
+    align-self: start;
+    border-left: 0.2em solid #21314d;
+    height: 100vh;
+}
 
 .sidebar {
-    line-height: 3rem;
-    padding: 0;
-    margin: 0 10px 10px -10.5px;
-    font-family: "Segoe UI", "Helvetica Neue", Helvetica, Arial, sans-serif;
-    font-size: 0.8em;
-    display: flex;
-    flex-direction: column;
+    margin:0 0.4em 0 -11px;
+    line-height: 2.8em;
+    width: min-content;
 }
 
 /*Buttons*/
@@ -18,7 +25,7 @@
     cursor: pointer;
 }
 
-.sidebarBtn {
+.titleBtn {
     height: 16px;
     border-radius: 100%;
     background-color: #F2F0EA;
@@ -26,8 +33,8 @@
     margin: 0 0.3em 0 0.1em;
 }
 
-.sidebarBtn:focus, .sidebarBtn:hover {
-    background-color: #76b5cb;
+.titleBtn:focus, .titleBtn:hover {
+    background-color: #46658A;
 }
 
 .sidebarTitle {
@@ -38,11 +45,34 @@
     color: #46658A;
 }
 
-.activeSidebarBtn {
+.activeTitleBtn {
     height: 20px;
-    background-color: #76b5cb;
+    background-color: #46658A;
     border: 4px solid #21314d;
     margin: 0 0.2em 0 0;
+}
+
+
+/*Button for showing/hiding sidebar has different layout based on state*/
+
+
+.showSidebarBtn, .hideSidebarBtn {
+    background-color: #21314d;
+    color: #fffffe;
+    border: none;
+    font-weight: bold;
+    margin: 10px 0 17px 0;
+    font-size: 1em;
+
+}
+.showSidebarBtn {
+     margin-left: -26px;
+ }
+
+.showSidebarBtn:hover, .showSidebarBtn:focus, .hideSidebarBtn:hover, .hideSidebarBtn:focus {
+    background-color: #46658A;
+    color: #F2F0EA;
+
 }
 
 

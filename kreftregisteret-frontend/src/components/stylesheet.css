@@ -7,19 +7,6 @@
     justify-content: flex-end;
 
 }
-/* When sidebar is showing, the container will use grid for allocating space*/
-.surveyContainerGrid {
-    display: grid;
-    grid-template-columns: repeat(9, 1fr);
-    grid-template-areas:
-            "survey survey survey survey survey survey survey survey sidebar";
-    grid-template-rows: auto ;
-    width: 100%;
-    padding: 0;
-    margin: 0;
-    background-color: white;
-}
-
 /*SurveyJS container*/
 .sv_main {
     grid-area: survey;
@@ -110,45 +97,6 @@ h5 {
 /*Dropdown arrow design*/
 .sv_main .sv_select_wrapper:before {
     background-color: #46658A;
-}
-
-.sidebarContainer {
-    grid-area: sidebar;
-    top: 0;
-    position: sticky;
-    align-self: start;
-    border-left: 0.2em solid #21314d;
-    z-index: 1000;
-    height: 100vh;
-}
-
-/*Button for showing/hiding sidebar has different layout based on state*/
-.hideSidebarBtn {
-    background-color: transparent;
-    border: none;
-    z-index: 100;
-    top: 0.1em;
-    padding: 17px 0 17px 10px;
-    font-weight: bold;
-    font-size: 0.8em;
-
-}
-
-.showSidebarBtn {
-    background-color: #46658A;
-    border: none;
-    z-index: 100;
-    font-weight: bold;
-    margin-top: 15px;
-    font-size: 0.8em;
-    color: #fffffe;
-}
-
-.showSidebarContainer {
-    display: flex;
-    justify-content: flex-end;
-    width: 100%;
-    position: absolute;
 }
 
 /*Scroller design*/
