@@ -1,4 +1,4 @@
-import React, {useEffect, useState} from "react";
+import React, {useEffect, useState, createElement} from "react";
 import 'survey-react/survey.css';
 import {Model, StylesManager, Survey} from "survey-react";
 import * as SurveyReact from "survey-react";
@@ -11,24 +11,21 @@ import SurveyCustomSelect from "./SurveyCustomSelect";
 StylesManager.applyTheme('default')
 
 const SurveyLogic = ({SurveyType}) => {
-    //Henter data fra backend
+    // Henter data fra backend
     let {id} = useParams();
     const {data, loading, error} = useFetch('/api/v1/meldinger/' + id);
     const [isSuccess, setIsSuccess] = useState(false);
 
     // Registrerer CustomSelect komponenten som en render type under navnet "sv-dropdown-react"
     SurveyReact.ReactQuestionFactory.Instance.registerQuestion("sv-dropdown-react", (props) => {
-        return React.createElement(SurveyCustomSelect, props);
+        return createElement(SurveyCustomSelect, props);
     });
     // Registrerer "sv-dropdown-react" som en type render for spørsmål hvor "type" er "dropdown" og "renderAs" er "dropdown-react"
-    SurveyReact
-        .RendererFactory
-        .Instance
-        .registerRenderer("dropdown", "dropdown-react", "sv-dropdown-react");
-    //Lager en modell av surveyen vi har laget
+    SurveyReact.RendererFactory.Instance.registerRenderer("dropdown", "dropdown-react", "sv-dropdown-react");
+    // Lager en modell av surveyen vi har laget
     const survey = new Model(SurveyType);
 
-    //templister for array
+    // Templister for array
     let checkboxes = [];
     let flattenedJSON = [];
 
@@ -177,7 +174,7 @@ const SurveyLogic = ({SurveyType}) => {
             console.log(options)
             setChangedValue(options, data, false);
         });
-    }, [setDataValues]); //Dependent on setValues so it doesnt override
+    }, [setDataValues]); // Venter på setValues så den ikke skriver over data mens data blir satt inn
 
 
     survey
@@ -205,7 +202,7 @@ const SurveyLogic = ({SurveyType}) => {
 
 
     return (
-        /*Render skjema*/
+        // Render skjema
         <div>
             {!isSuccess ? <Survey model={survey} showCompletedPage={false}/> : <SurveyComplete/>}
         </div>
