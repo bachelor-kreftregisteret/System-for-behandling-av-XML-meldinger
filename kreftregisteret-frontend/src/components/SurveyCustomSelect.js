@@ -41,7 +41,7 @@ export class SurveyCustomSelect extends SurveyReact.SurveyQuestionDropdown {
 
         // Otherwise, render the React Select component
         return (<Select id={this.question.inputId} value={this.selectedOption} onChange={this.onSelectChange}
-                        options={this.options} required={this.question.isRequired}
+                        options={this.options} required={this.question.isRequired} placeholder={"Velg..."}
                         menuPortalTarget={document.querySelector('body')}/>);
     }
 }

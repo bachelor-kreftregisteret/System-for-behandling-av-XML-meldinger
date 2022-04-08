@@ -58,7 +58,6 @@ const SurveyJSONStraale = {
                 },
                 {
                     type: "dropdown",
-                    renderAs: "select2",
                     name: "sykehuskode",
                     title: {
                         no: "Sykehus"
@@ -71,7 +70,8 @@ const SurveyJSONStraale = {
                     },
                     optionsCaption: {
                         no: "Velg..."
-                    }
+                    },
+                    renderAs: "dropdown-react"
                 },
                 {
                     type: "text",
@@ -131,7 +131,8 @@ const SurveyJSONStraale = {
                     ],
                     optionsCaption: {
                         no: "Velg..."
-                    }
+                    },
+                    renderAs: "dropdown-react"
                 },
                 {
                     type: "text",
@@ -285,7 +286,8 @@ const SurveyJSONStraale = {
                     ],
                     optionsCaption: {
                         no: "Velg..."
-                    }
+                    },
+                    renderAs: "dropdown-react"
                 },
                 {
                     type: "dropdown",
@@ -336,7 +338,8 @@ const SurveyJSONStraale = {
                     ],
                     optionsCaption: {
                         no: "Velg..."
-                    }
+                    },
+                    renderAs: "dropdown-react"
                 },
                 {
                     type: "expression",
@@ -442,7 +445,8 @@ const SurveyJSONStraale = {
                     ],
                     optionsCaption: {
                         no: "Velg..."
-                    }
+                    },
+                    renderAs: "dropdown-react"
                 },
                 {
                     type: "dropdown",
@@ -470,7 +474,8 @@ const SurveyJSONStraale = {
                     ],
                     optionsCaption: {
                         no: "Velg..."
-                    }
+                    },
+                    renderAs: "dropdown-react"
                 },
                 {
                     type: "dropdown",
@@ -516,7 +521,8 @@ const SurveyJSONStraale = {
                     ],
                     optionsCaption: {
                         no: "Velg..."
-                    }
+                    },
+                    renderAs: "dropdown-react"
                 },
                 {
                     type: "dropdown",
@@ -563,7 +569,8 @@ const SurveyJSONStraale = {
                     ],
                     optionsCaption: {
                         no: "Velg..."
-                    }
+                    },
+                    renderAs: "dropdown-react"
                 },
                 {
                     type: "expression",
@@ -675,12 +682,12 @@ const SurveyJSONStraale = {
                     ],
                     optionsCaption: {
                         no: "Velg..."
-                    }
+                    },
+                    renderAs: "dropdown-react"
                 },
                 {
                     type: "dropdown",
                     name: "kliniskVurdertAv",
-                    visible: false,
                     title: {
                         no: "Hvem har gjort totalvurderingen av klinisk T?"
                     },
@@ -704,7 +711,11 @@ const SurveyJSONStraale = {
                                 no: "Melder (ikke utredende lege)"
                             }
                         }
-                    ]
+                    ],
+                    optionsCaption: {
+                        no: "Velg..."
+                    },
+                    renderAs: "dropdown-react"
                 },
                 {
                     type: "radiogroup",

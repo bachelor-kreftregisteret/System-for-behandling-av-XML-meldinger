@@ -64,7 +64,7 @@ const SurveyJSONKirugi = {
                     },
                     isRequired: true,
                     choicesByUrl: {
-                        url: 'https://metadata.kreftregisteret.no/rest/v1/metadata/values/m_sykehus',
+                        url: 'https://metadata.kreftregisteret.no/rest/v1/metadata/values/m_sykehusAngittAvKliniker',
                         valueName: "value",
                         titleName: "description"
                     },
@@ -131,7 +131,8 @@ const SurveyJSONKirugi = {
                     ],
                     optionsCaption: {
                         no: "Velg..."
-                    }
+                    },
+                    renderAs: "dropdown-react"
                 },
                 {
                     type: "text",
@@ -253,7 +254,8 @@ const SurveyJSONKirugi = {
                     ],
                     optionsCaption: {
                         no: "Velg..."
-                    }
+                    },
+                    renderAs: "dropdown-react"
                 },
                 {
                     type: "dropdown",
@@ -304,7 +306,8 @@ const SurveyJSONKirugi = {
                     ],
                     optionsCaption: {
                         no: "Velg..."
-                    }
+                    },
+                    renderAs: "dropdown-react"
                 },
                 {
                     type: "expression",
@@ -410,7 +413,8 @@ const SurveyJSONKirugi = {
                     ],
                     optionsCaption: {
                         no: "Velg..."
-                    }
+                    },
+                    renderAs: "dropdown-react"
                 },
                 {
                     type: "dropdown",
@@ -438,7 +442,8 @@ const SurveyJSONKirugi = {
                     ],
                     optionsCaption: {
                         no: "Velg..."
-                    }
+                    },
+                    renderAs: "dropdown-react"
                 },
                 {
                     type: "dropdown",
@@ -484,7 +489,8 @@ const SurveyJSONKirugi = {
                     ],
                     optionsCaption: {
                         no: "Velg..."
-                    }
+                    },
+                    renderAs: "dropdown-react"
                 },
                 {
                     type: "dropdown",
@@ -531,7 +537,8 @@ const SurveyJSONKirugi = {
                     ],
                     optionsCaption: {
                         no: "Velg..."
-                    }
+                    },
+                    renderAs: "dropdown-react"
                 },
                 {
                     type: "expression",
@@ -643,7 +650,8 @@ const SurveyJSONKirugi = {
                     ],
                     optionsCaption: {
                         no: "Velg..."
-                    }
+                    },
+                    renderAs: "dropdown-react"
                 },
                 {
                     type: "dropdown",
@@ -672,7 +680,11 @@ const SurveyJSONKirugi = {
                                 no: "Melder (ikke utredende lege)"
                             }
                         }
-                    ]
+                    ],
+                    optionsCaption: {
+                        no: "Velg..."
+                    },
+                    renderAs: "dropdown-react"
                 },
                 {
                     type: "radiogroup",
@@ -1086,7 +1098,8 @@ const SurveyJSONKirugi = {
                     ],
                     optionsCaption: {
                         no: "Velg..."
-                    }
+                    },
+                    renderAs: "dropdown-react"
                 },
                 {
                     type: "text",
@@ -1138,7 +1151,8 @@ const SurveyJSONKirugi = {
                     ],
                     optionsCaption: {
                         no: "Velg..."
-                    }
+                    },
+                    renderAs: "dropdown-react"
                 },
                 {
                     type: "dropdown",
@@ -1181,7 +1195,8 @@ const SurveyJSONKirugi = {
                     ],
                     optionsCaption: {
                         no: "Velg..."
-                    }
+                    },
+                    renderAs: "dropdown-react"
                 }
             ],
             title: {
@@ -1207,7 +1222,8 @@ const SurveyJSONKirugi = {
                     },
                     optionsCaption: {
                         no: "Velg..."
-                    }
+                    },
+                    renderAs: "dropdown-react"
                 },
                 {
                     type: "checkbox",

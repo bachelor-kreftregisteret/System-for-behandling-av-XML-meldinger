@@ -12,16 +12,15 @@ StylesManager.applyTheme('default')
 
 const SurveyLogic = ({SurveyType}) => {
     //Henter data fra backend
-    let { id } = useParams();
+    let {id} = useParams();
     const {data, loading, error} = useFetch('/api/v1/meldinger/' + id);
     const [isSuccess, setIsSuccess] = useState(false);
 
-
-    // Register the CustomSelect component as a renderer under a custom name "sv-dropdown-react"
+    // Registrerer CustomSelect komponenten som en render type under navnet "sv-dropdown-react"
     SurveyReact.ReactQuestionFactory.Instance.registerQuestion("sv-dropdown-react", (props) => {
         return React.createElement(SurveyCustomSelect, props);
     });
-    // Register "sv-dropdown-react" as a renderer for questions whose `type` is "dropdown" and `renderAs` property is "dropdown-react"
+    // Registrerer "sv-dropdown-react" som en type render for spørsmål hvor "type" er "dropdown" og "renderAs" er "dropdown-react"
     SurveyReact
         .RendererFactory
         .Instance
@@ -83,13 +82,27 @@ const SurveyLogic = ({SurveyType}) => {
         }
     }
 
+    // Funksjon for å hente sykehuskode fra andre sykhusnavn-felt
+    const setSykehusKode = () => {
+        for (const key in flattenedJSON) {
+            if (key === "sykehusnavnHFSorOst" || key === "sykehusnavnHFVest" || key === "sykehusnavnHFMidt" || key === "sykehusnavnHFNord" || key === "sykehusnavnSpesSenter") {
+                if (flattenedJSON[key]) {
+                    flattenedJSON["sykehuskode"] = flattenedJSON[key];
+                    flattenedJSON[key] = "";  // Fjerner dataen fra det gamle feltet
+                    return;
+                }
+            }
+        }
+    }
+
     const setDataValues = (data, JSONType, flattenedJSON) => {
         findCheckboxes(JSONType);
         flatten(data);
+        setSykehusKode();
         survey.data = flattenedJSON;
     }
 
-    useEffect(() =>  {
+    useEffect(() => {
         setDataValues(data, SurveyType, flattenedJSON);
     }, [data, SurveyType, flattenedJSON]);
 
@@ -122,8 +135,7 @@ const SurveyLogic = ({SurveyType}) => {
                                             if (typeof (JSONdata[key][key2]) === "boolean") {
                                                 JSONdata[key][key2] = options.value.includes(key2) && options.value.length > 0;
                                                 break;
-                                            }
-                                            else if (typeof (JSONdata[key][key2]) === "string" || typeof (JSONdata[key][key2]) === "number") {
+                                            } else if (typeof (JSONdata[key][key2]) === "string" || typeof (JSONdata[key][key2]) === "number") {
                                                 if (options.value.includes(key2) && options.value.length > 0) {
                                                     JSONdata[key][key2] = 99;
                                                 } else {
@@ -154,14 +166,13 @@ const SurveyLogic = ({SurveyType}) => {
         for (const key in JSONdata) {
             if (JSONdata[key] === undefined) {
                 JSONdata[key] = "";
-            }
-            else if (typeof (JSONdata[key]) === "object") {
+            } else if (typeof (JSONdata[key]) === "object") {
                 replaceUndefined(JSONdata[key])
             }
         }
     }
 
-    useEffect(() =>  {
+    useEffect(() => {
         survey.onValueChanged.add(function (sender, options) {
             console.log(options)
             setChangedValue(options, data, false);
@@ -169,26 +180,25 @@ const SurveyLogic = ({SurveyType}) => {
     }, [setDataValues]); //Dependent on setValues so it doesnt override
 
 
-
-        survey
-            .onCompleting
-            .add(function (sender, options) {
-                options.allowComplete = false;
-                const headers = {
-                    'Content-Type': 'application/json'
-                }
-                axios.post('http://localhost:8080/api/v1/meldinger', data, {headers})
-                    .then(response => {
-                        setIsSuccess(true);
-                        console.log("Kommer vi hit: ", response)
-                        options.allowComplete = true;
-                    })
-                    .catch(error => {
-                        console.log("Eller hit")
-                        alert(error.response.data)
-                        setIsSuccess(false);
-                    })
-            })
+    survey
+        .onCompleting
+        .add(function (sender, options) {
+            options.allowComplete = false;
+            const headers = {
+                'Content-Type': 'application/json'
+            }
+            axios.post('http://localhost:8080/api/v1/meldinger', data, {headers})
+                .then(response => {
+                    setIsSuccess(true);
+                    console.log("Kommer vi hit: ", response)
+                    options.allowComplete = true;
+                })
+                .catch(error => {
+                    console.log("Eller hit")
+                    alert(error.response.data)
+                    setIsSuccess(false);
+                })
+        })
 
 
     // Todo: Oncomplete function - Legg til en modal eller annet som kan beskrive feilen
@@ -196,9 +206,9 @@ const SurveyLogic = ({SurveyType}) => {
 
     return (
         /*Render skjema*/
-       <div>
-           {!isSuccess ? <Survey model={survey} showCompletedPage={false}/> : <SurveyComplete/>}
-       </div>
+        <div>
+            {!isSuccess ? <Survey model={survey} showCompletedPage={false}/> : <SurveyComplete/>}
+        </div>
     )
 }
 

@@ -58,7 +58,6 @@ const SurveyJsonUtredning = {
                 },
                 {
                     type: "dropdown",
-                    renderAs: "select2",
                     name: "sykehuskode",
                     title: {
                         no: "Sykehus"
@@ -71,7 +70,8 @@ const SurveyJsonUtredning = {
                     },
                     optionsCaption: {
                         no: "Velg..."
-                    }
+                    },
+                    renderAs: "dropdown-react"
                 },
                 {
                     type: "text",
@@ -131,7 +131,8 @@ const SurveyJsonUtredning = {
                     ],
                     optionsCaption: {
                         no: "Velg..."
-                    }
+                    },
+                    renderAs: "dropdown-react"
                 },
                 {
                     type: "text",
@@ -338,7 +339,11 @@ const SurveyJsonUtredning = {
                                 no: "Ukjent / har ikke informasjon"
                             }
                         }
-                    ]
+                    ],
+                    optionsCaption: {
+                        no: "Velg..."
+                    },
+                    renderAs: "dropdown-react"
                 },
                 {
                     type: "text",
@@ -624,7 +629,8 @@ const SurveyJsonUtredning = {
                     ],
                     optionsCaption: {
                         no: "Velg..."
-                    }
+                    },
+                    renderAs: "dropdown-react"
                 },
                 {
                     type: "dropdown",
@@ -676,7 +682,8 @@ const SurveyJsonUtredning = {
                     ],
                     optionsCaption: {
                         no: "Velg..."
-                    }
+                    },
+                    renderAs: "dropdown-react"
                 },
                 {
                     type: "expression",
@@ -719,7 +726,8 @@ const SurveyJsonUtredning = {
                     ],
                     optionsCaption: {
                         no: "Velg..."
-                    }
+                    },
+                    renderAs: "dropdown-react"
                 },
                 {
                     type: "dropdown",
@@ -747,7 +755,8 @@ const SurveyJsonUtredning = {
                     ],
                     optionsCaption: {
                         no: "Velg..."
-                    }
+                    },
+                    renderAs: "dropdown-react"
                 },
                 {
                     type: "dropdown",
@@ -793,7 +802,8 @@ const SurveyJsonUtredning = {
                     ],
                     optionsCaption: {
                         no: "Velg..."
-                    }
+                    },
+                    renderAs: "dropdown-react"
                 },
                 {
                     type: "dropdown",
@@ -840,7 +850,8 @@ const SurveyJsonUtredning = {
                     ],
                     optionsCaption: {
                         no: "Velg..."
-                    }
+                    },
+                    renderAs: "dropdown-react"
                 },
                 {
                     type: "expression",
@@ -953,7 +964,8 @@ const SurveyJsonUtredning = {
                     ],
                     optionsCaption: {
                         no: "Velg..."
-                    }
+                    },
+                    renderAs: "dropdown-react"
                 },
                 {
                     type: "dropdown",
@@ -983,7 +995,11 @@ const SurveyJsonUtredning = {
                                 no: "Melder (ikke utredende lege)"
                             }
                         }
-                    ]
+                    ],
+                    optionsCaption: {
+                        no: "Velg..."
+                    },
+                    renderAs: "dropdown-react"
                 },
                 {
                     type: "radiogroup",
@@ -1264,7 +1280,8 @@ const SurveyJsonUtredning = {
                     },
                     optionsCaption: {
                         no: "Velg..."
-                    }
+                    },
+                    renderAs: "dropdown-react"
                 },
                 {
                     type: "checkbox",
@@ -1428,7 +1445,11 @@ const SurveyJsonUtredning = {
                                 no: "Ukjent"
                             }
                         }
-                    ]
+                    ],
+                    optionsCaption: {
+                        no: "Velg..."
+                    },
+                    renderAs: "dropdown-react"
                 },
                 {
                     type: "dropdown",
@@ -1482,7 +1503,8 @@ const SurveyJsonUtredning = {
                     ],
                     optionsCaption: {
                         no: "Velg..."
-                    }
+                    },
+                    renderAs: "dropdown-react"
                 },
                 {
                     type: "text",
