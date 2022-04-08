@@ -11,7 +11,7 @@ import SurveyCustomSelect from "./SurveyCustomSelect";
 import Sidebar from "./Sidebar";
 import Footer from "./Footer";
 
-StylesManager.applyTheme("default")
+StylesManager.applyTheme("")
 
 const SurveyLogic = ({SurveyType}) => {
     // Henter data fra backend

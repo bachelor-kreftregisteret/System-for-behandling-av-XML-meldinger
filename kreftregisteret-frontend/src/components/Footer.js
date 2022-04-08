@@ -6,14 +6,14 @@ const Footer = (props) => {
     return (
         <footer
             className="surveyFooter">
-            <button
+            {/*<button
                 className={"footerBtn toTopBtn"}
                     onClick={() =>
                         document
                             .getElementById("root")
                             .scrollIntoView({behavior: "smooth"})}
             >Til topp
-            </button>
+            </button>*/}
             <span
                 className={"actionBtnContainer "}>
                         <button

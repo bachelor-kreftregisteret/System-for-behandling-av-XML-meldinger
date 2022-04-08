@@ -60,6 +60,8 @@ h4 {
 /*question title*/
 h5 {
     font-size: 1em;
+    color: #21314d;
+
 }
 
 .sv_main .sv_container .sv_body .sv_p_root .sv_q_title {
@@ -71,19 +73,28 @@ h5 {
     padding: 0.5em 0.5em 0.5em 1em;
 }
 
-/*Resets background and other styling from the titles in the survey*/
-.sv_main.sv_default_css .sv_p_root > .sv_row {
-    background-color: white;
+/*START Title and content in survey*/
+/*Background for title*/
+.sv_main .sv_container .sv_body .sv_p_root > .sv_row:nth-child(n) {
+    background-color: rgba(70, 101, 138, 0.86);
+    margin:15px 0 0 0;
+    box-shadow: rgba(60, 64, 67, 0.3) 0px 1px 2px 0px, rgba(60, 64, 67, 0.15) 0px 1px 3px 1px;
+    border-radius: 5px 5px 0 0;
 }
 
+/*Background for body*/
 .sv_row {
     background-color: #F7F6F3;
 }
 
+/*Title properties*/
 .sv_main .sv_container .sv_body .sv_p_root .sv_p_title {
     margin:0;
-    padding: 0.8em 0 0.1em 0;
+    padding: 0.8em 0 0.2em 0.7em;
+    color: #F2F0EA;
 }
+
+/*END Title in survey*/
 
 /*SurveyJS focus change color*/
 .sv_main .sv_q_other input:focus, .sv_main .sv_q_text_root:focus, .sv_main .sv_q_dropdown_control:focus, .sv_main input:not([type=button]):not([type=reset]):not([type=submit]):not([type=image]):not([type=checkbox]):not([type=radio]):focus, .sv_main select:focus, .sv_main textarea:focus {

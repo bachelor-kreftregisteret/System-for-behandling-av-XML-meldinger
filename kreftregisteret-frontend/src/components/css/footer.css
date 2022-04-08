@@ -1,7 +1,7 @@
 /* Footer */
 .surveyFooter {
     display: flex;
-    justify-content: space-between;
+    justify-content: flex-end;
     position: fixed;
     left: 0;
     bottom: 0;
@@ -47,6 +47,7 @@
     color: #F2F0EA;
 }
 
+/*
 .toTopBtn {
     background-color: transparent;
     color: #F2F0EA;
@@ -58,4 +59,5 @@
     background-color: transparent;
     color: #93c9dd;
 }
+*/
 
