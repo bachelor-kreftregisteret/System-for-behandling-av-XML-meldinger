@@ -31,21 +31,24 @@
 }
 
 .footerBtn:hover, .footerBtn:focus {
-    border: 0.1em solid #F2F0EA;
-    transition: 200ms;
+    border: none;
+    color: #F2F0EA;
+    background-color: #46658A;
+    transition: 500ms;
 }
 
 .submitBtn {
-    background-color: #46658A;
-    color: #F2F0EA;
+    background-color: #E7E5E2;
+    color: #21314d;
 }
 
 .cancelBtn {
-    background-color: #F2F0EA;
-    color: #21314d;
-}
-.cancelBtn:focus, .cancelBtn:hover {
-    border: 0.1em solid #F2F0EA;
+    border: 1px solid #F2F0EA;
+    background-color: transparent;
     color: #F2F0EA;
+}
+
+.cancelBtn:focus, .cancelBtn:hover {
+    border: none;
     background-color: #46658A;
 }
