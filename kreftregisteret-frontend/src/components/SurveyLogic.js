@@ -1,6 +1,6 @@
 import React, {useEffect, useState, createElement} from "react";
 import 'survey-react/survey.css';
-import {Model, StylesManager, Survey} from "survey-react";
+import {Model, Survey} from "survey-react";
 import * as SurveyReact from "survey-react";
 import './stylesheet.css';
 import axios from "axios";
@@ -11,7 +11,6 @@ import SurveyCustomSelect from "./SurveyCustomSelect";
 import Sidebar from "./Sidebar";
 import Footer from "./Footer";
 
-StylesManager.applyTheme("")
 
 const SurveyLogic = ({SurveyType}) => {
     // Henter data fra backend
