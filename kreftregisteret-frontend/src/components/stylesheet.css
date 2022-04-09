@@ -76,13 +76,14 @@ h5 {
 /*START Title and content in survey*/
 /*Background for title*/
 .sv_main .sv_container .sv_body .sv_p_root > .sv_row:nth-child(n) {
-    background-color: rgba(70, 101, 138, 0.86);
+    background-color: #e7e5e2;
     margin:15px 0 0 0;
-    box-shadow: rgba(60, 64, 67, 0.3) 0px 1px 2px 0px, rgba(60, 64, 67, 0.15) 0px 1px 3px 1px;
-    border-radius: 5px 5px 0 0;
+    box-shadow: rgba(60, 64, 67, 0.17) 0 1px 2px 0, rgba(60, 64, 67, 0.07) 0 1px 3px 1px;
+    border-radius: 2px ;
 }
 
-/*Background for body*/
+
+/*Background for only body of title*/
 .sv_row {
     background-color: #F7F6F3;
 }
@@ -91,7 +92,7 @@ h5 {
 .sv_main .sv_container .sv_body .sv_p_root .sv_p_title {
     margin:0;
     padding: 0.8em 0 0.2em 0.7em;
-    color: #F2F0EA;
+    color: #21314d;
 }
 
 /*END Title in survey*/

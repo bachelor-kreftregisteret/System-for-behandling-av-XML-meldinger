@@ -20,7 +20,7 @@ const SurveyLogic = ({SurveyType}) => {
     const [isSuccess, setIsSuccess] = useState(false);
 // endre css class
     //Sidebar props
-    const titles = [...document.querySelectorAll("h4")]
+    let titles = [...document.querySelectorAll("h4")]
 
 
     // Registrerer CustomSelect komponenten som en render type under navnet "sv-dropdown-react"
@@ -175,12 +175,14 @@ const SurveyLogic = ({SurveyType}) => {
 
     useEffect(() =>  {
         setDataValues(data, SurveyType, flattenedJSON);
+
     }, [data, SurveyType, flattenedJSON]);
 
     useEffect(() =>  {
         survey.onValueChanged.add(function (sender, options) {
             setChangedValue(options, data, false);
         });
+        window.addEventListener("load", titles)
     }, [setDataValues]); // Venter på setValues så den ikke skriver over data mens data blir satt inn
 
     // Todo: Oncomplete function - Legg til en modal eller annet som kan beskrive feilen

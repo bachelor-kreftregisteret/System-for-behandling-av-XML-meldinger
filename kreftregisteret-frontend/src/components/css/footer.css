@@ -26,17 +26,18 @@
     padding: 0.1em 0.5em;
     font-weight: 600;
     border-radius: 4px;
-    color: #fffffe;
     border: none;
+    font-size: 0.9em;
 }
 
 .footerBtn:hover, .footerBtn:focus {
-    background-color: #003E69;
-    transition: 300ms;
+    border: 0.1em solid #F2F0EA;
+    transition: 200ms;
 }
 
 .submitBtn {
     background-color: #46658A;
+    color: #F2F0EA;
 }
 
 .cancelBtn {
@@ -44,20 +45,7 @@
     color: #21314d;
 }
 .cancelBtn:focus, .cancelBtn:hover {
+    border: 0.1em solid #F2F0EA;
     color: #F2F0EA;
+    background-color: #46658A;
 }
-
-/*
-.toTopBtn {
-    background-color: transparent;
-    color: #F2F0EA;
-    font-size: 12px;
-    text-decoration: underline;
-}
-
-.toTopBtn:hover {
-    background-color: transparent;
-    color: #93c9dd;
-}
-*/
-
