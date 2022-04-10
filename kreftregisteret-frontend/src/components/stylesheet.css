@@ -7,15 +7,12 @@
     justify-content: flex-end;
 
 }
-/*SurveyJS container*/
 .sv_main {
-    grid-area: survey;
+    background-color: white;
 }
-
-/*Ensures that the last fields does not hide behind the footer*/
+    /*Ensures that the last fields does not hide behind the footer*/
 .sv_main .sv_container .sv_body {
     padding-bottom: 4em;
-    background-color: white;
 }
 
 /*Removing default lines*/
@@ -26,6 +23,11 @@
 /*Header background color*/
 .sv_main .sv_container {
     color: rgba(33, 49, 77, 0.82);
+    display: flex;
+    place-items: center;
+    flex-direction: column;
+    width: 95%;
+    margin: auto;
 }
 
 /*Survey header text*/
@@ -33,11 +35,15 @@
     border:none;
     color: #21314d;
     font-weight: bolder;
-    background-color: white;
+}
+
+.sv_main .sv_custom_header{
+    background-color: inherit;
 }
 
 .sv_main .sv_container .sv_header {
     padding: 10px 0 0 15px;
+    width: 100%;
 }
 
 h3 .sv-string-viewer {
@@ -48,7 +54,10 @@ h3 .sv-string-viewer {
 
 /*Removing border-bottom header*/
 .sv_main .sv_body {
+    display: flex;
+    place-items: center;
     border:none;
+    background-color: #ffffff;
 }
 
 /*survey titles*/
@@ -66,6 +75,7 @@ h5 {
 
 .sv_main .sv_container .sv_body .sv_p_root .sv_q_title {
     margin: 0.2em 0 0.2em 0;
+    font-weight: 500;
 }
 
 /*question container*/
@@ -76,7 +86,7 @@ h5 {
 /*START Title and content in survey*/
 /*Background for title*/
 .sv_main .sv_container .sv_body .sv_p_root > .sv_row:nth-child(n) {
-    background-color: #e7e5e2;
+    background-color: #f8f8f8;
     margin:15px 0 0 0;
     box-shadow: rgba(60, 64, 67, 0.17) 0 1px 2px 0, rgba(60, 64, 67, 0.07) 0 1px 3px 1px;
     border-radius: 2px ;
@@ -85,7 +95,8 @@ h5 {
 
 /*Background for only body of title*/
 .sv_row {
-    background-color: #F7F6F3;
+    background-color: #f8f8f8;
+
 }
 
 /*Title properties*/
@@ -99,6 +110,10 @@ h5 {
 
 
 /*Input border color*/
+input[type=checkbox] {
+    background-color: #0c4128;
+}
+
 .sv_main .sv_container .sv_body .sv_p_root .sv_q input[type=radio]:focus, .sv_main .sv_container .sv_body .sv_p_root .sv_q input[type=checkbox]:focus {
     outline: 2px solid #46658A;
 }
