@@ -16,7 +16,7 @@ return (
         <h3> Lagring er vellykket </h3>
         <Button
             className={"Button"}
-            style={{backgroundColor: Color.king_blue, hover:"white"}}
+            style={{backgroundColor: Color.king_blue}}
             size={"sm"}
             onClick={() => routeChange("/")}>Til oversikt</Button>
     </div>

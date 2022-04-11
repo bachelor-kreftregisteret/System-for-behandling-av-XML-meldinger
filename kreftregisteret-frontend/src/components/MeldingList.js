@@ -40,7 +40,7 @@ const MeldingList = () => {
                     <td>{formatJsonDate(item.Endrettidspunkt)}</td>
                     <td><Button block
                                 className={"Button"}
-                                style={{backgroundColor: Color.king_blue, hover: "white"}}
+                                style={{backgroundColor: Color.king_blue}}
                                 size={"sm"}
                                 onClick={() => {
                                     if (item.Skjemanavn === EnumRoutes.utredning.skjemanavn) {

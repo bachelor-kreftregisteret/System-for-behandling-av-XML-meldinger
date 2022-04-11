@@ -3,9 +3,6 @@ import Select from 'react-select';
 // https://surveyjs.io/Examples/Library?id=custom-widget-react-select#content-js
 // Set up a custom component that will render React Select
 export class SurveyCustomSelect extends SurveyReact.SurveyQuestionDropdown {
-    constructor(props) {
-        super(props);
-    }
 
     // Convert the `visibleChoices` array to a format supported by React Select
     get options() {
@@ -34,7 +31,8 @@ export class SurveyCustomSelect extends SurveyReact.SurveyQuestionDropdown {
         if (this.isDisplayMode) {
             return (<div id={this.question.inputId} className={this
                 .question
-                .getControlClass()} disabled="disabled">
+                .getControlClass()}
+                         disabled="disabled">
                 {(this.question.displayValue || this.question.optionsCaption)}
             </div>);
         }
