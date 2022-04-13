@@ -9,6 +9,7 @@
     align-self: start;
     border-left: 0.2em solid #21314d;
     height: 100vh;
+    z-index: 100;
 }
 
 .sidebar {

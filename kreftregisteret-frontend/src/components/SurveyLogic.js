@@ -211,20 +211,31 @@ const SurveyLogic = ({SurveyType}) => {
 
     return (
         /*Render skjema*/
+
+        //Because of easy tabbing, the footer is above the survey that has autofocus/tabindex 0. Making it easy accessible through backwards tab
         <>
             {error === null ?
             <div className={"surveyContainer"}>
+                <Sidebar
+                    className={"sidebar"}
+                    loading={loading}/>
+
+                <Footer
+                    onSubmit={submit}
+                    isSuccess={isSuccess}
+                    isOpen={isOpen}
+                    setIsOpen={setIsOpen}
+                    postError={postError}/>
+
                 <Survey
                     model={survey}
                     showCompletedPage={false}
                     showNavigationButtons={false}/>
-                <Sidebar
-                    className={"sidebar"}
-                    loading={loading}/>
-                <Footer onSubmit={submit} isSuccess={isSuccess} isOpen={isOpen} setIsOpen={setIsOpen} postError={postError}/>
+
+
             </div>
             :
-                <div className={"error"}>
+                <div className={"errorContainer"}>
                     <h2>Noe gikk galt</h2>
                     <p>{error.toString()}</p>
                 </div>
