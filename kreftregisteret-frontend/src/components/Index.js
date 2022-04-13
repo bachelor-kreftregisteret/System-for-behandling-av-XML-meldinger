@@ -9,11 +9,6 @@ import {Color, EnumRoutes} from "../utils/utils";
 const Index = () => {
     const navigate = useNavigate();
 
-    //https://stackoverflow.com/questions/50644976/react-button-onclick-redirect-page
-    const routeChange = (url) =>{
-        navigate(url);
-    }
-
     return (
         <div style={{display: "flex", placeItems:"center", flexDirection: "column", marginTop: "2%"}}>
             <div style={{width: "90%"}}>
@@ -24,13 +19,13 @@ const Index = () => {
                         Velg nytt skjema
                     </DropdownToggle>
                     <DropdownMenu>
-                        <DropdownItem onClick={() => routeChange(EnumRoutes.utredning.url + "-1")}>
+                        <DropdownItem onClick={() => navigate(EnumRoutes.utredning.url + "-1")}>
                             {EnumRoutes.utredning.skjemanavn}
                         </DropdownItem>
-                        <DropdownItem onClick={() => routeChange(EnumRoutes.kirurgi.url + "-1")}>
+                        <DropdownItem onClick={() => navigate(EnumRoutes.kirurgi.url + "-1")}>
                             {EnumRoutes.kirurgi.skjemanavn}
                         </DropdownItem>
-                        <DropdownItem onClick={() => routeChange(EnumRoutes.straalebehandling.url + "-1")}>
+                        <DropdownItem onClick={() => navigate(EnumRoutes.straalebehandling.url + "-1")}>
                             {EnumRoutes.straalebehandling.skjemanavn}
                         </DropdownItem>
                     </DropdownMenu>

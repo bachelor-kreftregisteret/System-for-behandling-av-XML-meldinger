@@ -6,18 +6,24 @@ import './stylesheet.css';
 import axios from "axios";
 import {useParams} from "react-router-dom";
 import useFetch from "../api/useFetch";
-import SurveyComplete from "./SurveyComplete";
+import SurveyComplete from "./ConfirmationModal";
 import SurveyCustomSelect from "./SurveyCustomSelect";
 import Sidebar from "./Sidebar";
 import Footer from "./Footer";
 
 
 const SurveyLogic = ({SurveyType}) => {
+
+    console.log("rerenderer denne nuuuuu")
     // Henter data fra backend
     let {id} = useParams();
+    // Lager en modell av surveyen vi har laget
+    const survey = new Model(SurveyType);
+
     const {data, loading, error} = useFetch('/api/v1/meldinger/' + id);
     const [isSuccess, setIsSuccess] = useState(false);
-
+    const [isOpen, setIsOpen] = useState(false);
+    const [postError, setPostError] = useState(null)
 
     // Registrerer CustomSelect komponenten som en render type under navnet "sv-dropdown-react"
     SurveyReact.ReactQuestionFactory.Instance.registerQuestion("sv-dropdown-react", (props) => {
@@ -25,8 +31,7 @@ const SurveyLogic = ({SurveyType}) => {
     });
     // Registrerer "sv-dropdown-react" som en type render for spørsmål hvor "type" er "dropdown" og "renderAs" er "dropdown-react"
     SurveyReact.RendererFactory.Instance.registerRenderer("dropdown", "dropdown-react", "sv-dropdown-react");
-    // Lager en modell av surveyen vi har laget
-    const survey = new Model(SurveyType);
+
 
     // Templister for array
     let checkboxes = [];
@@ -179,21 +184,27 @@ const SurveyLogic = ({SurveyType}) => {
         });
     }, [setDataValues]); // Venter på setValues så den ikke skriver over data mens data blir satt inn
 
-    // Todo: Oncomplete function - Legg til en modal eller annet som kan beskrive feilen
     const submit = () => {
-        const headers = {
-            'Content-Type': 'application/json'
+        if (survey.isCurrentPageHasErrors) {
+            setIsOpen(false);
+        } else {
+            setIsOpen(true);
+            const headers = {
+                'Content-Type': 'application/json'
+            }
+            axios.post('http://localhost:8080/api/v1/meldinger', data, {headers})
+                .then(response => {
+                    setPostError(null)
+                    setIsSuccess(true)
+                    console.log("Kommer vi hit: ", response, isSuccess)
+                })
+                .catch(error => {
+                    setPostError(error.toString())
+                    setIsSuccess(false);
+                    console.log("Eller hit", isSuccess, postError)
+
+                })
         }
-        axios.post('http://localhost:8080/api/v1/meldinger', data, {headers})
-            .then(response => {
-                setIsSuccess(true);
-                console.log("Kommer vi hit: ", response)
-            })
-            .catch(error => {
-                console.log("Eller hit")
-                alert(error.response.data)
-                setIsSuccess(false);
-            })
     }
 
     // Todo: Oncomplete function - Legg til en modal eller annet som kan beskrive feilen
@@ -201,21 +212,27 @@ const SurveyLogic = ({SurveyType}) => {
 
     return (
         /*Render skjema*/
-
-        !isSuccess ?
+        <>
+            {error === null ?
             <div className={"surveyContainer"}>
                 <Survey
-                model={survey}
-                showCompletedPage={false}
-                showNavigationButtons={false}/>
+                    model={survey}
+                    showCompletedPage={false}
+                    showNavigationButtons={false}/>
                 <Sidebar
-                        className={"sidebar"}
-                        data={survey.data}
-                        loading={loading}/>
-
-                <Footer onSubmit={submit}/>
+                    className={"sidebar"}
+                    loading={loading}/>
+                <Footer onSubmit={submit} isSuccess={isSuccess} isOpen={isOpen} setIsOpen={setIsOpen} postError={postError}/>
             </div>
-            : <SurveyComplete/>)
+            :
+                <div className={"error"}>
+                    <h2>Noe gikk galt</h2>
+                    <p>{error.toString()}</p>
+                </div>
+            }
+        </>
+
+)
 
 }
 

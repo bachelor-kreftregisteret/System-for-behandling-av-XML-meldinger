@@ -1,4 +1,4 @@
-import {useState} from "react";
+import {useEffect, useRef, useState} from "react";
 import 'survey-react/survey.css';
 import "./css/sidebar.css"
 
@@ -6,7 +6,7 @@ const Sidebar = (props) => {
 
     const [activeId, setActiveId] = useState(0)
     const [showSidebar, setShowSidebar] = useState(true);
-    const titles = [...document.getElementsByTagName("h4")];
+    let titles = [...document.getElementsByTagName("h4")]
 
      const scrollToTitle = (title) => {
          for (let index = 0; index < titles.length; index++) {
@@ -28,18 +28,19 @@ const Sidebar = (props) => {
                               onClick={() => {
                                   scrollToTitle(title);
                                   setActiveId(index)
-                              }}>
+                              }}
+                        >
                             <button aria-label={`${title.innerText}`} className={activeId === index ?
                                 "titleBtn activeTitleBtn" : "titleBtn"}/>
                             <span className={"sidebarTitle"}> {title.innerText} </span>
                         </span>)
                 })}
             </div>
-        )
-    }
+        )}
 
     return (
-        !props.loading ? <div className={"sidebarContainer"} >
+        !props.loading ?
+            <div className={"sidebarContainer"}>
             <button
                 className={ showSidebar ? "hideSidebarBtn" : "showSidebarBtn"}
                 onClick={() => {setShowSidebar(!showSidebar)}}>

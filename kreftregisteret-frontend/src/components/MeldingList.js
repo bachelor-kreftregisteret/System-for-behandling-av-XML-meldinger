@@ -9,11 +9,6 @@ import {Button, Table} from "reactstrap";
 const MeldingList = () => {
     const navigate = useNavigate();
 
-    //https://stackoverflow.com/questions/50644976/react-button-onclick-redirect-page
-    const routeChange = (url) =>{
-        navigate(url);
-    }
-
     const {data, loading, error} = useFetch('/api/v1/meldinger');
     let msgList = []
 
@@ -44,11 +39,11 @@ const MeldingList = () => {
                                 size={"sm"}
                                 onClick={() => {
                                     if (item.Skjemanavn === EnumRoutes.utredning.skjemanavn) {
-                                        routeChange(EnumRoutes.utredning.url + item.id)
+                                        navigate(EnumRoutes.utredning.url + item.id)
                                     } else if (item.Skjemanavn === EnumRoutes.straalebehandling.skjemanavn) {
-                                        routeChange(EnumRoutes.straalebehandling.url + item.id)
+                                        navigate(EnumRoutes.straalebehandling.url + item.id)
                                     } else if (item.Skjemanavn === EnumRoutes.kirurgi.skjemanavn) {
-                                        routeChange(EnumRoutes.kirurgi.url + item.id)
+                                        navigate(EnumRoutes.kirurgi.url + item.id)
                                     }
                                 }}> Endre </Button></td>
                 </tr>

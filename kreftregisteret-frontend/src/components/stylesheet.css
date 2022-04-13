@@ -5,8 +5,14 @@
     padding: 0;
     margin: 0;
     justify-content: flex-end;
-
 }
+
+.error {
+    display: flex;
+    place-items: center;
+    flex-direction: column;
+}
+
 .sv_main {
     background-color: white;
 }

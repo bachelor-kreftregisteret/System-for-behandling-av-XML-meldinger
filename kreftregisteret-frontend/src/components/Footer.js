@@ -1,44 +1,38 @@
-import React from "react";
+import React, {useState} from "react";
 import "./css/footer.css"
 import {useNavigate} from "react-router-dom";
+import ConfirmationModal from "./ConfirmationModal";
+
 
 const Footer = (props) => {
     const navigate = useNavigate();
 
     //https://stackoverflow.com/questions/50644976/react-button-onclick-redirect-page
-    const routeChange = (url) =>{
-        navigate(url);
-    }
 
     return (
+        <>
         <footer
             className="surveyFooter">
-            {/*<button
-                className={"footerBtn toTopBtn"}
-                    onClick={() =>
-                        document
-                            .getElementById("root")
-                            .scrollIntoView({behavior: "smooth"})}
-            >Til topp
-            </button>*/}
-            <span
-                className={"actionBtnContainer "}>
+            <div className={"actionBtnContainer "}>
                         <button
                             type={"reset"}
-                            className={"footerBtn cancelBtn"}
-                            onClick={() => routeChange("/")}
+                            className={"bttn cancelBtn"}
+                            onClick={() => navigate("/")}
                         >Avslutt</button>
                         <button
                             type={"submit"}
-                            className={"footerBtn submitBtn"}
+                            className={"bttn submitBtn"}
+                            onClick={() => function noRefCheck(){}}
                         >Lagre utkast</button>
                         <button
                             type={"submit"}
-                            className={"footerBtn submitBtn"}
-                            onClick={() => props.onSubmit() }
+                            className={"bttn submitBtn"}
+                            onClick={() => {props.onSubmit() }}
                         >Lagre</button>
-                    </span>
+            </div>
         </footer>
+           <ConfirmationModal isOpen={props.isOpen} setIsOpen={props.setIsOpen} postError={props.postError}/>
+        </>
     )
 }
 
