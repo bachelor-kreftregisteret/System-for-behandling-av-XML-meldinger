@@ -6,7 +6,6 @@ import './stylesheet.css';
 import axios from "axios";
 import {useParams} from "react-router-dom";
 import useFetch from "../api/useFetch";
-import SurveyComplete from "./ConfirmationModal";
 import SurveyCustomSelect from "./SurveyCustomSelect";
 import Sidebar from "./Sidebar";
 import Footer from "./Footer";

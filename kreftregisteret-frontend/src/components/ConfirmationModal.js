@@ -15,20 +15,15 @@ return (
     >
         <ModalHeader
             close={<button className="close btn" onClick={() => props.setIsOpen(false)}>✕</button>}
-        > {props.postError ?
-            (props.postError.includes("400")
-                ? "Klientfeil" : props.postError.includes("404")
-                    ? "Kan ikke behandle forespørselen"
-                    : props.postError.includes("500") ? "Serverfeil"
-                : "Feil") : "Vellykket!"}
+        > {props.postError ? props.postError : "Vellykket!"}
         </ModalHeader>
         <ModalBody>
             {props.postError ?
                 (props.postError.includes("400") ?
-                <span><h6>{props.postError}</h6><p>Serveren kan eller vil ikke behandle forespørselen på grunn av noe som oppfattes som en klientfeil, (f.eks. ugyldig data).</p></span>
-                : props.postError.includes("404") ? <span><h6>{props.postError}</h6><p>Serveren finner ikke den forespurte ressursen. Endepunktet er gyldig, men selve ressursen eksisterer ikke.</p></span>
-                : props.postError.includes("500") ? <span><h6>{props.postError}</h6><p>Obs! Noe stemmer ikke på serveren.</p></span>
-                : <span><h6>{props.postError}</h6><p>Noe gikk galt!</p></span>) : <p>Endringene i meldingen er lagret!</p>}
+                <p>Serveren kan eller vil ikke behandle forespørselen på grunn av noe som oppfattes som en klientfeil, (f.eks. ugyldig data).</p>
+                : props.postError.includes("404") ? <p>Serveren finner ikke den forespurte ressursen. Endepunktet er gyldig, men selve ressursen eksisterer ikke.</p>
+                : props.postError.includes("500") ? <p>Obs! Noe stemmer ikke på serveren.</p>
+                : <p>Noe gikk galt!</p>) : <p>En ny melding med endringene er lagret.</p>}
         </ModalBody>
         <ModalFooter>
             {props.postError ?
