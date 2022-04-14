@@ -31,7 +31,7 @@ const Footer = (props) => {
                         >Lagre</button>
             </div>
         </footer>
-           <ConfirmationModal isOpen={props.isOpen} setIsOpen={props.setIsOpen} postError={props.postError}/>
+           <ConfirmationModal isModalOpen={props.isModalOpen} setIsModalOpen={props.setIsModalOpen} postError={props.postError}/>
         </>
     )
 }

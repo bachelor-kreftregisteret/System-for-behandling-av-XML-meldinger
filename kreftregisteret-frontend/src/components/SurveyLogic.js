@@ -5,23 +5,23 @@ import * as SurveyReact from "survey-react";
 import './stylesheet.css';
 import axios from "axios";
 import {useParams} from "react-router-dom";
-import useFetch from "../api/useFetch";
 import SurveyCustomSelect from "./SurveyCustomSelect";
 import Sidebar from "./Sidebar";
 import Footer from "./Footer";
+import GetMeldingByID from "../api/getMeldingerByID";
 
 
 const SurveyLogic = ({SurveyType}) => {
 
-    console.log("rerenderer denne nuuuuu")
     // Henter data fra backend
     let {id} = useParams();
+    const {data, loading, error} = GetMeldingByID(id)
+
     // Lager en modell av surveyen vi har laget
     const survey = new Model(SurveyType);
 
-    const {data, loading, error} = useFetch('/api/v1/meldinger/' + id);
-    const [isSuccess, setIsSuccess] = useState(false);
-    const [isOpen, setIsOpen] = useState(false);
+    const [isModalOpen, setIsModalOpen] = useState(false);
+
     const [postError, setPostError] = useState(null)
 
     // Registrerer CustomSelect komponenten som en render type under navnet "sv-dropdown-react"
@@ -172,7 +172,6 @@ const SurveyLogic = ({SurveyType}) => {
         }
     }
 
-
     useEffect(() =>  {
         setDataValues(data, SurveyType, flattenedJSON);
     },[data, SurveyType, flattenedJSON]);
@@ -183,31 +182,27 @@ const SurveyLogic = ({SurveyType}) => {
         });
     }, [setDataValues]); // Venter på setValues så den ikke skriver over data mens data blir satt inn
 
+
     const submit = () => {
         if (survey.isCurrentPageHasErrors) {
-            setIsOpen(false);
+            setIsModalOpen(false);
         } else {
-            setIsOpen(true);
+
+            //Lag en component under api for post
+            setIsModalOpen(true);
             const headers = {
                 'Content-Type': 'application/json'
             }
             axios.post('http://localhost:8080/api/v1/meldinger', data, {headers})
                 .then(response => {
                     setPostError(null)
-                    setIsSuccess(true)
-                    console.log("Kommer vi hit: ", response, isSuccess)
                 })
                 .catch(error => {
                     setPostError(error.toString())
-                    setIsSuccess(false);
-                    console.log("Eller hit", isSuccess, postError)
 
                 })
         }
     }
-
-    // Todo: Oncomplete function - Legg til en modal eller annet som kan beskrive feilen
-
 
     return (
         /*Render skjema*/
@@ -216,16 +211,18 @@ const SurveyLogic = ({SurveyType}) => {
         <>
             {error === null ?
             <div className={"surveyContainer"}>
+
                 <Sidebar
                     className={"sidebar"}
-                    loading={loading}/>
+                    loading={loading}
+                />
 
                 <Footer
                     onSubmit={submit}
-                    isSuccess={isSuccess}
-                    isOpen={isOpen}
-                    setIsOpen={setIsOpen}
+                    isModalOpen={isModalOpen}
+                    setIsModalOpen={setIsModalOpen}
                     postError={postError}/>
+
 
                 <Survey
                     model={survey}

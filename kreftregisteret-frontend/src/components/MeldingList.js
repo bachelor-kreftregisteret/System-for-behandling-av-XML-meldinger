@@ -1,6 +1,6 @@
 import React from 'react';
 import "../App.css";
-import useFetch from "../api/useFetch";
+import GetMeldinger from "../api/getMeldinger";
 import {useNavigate} from "react-router-dom";
 import {Color, EnumRoutes} from "../utils/utils";
 import {Button, Table} from "reactstrap";
@@ -9,9 +9,8 @@ import {Button, Table} from "reactstrap";
 const MeldingList = () => {
     const navigate = useNavigate();
 
-    const {data, loading, error} = useFetch('/api/v1/meldinger');
+    const {data, loading, error} = GetMeldinger();
     let msgList = []
-
 
     // https://dd.engineering/blog/a-guide-to-handling-date-and-time-for-full-stack-javascript-developers 31.03
     const addZero = (num) => `${num}`.padStart(2, '0');
@@ -81,10 +80,11 @@ const MeldingList = () => {
     }
 
     return (!loading && data !== null ?
-        tableOfMeldinger(data) :
+        tableOfMeldinger(data ) :
         error !== null ?
-            <h4>Noe gikk galt ved innlasting `${error}`</h4> :
-            <h4>Laster ...</h4>);
+            <div><h4>`${error.toString()}`</h4>
+            <p>Noe gikk galt ved innlasting</p></div> :
+            <h4>Laster inn meldinger...</h4>);
 }
 
 export default MeldingList;
