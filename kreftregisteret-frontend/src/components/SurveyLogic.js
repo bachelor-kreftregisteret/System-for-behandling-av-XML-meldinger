@@ -22,7 +22,7 @@ const SurveyLogic = ({SurveyType}) => {
 
     const [isModalOpen, setIsModalOpen] = useState(false);
 
-    const [postError, setPostError] = useState(null)
+    const [postError, setPostError] = useState("")
 
     // Registrerer CustomSelect komponenten som en render type under navnet "sv-dropdown-react"
     SurveyReact.ReactQuestionFactory.Instance.registerQuestion("sv-dropdown-react", (props) => {
@@ -195,7 +195,7 @@ const SurveyLogic = ({SurveyType}) => {
             }
             axios.post('http://localhost:8080/api/v1/meldinger', data, {headers})
                 .then(response => {
-                    setPostError(null)
+                    setPostError("")
                 })
                 .catch(error => {
                     setPostError(error.toString())
@@ -203,7 +203,7 @@ const SurveyLogic = ({SurveyType}) => {
                 })
         }
     }
-
+    console.log(isModalOpen)
     return (
         /*Render skjema*/
 
@@ -211,10 +211,11 @@ const SurveyLogic = ({SurveyType}) => {
         <>
             {error === null ?
             <div className={"surveyContainer"}>
-
                 <Sidebar
                     className={"sidebar"}
                     loading={loading}
+                    isModalOpen={isModalOpen}
+                    postError={postError}
                 />
 
                 <Footer
@@ -223,11 +224,11 @@ const SurveyLogic = ({SurveyType}) => {
                     setIsModalOpen={setIsModalOpen}
                     postError={postError}/>
 
-
                 <Survey
                     model={survey}
                     showCompletedPage={false}
                     showNavigationButtons={false}/>
+
 
 
             </div>

@@ -1,14 +1,33 @@
-import {useEffect, useRef, useState} from "react";
+import {useState} from "react";
 import 'survey-react/survey.css';
 import "./css/sidebar.css"
 
 const Sidebar = (props) => {
-
     const [activeId, setActiveId] = useState(0)
     const [showSidebar, setShowSidebar] = useState(true);
-    let titles = [...document.getElementsByTagName("h4")]
 
-     const scrollToTitle = (title) => {
+    const [titles, setTitles] = useState([]);
+
+
+    const domObserver = () => {
+        const el = document.getElementsByClassName("sv_p_root");
+
+        if(props.isModalOpen === true || props.postError !== "") return;
+        const observer = new MutationObserver(_ => {
+
+            console.log(_)
+            const tempTitles = [...document.getElementsByTagName("h4")];
+            setTitles(tempTitles)
+        });
+
+        Array.from(el).forEach(target => {
+            observer.observe(target, {childList: true})
+        })
+    }
+
+    domObserver();
+
+    const scrollToTitle = (title) => {
          for (let index = 0; index < titles.length; index++) {
              if (titles && titles[index].innerText === title.innerText) {
                  document.querySelectorAll("h4")[index].scrollIntoView({behavior: "smooth"});
@@ -22,7 +41,7 @@ const Sidebar = (props) => {
     const listOfTitles = (titles) => {
         return (
             <div className={showSidebar ? "sidebar" : "hide"} >
-                {titles.map((title, index) => {
+                {titles && titles.map((title, index) => {
                     return (
                         <span id={`${index}`} className={"sidebarNav"} key={index}
                               onClick={() => {
@@ -37,6 +56,7 @@ const Sidebar = (props) => {
                 })}
             </div>
         )}
+
 
     return (
         !props.loading ?
