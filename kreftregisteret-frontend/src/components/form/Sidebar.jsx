@@ -1,6 +1,5 @@
 import {useState} from "react";
-import 'survey-react/survey.css';
-import "./css/sidebar.css"
+import "../css/sidebar.css"
 
 const Sidebar = (props) => {
     const [activeId, setActiveId] = useState(0)
@@ -8,24 +7,18 @@ const Sidebar = (props) => {
 
     const [titles, setTitles] = useState([]);
 
+    const el = document.getElementsByClassName("sv_p_root");
 
-    const domObserver = () => {
-        const el = document.getElementsByClassName("sv_p_root");
+    //Hører på endringer i DOM og oppdaterer titles dersom noe har endret seg
+    const observer = (props.isModalOpen === false || props.postError === "") && new MutationObserver( _ => {
+        const tempTitles = [...document.getElementsByTagName("h4")];
+        setTitles(tempTitles)
+   });
 
-        if(props.isModalOpen === true || props.postError !== "") return;
-        const observer = new MutationObserver(_ => {
+    (props.isModalOpen === false || props.postError === "") && Array.from(el).forEach(target => {
+       observer.observe(target, {childList: true})
+    })
 
-            console.log(_)
-            const tempTitles = [...document.getElementsByTagName("h4")];
-            setTitles(tempTitles)
-        });
-
-        Array.from(el).forEach(target => {
-            observer.observe(target, {childList: true})
-        })
-    }
-
-    domObserver();
 
     const scrollToTitle = (title) => {
          for (let index = 0; index < titles.length; index++) {
@@ -56,7 +49,6 @@ const Sidebar = (props) => {
                 })}
             </div>
         )}
-
 
     return (
         !props.loading ?

@@ -8,7 +8,7 @@ const Header = () => {
             <nav >
                 <ul>
                     <li style={{listStyle: "none", marginTop: "0.8em", padding:"0"}}>
-                        <Link style={{textDecoration: "none", color: Color.turquoise, fontWeight: "bold"}} to="/"> <img src={"/logo-no.svg"} alt={"Logo kreftregisteret"} style={{width: "60px"}}/> </Link>
+                        <Link to="/"> <img src={"/logo-no.svg"} alt={"Logo kreftregisteret"} style={{width: "60px"}}/> </Link>
                     </li>
                 </ul>
             </nav>

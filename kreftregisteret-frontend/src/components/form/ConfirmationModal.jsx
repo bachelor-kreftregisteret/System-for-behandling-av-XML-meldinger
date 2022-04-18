@@ -1,12 +1,10 @@
 import { Modal, ModalBody, ModalFooter, ModalHeader} from "reactstrap";
 import {useNavigate} from "react-router-dom";
-import "./css/footer.css"
+import "../css/footer.css"
 import React from "react";
 
 const ConfirmationModal = (props) => {
     const navigate = useNavigate()
-
-    console.log("hva skjedde med denne" + props.isModalOpen)
 
     //Errormessage er noe tregt når det kommer til network errors
 return (

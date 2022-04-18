@@ -1,8 +1,8 @@
 import React from 'react';
-import "../App.css";
-import GetMeldinger from "../api/getMeldinger";
+import "../../App.css";
+import GetMeldinger from "../../api/getMeldinger";
 import {useNavigate} from "react-router-dom";
-import {Color, EnumRoutes} from "../utils/utils";
+import {Color, EnumRoutes} from "../../utils/utils";
 import {Button, Table} from "reactstrap";
 
 
@@ -79,8 +79,9 @@ const MeldingList = () => {
             );
     }
 
-    return (!loading && data !== null ?
-        tableOfMeldinger(data ) :
+    return (
+        !loading && data !== null ?
+        tableOfMeldinger(data) :
         error !== null ?
             <div><h4>`${error.toString()}`</h4>
             <p>Noe gikk galt ved innlasting</p></div> :

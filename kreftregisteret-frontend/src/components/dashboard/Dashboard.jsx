@@ -2,11 +2,12 @@ import React from 'react';
 import {useNavigate} from 'react-router-dom';
 import MeldingList from "./MeldingList";
 import {DropdownItem, DropdownMenu, DropdownToggle, UncontrolledButtonDropdown} from "reactstrap";
-import {Color, EnumRoutes} from "../utils/utils";
+import {Color, EnumRoutes} from "../../utils/utils";
+
 //https://www.w3schools.com/react/react_router.asp
 
 
-const Index = () => {
+const Dashboard = () => {
     const navigate = useNavigate();
 
     return (
@@ -35,4 +36,4 @@ const Index = () => {
     );
 }
 
-export default Index;
+export default Dashboard;

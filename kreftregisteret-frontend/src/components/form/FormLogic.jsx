@@ -2,16 +2,16 @@ import React, {useEffect, useState, createElement} from "react";
 import 'survey-react/survey.css';
 import {Model, Survey} from "survey-react";
 import * as SurveyReact from "survey-react";
-import './stylesheet.css';
+import '../css/stylesheet.css';
 import axios from "axios";
 import {useParams} from "react-router-dom";
-import SurveyCustomSelect from "./SurveyCustomSelect";
 import Sidebar from "./Sidebar";
 import Footer from "./Footer";
-import GetMeldingByID from "../api/getMeldingerByID";
+import SurveyCustomSelect from "./SurveyCustomSelect";
+import GetMeldingByID from "../../api/getMeldingerByID";
 
 
-const SurveyLogic = ({SurveyType}) => {
+const FormLogic = ({SurveyType}) => {
 
     // Henter data fra backend
     let {id} = useParams();
@@ -194,7 +194,7 @@ const SurveyLogic = ({SurveyType}) => {
                 'Content-Type': 'application/json'
             }
             axios.post('http://localhost:8080/api/v1/meldinger', data, {headers})
-                .then(response => {
+                .then(_ => {
                     setPostError("")
                 })
                 .catch(error => {
@@ -218,19 +218,19 @@ const SurveyLogic = ({SurveyType}) => {
                     postError={postError}
                 />
 
+                <Survey
+                    model={survey}
+
+                    showCompletedPage={false}
+                    showNavigationButtons={false}
+                />
+
                 <Footer
                     onSubmit={submit}
                     isModalOpen={isModalOpen}
                     setIsModalOpen={setIsModalOpen}
-                    postError={postError}/>
-
-                <Survey
-                    model={survey}
-                    showCompletedPage={false}
-                    showNavigationButtons={false}/>
-
-
-
+                    postError={postError}
+                />
             </div>
             :
                 <div className={"errorContainer"}>
@@ -244,4 +244,4 @@ const SurveyLogic = ({SurveyType}) => {
 
 }
 
-export default SurveyLogic;
+export default FormLogic;
