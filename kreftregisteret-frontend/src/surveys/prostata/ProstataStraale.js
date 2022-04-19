@@ -1088,7 +1088,7 @@ const SurveyJSONStraale = {
                     visible: false,
                     visibleIf: "{endokrinBehandling} = 1",
                     title: {
-                        no: "Planlagt varighet av endokrin behandling gitt i antall månder"
+                        no: "Planlagt varighet av endokrin behandling gitt i antall måneder"
                     },
                     enableIf: "{varighetEndokrinBehUkjent} empty",
                     isRequired: true,
