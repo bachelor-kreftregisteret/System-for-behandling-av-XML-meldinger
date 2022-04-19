@@ -103,7 +103,8 @@ h5 {
 /*Background for only body of title*/
 .sv_row {
     background-color: #F2F0EA;
-
+    display: flex;
+    align-items: end;
 }
 
 /*Title properties*/

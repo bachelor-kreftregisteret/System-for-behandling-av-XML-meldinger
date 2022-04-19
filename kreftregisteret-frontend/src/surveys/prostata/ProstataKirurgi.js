@@ -258,7 +258,6 @@ const SurveyJSONKirugi = {
                 {
                     type: "dropdown",
                     name: "palpatoriskTumorVenstre",
-                    minWidth: "450px",
                     startWithNewLine: false,
                     title: {
                         no: "Palpatorisk T-stadium venstre side (laveste stadium velges ved tvil)"

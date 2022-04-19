@@ -74,7 +74,7 @@ const SurveyJsonUtredning = {
                     name: "sykehusnavnHFSpesifiser",
                     visible: false,
                     visibleIf: "{sykehuskode} = 9998",
-                    startWithNewLine: false,
+                    startWithNewLine: true,
                     title: {
                         no: "Spesifiser"
                     },
@@ -138,7 +138,7 @@ const SurveyJsonUtredning = {
                     name: "avdelingsnavnHFSpesifiser",
                     visible: false,
                     visibleIf: "{avdelingsnavn} = '1'",
-                    startWithNewLine: false,
+                    startWithNewLine: true,
                     title: {
                         no: "Spesifiser"
                     }
@@ -231,7 +231,6 @@ const SurveyJsonUtredning = {
                 {
                     type: "radiogroup",
                     name: "vannlatingsproblem",
-                    maxWidth: "600px",
                     title: {
                         no: "Var vannlatingsproblemer en del av årsak til utredningen?"
                     },
@@ -264,7 +263,6 @@ const SurveyJsonUtredning = {
                 {
                     type: "radiogroup",
                     name: "kreftsymptomer",
-                    maxWidth: "600px",
                     title: {
                         no: "Var kreftsymptomer (smerter, anemi eller annet) en del av årsak til utredningen?"
                     },
@@ -362,7 +360,6 @@ const SurveyJsonUtredning = {
                 {
                     type: "checkbox",
                     name: "prostatavolumUkjent",
-                    maxWidth: "300px",
                     startWithNewLine: false,
                     titleLocation: "hidden",
                     choices: [
@@ -387,7 +384,6 @@ const SurveyJsonUtredning = {
                 {
                     type: "radiogroup",
                     name: "mrdiagnostikk",
-                    maxWidth: "350px",
                     title: {
                         no: "MR prostata"
                     },
@@ -413,8 +409,7 @@ const SurveyJsonUtredning = {
                     name: "datoMRDiagnostikk",
                     visible: false,
                     visibleIf: "{mrdiagnostikk} = 1",
-                    maxWidth: "450px",
-                    startWithNewLine: false,
+                    startWithNewLine: true,
                     title: {
                         no: "Utført dato"
                     },
@@ -474,7 +469,7 @@ const SurveyJsonUtredning = {
                     name: "annetBildediagnostikkSpesifiser2",
                     visible: false,
                     visibleIf: "{annetBildediagnostikk} = 1",
-                    startWithNewLine: false,
+                    startWithNewLine: true,
                     title: {
                         no: "Spesifiser"
                     }
@@ -539,7 +534,7 @@ const SurveyJsonUtredning = {
                     name: "annetVevsproverSpesifiser2",
                     visible: false,
                     visibleIf: "{vevsproverUS} contains 'annetVevsprover'",
-                    startWithNewLine: false,
+                    startWithNewLine: true,
                     title: {
                         no: "Spesifiser"
                     }
@@ -1092,7 +1087,7 @@ const SurveyJsonUtredning = {
                     name: "annenDiagnostikkLKSpesifiser",
                     visible: false,
                     visibleIf: "{utredningsmetodeLK} = 5",
-                    startWithNewLine: false,
+                    startWithNewLine: true,
                     title: {
                         no: "Spesifiser"
                     }
@@ -1165,7 +1160,7 @@ const SurveyJsonUtredning = {
                     name: "annetFjernmetSpesifiser",
                     visible: false,
                     visibleIf: "{lokalisasjonFjernmet} contains 'annetFjernmet'",
-                    startWithNewLine: false,
+                    startWithNewLine: true,
                     title: {
                         no: "Spesifiser"
                     }

@@ -986,7 +986,6 @@ const SurveyJSONStraale = {
                 {
                     type: "text",
                     name: "preStraalePSAVerdi",
-                    maxWidth: "500px",
                     title: {
                         no: "PSA før strålebehandling og eventuell neoadjuvant endokrin behandling"
                     },
@@ -1047,7 +1046,6 @@ const SurveyJSONStraale = {
                 {
                     type: "text",
                     name: "datoOppstartEndokrinBeh",
-                    maxWidth: "500px",
                     visible: false,
                     visibleIf: "{endokrinBehandling} = 1",
                     title: {
@@ -1087,8 +1085,6 @@ const SurveyJSONStraale = {
                 {
                     type: "text",
                     name: "varighetEndokrinBehandling",
-                    maxWidth: "500px",
-
                     visible: false,
                     visibleIf: "{endokrinBehandling} = 1",
                     title: {
@@ -1137,7 +1133,6 @@ const SurveyJSONStraale = {
                 {
                     type: "text",
                     name: "datoOppstartStraale",
-                    maxWidth: "50%",
                     title: {
                         no: "Dato for oppstart av strålebehandling"
                     },
