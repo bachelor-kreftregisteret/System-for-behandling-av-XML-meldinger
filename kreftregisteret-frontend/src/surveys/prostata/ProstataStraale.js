@@ -31,9 +31,7 @@ const SurveyJSONStraale = {
                     type: "checkbox",
                     name: "fodselnummerUtland",
                     startWithNewLine: false,
-                    title: {
-                        no: "ㅤ"
-                    },
+                    titleLocation: "hidden",
                     choices: [
                         {
                             value: "true",
@@ -46,8 +44,6 @@ const SurveyJSONStraale = {
                 {
                     type: "text",
                     name: "navnPasient",
-                    minWidth: "350px",
-                    maxWidth: "450px",
                     title: {
                         no: "Navn"
                     },
@@ -78,7 +74,7 @@ const SurveyJSONStraale = {
                     name: "sykehusnavnHFSpesifiser",
                     visible: false,
                     visibleIf: "{sykehuskode} = 9998",
-                    startWithNewLine: false,
+                    startWithNewLine: true,
                     title: {
                         no: "Spesifiser"
                     },
@@ -142,7 +138,7 @@ const SurveyJSONStraale = {
                     name: "avdelingsnavnHFSpesifiser",
                     visible: false,
                     visibleIf: "{avdelingsnavn} = '1'",
-                    startWithNewLine: false,
+                    startWithNewLine: true,
                     title: {
                         no: "Spesifiser"
                     }
@@ -244,7 +240,6 @@ const SurveyJSONStraale = {
                 {
                     type: "dropdown",
                     name: "palpatoriskTumorHoyre",
-                    minWidth: "450px",
                     title: {
                         no: "Palpatorisk T-stadium høyre side (laveste stadium velges ved tvil)"
                     },
@@ -295,7 +290,6 @@ const SurveyJSONStraale = {
                 {
                     type: "dropdown",
                     name: "palpatoriskTumorVenstre",
-                    minWidth: "450px",
                     startWithNewLine: false,
                     title: {
                         no: "Palpatorisk T-stadium venstre side (laveste stadium velges ved tvil)"
@@ -347,7 +341,6 @@ const SurveyJSONStraale = {
                 {
                     type: "expression",
                     name: "samletPalpatoriskTumor",
-                    minWidth: "450px",
                     title: {
                         no: "Samlet palpatorisk T-stadium"
                     },
@@ -362,7 +355,6 @@ const SurveyJSONStraale = {
                 {
                     type: "radiogroup",
                     name: "mrdiagnostikk",
-                    maxWidth: "350px",
                     title: {
                         no: "MR prostata"
                     },
@@ -388,8 +380,7 @@ const SurveyJSONStraale = {
                     name: "datoMRDiagnostikk",
                     visible: false,
                     visibleIf: "{mrdiagnostikk} = 1",
-                    maxWidth: "450px",
-                    startWithNewLine: false,
+                    startWithNewLine: true,
                     title: {
                         no: "Utført dato"
                     },
@@ -414,6 +405,7 @@ const SurveyJSONStraale = {
                     title: {
                         no: "ㅤ"
                     },
+                    titleLocation: "hidden",
                     choices: [
                         {
                             value: "99",
@@ -428,7 +420,6 @@ const SurveyJSONStraale = {
                     name: "piradshoyre",
                     visible: false,
                     visibleIf: "{mrdiagnostikk} = 1",
-                    minWidth: "450px",
                     title: {
                         no: "PI-RADS høyre side (laveste stadium velges ved tvil)"
                     },
@@ -464,7 +455,6 @@ const SurveyJSONStraale = {
                     name: "piradsvenstre",
                     visible: false,
                     visibleIf: "{mrdiagnostikk} = 1",
-                    minWidth: "450px",
                     startWithNewLine: false,
                     title: {
                         no: "PI-RADS venstre side (laveste stadium velges ved tvil)"
@@ -501,7 +491,6 @@ const SurveyJSONStraale = {
                     name: "mrbasertKliniskTHoyre",
                     visible: false,
                     visibleIf: "{piradshoyre} = 4 or {piradshoyre} = 5",
-                    minWidth: "450px",
                     title: {
                         no: "MR-basert T-stadium høyre side (laveste stadium velges ved tvil)"
                     },
@@ -548,7 +537,6 @@ const SurveyJSONStraale = {
                     name: "mrbasertKliniskTVenstre",
                     visible: false,
                     visibleIf: "{piradsvenstre} = 4 or {piradsvenstre} = 5",
-                    minWidth: "450px",
                     startWithNewLine: false,
                     title: {
                         no: "MR-basert T-stadium venstre side (laveste stadium velges ved tvil)"
@@ -826,7 +814,7 @@ const SurveyJSONStraale = {
                     name: "annenDiagnostikkLKSpesifiser",
                     visible: false,
                     visibleIf: "{utredningsmetodeLK} = 5",
-                    startWithNewLine: false,
+                    startWithNewLine: true,
                     title: {
                         no: "Spesifiser"
                     }
@@ -899,7 +887,7 @@ const SurveyJSONStraale = {
                     name: "annetFjernmetSpesifiser",
                     visible: false,
                     visibleIf: "{lokalisasjonFjernmet} contains 'annetFjernmet'",
-                    startWithNewLine: false,
+                    startWithNewLine: true,
                     title: {
                         no: "Spesifiser"
                     }
@@ -998,6 +986,7 @@ const SurveyJSONStraale = {
                 {
                     type: "text",
                     name: "preStraalePSAVerdi",
+                    maxWidth: "500px",
                     title: {
                         no: "PSA før strålebehandling og eventuell neoadjuvant endokrin behandling"
                     },
@@ -1016,9 +1005,7 @@ const SurveyJSONStraale = {
                     type: "checkbox",
                     name: "preStraalePSAVerdiUkjent",
                     startWithNewLine: false,
-                    title: {
-                        no: "⠀"
-                    },
+                    titleLocation: "hidden",
                     choices: [
                         {
                             value: "99",
@@ -1060,6 +1047,7 @@ const SurveyJSONStraale = {
                 {
                     type: "text",
                     name: "datoOppstartEndokrinBeh",
+                    maxWidth: "500px",
                     visible: false,
                     visibleIf: "{endokrinBehandling} = 1",
                     title: {
@@ -1086,6 +1074,7 @@ const SurveyJSONStraale = {
                     title: {
                         no: "​⠀"
                     },
+                    titleLocation: "hidden",
                     choices: [
                         {
                             value: "99",
@@ -1098,6 +1087,8 @@ const SurveyJSONStraale = {
                 {
                     type: "text",
                     name: "varighetEndokrinBehandling",
+                    maxWidth: "500px",
+
                     visible: false,
                     visibleIf: "{endokrinBehandling} = 1",
                     title: {
@@ -1125,9 +1116,7 @@ const SurveyJSONStraale = {
                     visible: false,
                     visibleIf: "{endokrinBehandling} = 1",
                     startWithNewLine: false,
-                    title: {
-                        no: "⠀"
-                    },
+                    titleLocation: "hidden",
                     choices: [
                         {
                             value: "99",
@@ -1148,6 +1137,7 @@ const SurveyJSONStraale = {
                 {
                     type: "text",
                     name: "datoOppstartStraale",
+                    maxWidth: "50%",
                     title: {
                         no: "Dato for oppstart av strålebehandling"
                     },

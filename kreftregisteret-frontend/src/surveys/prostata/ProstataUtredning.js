@@ -31,9 +31,7 @@ const SurveyJsonUtredning = {
                     type: "checkbox",
                     name: "fodselnummerUtland",
                     startWithNewLine: false,
-                    title: {
-                        no: "ㅤ"
-                    },
+                    titleLocation: "hidden",
                     choices: [
                         {
                             value: "true",
@@ -46,8 +44,6 @@ const SurveyJsonUtredning = {
                 {
                     type: "text",
                     name: "navnPasient",
-                    minWidth: "350px",
-                    maxWidth: "450px",
                     title: {
                         no: "Navn"
                     },
@@ -194,7 +190,6 @@ const SurveyJsonUtredning = {
                 {
                     type: "text",
                     name: "psaverdi",
-                    minWidth: "200px",
                     startWithNewLine: false,
                     title: {
                         no: "PSA-verdi ved diagnosetidspunkt"
@@ -215,12 +210,8 @@ const SurveyJsonUtredning = {
                 {
                     type: "checkbox",
                     name: "spsa",
-                    minWidth: "150px",
-                    maxWidth: "300px",
                     startWithNewLine: false,
-                    title: {
-                        no: "ㅤ"
-                    },
+                    titleLocation: "hidden",
                     choices: [
                         {
                             value: "psaverdiIkkeTatt",
@@ -353,8 +344,6 @@ const SurveyJsonUtredning = {
                 {
                     type: "text",
                     name: "prostatavolum",
-                    minWidth: "220px",
-                    maxWidth: "300px",
                     title: {
                         no: "Prostatavolum"
                     },
@@ -375,9 +364,7 @@ const SurveyJsonUtredning = {
                     name: "prostatavolumUkjent",
                     maxWidth: "300px",
                     startWithNewLine: false,
-                    title: {
-                        no: "ㅤ"
-                    },
+                    titleLocation: "hidden",
                     choices: [
                         {
                             value: "99",
@@ -449,9 +436,7 @@ const SurveyJsonUtredning = {
                     visible: false,
                     visibleIf: "{mrdiagnostikk} = 1",
                     startWithNewLine: false,
-                    title: {
-                        no: "ㅤ"
-                    },
+                    titleLocation: "hidden",
                     choices: [
                         {
                             value: "99",
@@ -592,7 +577,6 @@ const SurveyJsonUtredning = {
                     type: "dropdown",
                     name: "palpatoriskTumorHoyre",
                     visibleIf: "{funnUtredning} = 1",
-                    minWidth: "450px",
                     title: {
                         no: "Palpatorisk T-stadium høyre side (laveste stadium velges ved tvil)"
                     },
@@ -644,7 +628,6 @@ const SurveyJsonUtredning = {
                     type: "dropdown",
                     name: "palpatoriskTumorVenstre",
                     visibleIf: "{funnUtredning} = 1",
-                    minWidth: "450px",
                     startWithNewLine: false,
                     title: {
                         no: "Palpatorisk T-stadium venstre side (laveste stadium velges ved tvil)"
@@ -697,7 +680,6 @@ const SurveyJsonUtredning = {
                     type: "expression",
                     name: "samletPalpatoriskTumor",
                     visibleIf: "{funnUtredning} = 1",
-                    minWidth: "450px",
                     title: {
                         no: "Samlet palpatorisk T-stadium"
                     },
@@ -714,7 +696,6 @@ const SurveyJsonUtredning = {
                     name: "piradshoyre",
                     visible: false,
                     visibleIf: "{mrdiagnostikk} = 1",
-                    minWidth: "450px",
                     title: {
                         no: "PI-RADS høyre side (laveste stadium velges ved tvil)"
                     },
@@ -750,7 +731,6 @@ const SurveyJsonUtredning = {
                     name: "piradsvenstre",
                     visible: false,
                     visibleIf: "{mrdiagnostikk} = 1",
-                    minWidth: "450px",
                     startWithNewLine: false,
                     title: {
                         no: "PI-RADS venstre side (laveste stadium velges ved tvil)"
@@ -787,7 +767,6 @@ const SurveyJsonUtredning = {
                     name: "mrbasertKliniskTHoyre",
                     visible: false,
                     visibleIf: "{piradshoyre} = 4 or {piradshoyre} = 5",
-                    minWidth: "450px",
                     title: {
                         no: "MR-basert T-stadium høyre side (laveste stadium velges ved tvil)"
                     },
@@ -834,7 +813,6 @@ const SurveyJsonUtredning = {
                     name: "mrbasertKliniskTVenstre",
                     visible: false,
                     visibleIf: "{piradsvenstre} = 4 or {piradsvenstre} = 5",
-                    minWidth: "450px",
                     startWithNewLine: false,
                     title: {
                         no: "MR-basert T-stadium venstre side (laveste stadium velges ved tvil)"
@@ -1323,9 +1301,7 @@ const SurveyJsonUtredning = {
                     type: "checkbox",
                     name: "labnavnHFIkkeRelevant",
                     startWithNewLine: false,
-                    title: {
-                        no: "ㅤ"
-                    },
+                    titleLocation: "hidden",
                     choices: [
                         {
                             value: "true",

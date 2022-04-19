@@ -31,9 +31,7 @@ const SurveyJSONKirugi = {
                     type: "checkbox",
                     name: "fodselnummerUtland",
                     startWithNewLine: false,
-                    title: {
-                        no: "ㅤ"
-                    },
+                    titleLocation: "hidden",
                     choices: [
                         {
                             value: "true",
@@ -46,8 +44,6 @@ const SurveyJSONKirugi = {
                 {
                     type: "text",
                     name: "navnPasient",
-                    minWidth: "350px",
-                    maxWidth: "450px",
                     title: {
                         no: "Navn"
                     },
@@ -78,7 +74,7 @@ const SurveyJSONKirugi = {
                     name: "sykehusnavnHFSpesifiser",
                     visible: false,
                     visibleIf: "{sykehuskode} = 9998",
-                    startWithNewLine: false,
+                    startWithNewLine: true,
                     title: {
                         no: "Spesifiser"
                     },
@@ -142,7 +138,7 @@ const SurveyJSONKirugi = {
                     name: "avdelingsnavnHFSpesifiser",
                     visible: false,
                     visibleIf: "{avdelingsnavn} = '1'",
-                    startWithNewLine: false,
+                    startWithNewLine: true,
                     title: {
                         no: "Spesifiser"
                     }
@@ -212,7 +208,6 @@ const SurveyJSONKirugi = {
                 {
                     type: "dropdown",
                     name: "palpatoriskTumorHoyre",
-                    minWidth: "450px",
                     title: {
                         no: "Palpatorisk T-stadium høyre side (laveste stadium velges ved tvil)"
                     },
@@ -315,7 +310,6 @@ const SurveyJSONKirugi = {
                 {
                     type: "expression",
                     name: "samletPalpatoriskTumor",
-                    minWidth: "450px",
                     title: {
                         no: "Samlet palpatorisk T-stadium"
                     },
@@ -330,7 +324,6 @@ const SurveyJSONKirugi = {
                 {
                     type: "radiogroup",
                     name: "mrdiagnostikk",
-                    maxWidth: "350px",
                     title: {
                         no: "MR prostata"
                     },
@@ -356,8 +349,7 @@ const SurveyJSONKirugi = {
                     name: "datoMRDiagnostikk",
                     visible: false,
                     visibleIf: "{mrdiagnostikk} = 1",
-                    maxWidth: "450px",
-                    startWithNewLine: false,
+                    startWithNewLine: true,
                     title: {
                         no: "Utført dato"
                     },
@@ -379,9 +371,7 @@ const SurveyJSONKirugi = {
                     visible: false,
                     visibleIf: "{mrdiagnostikk} = 1",
                     startWithNewLine: false,
-                    title: {
-                        no: "ㅤ"
-                    },
+                    titleLocation: "hidden",
                     choices: [
                         {
                             value: "99",
@@ -396,7 +386,6 @@ const SurveyJSONKirugi = {
                     name: "piradshoyre",
                     visible: false,
                     visibleIf: "{mrdiagnostikk} = 1",
-                    minWidth: "450px",
                     title: {
                         no: "PI-RADS høyre side (laveste stadium velges ved tvil)"
                     },
@@ -432,7 +421,6 @@ const SurveyJSONKirugi = {
                     name: "piradsvenstre",
                     visible: false,
                     visibleIf: "{mrdiagnostikk} = 1",
-                    minWidth: "450px",
                     startWithNewLine: false,
                     title: {
                         no: "PI-RADS venstre side (laveste stadium velges ved tvil)"
@@ -469,7 +457,6 @@ const SurveyJSONKirugi = {
                     name: "mrbasertKliniskTHoyre",
                     visible: false,
                     visibleIf: "{piradshoyre} = 4 or {piradshoyre} = 5",
-                    minWidth: "450px",
                     title: {
                         no: "MR-basert T-stadium høyre side (laveste stadium velges ved tvil)"
                     },
@@ -516,7 +503,6 @@ const SurveyJSONKirugi = {
                     name: "mrbasertKliniskTVenstre",
                     visible: false,
                     visibleIf: "{piradsvenstre} = 4 or {piradsvenstre} = 5",
-                    minWidth: "450px",
                     startWithNewLine: false,
                     title: {
                         no: "MR-basert T-stadium venstre side (laveste stadium velges ved tvil)"
@@ -794,7 +780,7 @@ const SurveyJSONKirugi = {
                     name: "annenDiagnostikkLKSpesifiser",
                     visible: false,
                     visibleIf: "{utredningsmetodeLK} = 5",
-                    startWithNewLine: false,
+                    startWithNewLine: true,
                     title: {
                         no: "Spesifiser"
                     }
@@ -867,7 +853,7 @@ const SurveyJSONKirugi = {
                     name: "annetFjernmetSpesifiser",
                     visible: false,
                     visibleIf: "{lokalisasjonFjernmet} contains 'annetFjernmet'",
-                    startWithNewLine: false,
+                    startWithNewLine: true,
                     title: {
                         no: "Spesifiser"
                     }
@@ -982,9 +968,7 @@ const SurveyJSONKirugi = {
                     type: "checkbox",
                     name: "preoprPSAVerdiUkjent",
                     startWithNewLine: false,
-                    title: {
-                        no: "⠀"
-                    },
+                    titleLocation: "hidden",
                     choices: [
                         {
                             value: "99",
@@ -1052,6 +1036,7 @@ const SurveyJSONKirugi = {
                     title: {
                         no: "​⠀"
                     },
+                    titleLocation: "hidden",
                     choices: [
                         {
                             value: "99",
@@ -1257,9 +1242,7 @@ const SurveyJSONKirugi = {
                     type: "checkbox",
                     name: "labnavnHFIkkeRelevant",
                     startWithNewLine: false,
-                    title: {
-                        no: "ㅤ"
-                    },
+                    titleLocation: "hidden",
                     choices: [
                         {
                             value: "true",
