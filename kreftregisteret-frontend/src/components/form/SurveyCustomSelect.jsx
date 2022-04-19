@@ -29,17 +29,22 @@ export class SurveyCustomSelect extends SurveyReact.SurveyQuestionDropdown {
     renderElement() {
         // If the question is non-editable, render a stylized div
         if (this.isDisplayMode) {
-            return (<div id={this.question.inputId} className={this
-                .question
-                .getControlClass()}
-                         disabled="disabled">
+            return (<div
+                id={this.question.inputId}
+                className={this.question.getControlClass()}
+                disabled="disabled"
+            >
                 {(this.question.displayValue || this.question.optionsCaption)}
             </div>);
         }
 
         // Otherwise, render the React Select component
-        return (<Select id={this.question.inputId} value={this.selectedOption} onChange={this.onSelectChange}
-                        options={this.options} required={this.question.isRequired} placeholder={"Velg..."}
+        return (<Select id={this.question.inputId}
+                        value={this.selectedOption}
+                        onChange={this.onSelectChange}
+                        options={this.options}
+                        required={this.question.isRequired}
+                        placeholder={"Velg..."}
                         menuPortalTarget={document.querySelector('body')}/>);
     }
 }
