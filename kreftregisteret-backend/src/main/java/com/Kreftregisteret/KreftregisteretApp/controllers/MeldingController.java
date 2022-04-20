@@ -2,6 +2,7 @@ package com.Kreftregisteret.KreftregisteretApp.controllers;
 
 
 import com.Kreftregisteret.KreftregisteretApp.models.Melding;
+import com.Kreftregisteret.KreftregisteretApp.utils.FileManager;
 import com.Kreftregisteret.KreftregisteretApp.utils.error.ErrorUtils;
 import com.Kreftregisteret.KreftregisteretApp.utils.xml.MeldingManager;
 import com.fasterxml.jackson.core.JacksonException;
@@ -14,6 +15,7 @@ import org.xml.sax.SAXException;
 import javax.servlet.http.HttpServletRequest;
 import java.io.IOException;
 import java.util.HashMap;
+import java.util.List;
 
 
 @RestController
@@ -23,7 +25,7 @@ public class MeldingController {
     @Autowired
     public MeldingController(MeldingManager meldingManager) throws IOException {
         this.meldingManager = meldingManager;
-        meldingManager.addMeldingerFromUtFolderToMeldingList();
+        meldingManager.addMeldingerFromUtFolderToMeldingList(List.of(FileManager.listFiles()));
     }
 
     //http://localhost:8080/api/v1/meldinger

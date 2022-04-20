@@ -1,7 +1,7 @@
 package com.Kreftregisteret.KreftregisteretApp.utils.xml;
 
 import com.Kreftregisteret.KreftregisteretApp.models.Melding;
-import com.Kreftregisteret.KreftregisteretApp.utils.Utmappe;
+import com.Kreftregisteret.KreftregisteretApp.utils.FileManager;
 import jakarta.xml.bind.*;
 import jakarta.xml.bind.util.JAXBSource;
 import org.springframework.stereotype.Service;
@@ -15,9 +15,12 @@ import java.util.*;
 //er det bedre å ha EN jaxbcontext instance her? dvs ha en felles for alle metodene også injecte message manager istedenfor public static?
 @Service
 public class MeldingManager {
-    private HashMap<Melding, Long> meldingMap = new HashMap<>();
-
+    private final HashMap<Melding, Long> meldingMap = new HashMap<>();
     private static Long id = 1L;
+
+    public MeldingManager(){
+        FileManager.setPathToFolder("utmappe/");
+    }
 
     //sikter på thread-safety
     public static synchronized Long createNewID() {
@@ -32,7 +35,7 @@ public class MeldingManager {
         //er formatet
         String formattedDate = getDate();
         melding.setLastChangedTime(formattedDate);
-        meldingMap.put(melding, melding.getId());
+        meldingMap.put(melding, createNewID());
     }
 
     public HashMap<Melding, Long> getMeldingMap() {
@@ -67,13 +70,13 @@ public class MeldingManager {
         Marshaller jaxbMarshaller = jaxbContext.createMarshaller();
         Schema schema = MeldingValidator.generateSchema(melding);
         JAXBSource jaxbSource = new JAXBSource(jaxbMarshaller, melding);
-        // Validate against schema, throws SAXParseException if not valid
         XMLValidator.validate(schema, jaxbSource);
-
         String formattedDate = getFileDate();
-        File file = new File(Utmappe.getPath() + formattedDate + melding.getSkjemaNavn() + ".xml");
+        File file = new File(FileManager.getPath() + formattedDate + melding.getSkjemaNavn() + ".xml");
         jaxbMarshaller.setSchema(schema);
+        System.out.println(getMeldingMap().size());
         updateMsgMap(melding);
+        System.out.println(getMeldingMap());
         jaxbMarshaller.marshal(melding, file); // Write to file
     }
 
@@ -90,12 +93,16 @@ public class MeldingManager {
         return formatter.format(date);
     }
 
-    public void addMeldingerFromUtFolderToMeldingList() throws IOException {
+
+    //kanskje for å teste dette bør man kunne sette Utmappe.listFiles til noe
+    //dette er veldig stateful, kanskje vi kan
+    //hvis denne funksjonen testes er det i grunn convertFileToMelding som testes..
+    //convert filetomelding blir vel ikke testet.
+    public void addMeldingerFromUtFolderToMeldingList(List<File> list) throws IOException {
         //ClassPathResource pathResource = new ClassPathResource("Ut");
         try {
             //List<File> fileList = getFiles(Path.of(Utmappe.getPath()));
-            List<File> fileList = List.of(Utmappe.listFiles());
-            fileList.forEach(file -> {
+            list.forEach(file -> {
                 if (file != null) {
                     Melding melding = convertFileToMelding(file);
                     System.out.println(melding);

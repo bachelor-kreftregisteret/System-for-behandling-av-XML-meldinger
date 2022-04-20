@@ -10,11 +10,11 @@ import java.net.MalformedURLException;
 import static org.junit.jupiter.api.Assertions.*;
 
 @SpringBootTest
-public class UtmappeTests {
+public class FileManagerTests {
     @Test
     @DisplayName("Test: listFiles()")
     void listFiles() throws MalformedURLException {
-        File[] files = Utmappe.listFiles();
+        File[] files = FileManager.listFiles();
         assertNotNull(files);
         // Filenames get tested at MeldingControllerTests.getAllMeldingerTest
     }
@@ -22,7 +22,7 @@ public class UtmappeTests {
     @Test
     @DisplayName("Test: getPath()")
     void getPath() throws MalformedURLException {
-        String path = Utmappe.getPath();
+        String path = FileManager.getPath();
         assertTrue(path.contains("utmappe"));
     }
 }

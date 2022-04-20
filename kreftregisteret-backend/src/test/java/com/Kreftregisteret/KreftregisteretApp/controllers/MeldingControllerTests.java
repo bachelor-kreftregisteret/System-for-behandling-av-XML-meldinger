@@ -2,7 +2,7 @@ package com.Kreftregisteret.KreftregisteretApp.controllers;
 
 import java.io.File;
 import java.util.Arrays;
-import com.Kreftregisteret.KreftregisteretApp.utils.Utmappe;
+import com.Kreftregisteret.KreftregisteretApp.utils.FileManager;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -53,7 +53,7 @@ public class MeldingControllerTests {
         String resultAsString = mvcResult.getResponse().getContentAsString();
 
         // Get all filenames in utmappe
-        File[] files = Utmappe.listFiles();
+        File[] files = FileManager.listFiles();
         String[] filenames = Arrays
                 .stream(files)
                 .map(File::getName)
