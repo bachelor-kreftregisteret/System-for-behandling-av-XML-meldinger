@@ -10,7 +10,6 @@ import Footer from "./Footer";
 import SurveyCustomSelect from "./SurveyCustomSelect";
 import GetMeldingByID from "../../api/getMeldingerByID";
 
-
 const FormLogic = ({SurveyType}) => {
 
     // Henter data fra backend
@@ -102,8 +101,11 @@ const FormLogic = ({SurveyType}) => {
     const setDataValues = (data, JSONType, flattenedJSON) => {
         findCheckboxes(JSONType);
         flatten(data);
-        setSykehusKode();
-        survey.data = flattenedJSON;
+        test()
+        if (data !== "") { // Hvis det ikke blir lastet data, så blir ikke deafaultValues endret
+            setSykehusKode();
+            survey.data = flattenedJSON;
+        }
     }
 
 
@@ -185,9 +187,14 @@ const FormLogic = ({SurveyType}) => {
 
     const submit = () => {
         if (survey.isCurrentPageHasErrors) {
+            const array = survey.getAllQuestions()
+            for (const quest in array) {
+                if (array[quest].errors.length > 0) {
+                    console.log(array[quest].id)
+                }
+            }
             setIsModalOpen(false);
         } else {
-
             //Lag en component under api for post
             setIsModalOpen(true);
             const headers = {

@@ -1401,9 +1401,7 @@ const SurveyJsonUtredning = {
         {
             name: "oppfolging",
             description: {
-                no: "Fortsatt kandidat for kirurgisk behandling",
-                visible: false,
-                visibleIf: "{videreTiltakUtredning} = 5"
+                no: "Fortsatt kandidat for kirurgisk behandling"
             },
             elements: [
                 {
