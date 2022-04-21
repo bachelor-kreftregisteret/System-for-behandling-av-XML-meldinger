@@ -101,7 +101,6 @@ const FormLogic = ({SurveyType}) => {
     const setDataValues = (data, JSONType, flattenedJSON) => {
         findCheckboxes(JSONType);
         flatten(data);
-        test()
         if (data !== "") { // Hvis det ikke blir lastet data, så blir ikke deafaultValues endret
             setSykehusKode();
             survey.data = flattenedJSON;
