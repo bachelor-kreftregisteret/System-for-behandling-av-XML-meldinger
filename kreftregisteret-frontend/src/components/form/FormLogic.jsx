@@ -185,6 +185,7 @@ const FormLogic = ({SurveyType}) => {
 
 
     const submit = () => {
+        replaceUndefined(data);
         if (survey.isCurrentPageHasErrors) {
             const array = survey.getAllQuestions()
             for (const quest in array) {
@@ -209,7 +210,7 @@ const FormLogic = ({SurveyType}) => {
                 })
         }
     }
-    console.log(isModalOpen)
+    
     return (
         /*Render skjema*/
 
