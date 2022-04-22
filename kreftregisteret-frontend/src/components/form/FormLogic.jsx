@@ -172,20 +172,27 @@ const FormLogic = ({FormType}) => {
         }
     }
 
-    useEffect(() =>  {
+    useEffect(() => {
         setDataValues(data, FormType, flattenedJSON);
-    },[data, FormType, flattenedJSON]);
+    }, [data, FormType, flattenedJSON]);
 
-    useEffect(() =>  {
+    useEffect(() => {
         survey.onValueChanged.add(function (sender, options) {
             setChangedValue(options, data, false);
+        });
+        survey.onPanelVisibleChanged.add(function (survey, options) {
+            if (!options.visible) {
+                const questions = options.panel.questions;
+                for (let i = 0; i < questions.length; i++) {
+                    questions[i].clearValue();
+                }
+            }
         });
     }, [setDataValues]); // Venter på setValues så den ikke skriver over data mens data blir satt inn
 
 
     const submit = () => {
         replaceUndefined(data);
-
         // Funksjon for å scrolle til spørsmål med error
         if (survey.isCurrentPageHasErrors) {
             const array = survey.getAllQuestions()
@@ -222,29 +229,29 @@ const FormLogic = ({FormType}) => {
         <>
 
             {error === null ?
-            <div className={"surveyContainer"}>
-                <Sidebar
-                    className={"sidebar"}
-                    loading={loading}
-                    isModalOpen={isModalOpen}
-                    postError={postError}
-                />
+                <div className={"surveyContainer"}>
+                    <Sidebar
+                        className={"sidebar"}
+                        loading={loading}
+                        isModalOpen={isModalOpen}
+                        postError={postError}
+                    />
 
-                <Survey
-                    model={survey}
+                    <Survey
+                        model={survey}
 
-                    showCompletedPage={false}
-                    showNavigationButtons={false}
-                />
+                        showCompletedPage={false}
+                        showNavigationButtons={false}
+                    />
 
-                <Footer
-                    onSubmit={submit}
-                    isModalOpen={isModalOpen}
-                    setIsModalOpen={setIsModalOpen}
-                    postError={postError}
-                />
-            </div>
-            :
+                    <Footer
+                        onSubmit={submit}
+                        isModalOpen={isModalOpen}
+                        setIsModalOpen={setIsModalOpen}
+                        postError={postError}
+                    />
+                </div>
+                :
                 <div className={"errorContainer"}>
                     <h2>Noe gikk galt</h2>
                     <p>{error.toString()}</p>
@@ -252,7 +259,7 @@ const FormLogic = ({FormType}) => {
             }
         </>
 
-)
+    )
 
 }
 

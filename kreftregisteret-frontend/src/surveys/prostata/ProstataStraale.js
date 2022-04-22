@@ -248,37 +248,37 @@ const SurveyJSONStraale = {
                         {
                             value: "1",
                             text: {
-                                no: "Ikke palpabel tumor (tilsvarende T0/T1)"
+                                no: "T0/T1 - Ikke palpabel tumor"
                             }
                         },
                         {
                             value: "2",
                             text: {
-                                no: "Tumor uten ekstraprostatisk vekst (tilsvarende T2)"
+                                no: "T2 - Tumor uten ekstraprostatisk vekst"
                             }
                         },
                         {
                             value: "3",
                             text: {
-                                no: "Ekstraprostatisk vekst (tilsvarende T3a)"
+                                no: "T3a - Ekstraprostatisk vekst"
                             }
                         },
                         {
                             value: "4",
                             text: {
-                                no: "Innvekst i vesikler (tilsvarende T3b)"
+                                no: "T3b - Innvekst i vesikler"
                             }
                         },
                         {
                             value: "5",
                             text: {
-                                no: "Innvekst i omliggende vev (tilsvarende T4)"
+                                no: "T4 - Innvekst i omliggende vev"
                             }
                         },
                         {
                             value: "6",
                             text: {
-                                no: "Ikke vurdert / kan ikke vurderes (tilsvarende TX)"
+                                no: "TX - Ikke vurdert / kan ikke vurderes"
                             }
                         }
                     ],
@@ -299,37 +299,37 @@ const SurveyJSONStraale = {
                         {
                             value: "1",
                             text: {
-                                no: "Ikke palpabel tumor (tilsvarende T0/T1)"
+                                no: "T0/T1 - Ikke palpabel tumor"
                             }
                         },
                         {
                             value: "2",
                             text: {
-                                no: "Tumor uten ekstraprostatisk vekst (tilsvarende T2)"
+                                no: "T2 - Tumor uten ekstraprostatisk vekst"
                             }
                         },
                         {
                             value: "3",
                             text: {
-                                no: "Ekstraprostatisk vekst (tilsvarende T3a)"
+                                no: "T3a - Ekstraprostatisk vekst"
                             }
                         },
                         {
                             value: "4",
                             text: {
-                                no: "Innvekst i vesikler (tilsvarende T3b)"
+                                no: "T3b - Innvekst i vesikler"
                             }
                         },
                         {
                             value: "5",
                             text: {
-                                no: "Innvekst i omliggende vev (tilsvarende T4)"
+                                no: "T4 - Innvekst i omliggende vev"
                             }
                         },
                         {
                             value: "6",
                             text: {
-                                no: "Ikke vurdert / kan ikke vurderes (tilsvarende TX)"
+                                no: "TX - Ikke vurdert / kan ikke vurderes"
                             }
                         }
                     ],
@@ -423,21 +423,38 @@ const SurveyJSONStraale = {
                     title: {
                         no: "PI-RADS høyre side (laveste stadium velges ved tvil)"
                     },
-                    description: {
-                        no: "* PI-RADS 5 = Høy sannsynlighet for klinisk signifikant malign tumor som er 15 mm eller større, eller som har ekstraprostatisk vekst.\n" +
-                            "* PI-RADS 4 = Høy sannsynlighet for klinisk signifikant malign tumor som er mindre enn 15 mm og uten suspekt ekstraprostatisk vekst.\n" +
-                            "* PI-RADS 3 = Intermediær sannsynlighet for klinisk signifikant malign tumor, usikker lesjon, 50/50%.\n" +
-                            "* PI-RADS 2 = Lav sannsynlighet for klinisk signifikant malign tumor, benigne funn.\n" +
-                            "* PI-RADS 1 = Svært lav sannsynlighet for klinisk signifikant malign tumor, normale funn.\n" +
-                            "Klinisk signifikant tumor er definert som histologisk Gleason score 7 eller høyere, og/eller volum større enn 0,5 ccm, og/eller ekstraprostatisk vekst."
-                    },
                     isRequired: true,
                     choices: [
-                        "1",
-                        "2",
-                        "3",
-                        "4",
-                        "5",
+                        {
+                            value: "1",
+                            text: {
+                                no: "1 - Svært lav sannsynlighet for klinisk signifikant malign tumor, normale funn"
+                            }
+                        },
+                        {
+                            value: "2",
+                            text: {
+                                no: "2 - Lav sannsynlighet for klinisk signifikant malign tumor, benigne funn"
+                            }
+                        },
+                        {
+                            value: "3",
+                            text: {
+                                no: "3 - Intermediær sannsynlighet for klinisk signifikant malign tumor, usikker lesjon, 50/50%"
+                            }
+                        },
+                        {
+                            value: "4",
+                            text: {
+                                no: "4 -  Høy sannsynlighet for klinisk signifikant malign tumor som er mindre enn 15 mm og uten suspekt ekstraprostatisk vekst"
+                            }
+                        },
+                        {
+                            value: "5",
+                            text: {
+                                no: "5 - Høy sannsynlighet for klinisk signifikant malign tumor som er 15 mm eller større, eller som har ekstraprostatisk vekst"
+                            }
+                        },
                         {
                             value: "99",
                             text: {
@@ -459,21 +476,38 @@ const SurveyJSONStraale = {
                     title: {
                         no: "PI-RADS venstre side (laveste stadium velges ved tvil)"
                     },
-                    description: {
-                        no: "* PI-RADS 5 = Høy sannsynlighet for klinisk signifikant malign tumor som er 15 mm eller større, eller som har ekstraprostatisk vekst.\n" +
-                            "* PI-RADS 4 = Høy sannsynlighet for klinisk signifikant malign tumor som er mindre enn 15 mm og uten suspekt ekstraprostatisk vekst.\n" +
-                            "* PI-RADS 3 = Intermediær sannsynlighet for klinisk signifikant malign tumor, usikker lesjon, 50/50%.\n" +
-                            "* PI-RADS 2 = Lav sannsynlighet for klinisk signifikant malign tumor, benigne funn.\n" +
-                            "* PI-RADS 1 = Svært lav sannsynlighet for klinisk signifikant malign tumor, normale funn.\n" +
-                            "Klinisk signifikant tumor er definert som histologisk Gleason score 7 eller høyere, og/eller volum større enn 0,5 ccm, og/eller ekstraprostatisk vekst."
-                    },
                     isRequired: true,
                     choices: [
-                        "1",
-                        "2",
-                        "3",
-                        "4",
-                        "5",
+                        {
+                            value: "1",
+                            text: {
+                                no: "1 - Svært lav sannsynlighet for klinisk signifikant malign tumor, normale funn"
+                            }
+                        },
+                        {
+                            value: "2",
+                            text: {
+                                no: "2 - Lav sannsynlighet for klinisk signifikant malign tumor, benigne funn"
+                            }
+                        },
+                        {
+                            value: "3",
+                            text: {
+                                no: "3 - Intermediær sannsynlighet for klinisk signifikant malign tumor, usikker lesjon, 50/50%"
+                            }
+                        },
+                        {
+                            value: "4",
+                            text: {
+                                no: "4 -  Høy sannsynlighet for klinisk signifikant malign tumor som er mindre enn 15 mm og uten suspekt ekstraprostatisk vekst"
+                            }
+                        },
+                        {
+                            value: "5",
+                            text: {
+                                no: "5 - Høy sannsynlighet for klinisk signifikant malign tumor som er 15 mm eller større, eller som har ekstraprostatisk vekst"
+                            }
+                        },
                         {
                             value: "99",
                             text: {
@@ -499,31 +533,31 @@ const SurveyJSONStraale = {
                         {
                             value: "1",
                             text: {
-                                no: "Tumor uten ekstraprostatisk vekst (tilsvarende T2)"
+                                no: "T2 - Tumor uten ekstraprostatisk vekst"
                             }
                         },
                         {
                             value: "2",
                             text: {
-                                no: "Ekstraprostatisk vekst (tilsvarende T3a)"
+                                no: "T3a - Ekstraprostatisk vekst"
                             }
                         },
                         {
                             value: "3",
                             text: {
-                                no: "Innvekst i vesikler (tilsvarende T3b)"
+                                no: "T3b - Innvekst i vesikler"
                             }
                         },
                         {
                             value: "4",
                             text: {
-                                no: "Innvekst i omliggende vev (tilsvarende T4)"
+                                no: "T4 - Innvekst i omliggende vev"
                             }
                         },
                         {
                             value: "5",
                             text: {
-                                no: "Ikke vurdert / kan ikke vurderes (tilsvarende TX)"
+                                no: "TX - Ikke vurdert / kan ikke vurderes"
                             }
                         }
                     ],
@@ -546,31 +580,31 @@ const SurveyJSONStraale = {
                         {
                             value: "1",
                             text: {
-                                no: "Tumor uten ekstraprostatisk vekst (tilsvarende T2)"
+                                no: "T2 - Tumor uten ekstraprostatisk vekst"
                             }
                         },
                         {
                             value: "2",
                             text: {
-                                no: "Ekstraprostatisk vekst (tilsvarende T3a)"
+                                no: "T3a - Ekstraprostatisk vekst"
                             }
                         },
                         {
                             value: "3",
                             text: {
-                                no: "Innvekst i vesikler (tilsvarende T3b)"
+                                no: "T3b - Innvekst i vesikler"
                             }
                         },
                         {
                             value: "4",
                             text: {
-                                no: "Innvekst i omliggende vev (tilsvarende T4)"
+                                no: "T4 - Innvekst i omliggende vev"
                             }
                         },
                         {
                             value: "5",
                             text: {
-                                no: "Ikke vurdert / kan ikke vurderes (tilsvarende TX)"
+                                no: "TX - Ikke vurdert / kan ikke vurderes"
                             }
                         }
                     ],
