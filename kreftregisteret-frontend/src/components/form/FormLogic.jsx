@@ -185,11 +185,17 @@ const FormLogic = ({SurveyType}) => {
 
     const submit = () => {
         replaceUndefined(data);
+
+        // Funksjon for å scrolle til spørsmål med error
         if (survey.isCurrentPageHasErrors) {
             const array = survey.getAllQuestions()
-            for (const quest in array) {
-                if (array[quest].errors.length > 0) {
-                    console.log(array[quest].id)
+            const firstError = true;
+            for (const question in array) {
+                if (array[question].errors.length > 0) {
+                    if (firstError) {
+                        document.getElementById(array[question].id).scrollIntoView();
+                        return;
+                    }
                 }
             }
             setIsModalOpen(false);
@@ -205,7 +211,6 @@ const FormLogic = ({SurveyType}) => {
                 })
                 .catch(error => {
                     setPostError(error.toString())
-
                 })
         }
     }

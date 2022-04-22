@@ -160,6 +160,7 @@ const SurveyJsonUtredning = {
                     name: "funnUtredning",
                     titleLocation: "hidden",
                     defaultValue: "1",
+                    isRequired: true,
                     requiredErrorText: {
                         no: "Velg en"
                     },
