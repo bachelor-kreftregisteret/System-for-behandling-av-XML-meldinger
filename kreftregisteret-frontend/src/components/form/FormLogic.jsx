@@ -106,7 +106,6 @@ const FormLogic = ({FormType}) => {
         }
     }
 
-
     const setChangedValue = (options, JSONdata) => {
         for (const key in JSONdata) {
             if (key === options.name) {
@@ -188,8 +187,7 @@ const FormLogic = ({FormType}) => {
                 }
             }
         });
-    }, [setDataValues]); // Venter på setValues så den ikke skriver over data mens data blir satt inn
-
+    }, [setDataValues]); // Venter på setValues så den ikke triggrer mens data blir lastet inn
 
     const submit = () => {
         replaceUndefined(data);
