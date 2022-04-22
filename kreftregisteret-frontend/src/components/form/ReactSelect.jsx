@@ -2,7 +2,7 @@ import * as SurveyReact from "survey-react";
 import Select from 'react-select';
 // https://surveyjs.io/Examples/Library?id=custom-widget-react-select#content-js
 // Set up a custom component that will render React Select
-export class SurveyCustomSelect extends SurveyReact.SurveyQuestionDropdown {
+export class ReactSelect extends SurveyReact.SurveyQuestionDropdown {
 
     // Convert the `visibleChoices` array to a format supported by React Select
     get options() {
@@ -50,4 +50,4 @@ export class SurveyCustomSelect extends SurveyReact.SurveyQuestionDropdown {
 }
 
 
-export default SurveyCustomSelect;
+export default ReactSelect;

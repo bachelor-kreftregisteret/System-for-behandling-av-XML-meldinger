@@ -7,11 +7,10 @@ import axios from "axios";
 import {useParams} from "react-router-dom";
 import Sidebar from "./Sidebar";
 import Footer from "./Footer";
-import SurveyCustomSelect from "./SurveyCustomSelect";
+import ReactSelect from "./ReactSelect";
 import GetMeldingByID from "../../api/getMeldingerByID";
 
 const FormLogic = ({SurveyType}) => {
-
     // Henter data fra backend
     let {id} = useParams();
     const {data, loading, error} = GetMeldingByID(id)
@@ -25,7 +24,7 @@ const FormLogic = ({SurveyType}) => {
 
     // Registrerer CustomSelect komponenten som en render type under navnet "sv-dropdown-react"
     SurveyReact.ReactQuestionFactory.Instance.registerQuestion("sv-dropdown-react", (props) => {
-        return createElement(SurveyCustomSelect, props);
+        return createElement(ReactSelect, props);
     });
     // Registrerer "sv-dropdown-react" som en type render for spørsmål hvor "type" er "dropdown" og "renderAs" er "dropdown-react"
     SurveyReact.RendererFactory.Instance.registerRenderer("dropdown", "dropdown-react", "sv-dropdown-react");
@@ -210,12 +209,13 @@ const FormLogic = ({SurveyType}) => {
                 })
         }
     }
-    
+
     return (
         /*Render skjema*/
 
         //Because of easy tabbing, the footer is above the survey that has autofocus/tabindex 0. Making it easy accessible through backwards tab
         <>
+
             {error === null ?
             <div className={"surveyContainer"}>
                 <Sidebar
