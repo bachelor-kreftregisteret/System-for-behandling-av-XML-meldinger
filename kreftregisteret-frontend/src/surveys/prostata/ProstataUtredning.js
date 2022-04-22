@@ -150,10 +150,6 @@ const SurveyJsonUtredning = {
         },
         {
             name: "utredning",
-            description: {
-                no: "Utredning av primærtumor og samtidig utredning av regionale lymfeknutemetastaser/fjernmetastaser før igangsetting av primærbehandling \n" +
-                    "Utredning av regionale lymfeknutemetastaser og/eller fjernmetastaser uten samtidig utredning av primærtumor"
-            },
             elements: [
                 {
                     type: "radiogroup",
@@ -168,17 +164,16 @@ const SurveyJsonUtredning = {
                         {
                             value: "1",
                             text: {
-                                no: "Primærtumor (med eller uten metastase(r))"
+                                no: "Primærtumor (med eller uten metastase(r)) - Utredning av primærtumor og samtidig utredning av regionale lymfeknutemetastaser/fjernmetastaser før igangsetting av primærbehandling"
                             }
                         },
                         {
                             value: "3",
                             text: {
-                                no: "Kun metastase(r)"
+                                no: "Kun metastase(r) - Utredning av regionale lymfeknutemetastaser og/eller fjernmetastaser uten samtidig utredning av primærtumor"
                             }
                         }
-                    ],
-                    colCount: 2
+                    ]
                 }
             ],
             title: {
@@ -1441,9 +1436,6 @@ const SurveyJsonUtredning = {
         },
         {
             name: "oppfolging",
-            description: {
-                no: "Fortsatt kandidat for kirurgisk behandling"
-            },
             elements: [
                 {
                     type: "dropdown",
@@ -1460,7 +1452,7 @@ const SurveyJsonUtredning = {
                         {
                             value: "5",
                             text: {
-                                no: "Aktiv overvåkning"
+                                no: "Aktiv overvåkning (Fortsatt kandidat for kirurgisk behandling)"
                             }
                         },
                         {
