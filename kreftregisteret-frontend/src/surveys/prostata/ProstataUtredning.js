@@ -1306,66 +1306,6 @@ const SurveyJsonUtredning = {
             title: "{sykdomsutbredelseTitle}"
         },
         {
-            name: "laboratorium",
-            elements: [
-                {
-                    type: "dropdown",
-                    name: "labnavnHF",
-                    title: {
-                        no: "Laboratorium"
-                    },
-                    enableIf: "{labnavnHFIkkeRelevant} empty",
-                    isRequired: true,
-                    requiredIf: "{labnavnHFIkkeRelevant} empty",
-                    choicesByUrl: {
-                        url: "https://metadata.kreftregisteret.no/rest/v1/metadata/values/m_labAngittAvKliniker",
-                        valueName: "value",
-                        titleName: "description"
-                    },
-                    optionsCaption: {
-                        no: "Velg..."
-                    },
-                    renderAs: "dropdown-react"
-                },
-                {
-                    type: "checkbox",
-                    name: "labnavnHFIkkeRelevant",
-                    startWithNewLine: false,
-                    titleLocation: "hidden",
-                    choices: [
-                        {
-                            value: "true",
-                            text: {
-                                no: "Ikke relevant"
-                            }
-                        }
-                    ]
-                },
-                {
-                    type: "text",
-                    name: "labnavnHFSpesifiser",
-                    visible: false,
-                    visibleIf: "{labnavnHF} = '1'",
-                    title: {
-                        no: "Spesifiser"
-                    }
-                },
-                {
-                    type: "text",
-                    name: "preparatnummer",
-                    visible: false,
-                    visibleIf: "{labnavnHF} notempty",
-                    startWithNewLine: false,
-                    title: {
-                        no: "Preparatnummer"
-                    }
-                }
-            ],
-            title: {
-                no: "Patologilaboratorium"
-            }
-        },
-        {
             name: "kliniskTNM",
             elements: [
                 {
@@ -1437,6 +1377,66 @@ const SurveyJsonUtredning = {
             visibleIf: "{funnUtredning} = 1",
             title: {
                 no: "Klinisk TNM"
+            }
+        },
+        {
+            name: "laboratorium",
+            elements: [
+                {
+                    type: "dropdown",
+                    name: "labnavnHF",
+                    title: {
+                        no: "Laboratorium"
+                    },
+                    enableIf: "{labnavnHFIkkeRelevant} empty",
+                    isRequired: true,
+                    requiredIf: "{labnavnHFIkkeRelevant} empty",
+                    choicesByUrl: {
+                        url: "https://metadata.kreftregisteret.no/rest/v1/metadata/values/m_labAngittAvKliniker",
+                        valueName: "value",
+                        titleName: "description"
+                    },
+                    optionsCaption: {
+                        no: "Velg..."
+                    },
+                    renderAs: "dropdown-react"
+                },
+                {
+                    type: "checkbox",
+                    name: "labnavnHFIkkeRelevant",
+                    startWithNewLine: false,
+                    titleLocation: "hidden",
+                    choices: [
+                        {
+                            value: "true",
+                            text: {
+                                no: "Ikke relevant"
+                            }
+                        }
+                    ]
+                },
+                {
+                    type: "text",
+                    name: "labnavnHFSpesifiser",
+                    visible: false,
+                    visibleIf: "{labnavnHF} = '1'",
+                    title: {
+                        no: "Spesifiser"
+                    }
+                },
+                {
+                    type: "text",
+                    name: "preparatnummer",
+                    visible: false,
+                    visibleIf: "{labnavnHF} notempty",
+                    startWithNewLine: false,
+                    title: {
+                        no: "Preparatnummer"
+                    }
+                }
+            ],
+            title: {
+                no: "Patologilaboratorium"
             }
         },
         {
