@@ -10,13 +10,13 @@ import Footer from "./Footer";
 import ReactSelect from "./ReactSelect";
 import GetMeldingByID from "../../api/getMeldingerByID";
 
-const FormLogic = ({SurveyType}) => {
+const FormLogic = ({FormType}) => {
     // Henter data fra backend
     let {id} = useParams();
     const {data, loading, error} = GetMeldingByID(id)
 
     // Lager en modell av surveyen vi har laget
-    const survey = new Model(SurveyType);
+    const survey = new Model(FormType);
 
     const [isModalOpen, setIsModalOpen] = useState(false);
 
@@ -173,8 +173,8 @@ const FormLogic = ({SurveyType}) => {
     }
 
     useEffect(() =>  {
-        setDataValues(data, SurveyType, flattenedJSON);
-    },[data, SurveyType, flattenedJSON]);
+        setDataValues(data, FormType, flattenedJSON);
+    },[data, FormType, flattenedJSON]);
 
     useEffect(() =>  {
         survey.onValueChanged.add(function (sender, options) {

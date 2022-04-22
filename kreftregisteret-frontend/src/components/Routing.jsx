@@ -13,12 +13,12 @@ const Routing = () => {
             <Routes>
                 <Route path="/" element={<Header/>}>
                     <Route index element={<Dashboard/>}/>
-                    <Route path={`prostata-utredning`} element={<FormLogic SurveyType={SurveyJsonUtredning}/>}/>
-                    <Route path={`prostata-utredning/:id`} element={<FormLogic SurveyType={SurveyJsonUtredning}/>}/>
-                    <Route path={`prostata-straale`} element={<FormLogic SurveyType={SurveyJSONStraale}/>}/>
-                    <Route path={`prostata-straale/:id`} element={<FormLogic SurveyType={SurveyJSONStraale}/>}/>
-                    <Route path={`prostata-kirurgi`} element={<FormLogic SurveyType={SurveyJSONKirugi}/>}/>
-                    <Route path={`prostata-kirurgi/:id`} element={<FormLogic SurveyType={SurveyJSONKirugi}/>}/>
+                    <Route path={`prostata-utredning`} element={<FormLogic FormType={SurveyJsonUtredning}/>}/>
+                    <Route path={`prostata-utredning/:id`} element={<FormLogic FormType={SurveyJsonUtredning}/>}/>
+                    <Route path={`prostata-straale`} element={<FormLogic FormType={SurveyJSONStraale}/>}/>
+                    <Route path={`prostata-straale/:id`} element={<FormLogic FormType={SurveyJSONStraale}/>}/>
+                    <Route path={`prostata-kirurgi`} element={<FormLogic FormType={SurveyJSONKirugi}/>}/>
+                    <Route path={`prostata-kirurgi/:id`} element={<FormLogic FormType={SurveyJSONKirugi}/>}/>
                 </Route>
             </Routes>
         </BrowserRouter>)
