@@ -190,6 +190,7 @@ const FormLogic = ({FormType}) => {
     }, [setDataValues]); // Venter på setValues så den ikke triggrer mens data blir lastet inn
 
     const submit = () => {
+        const URL = 'api/v1/meldinger';
         replaceUndefined(data);
         // Funksjon for å scrolle til spørsmål med error
         if (survey.isCurrentPageHasErrors) {
@@ -210,7 +211,7 @@ const FormLogic = ({FormType}) => {
             const headers = {
                 'Content-Type': 'application/json'
             }
-            axios.post('http://localhost:8080/api/v1/meldinger', data, {headers})
+            axios.post(URL, data, {headers})
                 .then(_ => {
                     setPostError("")
                 })
