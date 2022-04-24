@@ -2276,6 +2276,7 @@ const SurveyJsonUtredning = {
                 {
                     type: "expression",
                     name: "ct",
+                    minWidth: "50px",
                     startWithNewLine: false,
                     title: {
                         no: "cT"
@@ -2285,6 +2286,7 @@ const SurveyJsonUtredning = {
                 {
                     type: "expression",
                     name: "cn",
+                    minWidth: "50px",
                     startWithNewLine: false,
                     title: {
                         no: "cN"
@@ -2298,6 +2300,7 @@ const SurveyJsonUtredning = {
                 {
                     type: "expression",
                     name: "cm",
+                    minWidth: "50px",
                     startWithNewLine: false,
                     title: {
                         no: "cM"
