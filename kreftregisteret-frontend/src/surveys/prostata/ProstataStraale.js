@@ -1372,9 +1372,6 @@ const SurveyJSONStraale = {
                     visible: false,
                     visibleIf: "{mrdiagnostikk} = 1",
                     startWithNewLine: false,
-                    title: {
-                        no: "ㅤ"
-                    },
                     titleLocation: "hidden",
                     choices: [
                         {
@@ -2073,9 +2070,6 @@ const SurveyJSONStraale = {
                     visible: false,
                     visibleIf: "{endokrinBehandling} = 1",
                     startWithNewLine: false,
-                    title: {
-                        no: "​⠀"
-                    },
                     titleLocation: "hidden",
                     choices: [
                         {
@@ -2191,9 +2185,7 @@ const SurveyJSONStraale = {
                     visible: false,
                     visibleIf: "{eksternStraalebehandling} = 1",
                     startWithNewLine: false,
-                    title: {
-                        no: "⠀"
-                    },
+                    titleLocation: "hidden",
                     choices: [
                         {
                             value: "99",
@@ -2208,7 +2200,7 @@ const SurveyJSONStraale = {
                     name: "prostataAntFR",
                     visible: false,
                     visibleIf: "{eksternStraalebehandling} = 1",
-                    startWithNewLine: false,
+                    startWithNewLine: true,
                     title: {
                         no: "Antall fraksjoner"
                     },
@@ -2234,9 +2226,7 @@ const SurveyJSONStraale = {
                     visible: false,
                     visibleIf: "{eksternStraalebehandling} = 1",
                     startWithNewLine: false,
-                    title: {
-                        no: "⠀"
-                    },
+                    titleLocation: "hidden",
                     choices: [
                         {
                             value: "99",
@@ -2322,9 +2312,7 @@ const SurveyJSONStraale = {
                     visible: false,
                     visibleIf: "{hdbrachyterapi} = 1",
                     startWithNewLine: false,
-                    title: {
-                        no: "⠀"
-                    },
+                    titleLocation: "hidden",
                     choices: [
                         {
                             value: "99",
@@ -2339,7 +2327,7 @@ const SurveyJSONStraale = {
                     name: "hdbrachyterapiAntFR",
                     visible: false,
                     visibleIf: "{hdbrachyterapi} = 1",
-                    startWithNewLine: false,
+                    startWithNewLine: true,
                     title: {
                         no: "Antall fraksjoner"
                     },
@@ -2365,9 +2353,7 @@ const SurveyJSONStraale = {
                     visible: false,
                     visibleIf: "{hdbrachyterapi} = 1",
                     startWithNewLine: false,
-                    title: {
-                        no: "⠀"
-                    },
+                    titleLocation: "hidden",
                     choices: [
                         {
                             value: "99",
@@ -2418,9 +2404,7 @@ const SurveyJSONStraale = {
                     visible: false,
                     visibleIf: "{ldbrachyterapi} = 1",
                     startWithNewLine: false,
-                    title: {
-                        no: "⠀"
-                    },
+                    titleLocation: "hidden",
                     choices: [
                         {
                             value: "99",
@@ -2435,7 +2419,7 @@ const SurveyJSONStraale = {
                     name: "ldbrachyterapiFRDoseGY",
                     visible: false,
                     visibleIf: "{ldbrachyterapi} = 1",
-                    startWithNewLine: false,
+                    startWithNewLine: true,
                     title: {
                         no: "Dose (foreskreven dose, prostata)"
                     },
@@ -2455,9 +2439,7 @@ const SurveyJSONStraale = {
                     name: "ldbrachyterapiFRDoseUkjent",
                     visibleIf: "{ldbrachyterapi} = 1",
                     startWithNewLine: false,
-                    title: {
-                        no: "⠀"
-                    },
+                    titleLocation: "hidden",
                     choices: [
                         {
                             value: "99",

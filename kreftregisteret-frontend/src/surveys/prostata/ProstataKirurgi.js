@@ -2036,9 +2036,6 @@ const SurveyJSONKirugi = {
                     visible: false,
                     visibleIf: "{neoadjuvantEndokrinBehandling} = 1",
                     startWithNewLine: false,
-                    title: {
-                        no: "​⠀"
-                    },
                     titleLocation: "hidden",
                     choices: [
                         {
