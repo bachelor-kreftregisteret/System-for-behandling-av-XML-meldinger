@@ -27,8 +27,9 @@ const MeldingList = () => {
                 msgList.push(JSON.parse(key))
             }
         } catch (err) {
+            console.log(err);
             for (const key in data) {
-                msgList.push(JSON.parse(key))
+                msgList.push(key)
             }
         }
             const rows = msgList.sort((a, b) => a.id > b.id ? 1 : -1).map((item, index) => (
