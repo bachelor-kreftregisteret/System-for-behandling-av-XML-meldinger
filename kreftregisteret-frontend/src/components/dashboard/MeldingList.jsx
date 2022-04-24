@@ -22,10 +22,15 @@ const MeldingList = () => {
     }
 
     const tableOfMeldinger = (data) => {
+        try {
             for (const key in data) {
                 msgList.push(JSON.parse(key))
             }
-
+        } catch (err) {
+            for (const key in data) {
+                msgList.push(JSON.parse(key))
+            }
+        }
             const rows = msgList.sort((a, b) => a.id > b.id ? 1 : -1).map((item, index) => (
                 <tr key={index}>
                     <td>{item.id}</td>
