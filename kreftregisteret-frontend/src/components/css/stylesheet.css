@@ -1,3 +1,9 @@
+/*
+Card backgrounds: #F7F6F5 Light beige
+Font colors: #21314d dark/royal blue
+
+ */
+
 /* Container for survey, sidebar and footer */
 .surveyContainer {
     display: flex;
@@ -28,7 +34,7 @@
 
 /*Header background color*/
 .sv_main .sv_container {
-    color: rgba(33, 49, 77, 0.82);
+    color: #21314d;
     display: flex;
     place-items: center;
     flex-direction: column;
@@ -63,7 +69,7 @@ h3 .sv-string-viewer {
     display: flex;
     place-items: center;
     border:none;
-    background-color: #ffffff;
+    background-color: white;
 }
 
 /*survey titles*/
@@ -90,21 +96,27 @@ h5 {
 }
 
 /*START Title and content in survey*/
-/*Background for title*/
+
+/*Background for title in each "card"*/
 .sv_main .sv_container .sv_body .sv_p_root > .sv_row:nth-child(n) {
-    background-color: #F2F0EA;
+    background-color: #F7F6F5;
     margin:15px 0 0 0;
     box-shadow: rgba(60, 64, 67, 0.17) 0 1px 2px 0, rgba(60, 64, 67, 0.07) 0 1px 3px 1px;
     border-radius: 2px ;
     padding: 5px
 }
 
-
 /*Background for only body of title*/
 .sv_row {
-    background-color: #F2F0EA;
+    background-color: #F7F6F5;
     display: flex;
     align-items: end;
+}
+/* END -- Background for only body of title*/
+
+.sv_main .sv_container .sv_body .sv_p_root .sv_q_description {
+    margin-top: 0;
+    font-size: smaller;
 }
 
 /*Title properties*/
@@ -118,10 +130,6 @@ h5 {
 
 
 /*Input border color*/
-input[type=checkbox] {
-    background-color: #0c4128;
-}
-
 .sv_main .sv_container .sv_body .sv_p_root .sv_q input[type=radio]:focus, .sv_main .sv_container .sv_body .sv_p_root .sv_q input[type=checkbox]:focus {
     outline: 2px solid #46658A;
 }
@@ -129,6 +137,9 @@ input[type=checkbox] {
 .sv_main .sv_container .sv_body .sv_p_root .sv_q input:not([type=button]):not([type=reset]):not([type=submit]):not([type=image]):not([type=checkbox]):not([type=radio]):focus {
     border: 2px solid #46658A;
 }
+/* END -- Input border color*/
+
+/* END -- Title and content in survey*/
 
 /*Scroller design*/
 

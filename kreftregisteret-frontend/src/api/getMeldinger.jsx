@@ -1,7 +1,7 @@
 import {useState, useEffect} from "react";
 import axios from 'axios';
 
-const BASE_URL = 'http://localhost:8080/api/v1/meldinger/'; // 'api/v1/meldinger/';
+const BASE_URL = 'api/v1/meldinger/'; // 'api/v1/meldinger/';
 
 //Inspired by https://www.youtube.com/watch?v=Vspeudp-M9k
 const GetMeldinger = () => {

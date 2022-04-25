@@ -7,18 +7,16 @@ import axios from "axios";
 import {useParams} from "react-router-dom";
 import Sidebar from "./Sidebar";
 import Footer from "./Footer";
-import SurveyCustomSelect from "./SurveyCustomSelect";
+import ReactSelect from "./ReactSelect";
 import GetMeldingByID from "../../api/getMeldingerByID";
 
-
-const FormLogic = ({SurveyType}) => {
-
+const FormLogic = ({FormType}) => {
     // Henter data fra backend
     let {id} = useParams();
     const {data, loading, error} = GetMeldingByID(id)
 
     // Lager en modell av surveyen vi har laget
-    const survey = new Model(SurveyType);
+    const survey = new Model(FormType);
 
     const [isModalOpen, setIsModalOpen] = useState(false);
 
@@ -26,7 +24,7 @@ const FormLogic = ({SurveyType}) => {
 
     // Registrerer CustomSelect komponenten som en render type under navnet "sv-dropdown-react"
     SurveyReact.ReactQuestionFactory.Instance.registerQuestion("sv-dropdown-react", (props) => {
-        return createElement(SurveyCustomSelect, props);
+        return createElement(ReactSelect, props);
     });
     // Registrerer "sv-dropdown-react" som en type render for spørsmål hvor "type" er "dropdown" og "renderAs" er "dropdown-react"
     SurveyReact.RendererFactory.Instance.registerRenderer("dropdown", "dropdown-react", "sv-dropdown-react");
@@ -102,10 +100,11 @@ const FormLogic = ({SurveyType}) => {
     const setDataValues = (data, JSONType, flattenedJSON) => {
         findCheckboxes(JSONType);
         flatten(data);
-        setSykehusKode();
-        survey.data = flattenedJSON;
+        if (data !== "") { // Hvis det ikke blir lastet data, så blir ikke deafaultValues endret
+            setSykehusKode();
+            survey.data = flattenedJSON;
+        }
     }
-
 
     const setChangedValue = (options, JSONdata) => {
         for (const key in JSONdata) {
@@ -172,67 +171,86 @@ const FormLogic = ({SurveyType}) => {
         }
     }
 
-    useEffect(() =>  {
-        setDataValues(data, SurveyType, flattenedJSON);
-    },[data, SurveyType, flattenedJSON]);
+    useEffect(() => {
+        setDataValues(data, FormType, flattenedJSON);
+    }, [data, FormType, flattenedJSON]);
 
-    useEffect(() =>  {
+    useEffect(() => {
         survey.onValueChanged.add(function (sender, options) {
             setChangedValue(options, data, false);
         });
-    }, [setDataValues]); // Venter på setValues så den ikke skriver over data mens data blir satt inn
-
+        survey.onPanelVisibleChanged.add(function (survey, options) {
+            if (!options.visible) {
+                const questions = options.panel.questions;
+                for (let i = 0; i < questions.length; i++) {
+                    questions[i].clearValue();
+                }
+            }
+        });
+    }, [setDataValues]); // Venter på setValues så den ikke triggrer mens data blir lastet inn
 
     const submit = () => {
+        const URL = 'api/v1/meldinger';
+        replaceUndefined(data);
+        // Funksjon for å scrolle til spørsmål med error
         if (survey.isCurrentPageHasErrors) {
+            const array = survey.getAllQuestions()
+            const firstError = true;
+            for (const question in array) {
+                if (array[question].errors.length > 0) {
+                    if (firstError) {
+                        document.getElementById(array[question].id).scrollIntoView();
+                        return;
+                    }
+                }
+            }
             setIsModalOpen(false);
         } else {
-
             //Lag en component under api for post
             setIsModalOpen(true);
             const headers = {
                 'Content-Type': 'application/json'
             }
-            axios.post('http://localhost:8080/api/v1/meldinger', data, {headers})
+            axios.post(URL, data, {headers})
                 .then(_ => {
                     setPostError("")
                 })
                 .catch(error => {
                     setPostError(error.toString())
-
                 })
         }
     }
-    console.log(isModalOpen)
+
     return (
         /*Render skjema*/
 
         //Because of easy tabbing, the footer is above the survey that has autofocus/tabindex 0. Making it easy accessible through backwards tab
         <>
+
             {error === null ?
-            <div className={"surveyContainer"}>
-                <Sidebar
-                    className={"sidebar"}
-                    loading={loading}
-                    isModalOpen={isModalOpen}
-                    postError={postError}
-                />
+                <div className={"surveyContainer"}>
+                    <Sidebar
+                        className={"sidebar"}
+                        loading={loading}
+                        isModalOpen={isModalOpen}
+                        postError={postError}
+                    />
 
-                <Survey
-                    model={survey}
+                    <Survey
+                        model={survey}
 
-                    showCompletedPage={false}
-                    showNavigationButtons={false}
-                />
+                        showCompletedPage={false}
+                        showNavigationButtons={false}
+                    />
 
-                <Footer
-                    onSubmit={submit}
-                    isModalOpen={isModalOpen}
-                    setIsModalOpen={setIsModalOpen}
-                    postError={postError}
-                />
-            </div>
-            :
+                    <Footer
+                        onSubmit={submit}
+                        isModalOpen={isModalOpen}
+                        setIsModalOpen={setIsModalOpen}
+                        postError={postError}
+                    />
+                </div>
+                :
                 <div className={"errorContainer"}>
                     <h2>Noe gikk galt</h2>
                     <p>{error.toString()}</p>
@@ -240,7 +258,7 @@ const FormLogic = ({SurveyType}) => {
             }
         </>
 
-)
+    )
 
 }
 

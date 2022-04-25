@@ -59,11 +59,981 @@ const SurveyJsonUtredning = {
                         no: "Sykehus"
                     },
                     isRequired: true,
-                    choicesByUrl: {
-                        url: 'https://metadata.kreftregisteret.no/rest/v1/metadata/values/m_sykehus',
-                        valueName: "value",
-                        titleName: "description"
-                    },
+                    choicesOrder: "asc",
+                    choices: [
+                        {
+                            value: "0402",
+                            text: {
+                                no: "Akershus Universitetssykehus HF, Kongsvinger"
+                            }
+                        },
+                        {
+                            value: "0208",
+                            text: {
+                                no: "Akershus Universitetssykehus HF, Lørenskog"
+                            }
+                        },
+                        {
+                            value: "0304",
+                            text: {
+                                no: "Diakonhjemmets Sykehus"
+                            }
+                        },
+                        {
+                            value: "0306",
+                            text: {
+                                no: "Lovisenberg Diakonale Sykehus"
+                            }
+                        },
+                        {
+                            value: "0301",
+                            text: {
+                                no: "Oslo universitetssykehus HF, Aker sykehus"
+                            }
+                        },
+                        {
+                            value: "0305",
+                            text: {
+                                no: "Oslo universitetssykehus HF, Radiumhospitalet"
+                            }
+                        },
+                        {
+                            value: "0316",
+                            text: {
+                                no: "Oslo universitetssykehus HF, Rikshospitalet"
+                            }
+                        },
+                        {
+                            value: "0320",
+                            text: {
+                                no: "Oslo universitetssykehus HF, Ullevål sykehus"
+                            }
+                        },
+                        {
+                            value: "0404",
+                            text: {
+                                no: "Sykehuset Innlandet HF, Elverum"
+                            }
+                        },
+                        {
+                            value: "0501",
+                            text: {
+                                no: "Sykehuset Innlandet HF, Gjøvik"
+                            }
+                        },
+                        {
+                            value: "0403",
+                            text: {
+                                no: "Sykehuset Innlandet HF, Hamar"
+                            }
+                        },
+                        {
+                            value: "0502",
+                            text: {
+                                no: "Sykehuset Innlandet HF, Lillehammer"
+                            }
+                        },
+                        {
+                            value: "0405",
+                            text: {
+                                no: "Sykehuset Innlandet HF, Tynset"
+                            }
+                        },
+                        {
+                            value: "0703",
+                            text: {
+                                no: "Sykehuset i Vestfold HF, Larvik"
+                            }
+                        },
+                        {
+                            value: "0705",
+                            text: {
+                                no: "Sykehuset i Vestfold HF, Sandefjord"
+                            }
+                        },
+                        {
+                            value: "0707",
+                            text: {
+                                no: "Sykehuset i Vestfold HF, Tønsberg"
+                            }
+                        },
+                        {
+                            value: "0804",
+                            text: {
+                                no: "Sykehuset Telemark HF, Kragerø"
+                            }
+                        },
+                        {
+                            value: "0805",
+                            text: {
+                                no: "Sykehuset Telemark HF, Notodden"
+                            }
+                        },
+                        {
+                            value: "0806",
+                            text: {
+                                no: "Sykehuset Telemark HF, Porsgrunn"
+                            }
+                        },
+                        {
+                            value: "0807",
+                            text: {
+                                no: "Sykehuset Telemark HF, Rjukan"
+                            }
+                        },
+                        {
+                            value: "0808",
+                            text: {
+                                no: "Sykehuset Telemark HF, Skien"
+                            }
+                        },
+                        {
+                            value: "0101",
+                            text: {
+                                no: "Sykehuset Østfold HF, Askim"
+                            }
+                        },
+                        {
+                            value: "0105",
+                            text: {
+                                no: "Sykehuset Østfold HF, Kalnes"
+                            }
+                        },
+                        {
+                            value: "0103",
+                            text: {
+                                no: "Sykehuset Østfold HF, Moss"
+                            }
+                        },
+                        {
+                            value: "0104",
+                            text: {
+                                no: "Sykehuset Østfold HF, Spesialistsenteret"
+                            }
+                        },
+                        {
+                            value: "0904",
+                            text: {
+                                no: "Sørlandet Sykehus HF, Arendal"
+                            }
+                        },
+                        {
+                            value: "1003",
+                            text: {
+                                no: "Sørlandet Sykehus HF, Flekkefjord"
+                            }
+                        },
+                        {
+                            value: "1005",
+                            text: {
+                                no: "Sørlandet Sykehus HF, Kristiansand"
+                            }
+                        },
+                        {
+                            value: "0202",
+                            text: {
+                                no: "Vestre Viken HF, Bærum sykehus"
+                            }
+                        },
+                        {
+                            value: "0601",
+                            text: {
+                                no: "Vestre Viken HF, Drammen sykehus"
+                            }
+                        },
+                        {
+                            value: "0602",
+                            text: {
+                                no: "Vestre Viken HF, Kongsberg sykehus"
+                            }
+                        },
+                        {
+                            value: "0605",
+                            text: {
+                                no: "Vestre Viken HF, Ringerike sykehus"
+                            }
+                        },
+                        {
+                            value: "1302",
+                            text: {
+                                no: "Haraldsplass Diakonale Sykehus"
+                            }
+                        },
+                        {
+                            value: "1305",
+                            text: {
+                                no: "Helse Bergen HF, Haukeland universitetssjukehus"
+                            }
+                        },
+                        {
+                            value: "1203",
+                            text: {
+                                no: "Helse Bergen HF, Voss sjukehus"
+                            }
+                        },
+                        {
+                            value: "1101",
+                            text: {
+                                no: "Helse Fonna HF, Haugesund sjukehus"
+                            }
+                        },
+                        {
+                            value: "1201",
+                            text: {
+                                no: "Helse Fonna HF, Odda sjukehus"
+                            }
+                        },
+                        {
+                            value: "1202",
+                            text: {
+                                no: "Helse Fonna HF, Stord sjukehus"
+                            }
+                        },
+                        {
+                            value: "1401",
+                            text: {
+                                no: "Helse Førde HF, Florø sjukehus"
+                            }
+                        },
+                        {
+                            value: "1406",
+                            text: {
+                                no: "Helse Førde HF, Førde sjukehus"
+                            }
+                        },
+                        {
+                            value: "1403",
+                            text: {
+                                no: "Helse Førde HF, Lærdal sjukehus"
+                            }
+                        },
+                        {
+                            value: "1405",
+                            text: {
+                                no: "Helse Førde HF, Nordfjordeid sjukehus"
+                            }
+                        },
+                        {
+                            value: "1107",
+                            text: {
+                                no: "Helse Stavanger HF, Stavanger universitetssjukehus, inkl. Sandnes og Egersund"
+                            }
+                        },
+                        {
+                            value: "1501",
+                            text: {
+                                no: "Helse Møre og Romsdal HF, Kristiansund sjukehus"
+                            }
+                        },
+                        {
+                            value: "1502",
+                            text: {
+                                no: "Helse Møre og Romsdal HF, Molde sjukehus"
+                            }
+                        },
+                        {
+                            value: "1503",
+                            text: {
+                                no: "Helse Møre og Romsdal HF, Volda sjukehus"
+                            }
+                        },
+                        {
+                            value: "1504",
+                            text: {
+                                no: "Helse Møre og Romsdal HF, Ålesund sjukehus"
+                            }
+                        },
+                        {
+                            value: "1701",
+                            text: {
+                                no: "Helse Nord-Trøndelag HF, Sykehuset Levanger"
+                            }
+                        },
+                        {
+                            value: "1702",
+                            text: {
+                                no: "Helse Nord-Trøndelag HF, Sykehuset Namsos"
+                            }
+                        },
+                        {
+                            value: "1602",
+                            text: {
+                                no: "St. Olavs Hospital HF, Orkdal sjukehus"
+                            }
+                        },
+                        {
+                            value: "1608",
+                            text: {
+                                no: "St. Olavs Hospital HF, St. Olavs Hospital"
+                            }
+                        },
+                        {
+                            value: "2001",
+                            text: {
+                                no: "Finnmarkssykehuset HF, Hammerfest sykehus"
+                            }
+                        },
+                        {
+                            value: "2002",
+                            text: {
+                                no: "Finnmarkssykehuset HF, Kirkenes sykehus"
+                            }
+                        },
+                        {
+                            value: "1807",
+                            text: {
+                                no: "Helgelandsykehuset HF, Mo i Rana"
+                            }
+                        },
+                        {
+                            value: "1805",
+                            text: {
+                                no: "Helgelandsykehuset HF, Mosjøen"
+                            }
+                        },
+                        {
+                            value: "1809",
+                            text: {
+                                no: "Helgelandsykehuset HF, Sandnessjøen"
+                            }
+                        },
+                        {
+                            value: "1801",
+                            text: {
+                                no: "Nordlandssykehuset HF, Bodø"
+                            }
+                        },
+                        {
+                            value: "1804",
+                            text: {
+                                no: "Nordlandssykehuset HF, Lofoten"
+                            }
+                        },
+                        {
+                            value: "1811",
+                            text: {
+                                no: "Nordlandssykehuset HF, Vesterålen"
+                            }
+                        },
+                        {
+                            value: "1902",
+                            text: {
+                                no: "Universitetssykehuset i Nord-Norge HF, Harstad"
+                            }
+                        },
+                        {
+                            value: "2101",
+                            text: {
+                                no: "Universitetssykehuset i Nord-Norge HF, Longyearbyen"
+                            }
+                        },
+                        {
+                            value: "1806",
+                            text: {
+                                no: "Universitetssykehuset i Nord-Norge HF, Narvik"
+                            }
+                        },
+                        {
+                            value: "1903",
+                            text: {
+                                no: "Universitetssykehuset i Nord-Norge HF, Tromsø"
+                            }
+                        },
+                        {
+                            value: "6110",
+                            text: {
+                                no: "Adrian Halland AS"
+                            }
+                        },
+                        {
+                            value: "6089",
+                            text: {
+                                no: "Aleris Bodø"
+                            }
+                        },
+                        {
+                            value: "6087",
+                            text: {
+                                no: "Aleris Colosseum, Stavanger"
+                            }
+                        },
+                        {
+                            value: "0608",
+                            text: {
+                                no: "Aleris Drammen"
+                            }
+                        },
+                        {
+                            value: "0317",
+                            text: {
+                                no: "Aleris Frogner, Oslo"
+                            }
+                        },
+                        {
+                            value: "6072",
+                            text: {
+                                no: "Aleris Hinna Park, Stavanger"
+                            }
+                        },
+                        {
+                            value: "6032",
+                            text: {
+                                no: "Aleris Kristiansand"
+                            }
+                        },
+                        {
+                            value: "6024",
+                            text: {
+                                no: "Aleris Marken, Bergen"
+                            }
+                        },
+                        {
+                            value: "6013",
+                            text: {
+                                no: "Aleris medisinske senter, Strømmen"
+                            }
+                        },
+                        {
+                            value: "6085",
+                            text: {
+                                no: "Aleris Nesttun, Bergen"
+                            }
+                        },
+                        {
+                            value: "6086",
+                            text: {
+                                no: "Aleris Resonborg, Trondheim"
+                            }
+                        },
+                        {
+                            value: "6102",
+                            text: {
+                                no: "Aleris Røntgen, Bergen"
+                            }
+                        },
+                        {
+                            value: "6094",
+                            text: {
+                                no: "Aleris Røntgen, Oslo"
+                            }
+                        },
+                        {
+                            value: "6095",
+                            text: {
+                                no: "Aleris Røntgen, Trondheim"
+                            }
+                        },
+                        {
+                            value: "6023",
+                            text: {
+                                no: "Aleris Solsiden, Trondheim"
+                            }
+                        },
+                        {
+                            value: "6088",
+                            text: {
+                                no: "Aleris sykehus og røntgen, Agder"
+                            }
+                        },
+                        {
+                            value: "6100",
+                            text: {
+                                no: "Aleris sykehus og røntgen, Ålesund"
+                            }
+                        },
+                        {
+                            value: "6033",
+                            text: {
+                                no: "Aleris sykehus, Tromsø"
+                            }
+                        },
+                        {
+                            value: "6043",
+                            text: {
+                                no: "Bergen hudlegeklinikk"
+                            }
+                        },
+                        {
+                            value: "6096",
+                            text: {
+                                no: "Best Helse AS"
+                            }
+                        },
+                        {
+                            value: "0801",
+                            text: {
+                                no: "Betanien Hospital"
+                            }
+                        },
+                        {
+                            value: "6068",
+                            text: {
+                                no: "Bodø gynekologiske klinikk AS"
+                            }
+                        },
+                        {
+                            value: "6098",
+                            text: {
+                                no: "Borg Kirurgiske"
+                            }
+                        },
+                        {
+                            value: "6074",
+                            text: {
+                                no: "C-Medical, Majorstuen"
+                            }
+                        },
+                        {
+                            value: "6008",
+                            text: {
+                                no: "C-Medical, Moelv spesialistsenter"
+                            }
+                        },
+                        {
+                            value: "6099",
+                            text: {
+                                no: "C-Medical, Sarpsborg"
+                            }
+                        },
+                        {
+                            value: "6101",
+                            text: {
+                                no: "C-Medical, Ski Urologiske Spesialistsenter"
+                            }
+                        },
+                        {
+                            value: "6038",
+                            text: {
+                                no: "Distriktsmedisinsk senter, Finnsnes"
+                            }
+                        },
+                        {
+                            value: "6046",
+                            text: {
+                                no: "Dr. Funks Hudklinikk"
+                            }
+                        },
+                        {
+                            value: "6021",
+                            text: {
+                                no: "Dr. Klems klinikk"
+                            }
+                        },
+                        {
+                            value: "6106",
+                            text: {
+                                no: "Dr. Willumsens Kvinneklinikk AS"
+                            }
+                        },
+                        {
+                            value: "6026",
+                            text: {
+                                no: "Dyrendal medisinske senter"
+                            }
+                        },
+                        {
+                            value: "0214",
+                            text: {
+                                no: "Feiringklinikken"
+                            }
+                        },
+                        {
+                            value: "6053",
+                            text: {
+                                no: "Haugesund Medisinske Senter"
+                            }
+                        },
+                        {
+                            value: "1102",
+                            text: {
+                                no: "Haugesund Sanitetsforenings Revmatismesykehus"
+                            }
+                        },
+                        {
+                            value: "6044",
+                            text: {
+                                no: "Havblikk Spesialistsenter"
+                            }
+                        },
+                        {
+                            value: "6111",
+                            text: {
+                                no: "Hedmark Urologiske Spesialistsenter AS"
+                            }
+                        },
+                        {
+                            value: "6002",
+                            text: {
+                                no: "Heistad Legekontor"
+                            }
+                        },
+                        {
+                            value: "6030",
+                            text: {
+                                no: "Helgeroa Legesenter"
+                            }
+                        },
+                        {
+                            value: "1197",
+                            text: {
+                                no: "Hinnaklinikken"
+                            }
+                        },
+                        {
+                            value: "1301",
+                            text: {
+                                no: "Hospitalet Betanien"
+                            }
+                        },
+                        {
+                            value: "6003",
+                            text: {
+                                no: "Høeg Urologi"
+                            }
+                        },
+                        {
+                            value: "6104",
+                            text: {
+                                no: "IbsenSykehuset Arendal AS"
+                            }
+                        },
+                        {
+                            value: "6105",
+                            text: {
+                                no: "IbsenSykehuset Gjøvik AS"
+                            }
+                        },
+                        {
+                            value: "6103",
+                            text: {
+                                no: "IbsenSykehuset Porsgrunn AS"
+                            }
+                        },
+                        {
+                            value: "6078",
+                            text: {
+                                no: "Kalbakkenklinikken"
+                            }
+                        },
+                        {
+                            value: "6075",
+                            text: {
+                                no: "Kanalspesialistene A/S"
+                            }
+                        },
+                        {
+                            value: "6004",
+                            text: {
+                                no: "Kirkeparken Spesialistpraksis"
+                            }
+                        },
+                        {
+                            value: "6069",
+                            text: {
+                                no: "Kirurgisk klinikk"
+                            }
+                        },
+                        {
+                            value: "6042",
+                            text: {
+                                no: "Klinikk Kramer"
+                            }
+                        },
+                        {
+                            value: "6073",
+                            text: {
+                                no: "Klinikk Røa"
+                            }
+                        },
+                        {
+                            value: "6031",
+                            text: {
+                                no: "Kolibri Medical"
+                            }
+                        },
+                        {
+                            value: "6066",
+                            text: {
+                                no: "Legepraksis Dragomir Zubac AS"
+                            }
+                        },
+                        {
+                            value: "6090",
+                            text: {
+                                no: "LHL-sykehuset Vestfold"
+                            }
+                        },
+                        {
+                            value: "6049",
+                            text: {
+                                no: "Lysaker Hudlegekontor"
+                            }
+                        },
+                        {
+                            value: "6007",
+                            text: {
+                                no: "Medi 3 AS"
+                            }
+                        },
+                        {
+                            value: "6107",
+                            text: {
+                                no: "Nimo klinikken"
+                            }
+                        },
+                        {
+                            value: "6054",
+                            text: {
+                                no: "Nord-Gudbrandsdal Lokalmedisinske Senter"
+                            }
+                        },
+                        {
+                            value: "6092",
+                            text: {
+                                no: "Nordland Urologiske Klinikk AS"
+                            }
+                        },
+                        {
+                            value: "6108",
+                            text: {
+                                no: "Nordnorsk Urolog AS"
+                            }
+                        },
+                        {
+                            value: "4710",
+                            text: {
+                                no: "Nøtterøy Legesenter"
+                            }
+                        },
+                        {
+                            value: "0708",
+                            text: {
+                                no: "Oseberg Medisinske Klinikk"
+                            }
+                        },
+                        {
+                            value: "0329",
+                            text: {
+                                no: "Oslo Akutten"
+                            }
+                        },
+                        {
+                            value: "4709",
+                            text: {
+                                no: "Oslofjordklinikken"
+                            }
+                        },
+                        {
+                            value: "6079",
+                            text: {
+                                no: "Oslogynekologene"
+                            }
+                        },
+                        {
+                            value: "6025",
+                            text: {
+                                no: "Overnklinikken"
+                            }
+                        },
+                        {
+                            value: "6071",
+                            text: {
+                                no: "Parsennklinikken"
+                            }
+                        },
+                        {
+                            value: "6056",
+                            text: {
+                                no: "Privathospitalet Fana Medisinske Senter"
+                            }
+                        },
+                        {
+                            value: "6022",
+                            text: {
+                                no: "Privatsykehuset Haugesund AS"
+                            }
+                        },
+                        {
+                            value: "6011",
+                            text: {
+                                no: "Ringvollklinikken, Hobøl"
+                            }
+                        },
+                        {
+                            value: "6109",
+                            text: {
+                                no: "Romerike Urologiske Senter AS"
+                            }
+                        },
+                        {
+                            value: "1198",
+                            text: {
+                                no: "Rune Mork Braut"
+                            }
+                        },
+                        {
+                            value: "6067",
+                            text: {
+                                no: "RøaLegene"
+                            }
+                        },
+                        {
+                            value: "6036",
+                            text: {
+                                no: "Sarpsborg Spesialistsenter AS"
+                            }
+                        },
+                        {
+                            value: "6010",
+                            text: {
+                                no: "Ski Urologiske Senter"
+                            }
+                        },
+                        {
+                            value: "6091",
+                            text: {
+                                no: "Smestadgynekologene"
+                            }
+                        },
+                        {
+                            value: "6009",
+                            text: {
+                                no: "Spesialistsenteret AS"
+                            }
+                        },
+                        {
+                            value: "6041",
+                            text: {
+                                no: "Stavanger Urologiske Senter"
+                            }
+                        },
+                        {
+                            value: "6052",
+                            text: {
+                                no: "Tromsø Urologiske Spesialistsenter"
+                            }
+                        },
+                        {
+                            value: "6035",
+                            text: {
+                                no: "Uroklinikken, Oslo"
+                            }
+                        },
+                        {
+                            value: "6093",
+                            text: {
+                                no: "Uroklinikken, Oslo"
+                            }
+                        },
+                        {
+                            value: "6055",
+                            text: {
+                                no: "Urologisk Klinikk"
+                            }
+                        },
+                        {
+                            value: "6076",
+                            text: {
+                                no: "Urologiklinikken AS"
+                            }
+                        },
+                        {
+                            value: "6051",
+                            text: {
+                                no: "Urologiklinikken i Trondheim"
+                            }
+                        },
+                        {
+                            value: "6001",
+                            text: {
+                                no: "Urologisk kirurgisk poliklinikk"
+                            }
+                        },
+                        {
+                            value: "6014",
+                            text: {
+                                no: "Uro-Sør AS"
+                            }
+                        },
+                        {
+                            value: "1311",
+                            text: {
+                                no: "Volvat Bergen, Laguneparken"
+                            }
+                        },
+                        {
+                            value: "6081",
+                            text: {
+                                no: "Volvat Bergen, Ulriksdal"
+                            }
+                        },
+                        {
+                            value: "0111",
+                            text: {
+                                no: "Volvat Fredrikstad"
+                            }
+                        },
+                        {
+                            value: "0412",
+                            text: {
+                                no: "Volvat Hamar"
+                            }
+                        },
+                        {
+                            value: "6083",
+                            text: {
+                                no: "Volvat Moss"
+                            }
+                        },
+                        {
+                            value: "1316",
+                            text: {
+                                no: "Volvat Lillehammer"
+                            }
+                        },
+                        {
+                            value: "0327",
+                            text: {
+                                no: "Volvat Oslo, Majorstuen"
+                            }
+                        },
+                        {
+                            value: "6080",
+                            text: {
+                                no: "Volvat Oslo, Nationaltheateret"
+                            }
+                        },
+                        {
+                            value: "6028",
+                            text: {
+                                no: "Volvat Stokkan"
+                            }
+                        },
+                        {
+                            value: "6077",
+                            text: {
+                                no: "Østfold indremedesin AS"
+                            }
+                        },
+                        {
+                            value: "6029",
+                            text: {
+                                no: "Østsiden Kirurgiske Praksis"
+                            }
+                        },
+                        {
+                            value: "6084",
+                            text: {
+                                no: "Aleris Colosseum-Nobel, Oslo"
+                            }
+                        },
+                        {
+                            value: "1",
+                            text: {
+                                no: "Annet"
+                            }
+                        }
+                    ],
                     optionsCaption: {
                         no: "Velg..."
                     },
@@ -150,16 +1120,13 @@ const SurveyJsonUtredning = {
         },
         {
             name: "utredning",
-            description: {
-                no: "Utredning av primærtumor og samtidig utredning av regionale lymfeknutemetastaser/fjernmetastaser før igangsetting av primærbehandling \n" +
-                    "Utredning av regionale lymfeknutemetastaser og/eller fjernmetastaser uten samtidig utredning av primærtumor"
-            },
             elements: [
                 {
                     type: "radiogroup",
                     name: "funnUtredning",
                     titleLocation: "hidden",
                     defaultValue: "1",
+                    isRequired: true,
                     requiredErrorText: {
                         no: "Velg en"
                     },
@@ -167,17 +1134,16 @@ const SurveyJsonUtredning = {
                         {
                             value: "1",
                             text: {
-                                no: "Primærtumor (med eller uten metastase(r))"
+                                no: "Primærtumor (med eller uten metastase(r)) - Utredning av primærtumor og samtidig utredning av regionale lymfeknutemetastaser/fjernmetastaser før igangsetting av primærbehandling"
                             }
                         },
                         {
                             value: "3",
                             text: {
-                                no: "Kun metastase(r)"
+                                no: "Kun metastase(r) - Utredning av regionale lymfeknutemetastaser og/eller fjernmetastaser uten samtidig utredning av primærtumor"
                             }
                         }
-                    ],
-                    colCount: 2
+                    ]
                 }
             ],
             title: {
@@ -580,37 +1546,37 @@ const SurveyJsonUtredning = {
                         {
                             value: "1",
                             text: {
-                                no: "Ikke palpabel tumor (tilsvarende T0/T1)"
+                                no: "T0/T1 - Ikke palpabel tumor"
                             }
                         },
                         {
                             value: "2",
                             text: {
-                                no: "Tumor uten ekstraprostatisk vekst (tilsvarende T2)"
+                                no: "T2 - Tumor uten ekstraprostatisk vekst"
                             }
                         },
                         {
                             value: "3",
                             text: {
-                                no: "Ekstraprostatisk vekst (tilsvarende T3a)"
+                                no: "T3a - Ekstraprostatisk vekst"
                             }
                         },
                         {
                             value: "4",
                             text: {
-                                no: "Innvekst i vesikler (tilsvarende T3b)"
+                                no: "T3b - Innvekst i vesikler"
                             }
                         },
                         {
                             value: "5",
                             text: {
-                                no: "Innvekst i omliggende vev (tilsvarende T4)"
+                                no: "T4 - Innvekst i omliggende vev"
                             }
                         },
                         {
                             value: "6",
                             text: {
-                                no: "Ikke vurdert / kan ikke vurderes (tilsvarende TX)"
+                                no: "TX - Ikke vurdert / kan ikke vurderes"
                             }
                         }
                     ],
@@ -632,37 +1598,37 @@ const SurveyJsonUtredning = {
                         {
                             value: "1",
                             text: {
-                                no: "Ikke palpabel tumor (tilsvarende T0/T1)"
+                                no: "T0/T1 - Ikke palpabel tumor"
                             }
                         },
                         {
                             value: "2",
                             text: {
-                                no: "Tumor uten ekstraprostatisk vekst (tilsvarende T2)"
+                                no: "T2 - Tumor uten ekstraprostatisk vekst"
                             }
                         },
                         {
                             value: "3",
                             text: {
-                                no: "Ekstraprostatisk vekst (tilsvarende T3a)"
+                                no: "T3a - Ekstraprostatisk vekst"
                             }
                         },
                         {
                             value: "4",
                             text: {
-                                no: "Innvekst i vesikler (tilsvarende T3b)"
+                                no: "T3b - Innvekst i vesikler"
                             }
                         },
                         {
                             value: "5",
                             text: {
-                                no: "Innvekst i omliggende vev (tilsvarende T4)"
+                                no: "T4 - Innvekst i omliggende vev"
                             }
                         },
                         {
                             value: "6",
                             text: {
-                                no: "Ikke vurdert / kan ikke vurderes (tilsvarende TX)"
+                                no: "TX - Ikke vurdert / kan ikke vurderes"
                             }
                         }
                     ],
@@ -694,21 +1660,38 @@ const SurveyJsonUtredning = {
                     title: {
                         no: "PI-RADS høyre side (laveste stadium velges ved tvil)"
                     },
-                    description: {
-                        no: "* PI-RADS 5 = Høy sannsynlighet for klinisk signifikant malign tumor som er 15 mm eller større, eller som har ekstraprostatisk vekst.\n" +
-                            "* PI-RADS 4 = Høy sannsynlighet for klinisk signifikant malign tumor som er mindre enn 15 mm og uten suspekt ekstraprostatisk vekst.\n" +
-                            "* PI-RADS 3 = Intermediær sannsynlighet for klinisk signifikant malign tumor, usikker lesjon, 50/50%.\n" +
-                            "* PI-RADS 2 = Lav sannsynlighet for klinisk signifikant malign tumor, benigne funn.\n" +
-                            "* PI-RADS 1 = Svært lav sannsynlighet for klinisk signifikant malign tumor, normale funn.\n" +
-                            "Klinisk signifikant tumor er definert som histologisk Gleason score 7 eller høyere, og/eller volum større enn 0,5 ccm, og/eller ekstraprostatisk vekst."
-                    },
                     isRequired: true,
                     choices: [
-                        "1",
-                        "2",
-                        "3",
-                        "4",
-                        "5",
+                        {
+                            value: "1",
+                            text: {
+                                no: "1 - Svært lav sannsynlighet for klinisk signifikant malign tumor, normale funn"
+                            }
+                        },
+                        {
+                            value: "2",
+                            text: {
+                                no: "2 - Lav sannsynlighet for klinisk signifikant malign tumor, benigne funn"
+                            }
+                        },
+                        {
+                            value: "3",
+                            text: {
+                                no: "3 - Intermediær sannsynlighet for klinisk signifikant malign tumor, usikker lesjon, 50/50%"
+                            }
+                        },
+                        {
+                            value: "4",
+                            text: {
+                                no: "4 -  Høy sannsynlighet for klinisk signifikant malign tumor som er mindre enn 15 mm og uten suspekt ekstraprostatisk vekst"
+                            }
+                        },
+                        {
+                            value: "5",
+                            text: {
+                                no: "5 - Høy sannsynlighet for klinisk signifikant malign tumor som er 15 mm eller større, eller som har ekstraprostatisk vekst"
+                            }
+                        },
                         {
                             value: "99",
                             text: {
@@ -730,21 +1713,38 @@ const SurveyJsonUtredning = {
                     title: {
                         no: "PI-RADS venstre side (laveste stadium velges ved tvil)"
                     },
-                    description: {
-                        no: "* PI-RADS 5 = Høy sannsynlighet for klinisk signifikant malign tumor som er 15 mm eller større, eller som har ekstraprostatisk vekst.\n" +
-                            "* PI-RADS 4 = Høy sannsynlighet for klinisk signifikant malign tumor som er mindre enn 15 mm og uten suspekt ekstraprostatisk vekst.\n" +
-                            "* PI-RADS 3 = Intermediær sannsynlighet for klinisk signifikant malign tumor, usikker lesjon, 50/50%.\n" +
-                            "* PI-RADS 2 = Lav sannsynlighet for klinisk signifikant malign tumor, benigne funn.\n" +
-                            "* PI-RADS 1 = Svært lav sannsynlighet for klinisk signifikant malign tumor, normale funn.\n" +
-                            "Klinisk signifikant tumor er definert som histologisk Gleason score 7 eller høyere, og/eller volum større enn 0,5 ccm, og/eller ekstraprostatisk vekst."
-                    },
                     isRequired: true,
                     choices: [
-                        "1",
-                        "2",
-                        "3",
-                        "4",
-                        "5",
+                        {
+                            value: "1",
+                            text: {
+                                no: "1 - Svært lav sannsynlighet for klinisk signifikant malign tumor, normale funn"
+                            }
+                        },
+                        {
+                            value: "2",
+                            text: {
+                                no: "2 - Lav sannsynlighet for klinisk signifikant malign tumor, benigne funn"
+                            }
+                        },
+                        {
+                            value: "3",
+                            text: {
+                                no: "3 - Intermediær sannsynlighet for klinisk signifikant malign tumor, usikker lesjon, 50/50%"
+                            }
+                        },
+                        {
+                            value: "4",
+                            text: {
+                                no: "4 -  Høy sannsynlighet for klinisk signifikant malign tumor som er mindre enn 15 mm og uten suspekt ekstraprostatisk vekst"
+                            }
+                        },
+                        {
+                            value: "5",
+                            text: {
+                                no: "5 - Høy sannsynlighet for klinisk signifikant malign tumor som er 15 mm eller større, eller som har ekstraprostatisk vekst"
+                            }
+                        },
                         {
                             value: "99",
                             text: {
@@ -770,31 +1770,31 @@ const SurveyJsonUtredning = {
                         {
                             value: "1",
                             text: {
-                                no: "Tumor uten ekstraprostatisk vekst (tilsvarende T2)"
+                                no: "T2 - Tumor uten ekstraprostatisk vekst"
                             }
                         },
                         {
                             value: "2",
                             text: {
-                                no: "Ekstraprostatisk vekst (tilsvarende T3a)"
+                                no: "T3a - Ekstraprostatisk vekst"
                             }
                         },
                         {
                             value: "3",
                             text: {
-                                no: "Innvekst i vesikler (tilsvarende T3b)"
+                                no: "T3b - Innvekst i vesikler"
                             }
                         },
                         {
                             value: "4",
                             text: {
-                                no: "Innvekst i omliggende vev (tilsvarende T4)"
+                                no: "T4 - Innvekst i omliggende vev"
                             }
                         },
                         {
                             value: "5",
                             text: {
-                                no: "Ikke vurdert / kan ikke vurderes (tilsvarende TX)"
+                                no: "TX - Ikke vurdert / kan ikke vurderes"
                             }
                         }
                     ],
@@ -817,31 +1817,31 @@ const SurveyJsonUtredning = {
                         {
                             value: "1",
                             text: {
-                                no: "Tumor uten ekstraprostatisk vekst (tilsvarende T2)"
+                                no: "T2 - Tumor uten ekstraprostatisk vekst"
                             }
                         },
                         {
                             value: "2",
                             text: {
-                                no: "Ekstraprostatisk vekst (tilsvarende T3a)"
+                                no: "T3a - Ekstraprostatisk vekst"
                             }
                         },
                         {
                             value: "3",
                             text: {
-                                no: "Innvekst i vesikler (tilsvarende T3b)"
+                                no: "T3b - Innvekst i vesikler"
                             }
                         },
                         {
                             value: "4",
                             text: {
-                                no: "Innvekst i omliggende vev (tilsvarende T4)"
+                                no: "T4 - Innvekst i omliggende vev"
                             }
                         },
                         {
                             value: "5",
                             text: {
-                                no: "Ikke vurdert / kan ikke vurderes (tilsvarende TX)"
+                                no: "TX - Ikke vurdert / kan ikke vurderes"
                             }
                         }
                     ],
@@ -1271,6 +2271,83 @@ const SurveyJsonUtredning = {
             title: "{sykdomsutbredelseTitle}"
         },
         {
+            name: "kliniskTNM",
+            elements: [
+                {
+                    type: "expression",
+                    name: "ct",
+                    minWidth: "50px",
+                    startWithNewLine: false,
+                    title: {
+                        no: "cT"
+                    },
+                    expression: "iif({totalVurderingKliniskT} notempty, {totalVurderingKliniskT}, '')"
+                },
+                {
+                    type: "expression",
+                    name: "cn",
+                    minWidth: "50px",
+                    startWithNewLine: false,
+                    title: {
+                        no: "cN"
+                    },
+                    expression: "" +
+                        "iif({funnUtredning} != 1, '', " +
+                        "iif({regionaleLKPaavist} = 2, 'X', " +
+                        "iif({regionaleLKPaavist} = 0, '0', " +
+                        "iif({regionaleLKPaavist} = 1, '1'))))"
+                },
+                {
+                    type: "expression",
+                    name: "cm",
+                    minWidth: "50px",
+                    startWithNewLine: false,
+                    title: {
+                        no: "cM"
+                    },
+                    expression: "" +
+                        "iif({funnUtredning} != 1, '', " +
+                        "iif({lokalisasjonFjernmet} = 0, '0 ', " +
+                        "iif({lokalisasjonFjernmet} = ['fjerneLKmet'], '1a', " +
+                        "iif({lokalisasjonFjernmet} = ['skjelettmet'] or {lokalisasjonFjernmet} = ['fjerneLKmet', 'skjelettmet'], '1b', " +
+                        "iif({lokalisasjonFjernmet} contains 'annetFjernmet', '1c', '')))))"
+                },
+                {
+                    type: "radiogroup",
+                    name: "infiltrerendeKreft",
+                    visible: false,
+                    visibleIf: "{funnUtredning} = 1  and ({totalvurderingKliniskT} = 0 or {totalvurderingKliniskT} = X) and ({regionaleLKPaavist} = 0 or {regionaleLKPaavist} = 2) and ({fjernmetPaavist} = 0 or {fjernmetPaavist} = 2) ",
+                    title: {
+                        no: "Klinisk sikker kreft"
+                    },
+                    description: {
+                        no: "Uavhengig av cytologisk/histologisk prøvesvar, kan tilstanden basert på kliniske undersøkelser (inkludert bildediagnostikk og blodprøver) alene klassifiseres som sikker kreft. Sikre pre maligne tilfeller skal ikke meldes Kreftregisteret"
+                    },
+                    isRequired: true,
+                    choices: [
+                        {
+                            value: "1",
+                            text: {
+                                no: "Ja"
+                            }
+                        },
+                        {
+                            value: "2",
+                            text: {
+                                no: "Usikker"
+                            }
+                        }
+                    ],
+                    colCount: 2
+                }
+            ],
+            visible: false,
+            visibleIf: "{funnUtredning} = 1",
+            title: {
+                no: "Klinisk TNM"
+            }
+        },
+        {
             name: "laboratorium",
             elements: [
                 {
@@ -1282,6 +2359,7 @@ const SurveyJsonUtredning = {
                     enableIf: "{labnavnHFIkkeRelevant} empty",
                     isRequired: true,
                     requiredIf: "{labnavnHFIkkeRelevant} empty",
+                    choicesOrder: "asc",
                     choicesByUrl: {
                         url: "https://metadata.kreftregisteret.no/rest/v1/metadata/values/m_labAngittAvKliniker",
                         valueName: "value",
@@ -1331,86 +2409,14 @@ const SurveyJsonUtredning = {
             }
         },
         {
-            name: "kliniskTNM",
-            elements: [
-                {
-                    type: "expression",
-                    name: "ct",
-                    startWithNewLine: false,
-                    title: {
-                        no: "cT"
-                    },
-                    expression: "{totalVurderingKliniskT}"
-                },
-                {
-                    type: "expression",
-                    name: "cn",
-                    startWithNewLine: false,
-                    title: {
-                        no: "cN"
-                    },
-                    expression: "iif({regionaleLKPaavist} = 2, 'X', iif({regionaleLKPaavist} = 0, '0', iif({regionaleLKPaavist} = 1, '1')))"
-                },
-                {
-                    type: "expression",
-                    name: "cm",
-                    startWithNewLine: false,
-                    title: {
-                        no: "cM"
-                    },
-                    expression: "iif({fjernmetPaavist} = 0, '0', " +
-                        "iif({lokalisasjonFjernmet} = ['fjerneLKmet'], '1a', " +
-                        "iif({lokalisasjonFjernmet} = ['skjelettmet'] or {lokalisasjonFjernmet} = ['fjerneLKmet', 'skjelettmet'], '1b', " +
-                        "iif({lokalisasjonFjernmet} contains 'annetFjernmet', '1c', ''))))"
-                },
-                {
-                    type: "radiogroup",
-                    name: "infiltrerendeKreft",
-                    visible: false,
-                    visibleIf: "{funnUtredning} = 1  and ({totalvurderingKliniskT} = 0 or {totalvurderingKliniskT} = X) and ({regionaleLKPaavist} = 0 or {regionaleLKPaavist} = 2) and ({fjernmetPaavist} = 0 or {fjernmetPaavist} = 2) ",
-                    title: {
-                        no: "Klinisk sikker kreft"
-                    },
-                    description: {
-                        no: "Uavhengig av cytologisk/histologisk prøvesvar, kan tilstanden basert på kliniske undersøkelser (inkludert bildediagnostikk og blodprøver) alene klassifiseres som sikker kreft. Sikre pre maligne tilfeller skal ikke meldes Kreftregisteret"
-                    },
-                    isRequired: true,
-                    choices: [
-                        {
-                            value: "1",
-                            text: {
-                                no: "Ja"
-                            }
-                        },
-                        {
-                            value: "2",
-                            text: {
-                                no: "Usikker"
-                            }
-                        }
-                    ],
-                    colCount: 2
-                }
-            ],
-            visible: false,
-            visibleIf: "{funnUtredning} = 1",
-            title: {
-                no: "Klinisk TNM"
-            }
-        },
-        {
             name: "oppfolging",
-            description: {
-                no: "Fortsatt kandidat for kirurgisk behandling",
-                visible: false,
-                visibleIf: "{videreTiltakUtredning} = 5"
-            },
             elements: [
                 {
                     type: "dropdown",
                     name: "videreTiltakUtredning",
                     titleLocation: "hidden",
                     isRequired: true,
+                    choicesOrder: "asc",
                     choices: [
                         {
                             value: "6",
@@ -1421,7 +2427,7 @@ const SurveyJsonUtredning = {
                         {
                             value: "5",
                             text: {
-                                no: "Aktiv overvåkning"
+                                no: "Aktiv overvåkning (Fortsatt kandidat for kirurgisk behandling)"
                             }
                         },
                         {
