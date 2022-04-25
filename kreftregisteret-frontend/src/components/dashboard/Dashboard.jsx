@@ -20,7 +20,7 @@ const Dashboard = () => {
                         Velg nytt skjema
                     </DropdownToggle>
                     <DropdownMenu>
-                        <DropdownItem onClick={() => navigate(EnumRoutes.utredning.url + "-1")}>
+                        <DropdownItem onClick={() => navigate(EnumRoutes.utredning.url + "")}>
                             {EnumRoutes.utredning.skjemanavn}
                         </DropdownItem>
                         <DropdownItem onClick={() => navigate(EnumRoutes.kirurgi.url + "-1")}>

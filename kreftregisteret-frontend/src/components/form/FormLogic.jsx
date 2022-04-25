@@ -8,12 +8,12 @@ import {useParams} from "react-router-dom";
 import Sidebar from "./Sidebar";
 import Footer from "./Footer";
 import ReactSelect from "./ReactSelect";
-import GetMeldingByID from "../../api/getMeldingerByID";
+import GetMeldinger from "../../api/getMeldinger";
 
 const FormLogic = ({FormType}) => {
     // Henter data fra backend
     let {id} = useParams();
-    const {data, loading, error} = GetMeldingByID(id)
+    const {data, loading, error} = GetMeldinger(id)
 
     // Lager en modell av surveyen vi har laget
     const survey = new Model(FormType);
