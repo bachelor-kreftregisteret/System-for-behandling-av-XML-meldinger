@@ -18,10 +18,6 @@ public class MeldingManager {
     private final HashMap<Melding, Long> meldingMap = new HashMap<>();
     private static Long id = 1L;
 
-    public MeldingManager(){
-        FileManager.setPathToFolder("utmappe/");
-    }
-
     //sikter på thread-safety
     public static synchronized Long createNewID() {
         return id++;

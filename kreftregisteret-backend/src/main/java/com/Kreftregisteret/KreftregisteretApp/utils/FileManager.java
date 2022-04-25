@@ -5,16 +5,9 @@ import java.net.MalformedURLException;
 import java.util.Arrays;
 
 public class FileManager {
-
     /**
      * Get path of utmappe. Ugly fix for Windows and WSL2, not tried on other environments.
      ** */
-    static String pathToFolder;
-
-    //det er bad practice
-    public static void setPathToFolder(String pathToFolderIn) {
-        pathToFolder = pathToFolderIn;
-    }
 
     public static String getPath() throws MalformedURLException {
         // Directory name of utmappe
