@@ -3,10 +3,13 @@ package com.Kreftregisteret.KreftregisteretApp.utils.xml;
 import com.Kreftregisteret.KreftregisteretApp.models.Melding;
 import com.Kreftregisteret.KreftregisteretApp.utils.FileManager;
 import com.Kreftregisteret.KreftregisteretApp.utils.xml.MeldingManager;
+import jakarta.xml.bind.JAXBException;
 import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.TestInstance;
+import org.xml.sax.SAXException;
 
+import java.io.File;
 import java.io.IOException;
 import java.util.List;
 
@@ -22,12 +25,11 @@ class MeldingManagerTest {
     }
 
     @Test
-    void findMeldingById() throws IOException {
+    void findMeldingById() {
         System.out.println("========== Test 1: Valid query ==========");
         Melding m1 = meldingManager.findMeldingById(1L);
-        System.out.println(meldingManager.getMeldingMap());
         System.out.println(m1);
-        assertTrue(m1 != null);
+        assertNotNull(m1);
 
         System.out.println("\n========== Test 1: False query ==========");
         Melding m2 = meldingManager.findMeldingById(Long.MAX_VALUE);
@@ -35,4 +37,9 @@ class MeldingManagerTest {
         assertNull(m2);
     }
 
+    @Test
+    void convertFileToMelding() {
+        File f = new File("src\\test\\resources\\Meldinger\\08042022_kl211251KliniskProstataUtredning.xml");
+        assertNotNull(meldingManager.convertFileToMelding(f));
+    }
 }

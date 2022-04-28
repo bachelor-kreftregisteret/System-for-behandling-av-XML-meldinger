@@ -23,6 +23,7 @@ public class FileManagerTests {
     @DisplayName("Test: getPath()")
     void getPath() throws MalformedURLException {
         String path = FileManager.getPath();
+        assertTrue(new File(path).isDirectory());
         assertTrue(path.contains("utmappe"));
     }
 }

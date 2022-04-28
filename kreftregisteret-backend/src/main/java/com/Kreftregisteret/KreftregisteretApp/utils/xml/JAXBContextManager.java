@@ -8,7 +8,6 @@ import jakarta.xml.bind.JAXBException;
     Inspired by the Singleton pattern to keep static methods as well as initializing only one JAXBContext, and ensuring thread-safety
     https://en.wikipedia.org/wiki/Singleton_pattern
     https://en.wikipedia.org/wiki/Initialization-on-demand_holder_idiom
-    https://stackoverflow.com/questions/7400422/jaxb-creating-context-and-marshallers-cost
 */
 
 public class JAXBContextManager {
