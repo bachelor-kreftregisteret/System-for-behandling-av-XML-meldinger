@@ -1,7 +1,6 @@
 const SurveyJSONStraale = {
     locale: "no",
     title: "STRÅLEBEHANDLING",
-    logoPosition: "right",
     pages: [
         {
             name: "pasientInstitusjon",
@@ -24,8 +23,7 @@ const SurveyJSONStraale = {
                             text: "Skriv inn gyldig fødselsnummer ",
                             regex: "^((0[1-9]|[1-2]\\d|3[0-1])(0[1-9]|1[0-2])\\d{7})$"
                         }
-                    ],
-                    inputType: "number"
+                    ]
                 },
                 {
                     type: "checkbox",
