@@ -91,7 +91,7 @@ const FormLogic = ({FormType}) => {
                 flattenedJSON["sykehusnavnRHF"] = ""; // Fjerner region fra dataen
                 data.stdInfo.pasientInstitusjon.sykehusnavnRHF = ""
             }
-            if (key === "sykehusnavnHFSorOst" || key === "sykehusnavnHFVest" || key === "sykehusnavnHFMidt" || key === "sykehusnavnHFNord" || key === "sykehusnavnSpesSenter") {
+            else  if (key === "sykehusnavnHFSorOst" || key === "sykehusnavnHFVest" || key === "sykehusnavnHFMidt" || key === "sykehusnavnHFNord" || key === "sykehusnavnSpesSenter") {
                 if (flattenedJSON[key]) {
                     flattenedJSON["sykehuskode"] = flattenedJSON[key];
                     flattenedJSON[key] = "";
@@ -192,7 +192,7 @@ const FormLogic = ({FormType}) => {
                     questions[i].clearValue();
                 }
             }
-        });
+        }); // Gjør slik at hvis en page blir gjem så tømmes de gjemte veridene i pagen
     }, [setDataValues]); // Venter på setValues så den ikke triggrer mens data blir lastet inn
 
     const submit = () => {
@@ -200,7 +200,7 @@ const FormLogic = ({FormType}) => {
         replaceUndefined(data);
         // Funksjon for å scrolle til spørsmål med error
         if (survey.isCurrentPageHasErrors) {
-            const array = survey.getAllQuestions()
+            const array = survey.getAllQuestions();
             const firstError = true;
             for (const question in array) {
                 if (array[question].errors.length > 0) {
