@@ -2,12 +2,10 @@ package com.Kreftregisteret.KreftregisteretApp.utils.xml;
 
 import com.Kreftregisteret.KreftregisteretApp.KreftregisteretAppApplication;
 import com.Kreftregisteret.KreftregisteretApp.models.Melding;
+import com.Kreftregisteret.KreftregisteretApp.utils.JAXBContextManager;
 import com.Kreftregisteret.KreftregisteretApp.utils.StreamUtil;
-import com.Kreftregisteret.KreftregisteretApp.utils.Utmappe;
 import jakarta.xml.bind.*;
 import jakarta.xml.bind.util.JAXBSource;
-import org.springframework.core.io.ClassPathResource;
-import org.springframework.core.io.Resource;
 import org.springframework.stereotype.Service;
 import org.xml.sax.SAXException;
 import javax.xml.validation.Schema;
@@ -23,7 +21,7 @@ import java.util.*;
 //er det bedre å ha EN jaxbcontext instance her? dvs ha en felles for alle metodene også injecte message manager istedenfor public static?
 @Service
 public class MessageManager {
-    HashMap<Melding, Long> msgMap = new HashMap<>();
+    HashMap<Melding, Long> meldingMap = new HashMap<>();
 
     private static Long id = 1L;
 
@@ -33,34 +31,27 @@ public class MessageManager {
         return id++;
     }
 
-    public HashMap<Melding, Long> getMsgMap() {
-        return msgMap;
+    public HashMap<Melding, Long> getMeldingMap() {
+        return meldingMap;
     }
     //kanskje legg til Optional<Melding> her istedenfor å kanskje returnere null (?)
     private Melding convertFileToMelding(File file) {
         Melding melding = null;
         try {
-            JAXBContext jaxbContext = JAXBContext.newInstance(Melding.class);
+            JAXBContext jaxbContext = JAXBContextManager.getInstance();
             Unmarshaller jaxbUnmarshaller = jaxbContext.createUnmarshaller();
+
             melding = (Melding) jaxbUnmarshaller.unmarshal(file);
-            melding.setFilnavn(file.getName());
+            if (melding != null) {
+                melding.setId(id);
+                melding.setLastChangedTime(melding.getMetaData());
+                melding.setFilnavn(file.getName());
+            }
             return melding;
         } catch (JAXBException e) {
             e.printStackTrace();
         }
         return null;
-    }
-
-    // ClassPathResource pathResource = new ClassPathResource("Prostatapakke/Prostata_4_0_UtredningEksempelfil.xml");
-//pathResource.getURL().getPath()
-    // IKKE I BRUK!!!!!!
-    public Melding getMeldingFromPath(String path) {
-        Melding melding = null;
-        File file = new File(path);
-        melding = convertFileToMelding(file);
-        // METODEN ER IKKE I BRUK!!!!!!
-        msgMap.put(melding, createNewID());
-        return melding;
     }
 
     //for å kjøre denne kan vi bruke melding.getClass().getName()
@@ -85,8 +76,8 @@ public class MessageManager {
 //        jaxbMarshaller.marshal(melding, file); // Write to file'
         System.out.println("Melding: " + melding);
         System.out.println("Melding skjemanavn 2: " + melding.getSkjemaNavn());
-        msgMap.put(melding, createNewID());
-        System.out.println("I write: " + msgMap);
+        meldingMap.put(melding, createNewID());
+        System.out.println("I write: " + meldingMap);
     }
 
     public File findXSDFromMelding(Melding melding) throws IOException {
@@ -127,7 +118,7 @@ public class MessageManager {
             File file = StreamUtil.stream2file(is);
 
             Melding melding = convertFileToMelding(file);
-            msgMap.put(melding, createNewID());
+            meldingMap.put(melding, createNewID());
         }catch(Exception e){
             System.out.println("er det her vi feiler???");
             e.printStackTrace();
@@ -135,7 +126,7 @@ public class MessageManager {
     }
 
     public Melding findMeldingById(Long idIn) {
-        for (Map.Entry<Melding, Long> entry : msgMap.entrySet()) {
+        for (Map.Entry<Melding, Long> entry : meldingMap.entrySet()) {
             Melding melding = entry.getKey();
             Long value = entry.getValue();
             if(Objects.equals(value, idIn)){

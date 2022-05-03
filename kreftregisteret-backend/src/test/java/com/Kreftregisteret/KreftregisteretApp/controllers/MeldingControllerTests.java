@@ -1,9 +1,5 @@
 package com.Kreftregisteret.KreftregisteretApp.controllers;
 
-import java.io.File;
-import java.util.Arrays;
-
-import com.Kreftregisteret.KreftregisteretApp.utils.Utmappe;
 import com.Kreftregisteret.KreftregisteretApp.utils.xml.MessageManager;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
@@ -77,7 +73,7 @@ public class MeldingControllerTests {
                 .andDo(print())
                 .andExpect(status().isOk());
 
-        System.out.println(messageManager.getMsgMap());
+        System.out.println(messageManager.getMeldingMap());
     }
 
     @Test
