@@ -1,7 +1,6 @@
 const SurveyJsonUtredning = {
     locale: "no",
     title: "Melding etter avsluttet utredning",
-    logoPosition: "right",
     pages: [
         {
             name: "pasientInstitusjon",
@@ -24,8 +23,7 @@ const SurveyJsonUtredning = {
                             text: "Skriv inn gyldig fødselsnummer ",
                             regex: "^((0[1-9]|[1-2]\\d|3[0-1])(0[1-9]|1[0-2])\\d{7})$"
                         }
-                    ],
-                    inputType: "number"
+                    ]
                 },
                 {
                     type: "checkbox",
@@ -1028,7 +1026,7 @@ const SurveyJsonUtredning = {
                             }
                         },
                         {
-                            value: "1",
+                            value: "9998",
                             text: {
                                 no: "Annet"
                             }
@@ -1040,7 +1038,7 @@ const SurveyJsonUtredning = {
                     renderAs: "dropdown-react"
                 },
                 {
-                    type: "text",
+                    type: "comment",
                     name: "sykehusnavnHFSpesifiser",
                     visible: false,
                     visibleIf: "{sykehuskode} = 9998",
@@ -1104,7 +1102,7 @@ const SurveyJsonUtredning = {
                     renderAs: "dropdown-react"
                 },
                 {
-                    type: "text",
+                    type: "comment",
                     name: "avdelingsnavnHFSpesifiser",
                     visible: false,
                     visibleIf: "{avdelingsnavn} = '1'",
@@ -1156,6 +1154,7 @@ const SurveyJsonUtredning = {
                 {
                     type: "text",
                     name: "psaverdi",
+                    maxWidth: "30%",
                     startWithNewLine: false,
                     title: {
                         no: "PSA-verdi ved diagnosetidspunkt"
@@ -1311,6 +1310,7 @@ const SurveyJsonUtredning = {
                     title: {
                         no: "Prostatavolum"
                     },
+                    maxWidth: "30%",
                     enableIf: "{prostatavolumUkjent} empty",
                     isRequired: true,
                     requiredIf: "{prostatavolumUkjent} empty",
@@ -1431,7 +1431,7 @@ const SurveyJsonUtredning = {
                     colCount: 2
                 },
                 {
-                    type: "text",
+                    type: "comment",
                     name: "annetBildediagnostikkSpesifiser2",
                     visible: false,
                     visibleIf: "{annetBildediagnostikk} = 1",
@@ -1496,7 +1496,7 @@ const SurveyJsonUtredning = {
                     colCount: 3
                 },
                 {
-                    type: "text",
+                    type: "comment",
                     name: "annetVevsproverSpesifiser2",
                     visible: false,
                     visibleIf: "{vevsproverUS} contains 'annetVevsprover'",
@@ -1589,7 +1589,7 @@ const SurveyJsonUtredning = {
                     type: "dropdown",
                     name: "palpatoriskTumorVenstre",
                     visibleIf: "{funnUtredning} = 1",
-                    startWithNewLine: false,
+                    startWithNewLine: true,
                     title: {
                         no: "Palpatorisk T-stadium venstre side (laveste stadium velges ved tvil)"
                     },
@@ -1709,7 +1709,7 @@ const SurveyJsonUtredning = {
                     name: "piradsvenstre",
                     visible: false,
                     visibleIf: "{mrdiagnostikk} = 1",
-                    startWithNewLine: false,
+                    startWithNewLine: true,
                     title: {
                         no: "PI-RADS venstre side (laveste stadium velges ved tvil)"
                     },
@@ -1808,7 +1808,7 @@ const SurveyJsonUtredning = {
                     name: "mrbasertKliniskTVenstre",
                     visible: false,
                     visibleIf: "{piradsvenstre} = 4 or {piradsvenstre} = 5",
-                    startWithNewLine: false,
+                    startWithNewLine: true,
                     title: {
                         no: "MR-basert T-stadium venstre side (laveste stadium velges ved tvil)"
                     },
@@ -2083,7 +2083,7 @@ const SurveyJsonUtredning = {
                     colCount: 3
                 },
                 {
-                    type: "text",
+                    type: "comment",
                     name: "annenDiagnostikkLKSpesifiser",
                     visible: false,
                     visibleIf: "{utredningsmetodeLK} = 5",
@@ -2156,7 +2156,7 @@ const SurveyJsonUtredning = {
                     colCount: 3
                 },
                 {
-                    type: "text",
+                    type: "comment",
                     name: "annetFjernmetSpesifiser",
                     visible: false,
                     visibleIf: "{lokalisasjonFjernmet} contains 'annetFjernmet'",
@@ -2238,7 +2238,7 @@ const SurveyJsonUtredning = {
                     colCount: 4
                 },
                 {
-                    type: "text",
+                    type: "comment",
                     name: "annenDiagnostikkMetSpesifiser",
                     visible: false,
                     visibleIf: "{utredningsmetodeFjernmet} contains 'annenDiagnostikkMet'",
@@ -2385,7 +2385,7 @@ const SurveyJsonUtredning = {
                     ]
                 },
                 {
-                    type: "text",
+                    type: "comment",
                     name: "labnavnHFSpesifiser",
                     visible: false,
                     visibleIf: "{labnavnHF} = '1'",
@@ -2397,6 +2397,7 @@ const SurveyJsonUtredning = {
                     type: "text",
                     name: "preparatnummer",
                     visible: false,
+                    maxWidth: "30%",
                     visibleIf: "{labnavnHF} notempty",
                     startWithNewLine: false,
                     title: {
@@ -2528,8 +2529,9 @@ const SurveyJsonUtredning = {
                     renderAs: "dropdown-react"
                 },
                 {
-                    type: "text",
+                    type: "comment",
                     name: "videreTiltakUtredningSpesifiser2",
+                    maxHeight: "50px",
                     visible: false,
                     visibleIf: "{videreTiltakUtredningSpesifiser} = 3",
                     title: {
@@ -2555,7 +2557,7 @@ const SurveyJsonUtredning = {
             name: "kommentarfelt",
             elements: [
                 {
-                    type: "text",
+                    type: "comment",
                     name: "kommentar",
                     title: {
                         no: "Kommentarer til utfylling av meldingen"

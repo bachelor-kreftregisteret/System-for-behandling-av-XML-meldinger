@@ -1,7 +1,6 @@
 const SurveyJSONStraale = {
     locale: "no",
     title: "STRÅLEBEHANDLING",
-    logoPosition: "right",
     pages: [
         {
             name: "pasientInstitusjon",
@@ -24,8 +23,7 @@ const SurveyJSONStraale = {
                             text: "Skriv inn gyldig fødselsnummer ",
                             regex: "^((0[1-9]|[1-2]\\d|3[0-1])(0[1-9]|1[0-2])\\d{7})$"
                         }
-                    ],
-                    inputType: "number"
+                    ]
                 },
                 {
                     type: "checkbox",
@@ -1028,7 +1026,7 @@ const SurveyJSONStraale = {
                             }
                         },
                         {
-                            value: "1",
+                            value: "9998",
                             text: {
                                 no: "Annet"
                             }
@@ -1040,7 +1038,7 @@ const SurveyJSONStraale = {
                     renderAs: "dropdown-react"
                 },
                 {
-                    type: "text",
+                    type: "comment",
                     name: "sykehusnavnHFSpesifiser",
                     visible: false,
                     visibleIf: "{sykehuskode} = 9998",
@@ -1104,7 +1102,7 @@ const SurveyJSONStraale = {
                     renderAs: "dropdown-react"
                 },
                 {
-                    type: "text",
+                    type: "comment",
                     name: "avdelingsnavnHFSpesifiser",
                     visible: false,
                     visibleIf: "{avdelingsnavn} = '1'",
@@ -1260,7 +1258,7 @@ const SurveyJSONStraale = {
                 {
                     type: "dropdown",
                     name: "palpatoriskTumorVenstre",
-                    startWithNewLine: false,
+                    startWithNewLine: true,
                     title: {
                         no: "Palpatorisk T-stadium venstre side (laveste stadium velges ved tvil)"
                     },
@@ -1439,7 +1437,7 @@ const SurveyJSONStraale = {
                     name: "piradsvenstre",
                     visible: false,
                     visibleIf: "{mrdiagnostikk} = 1",
-                    startWithNewLine: false,
+                    startWithNewLine: true,
                     title: {
                         no: "PI-RADS venstre side (laveste stadium velges ved tvil)"
                     },
@@ -1811,7 +1809,7 @@ const SurveyJSONStraale = {
                     colCount: 3
                 },
                 {
-                    type: "text",
+                    type: "comment",
                     name: "annenDiagnostikkLKSpesifiser",
                     visible: false,
                     visibleIf: "{utredningsmetodeLK} = 5",
@@ -1884,7 +1882,7 @@ const SurveyJSONStraale = {
                     colCount: 3
                 },
                 {
-                    type: "text",
+                    type: "comment",
                     name: "annetFjernmetSpesifiser",
                     visible: false,
                     visibleIf: "{lokalisasjonFjernmet} contains 'annetFjernmet'",
@@ -1966,7 +1964,7 @@ const SurveyJSONStraale = {
                     colCount: 4
                 },
                 {
-                    type: "text",
+                    type: "comment",
                     name: "annenDiagnostikkMetSpesifiser",
                     visible: false,
                     visibleIf: "{utredningsmetodeFjernmet} contains 'annenDiagnostikkMet'",
@@ -2458,7 +2456,7 @@ const SurveyJSONStraale = {
             name: "kommentarfelt",
             elements: [
                 {
-                    type: "text",
+                    type: "comment",
                     name: "kommentar",
                     title: {
                         no: "Kommentarer til utfylling av meldingen"

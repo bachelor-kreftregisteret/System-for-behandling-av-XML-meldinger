@@ -8,19 +8,19 @@ import {useParams} from "react-router-dom";
 import Sidebar from "./Sidebar";
 import Footer from "./Footer";
 import ReactSelect from "./ReactSelect";
-import GetMeldingByID from "../../api/getMeldingerByID";
+import GetMeldinger from "../../api/getMeldinger";
 
 const FormLogic = ({FormType}) => {
     // Henter data fra backend
     let {id} = useParams();
-    const {data, loading, error} = GetMeldingByID(id)
+    const {data, loading, error} = GetMeldinger(id);
 
     // Lager en modell av surveyen vi har laget
     const survey = new Model(FormType);
 
     const [isModalOpen, setIsModalOpen] = useState(false);
 
-    const [postError, setPostError] = useState("")
+    const [postError, setPostError] = useState("");
 
     // Registrerer CustomSelect komponenten som en render type under navnet "sv-dropdown-react"
     SurveyReact.ReactQuestionFactory.Instance.registerQuestion("sv-dropdown-react", (props) => {
@@ -51,19 +51,19 @@ const FormLogic = ({FormType}) => {
 
     // Legger til checkboxer med flere enn en checkbox til den flate JSON-en
     const addCheckboxToFlattenedJSON = (JSONdata, checkboxGroup) => {
-        let values = []
+        let values = [];
         for (const key in JSONdata) {
             if (JSONdata[key] === true || JSONdata[key] === 99) {
                 for (const checkbox in checkboxes[checkboxGroup]) {
                     if (key === checkboxes[checkboxGroup][checkbox]) {
-                        values.push(key)
+                        values.push(key);
                         break
                     }
                 }
             }
         }
         flattenedJSON[checkboxes[checkboxGroup][0]] = values;
-    }
+    };
 
     // Går gjennom input JSON og gjør den flat
     const flatten = (JSONdata) => {
@@ -72,7 +72,7 @@ const FormLogic = ({FormType}) => {
                 for (const checkboxGroup in checkboxes) {
                     for (const checkbox in checkboxes[checkboxGroup]) {
                         if (key === checkboxes[checkboxGroup][checkbox]) {
-                            addCheckboxToFlattenedJSON(JSONdata, checkboxGroup)
+                            addCheckboxToFlattenedJSON(JSONdata, checkboxGroup);
                             return
                         }
                     }
@@ -82,7 +82,7 @@ const FormLogic = ({FormType}) => {
                 flatten(JSONdata[key]);
             }
         }
-    }
+    };
 
     // Funksjon for å hente sykehuskode fra andre sykhusnavn-felt
     const setSykehusKode = () => {
@@ -95,7 +95,7 @@ const FormLogic = ({FormType}) => {
                 }
             }
         }
-    }
+    };
 
     const setDataValues = (data, JSONType, flattenedJSON) => {
         findCheckboxes(JSONType);
@@ -104,7 +104,7 @@ const FormLogic = ({FormType}) => {
             setSykehusKode();
             survey.data = flattenedJSON;
         }
-    }
+    };
 
     const setChangedValue = (options, JSONdata) => {
         for (const key in JSONdata) {
@@ -157,7 +157,7 @@ const FormLogic = ({FormType}) => {
                 setChangedValue(options, JSONdata[key],);
             }
         }
-    }
+    };
 
     // Når et felt i JSON er undefined og det koverteres til XML så blir feltet borte i XML-en.
     // Bytter derfor ut undefined med en tom string slik at feltet ikke blir borte.
@@ -166,10 +166,10 @@ const FormLogic = ({FormType}) => {
             if (JSONdata[key] === undefined) {
                 JSONdata[key] = "";
             } else if (typeof (JSONdata[key]) === "object") {
-                replaceUndefined(JSONdata[key])
+                replaceUndefined(JSONdata[key]);
             }
         }
-    }
+    };
 
     useEffect(() => {
         setDataValues(data, FormType, flattenedJSON);
@@ -210,8 +210,8 @@ const FormLogic = ({FormType}) => {
             setIsModalOpen(true);
             const headers = {
                 'Content-Type': 'application/json'
-            }
-            axios.post(URL, data, {headers})
+            };
+            axios.post('http://localhost:8080/api/v1/meldinger', data, {headers})
                 .then(_ => {
                     setPostError("")
                 })
@@ -219,7 +219,7 @@ const FormLogic = ({FormType}) => {
                     setPostError(error.toString())
                 })
         }
-    }
+    };
 
     return (
         /*Render skjema*/
@@ -260,6 +260,6 @@ const FormLogic = ({FormType}) => {
 
     )
 
-}
+};
 
 export default FormLogic;
