@@ -47,7 +47,7 @@ const FormLogic = ({FormType}) => {
                 findCheckboxes(JSONdata[key]);
             }
         }
-    }
+    };
 
     // Legger til checkboxer med flere enn en checkbox til den flate JSON-en
     const addCheckboxToFlattenedJSON = (JSONdata, checkboxGroup) => {
@@ -87,11 +87,17 @@ const FormLogic = ({FormType}) => {
     // Funksjon for å hente sykehuskode fra andre sykhusnavn-felt
     const setSykehusKode = () => {
         for (const key in flattenedJSON) {
+            if (key === "sykehusnavnRHF") {
+                flattenedJSON["sykehusnavnRHF"] = ""; // Fjerner region fra dataen
+                data.stdInfo.pasientInstitusjon.sykehusnavnRHF = ""
+            }
             if (key === "sykehusnavnHFSorOst" || key === "sykehusnavnHFVest" || key === "sykehusnavnHFMidt" || key === "sykehusnavnHFNord" || key === "sykehusnavnSpesSenter") {
                 if (flattenedJSON[key]) {
                     flattenedJSON["sykehuskode"] = flattenedJSON[key];
-                    flattenedJSON[key] = "";  // Fjerner dataen fra det gamle feltet
-                    return;
+                    flattenedJSON[key] = "";
+                    data.stdInfo.pasientInstitusjon.sykehuskode = flattenedJSON["sykehuskode"];
+                    data.stdInfo.pasientInstitusjon[key] = "";
+                    // Denne returnerer ikke i tilfelle det av en eller annen grunne skulle være flere sykehuskoder lagt inn
                 }
             }
         }
@@ -99,8 +105,8 @@ const FormLogic = ({FormType}) => {
 
     const setDataValues = (data, JSONType, flattenedJSON) => {
         findCheckboxes(JSONType);
-        flatten(data);
         if (data !== "") { // Hvis det ikke blir lastet data, så blir ikke deafaultValues endret
+            flatten(data);
             setSykehusKode();
             survey.data = flattenedJSON;
         }
