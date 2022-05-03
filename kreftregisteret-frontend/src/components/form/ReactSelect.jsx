@@ -26,6 +26,8 @@ export class ReactSelect extends SurveyReact.SurveyQuestionDropdown {
         this.setValueCore(selectedOption.value);
     }
 
+
+
     renderElement() {
         // If the question is non-editable, render a stylized div
         if (this.isDisplayMode) {
@@ -44,6 +46,49 @@ export class ReactSelect extends SurveyReact.SurveyQuestionDropdown {
                         onChange={this.onSelectChange}
                         options={this.options}
                         required={this.question.isRequired}
+                        theme={(theme) => ({
+                            ...theme,
+                            borderRadius: 0,
+                            colors: {
+                                ...theme.colors,
+                                primary: '#21314d',
+                            },
+                        })}
+                        styles={{
+                            control: (base) => ({
+                                ...base,
+                                minHeight: "25px",
+                                maxHeight: "30px",
+                                borderColor: "#e7e7e7",
+                            }),
+                            valueContainer: (base) => ({
+                                ...base,
+                                minHeight: "30px",
+                                maxHeight: "30px",
+                                padding: "2px 8px",
+                                alignItems: "center",
+                                alignContent: "center",
+
+                            }),
+                            singleValue: (base) => ({
+                                ...base,
+                                maxHeight: "30px",
+                            }),
+                            input: (base) => ({
+                                ...base,
+                                marginTop: "2px",
+                                maxHeight: "30px",
+                            }),
+                            indicatorsContainer: (base) => ({
+                                ...base,
+                                maxHeight: "30px"
+                            }),
+                            option: (base) => ({
+                                ...base,
+                                fontSize: "14px"
+                            })
+
+                        }}
                         placeholder={"Velg..."}
                         menuPortalTarget={document.querySelector('body')}/>);
     }
