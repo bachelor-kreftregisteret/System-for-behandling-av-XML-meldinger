@@ -1,4 +1,5 @@
 const SurveyJsonUtredning = {
+    name: "KliniskProstataUtredning",
     locale: "no",
     title: "Melding etter avsluttet utredning",
     pages: [

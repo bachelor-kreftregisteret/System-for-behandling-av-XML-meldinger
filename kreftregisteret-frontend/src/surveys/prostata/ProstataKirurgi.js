@@ -1,4 +1,5 @@
 const SurveyJSONKirugi = {
+    name: "KliniskProstataKirurgi",
     locale: "no",
     title: "RADIKAL PROSTATEKTOMI",
     pages: [

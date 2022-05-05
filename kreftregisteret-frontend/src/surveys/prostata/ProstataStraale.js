@@ -1,4 +1,5 @@
 const SurveyJSONStraale = {
+    name: "KliniskProstataStraale",
     locale: "no",
     title: "STRÅLEBEHANDLING",
     pages: [

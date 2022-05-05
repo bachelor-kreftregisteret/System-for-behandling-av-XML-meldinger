@@ -105,11 +105,25 @@ const FormLogic = ({FormType}) => {
 
     const setDataValues = (data, JSONType, flattenedJSON) => {
         findCheckboxes(JSONType);
-        if (data !== "") { // Hvis det ikke blir lastet data, så blir ikke deafaultValues endret
-            flatten(data);
-            setSykehusKode();
-            survey.data = flattenedJSON;
+        flatten(data);
+        if (data !== "" && data !== null) { // Hvis det ikke blir lastet data, så blir ikke deafaultValues endret
+            let StringJSONType = "";
+            for (const key in data) {
+                if (key === "@type") {
+                    StringJSONType = data[key];
+                    break;
+                }
+            }
+            if (StringJSONType !== JSONType.name) { // Hvis data blir lastet inn i feil type skjema
+                setIsModalOpen(true);
+                setPostError("Innlastet data i feil skjema")
+            } else {
+                setSykehusKode();
+                survey.data = flattenedJSON;
+            }
         }
+        // Todo
+        // deafaultValues vil ikke blir lagret i data når nytt skjema lagring blir implementert
     };
 
     const setChangedValue = (options, JSONdata) => {
