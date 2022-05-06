@@ -2,16 +2,16 @@ package com.Kreftregisteret.KreftregisteretApp.utils.xml;
 
 import com.Kreftregisteret.KreftregisteretApp.models.Melding;
 import com.Kreftregisteret.KreftregisteretApp.utils.FileManager;
-import com.Kreftregisteret.KreftregisteretApp.utils.xml.MeldingManager;
-import jakarta.xml.bind.JAXBException;
-import org.junit.jupiter.api.BeforeAll;
+import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.TestInstance;
-import org.xml.sax.SAXException;
+
 
 import java.io.File;
 import java.io.IOException;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 import static org.junit.jupiter.api.Assertions.*;
 
@@ -19,7 +19,7 @@ import static org.junit.jupiter.api.Assertions.*;
 class MeldingManagerTest {
     MeldingManager meldingManager = new MeldingManager();
 
-    @BeforeAll
+    @BeforeEach
     public void setup() throws IOException {
         meldingManager.addMeldingerFromUtFolderToMeldingList(List.of(FileManager.listFiles()));
     }
@@ -27,8 +27,12 @@ class MeldingManagerTest {
     @Test
     void findMeldingById() {
         System.out.println("========== Test 1: Valid query ==========");
-        Melding m1 = meldingManager.findMeldingById(1L);
-        System.out.println(m1);
+        Map<Melding, Long> map = meldingManager.getMeldingMap();
+        Map.Entry<Melding, Long> entry = map.entrySet().iterator().next();
+
+        Long id = entry.getValue();
+        Melding m1 = meldingManager.findMeldingById(id);
+        System.out.println("id: " + id + ", melding: " + m1);
         assertNotNull(m1);
 
         System.out.println("\n========== Test 1: False query ==========");
