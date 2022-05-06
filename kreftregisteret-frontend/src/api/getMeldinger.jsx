@@ -23,17 +23,15 @@ const GetMeldinger = (id = "") => {
             } finally {
                 setLoading(false);
             }
-        }
+        };
 
         getData();
 
-
-    }, [])
+    }, []);
 
     return {
         data, loading, error
     }
-
-}
+};
 
 export default GetMeldinger;
