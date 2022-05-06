@@ -9,6 +9,7 @@ import org.junit.jupiter.api.TestInstance;
 
 import java.io.File;
 import java.io.IOException;
+import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -27,10 +28,8 @@ class MeldingManagerTest {
     @Test
     void findMeldingById() {
         System.out.println("========== Test 1: Valid query ==========");
-        Map<Melding, Long> map = meldingManager.getMeldingMap();
-        Map.Entry<Melding, Long> entry = map.entrySet().iterator().next();
-
-        Long id = entry.getValue();
+        ArrayList<Melding> liste = meldingManager.getMeldingList();
+        Long id = liste.get(0).getId();
         Melding m1 = meldingManager.findMeldingById(id);
         System.out.println("id: " + id + ", melding: " + m1);
         assertNotNull(m1);
