@@ -22,32 +22,24 @@ const MeldingList = () => {
     }
 
     const tableOfMeldinger = (data) => {
-        try {
-            for (const key in data) {
-                msgList.push(JSON.parse(key))
-            }
-        } catch (err) {
-            console.log(err);
-            for (const key in data) {
-                msgList.push(key)
-            }
-        }
-            const rows = msgList.sort((a, b) => a.id > b.id ? 1 : -1).map((item, index) => (
+        //data.replaceAll('\\', '')
+        msgList = data
+        const rows = msgList.sort((a, b) => a.id > b.id ? 1 : -1).map((item, index) => (
                 <tr key={index}>
                     <td>{item.id}</td>
-                    <td>{item.Skjemanavn}</td>
-                    <td>{item.Filnavn}</td>
-                    <td>{formatJsonDate(item.Endrettidspunkt)}</td>
+                    <td>{item.skjemanavn}</td>
+                    <td>{item.filnavn}</td>
+                    <td>{formatJsonDate(item.endrettidspunkt)}</td>
                     <td><Button block
                                 className={"Button"}
                                 style={{backgroundColor: Color.king_blue}}
                                 size={"sm"}
                                 onClick={() => {
-                                    if (item.Skjemanavn === EnumRoutes.utredning.skjemanavn) {
+                                    if (item.skjemanavn === EnumRoutes.utredning.skjemanavn) {
                                         navigate(EnumRoutes.utredning.url + item.id)
-                                    } else if (item.Skjemanavn === EnumRoutes.straalebehandling.skjemanavn) {
+                                    } else if (item.skjemanavn === EnumRoutes.straalebehandling.skjemanavn) {
                                         navigate(EnumRoutes.straalebehandling.url + item.id)
-                                    } else if (item.Skjemanavn === EnumRoutes.kirurgi.skjemanavn) {
+                                    } else if (item.skjemanavn === EnumRoutes.kirurgi.skjemanavn) {
                                         navigate(EnumRoutes.kirurgi.url + item.id)
                                     }
                                 }}> Endre </Button></td>

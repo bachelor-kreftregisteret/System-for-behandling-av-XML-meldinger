@@ -175,7 +175,7 @@ public class KliniskProstataKirurgi extends Melding {
     }
 
     @Override
-    public String getSkjemaNavn() {
+    public String getSkjemanavn() {
         return this.meldingsinformasjon.getSkjema();
     }
 

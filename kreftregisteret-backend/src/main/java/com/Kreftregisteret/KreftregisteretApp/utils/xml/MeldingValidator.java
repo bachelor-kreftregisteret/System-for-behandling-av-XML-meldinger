@@ -16,7 +16,7 @@ public class MeldingValidator {
     public static Schema generateSchema(Melding melding) throws SAXException, IOException {
         final String PROSTATAPAKKE = new ClassPathResource("Prostatapakke").getURL().getPath() + "/";
 
-        File XSD = new File(PROSTATAPAKKE + XMLValidator.XSD_MAP.get(melding.getSkjemaNavn()));
+        File XSD = new File(PROSTATAPAKKE + XMLValidator.XSD_MAP.get(melding.getSkjemanavn()));
         SchemaFactory factory = SchemaFactory.newInstance(XMLConstants.W3C_XML_SCHEMA_NS_URI);
         Schema schema = factory.newSchema(XSD);
         return schema;

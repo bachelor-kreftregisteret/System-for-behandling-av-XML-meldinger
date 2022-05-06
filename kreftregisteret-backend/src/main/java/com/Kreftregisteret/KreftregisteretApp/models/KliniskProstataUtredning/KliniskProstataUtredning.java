@@ -210,7 +210,7 @@ public class KliniskProstataUtredning extends Melding implements Serializable {
     }
 
     @Override
-    public String getSkjemaNavn() {
+    public String getSkjemanavn() {
         return this.meldingsinformasjon.getSkjema();
     }
 

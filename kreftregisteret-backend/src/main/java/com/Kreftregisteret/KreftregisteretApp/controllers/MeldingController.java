@@ -3,6 +3,7 @@ package com.Kreftregisteret.KreftregisteretApp.controllers;
 
 import com.Kreftregisteret.KreftregisteretApp.models.KliniskProstataKirurgi.KliniskProstataKirurgi;
 import com.Kreftregisteret.KreftregisteretApp.models.Melding;
+import com.Kreftregisteret.KreftregisteretApp.models.MeldingDTO;
 import com.Kreftregisteret.KreftregisteretApp.utils.FileManager;
 import com.Kreftregisteret.KreftregisteretApp.utils.error.ErrorUtils;
 import com.Kreftregisteret.KreftregisteretApp.utils.xml.MeldingManager;
@@ -18,9 +19,10 @@ import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 import org.xml.sax.SAXException;
+
 import javax.servlet.http.HttpServletRequest;
 import java.io.IOException;
-import java.util.HashMap;
+import java.util.ArrayList;
 import java.util.List;
 
 
@@ -40,9 +42,9 @@ public class MeldingController {
     @CrossOrigin(origins = {"https://demokrg.herokuapp.com", "http://localhost:8080", "http://localhost:3000", "http://localhost:3001"})
     @GetMapping(path = "/api/v1/meldinger/{id}")
     @Operation(
-            summary = "Returnerer en person",
-            description = "Returnerer en person med gitt Id.",
-            tags = { "Melding" },
+            summary = "Returnerer en melding",
+            description = "Returnerer en melding med gitt Id.",
+            tags = {"Melding"},
             responses = {
                     @ApiResponse(
                             description = "Success",
@@ -62,7 +64,7 @@ public class MeldingController {
     @Operation(
             summary = "Returnerer alle meldinger",
             description = "Returnerer alle gyldige eller tilgjengelige meldinger",
-            tags = { "Melding" },
+            tags = {"Melding"},
             responses = {
                     @ApiResponse(
                             description = "Success",
@@ -72,8 +74,9 @@ public class MeldingController {
                     @ApiResponse(description = "Internal error", responseCode = "500", content = @Content)
             }
     )
-    public HashMap<Melding, Long> getAllMeldinger() throws IOException {
-        return meldingManager.getMeldingMap();
+    public ArrayList<MeldingDTO> getAllMeldinger() throws IOException {
+        System.out.println(meldingManager.getMeldingListDTO());
+        return meldingManager.getMeldingListDTO();
     }
 
     @CrossOrigin(origins = {"https://demokrg.herokuapp.com", "http://localhost:8080", "http://localhost:3000", "http://localhost:3001"})
@@ -81,7 +84,7 @@ public class MeldingController {
     @Operation(
             summary = "Legger til en melding",
             description = "Legger til en melding i databasen",
-            tags = { "Melding" },
+            tags = {"Melding"},
             responses = {
                     @ApiResponse(
                             description = "Success",
@@ -122,7 +125,7 @@ public class MeldingController {
     }
 
     @ExceptionHandler(Exception.class)
-    public ResponseEntity<String> handleException (HttpServletRequest req, Exception ex){
+    public ResponseEntity<String> handleException(HttpServletRequest req, Exception ex) {
         String errorMessage = ErrorUtils.exceptionToJSON(ex);
         return new ResponseEntity<>(errorMessage, HttpStatus.INTERNAL_SERVER_ERROR);
     }

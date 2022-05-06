@@ -1,6 +1,7 @@
 package com.Kreftregisteret.KreftregisteretApp.utils.xml;
 
 import com.Kreftregisteret.KreftregisteretApp.models.Melding;
+import com.Kreftregisteret.KreftregisteretApp.models.MeldingDTO;
 import com.Kreftregisteret.KreftregisteretApp.utils.FileManager;
 import jakarta.xml.bind.*;
 import jakarta.xml.bind.util.JAXBSource;
@@ -15,27 +16,35 @@ import java.util.*;
 //er det bedre å ha EN jaxbcontext instance her? dvs ha en felles for alle metodene også injecte message manager istedenfor public static?
 @Service
 public class MeldingManager {
-    private final HashMap<Melding, Long> meldingMap = new HashMap<>();
-    private static Long id = 1L;
+    private final ArrayList<Melding> meldingList = new ArrayList<>();
+    private Long id = 1L;
 
     //sikter på thread-safety
-    public static synchronized Long createNewID() {
+    public synchronized Long createNewID() {
         return id++;
     }
 
     private void updateMsgMap(Melding melding) {
         Melding oldmelding = this.findMeldingById(melding.getId());
-        meldingMap.remove(oldmelding);
         //oppdater tidspunktendret
         // "2001-12-17T09:30:47Z"
         //er formatet
         String formattedDate = getDate();
-        melding.setLastChangedTime(formattedDate);
-        meldingMap.put(melding, createNewID());
+        melding.setEndrettidspunkt(formattedDate);
+        meldingList.add(melding);
     }
 
-    public HashMap<Melding, Long> getMeldingMap() {
-        return meldingMap;
+    public ArrayList<MeldingDTO> getMeldingListDTO() {
+        ArrayList<MeldingDTO> meldingDTOList = new ArrayList<>();
+        for(Melding melding: meldingList){
+            MeldingDTO dto = new MeldingDTO(melding.getId(), melding.getEndrettidspunkt(), melding.getSkjemanavn(), melding.getFilnavn());
+            meldingDTOList.add(dto);
+        }
+        return new ArrayList<MeldingDTO>(meldingDTOList);
+    }
+
+    public ArrayList<Melding> getMeldingList() {
+        return meldingList;
     }
 
     //kanskje legg til Optional<Melding> her istedenfor å kanskje returnere null (?)
@@ -47,8 +56,8 @@ public class MeldingManager {
 
             melding = (Melding) jaxbUnmarshaller.unmarshal(file);
             if (melding != null) {
-                melding.setId(id);
-                melding.setLastChangedTime(melding.getMetaData());
+                melding.setId(createNewID());
+                melding.setEndrettidspunkt(melding.getMetaData());
                 melding.setFilnavn(file.getName());
             }
             return melding;
@@ -68,11 +77,11 @@ public class MeldingManager {
         JAXBSource jaxbSource = new JAXBSource(jaxbMarshaller, melding);
         XMLValidator.validate(schema, jaxbSource);
         String formattedDate = getFileDate();
-        File file = new File(FileManager.getPath() + formattedDate + melding.getSkjemaNavn() + ".xml");
+        File file = new File(FileManager.getPath() + formattedDate + melding.getSkjemanavn() + ".xml");
         jaxbMarshaller.setSchema(schema);
-        System.out.println(getMeldingMap().size());
+        System.out.println(getMeldingListDTO().size());
         updateMsgMap(melding);
-        System.out.println(getMeldingMap());
+        System.out.println(getMeldingListDTO());
         jaxbMarshaller.marshal(melding, file); // Write to file
     }
 
@@ -103,7 +112,7 @@ public class MeldingManager {
                     Melding melding = convertFileToMelding(file);
                     System.out.println(melding);
                     if (melding != null) {
-                        meldingMap.put(melding, createNewID());
+                        meldingList.add(melding);
                     }
                 }
             });
@@ -114,13 +123,21 @@ public class MeldingManager {
     }
 
     public Melding findMeldingById(Long idIn) {
-        for (Map.Entry<Melding, Long> entry : meldingMap.entrySet()) {
+        for(Melding melding: meldingList){
+            if(Objects.equals(melding.getId(), idIn)){
+                return melding;
+
+            }
+        }
+
+
+       /* for (Map.Entry<Melding, Long> entry : meldingMap.entrySet()) {
             Melding melding = entry.getKey();
             Long value = entry.getValue();
             if (Objects.equals(value, idIn)) {
                 return melding;
             }
-        }
+        }*/
 
         return null;
     }
