@@ -24,6 +24,7 @@ public class MessageManager {
     //sikter på thread-safety
     public static synchronized Long createNewID()
     {
+        System.out.println("Current id: " + id);
         return id++;
     }
 
