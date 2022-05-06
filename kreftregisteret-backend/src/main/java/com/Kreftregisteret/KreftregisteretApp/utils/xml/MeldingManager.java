@@ -24,8 +24,7 @@ public class MeldingManager {
         return id++;
     }
 
-    private void updateMsgMap(Melding melding) {
-        Melding oldmelding = this.findMeldingById(melding.getId());
+    private void updateMsgList(Melding melding) {
         //oppdater tidspunktendret
         // "2001-12-17T09:30:47Z"
         //er formatet
@@ -81,7 +80,7 @@ public class MeldingManager {
         File file = new File(FileManager.getPath() + formattedDate + melding.getSkjemanavn() + ".xml");
         jaxbMarshaller.setSchema(schema);
         System.out.println(getMeldingListDTO().size());
-        updateMsgMap(melding);
+        updateMsgList(melding);
         System.out.println(getMeldingListDTO());
         jaxbMarshaller.marshal(melding, file); // Write to file
     }
@@ -127,19 +126,8 @@ public class MeldingManager {
         for(Melding melding: meldingList){
             if(Objects.equals(melding.getId(), idIn)){
                 return melding;
-
             }
         }
-
-
-       /* for (Map.Entry<Melding, Long> entry : meldingMap.entrySet()) {
-            Melding melding = entry.getKey();
-            Long value = entry.getValue();
-            if (Objects.equals(value, idIn)) {
-                return melding;
-            }
-        }*/
-
         return null;
     }
 }
