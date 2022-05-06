@@ -2,7 +2,7 @@ import {useState} from "react";
 import "../css/sidebar.css"
 
 const Sidebar = (props) => {
-    const [activeId, setActiveId] = useState(0)
+    const [activeId, setActiveId] = useState(0);
     const [showSidebar, setShowSidebar] = useState(true);
     const [titles, setTitles] = useState([]);
 
@@ -30,6 +30,35 @@ const Sidebar = (props) => {
          }
      }
 
+     const getTitle = (element) => {
+        const parent = element.parentElement;
+        if (parent && parent.className === "sv_p_container") {
+            const titleFromElement = parent.children[0].children[0];
+            for (const title in titles) {
+                if (titleFromElement === titles[title]) {
+                    setActiveId(title - 1);
+                    return;
+                }
+            }
+        }
+        else if (parent) {
+            getTitle(parent);
+        }
+     };
+
+     const getScroll = () => {
+        const posX = window.innerWidth / 2;
+        const containerRect = document.getElementsByClassName("sv_p_title")[0].getBoundingClientRect();
+        if (containerRect.top > 0) {
+            return;
+        }
+        const posY = window.innerHeight / 2;
+        const elem = document.elementFromPoint(posX, posY);
+        getTitle(elem);
+     };
+
+    document.addEventListener("scroll", getScroll);
+
     const listOfTitles = (titles) => {
         return (
             <div className={showSidebar ? "sidebar" : "hide"} >
@@ -38,7 +67,6 @@ const Sidebar = (props) => {
                         <span id={`${index}`} className={"sidebarNav"} key={index}
                               onClick={() => {
                                   scrollToTitle(title);
-                                  setActiveId(index)
                               }}
                         >
                             <button aria-label={`${title.innerText}`} className={activeId === index ?

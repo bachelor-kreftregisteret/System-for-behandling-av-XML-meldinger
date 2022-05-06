@@ -12,7 +12,7 @@ import GetMeldinger from "../../api/getMeldinger";
 
 const FormLogic = ({FormType}) => {
     // Henter data fra backend
-    let {id} = useParams();
+    const {id} = useParams();
     const {data, loading, error} = GetMeldinger(id);
 
     // Lager en modell av surveyen vi har laget
