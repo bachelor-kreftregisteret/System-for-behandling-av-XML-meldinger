@@ -48,7 +48,7 @@ const Sidebar = (props) => {
 
      const getScroll = () => {
         const posX = window.innerWidth / 2;
-        const containerRect = document.getElementsByClassName("sv_p_title")[0].getBoundingClientRect();
+        const containerRect = document.getElementsByClassName("sv_p_container")[0].getBoundingClientRect();
         if (containerRect.top > 0) {
             return;
         }
