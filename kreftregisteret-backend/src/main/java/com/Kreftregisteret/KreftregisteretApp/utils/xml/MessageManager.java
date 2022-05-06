@@ -10,10 +10,6 @@ import org.springframework.stereotype.Service;
 import org.xml.sax.SAXException;
 import javax.xml.validation.Schema;
 import java.io.*;
-import java.nio.file.DirectoryIteratorException;
-import java.nio.file.DirectoryStream;
-import java.nio.file.Files;
-import java.nio.file.Path;
 import java.text.SimpleDateFormat;
 import java.util.*;
 
@@ -65,62 +61,26 @@ public class MessageManager {
         // Validate against schema, throws SAXParseException if not valid
         XMLValidator.validate(schema, jaxbSource);
         System.out.println("Melding skjemanavn: " + melding.getSkjemaNavn());
-        SimpleDateFormat formatter = new SimpleDateFormat("ddMMyyyy_'kl'HHmmss");
-        Date date = new Date();
-        String formattedDate = formatter.format(date);
 
         // Set filnavn
-        String newFilnavn =  formattedDate + melding.getSkjemaNavn() + ".xml";
+        String newFilnavn = getFileDate() + melding.getSkjemaNavn() + ".xml";
         melding.setFilnavn(newFilnavn);
-//        File file = new File(Utmappe.getPath() + newFilnavn);
-//        jaxbMarshaller.marshal(melding, file); // Write to file'
         System.out.println("Melding: " + melding);
         System.out.println("Melding skjemanavn 2: " + melding.getSkjemaNavn());
+        melding.setLastChangedTime(getDate());
         meldingMap.put(melding, createNewID());
         System.out.println("I write: " + meldingMap);
     }
 
-    public File findXSDFromMelding(Melding melding) throws IOException {
-        System.out.println(melding.toString());
-        //todo Kanskje lag et hashmap med verdier for skjemanavn og .xSD, slik at man kan finne korrekt .xsd
-        //
-        String skjemanavn = melding.getSkjemaNavn(); //KliniskProstataUtredning
-
-        String XSDfile = XMLValidator.XSD_MAP.get(skjemanavn);
-//        Resource resource = new ClassPathResource("XSD/" + XSDfile);
-
-        File file = StreamUtil.stream2file(KreftregisteretAppApplication.class.getClassLoader().getResourceAsStream("XSD/" + XSDfile));
-        return file;
-    }
-
-    // Inspired by: https://docs.oracle.com/javase/tutorial/essential/io/dirs.html
-    public List<File> getFiles(Path directory) throws IOException, DirectoryIteratorException {
-        if (!Files.isDirectory(directory)) {
-            throw new IOException("Directory does not exist");
-        }
-
-        ArrayList<File> files = new ArrayList<>();
-        DirectoryStream<Path> stream = Files.newDirectoryStream(directory);
-        for (Path file : stream) {
-            files.add(new File(file.toUri()));
-        }
-        return files;
-    }
-
     public void addMeldingerFromUtFolderToMsgList() {
         try {
-            //List<File> fileList = getFiles(Path.of(Utmappe.getPath()));
-
-//            Resource resource = new ClassPathResource("Ut/VALID_07032022_kl141937KliniskProstataUtredning.xml");
-//            File file = resource.getFile();
-
             InputStream is = KreftregisteretAppApplication.class.getClassLoader().getResourceAsStream("Ut/VALID_07032022_kl141937KliniskProstataUtredning.xml");
             File file = StreamUtil.stream2file(is);
 
             Melding melding = convertFileToMelding(file);
             meldingMap.put(melding, createNewID());
+
         }catch(Exception e){
-            System.out.println("er det her vi feiler???");
             e.printStackTrace();
         }
     }
@@ -134,5 +94,18 @@ public class MessageManager {
             }
         }
         return null;
+    }
+
+    private String getDate() {
+        SimpleDateFormat formatter = new SimpleDateFormat("yyyy-MM-dd'T'HH:mm:ss'Z'");//formatet KR bruker i XMLfilene.
+        Date date = new Date();
+        return formatter.format(date);
+    }
+
+    private String getFileDate() {
+        // Husk! : er ikke gyldig i filnavn i Windows
+        SimpleDateFormat formatter = new SimpleDateFormat("yyyy-MM-dd'T'HH-mm-ss'Z'");
+        Date date = new Date();
+        return formatter.format(date);
     }
 }

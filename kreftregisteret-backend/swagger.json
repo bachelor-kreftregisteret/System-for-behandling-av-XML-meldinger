@@ -1,0 +1,779 @@
+{
+  "openapi": "3.0.1",
+  "info": {
+    "title": "OpenAPI definition",
+    "version": "v0"
+  },
+  "servers": [
+    {
+      "url": "http://localhost:8080",
+      "description": "Generated server url"
+    }
+  ],
+  "tags": [
+    {
+      "name": "Melding",
+      "description": "Endepunkt for behandling av meldinger"
+    }
+  ],
+  "paths": {
+    "/api/v1/meldinger": {
+      "get": {
+        "tags": [
+          "Melding"
+        ],
+        "summary": "Returnerer alle meldinger",
+        "description": "Returnerer alle gyldige eller tilgjengelige meldinger",
+        "operationId": "getAllMeldinger",
+        "responses": {
+          "200": {
+            "description": "Success",
+            "content": {
+              "application/json": {}
+            }
+          },
+          "500": {
+            "description": "Internal error"
+          }
+        }
+      },
+      "post": {
+        "tags": [
+          "Melding"
+        ],
+        "summary": "Legger til en melding",
+        "description": "Legger til en melding i databasen",
+        "operationId": "postMelding",
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "oneOf": [
+                  {
+                    "$ref": "#/components/schemas/KliniskProstataKirurgi"
+                  },
+                  {
+                    "$ref": "#/components/schemas/KliniskProstataStraale"
+                  },
+                  {
+                    "$ref": "#/components/schemas/KliniskProstataUtredning"
+                  }
+                ]
+              }
+            }
+          },
+          "required": true
+        },
+        "responses": {
+          "200": {
+            "description": "Success",
+            "content": {
+              "application/json": {}
+            }
+          },
+          "500": {
+            "description": "Internal error"
+          }
+        }
+      }
+    },
+    "/api/v1/meldinger/{id}": {
+      "get": {
+        "tags": [
+          "Melding"
+        ],
+        "summary": "Returnerer en person",
+        "description": "Returnerer en person med gitt Id.",
+        "operationId": "getMelding",
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "integer",
+              "format": "int64"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Success",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/KliniskProstataKirurgi"
+                }
+              }
+            }
+          },
+          "404": {
+            "description": "Not found"
+          },
+          "500": {
+            "description": "Internal error"
+          }
+        }
+      }
+    }
+  },
+  "components": {
+    "schemas": {
+      "Behandling": {
+        "type": "object",
+        "properties": {
+          "kirurgi": {
+            "$ref": "#/components/schemas/Kirurgi"
+          }
+        }
+      },
+      "BildediagnostikkUS": {
+        "type": "object",
+        "properties": {
+          "datoMRDiagnostikk": {
+            "type": "string"
+          },
+          "datoMRDiagnostikkUkjent": {
+            "type": "string"
+          },
+          "annetBildediagnostikk": {
+            "type": "string"
+          },
+          "annetBildediagnostikkSpesifiser2": {
+            "type": "string"
+          },
+          "mrdiagnostikk": {
+            "type": "string"
+          }
+        }
+      },
+      "DiagnostiskeUS": {
+        "type": "object",
+        "properties": {
+          "bildediagnostikkUS": {
+            "$ref": "#/components/schemas/BildediagnostikkUS"
+          },
+          "vevsprover": {
+            "type": "string"
+          },
+          "vevsproverUS": {
+            "$ref": "#/components/schemas/VevsproverUS"
+          }
+        }
+      },
+      "FilmBilde": {
+        "type": "object",
+        "properties": {
+          "filmNr": {
+            "type": "string"
+          },
+          "bildeNr": {
+            "type": "string"
+          }
+        }
+      },
+      "Fjernmetastaser": {
+        "type": "object",
+        "properties": {
+          "fjernmetPaavist": {
+            "type": "string"
+          },
+          "lokalisasjonFjernmet": {
+            "$ref": "#/components/schemas/LokalisasjonFjernmet"
+          }
+        }
+      },
+      "InfiltrerendeKreft": {
+        "type": "object",
+        "properties": {
+          "kreft": {
+            "type": "string"
+          }
+        }
+      },
+      "Kirurgi": {
+        "type": "object",
+        "properties": {
+          "kirurgiPrimaer": {
+            "$ref": "#/components/schemas/KirurgiPrimaer"
+          }
+        }
+      },
+      "KirurgiPrimaer": {
+        "type": "object",
+        "properties": {
+          "preoperativInformasjon": {
+            "$ref": "#/components/schemas/PreoperativInformasjon"
+          },
+          "sykdomsutbredelse": {
+            "$ref": "#/components/schemas/Sykdomsutbredelse"
+          },
+          "operasjonsdatoPrimaer": {
+            "type": "string"
+          },
+          "kirurgiskBehPrimaer": {
+            "$ref": "#/components/schemas/KirurgiskBehPrimaer"
+          }
+        }
+      },
+      "KirurgiskBehPrimaer": {
+        "type": "object",
+        "properties": {
+          "typeKirurgi": {
+            "type": "string"
+          },
+          "typeKirurgiSpesifiser": {
+            "type": "string"
+          },
+          "nervesparendeIntensjon": {
+            "type": "string"
+          },
+          "samtidigLymfadenektomi": {
+            "type": "string"
+          }
+        }
+      },
+      "KliniskProstataKirurgi": {
+        "type": "object",
+        "properties": {
+          "id": {
+            "type": "integer",
+            "format": "int64"
+          },
+          "lastChangedTime": {
+            "type": "string"
+          },
+          "meldingsinformasjon": {
+            "$ref": "#/components/schemas/Meldingsinformasjon"
+          },
+          "navigering": {
+            "$ref": "#/components/schemas/Navigering"
+          },
+          "stdInfo": {
+            "$ref": "#/components/schemas/StdInfo"
+          },
+          "laboratorium": {
+            "$ref": "#/components/schemas/Laboratorium"
+          },
+          "behandling": {
+            "$ref": "#/components/schemas/Behandling"
+          },
+          "filnavn": {
+            "type": "string"
+          },
+          "metaData": {
+            "type": "string"
+          },
+          "skjemaNavn": {
+            "type": "string"
+          }
+        }
+      },
+      "KliniskProstataStraale": {
+        "type": "object",
+        "allOf": [
+          {
+            "$ref": "#/components/schemas/Melding"
+          },
+          {
+            "type": "object",
+            "properties": {
+              "meldingsinformasjon": {
+                "$ref": "#/components/schemas/Meldingsinformasjon"
+              },
+              "navigering": {
+                "$ref": "#/components/schemas/Navigering"
+              },
+              "stdInfo": {
+                "$ref": "#/components/schemas/StdInfo"
+              },
+              "behandling": {
+                "$ref": "#/components/schemas/Behandling"
+              }
+            }
+          }
+        ]
+      },
+      "KliniskProstataUtredning": {
+        "type": "object",
+        "allOf": [
+          {
+            "$ref": "#/components/schemas/Melding"
+          },
+          {
+            "type": "object",
+            "properties": {
+              "meldingsinformasjon": {
+                "$ref": "#/components/schemas/Meldingsinformasjon"
+              },
+              "navigering": {
+                "$ref": "#/components/schemas/Navigering"
+              },
+              "stdInfo": {
+                "$ref": "#/components/schemas/StdInfo"
+              },
+              "laboratorium": {
+                "$ref": "#/components/schemas/Laboratorium"
+              },
+              "infiltrerendeKreft": {
+                "$ref": "#/components/schemas/InfiltrerendeKreft"
+              },
+              "utredning": {
+                "$ref": "#/components/schemas/Utredning"
+              }
+            }
+          }
+        ]
+      },
+      "KliniskTNM": {
+        "type": "object",
+        "properties": {
+          "ct": {
+            "type": "string"
+          },
+          "cn": {
+            "type": "string"
+          },
+          "cm": {
+            "type": "string"
+          }
+        }
+      },
+      "Kommentarfelt": {
+        "type": "object",
+        "properties": {
+          "kommentar": {
+            "type": "string"
+          }
+        }
+      },
+      "Laboratorium": {
+        "type": "object",
+        "properties": {
+          "labnavnKRG": {
+            "type": "string"
+          },
+          "labnavnHF": {
+            "type": "string"
+          },
+          "labnavnHFIkkeRelevant": {
+            "type": "boolean"
+          },
+          "labnavnHFSpesifiser": {
+            "type": "string"
+          },
+          "preparatnummer": {
+            "type": "string"
+          },
+          "labkode": {
+            "type": "string"
+          }
+        }
+      },
+      "LokalisasjonFjernmet": {
+        "type": "object",
+        "properties": {
+          "fjerneLKmet": {
+            "type": "boolean"
+          },
+          "skjelettmet": {
+            "type": "boolean"
+          },
+          "annetFjernmet": {
+            "type": "boolean"
+          },
+          "annetFjernmetSpesifiser": {
+            "type": "string"
+          }
+        }
+      },
+      "Melder": {
+        "type": "object",
+        "properties": {
+          "meldersNavn": {
+            "type": "string"
+          },
+          "meldeDato": {
+            "type": "string"
+          },
+          "melderID": {
+            "type": "string"
+          }
+        }
+      },
+      "Melding": {
+        "type": "object",
+        "properties": {
+          "id": {
+            "type": "integer",
+            "format": "int64"
+          },
+          "lastChangedTime": {
+            "type": "string"
+          },
+          "filnavn": {
+            "type": "string"
+          },
+          "metaData": {
+            "type": "string"
+          },
+          "skjemaNavn": {
+            "type": "string"
+          }
+        }
+      },
+      "Meldingsinformasjon": {
+        "type": "object",
+        "properties": {
+          "skjema": {
+            "type": "string"
+          },
+          "versjonsNr": {
+            "type": "string"
+          },
+          "versjonsNrOriginal": {
+            "type": "string"
+          },
+          "krgguid": {
+            "type": "string"
+          },
+          "versjonIP": {
+            "type": "integer"
+          },
+          "versjonBT": {
+            "type": "integer"
+          },
+          "tidspunktSubmit": {
+            "type": "string"
+          },
+          "brukernavn": {
+            "type": "string"
+          },
+          "filnavn": {
+            "type": "string"
+          },
+          "versjonInternEkstern": {
+            "type": "string"
+          },
+          "feilSkjema": {
+            "type": "boolean"
+          }
+        }
+      },
+      "Navigering": {
+        "type": "object",
+        "properties": {
+          "meldingstittel": {
+            "type": "string"
+          },
+          "meldingsNr": {
+            "type": "string"
+          }
+        }
+      },
+      "PasientInstitusjon": {
+        "type": "object",
+        "properties": {
+          "fodselsnummerKRG": {
+            "type": "string"
+          },
+          "fodselsnummerHF": {
+            "type": "string"
+          },
+          "fodselnummerUtland": {
+            "type": "boolean"
+          },
+          "fodselsnummerUtlandSpesifiser": {
+            "type": "string"
+          },
+          "navnPasient": {
+            "type": "string"
+          },
+          "sykehuskode": {
+            "type": "string"
+          },
+          "sykehusnavnRHF": {
+            "type": "string"
+          },
+          "sykehusnavnHFSorOst": {
+            "type": "string"
+          },
+          "sykehusnavnHFVest": {
+            "type": "string"
+          },
+          "sykehusnavnHFMidt": {
+            "type": "string"
+          },
+          "sykehusnavnHFNord": {
+            "type": "string"
+          },
+          "sykehusnavnSpesSenter": {
+            "type": "string"
+          },
+          "sykehusnavnHFSpesifiser": {
+            "type": "string"
+          },
+          "sykehusnavnKRGSpesifiser": {
+            "type": "string"
+          },
+          "avdelingskode": {
+            "type": "string"
+          },
+          "avdelingsnavn": {
+            "type": "string"
+          },
+          "avdelingsnavnHFSpesifiser": {
+            "type": "string"
+          },
+          "avdelingsnavnKRGSpesifiser": {
+            "type": "string"
+          }
+        }
+      },
+      "PreoperativInformasjon": {
+        "type": "object",
+        "properties": {
+          "aktivMonitorering": {
+            "type": "string"
+          },
+          "revurderingSykdomsutrbredelse": {
+            "type": "string"
+          },
+          "preoprPSAVerdi": {
+            "type": "string"
+          },
+          "preoprPSAVerdiUkjent": {
+            "type": "string"
+          },
+          "neoadjuvantEndokrinBehandling": {
+            "type": "string"
+          },
+          "datoOppstartNeoadjBeh": {
+            "type": "string"
+          },
+          "datoOppstartNeoadjBehUkjent": {
+            "type": "string"
+          }
+        }
+      },
+      "RegionaleLK": {
+        "type": "object",
+        "properties": {
+          "regionaleLKPaavist": {
+            "type": "string"
+          }
+        }
+      },
+      "SPSA": {
+        "type": "object",
+        "properties": {
+          "psaverdi": {
+            "type": "string"
+          },
+          "psaverdiIkkeTatt": {
+            "type": "boolean"
+          },
+          "psaverdiUkjent": {
+            "type": "string"
+          }
+        }
+      },
+      "StdInfo": {
+        "type": "object",
+        "properties": {
+          "pasientInstitusjon": {
+            "$ref": "#/components/schemas/PasientInstitusjon"
+          },
+          "kommentarfelt": {
+            "$ref": "#/components/schemas/Kommentarfelt"
+          },
+          "filmBilde": {
+            "$ref": "#/components/schemas/FilmBilde"
+          },
+          "melder": {
+            "$ref": "#/components/schemas/Melder"
+          }
+        }
+      },
+      "Sykdomsutbredelse": {
+        "type": "object",
+        "properties": {
+          "tumor": {
+            "$ref": "#/components/schemas/Tumor"
+          },
+          "regionaleLK": {
+            "$ref": "#/components/schemas/RegionaleLK"
+          },
+          "fjernmetastaser": {
+            "$ref": "#/components/schemas/Fjernmetastaser"
+          },
+          "utredningsmetodeMetastaser": {
+            "$ref": "#/components/schemas/UtredningsmetodeMetastaser"
+          }
+        }
+      },
+      "Sykehistorie": {
+        "type": "object",
+        "properties": {
+          "vannlatingsproblem": {
+            "type": "string"
+          },
+          "kreftsymptomer": {
+            "type": "string"
+          },
+          "prostatavolum": {
+            "type": "string"
+          },
+          "prostatavolumUkjent": {
+            "type": "string"
+          },
+          "spsa": {
+            "$ref": "#/components/schemas/SPSA"
+          },
+          "whostatus": {
+            "type": "string"
+          }
+        }
+      },
+      "Tumor": {
+        "type": "object",
+        "properties": {
+          "palpatoriskTumorHoyre": {
+            "type": "string"
+          },
+          "palpatoriskTumorVenstre": {
+            "type": "string"
+          },
+          "samletPalpatoriskTumor": {
+            "type": "string"
+          },
+          "datoMRDiagnostikk": {
+            "type": "string"
+          },
+          "datoMRDiagnostikkUkjent": {
+            "type": "string"
+          },
+          "samletMRBasertKliniskT": {
+            "type": "string"
+          },
+          "totalVurderingKliniskT": {
+            "type": "string"
+          },
+          "kliniskVurdertAv": {
+            "type": "string"
+          },
+          "piradshoyre": {
+            "type": "string"
+          },
+          "piradsvenstre": {
+            "type": "string"
+          },
+          "mrbasertKliniskTHoyre": {
+            "type": "string"
+          },
+          "mrbasertKliniskTVenstre": {
+            "type": "string"
+          },
+          "mrdiagnostikk": {
+            "type": "string"
+          }
+        }
+      },
+      "Utredning": {
+        "type": "object",
+        "properties": {
+          "funnUtredning": {
+            "type": "string"
+          },
+          "diagnosedato": {
+            "type": "string"
+          },
+          "sykehistorie": {
+            "$ref": "#/components/schemas/Sykehistorie"
+          },
+          "diagnostiskeUS": {
+            "$ref": "#/components/schemas/DiagnostiskeUS"
+          },
+          "datoMetastaser": {
+            "type": "string"
+          },
+          "sykdomsutbredelse": {
+            "$ref": "#/components/schemas/Sykdomsutbredelse"
+          },
+          "kliniskTNM": {
+            "$ref": "#/components/schemas/KliniskTNM"
+          }
+        }
+      },
+      "UtredningsmetodeFjernmet": {
+        "type": "object",
+        "properties": {
+          "skjelettscintigrafiMet": {
+            "type": "boolean"
+          },
+          "rtgThoraxMet": {
+            "type": "boolean"
+          },
+          "rtgBekkenMet": {
+            "type": "boolean"
+          },
+          "cytologiMet": {
+            "type": "boolean"
+          },
+          "biopsiMet": {
+            "type": "boolean"
+          },
+          "annenDiagnostikkMet": {
+            "type": "boolean"
+          },
+          "annenDiagnostikkMetSpesifiser": {
+            "type": "string"
+          },
+          "utredningsmetodeFjernmetUkjent": {
+            "type": "string"
+          },
+          "ctmet": {
+            "type": "boolean"
+          },
+          "mrmet": {
+            "type": "boolean"
+          },
+          "petmet": {
+            "type": "boolean"
+          }
+        }
+      },
+      "UtredningsmetodeMetastaser": {
+        "type": "object",
+        "properties": {
+          "utredningsmetodeLK": {
+            "type": "string"
+          },
+          "annenDiagnostikkLKSpesifiser": {
+            "type": "string"
+          },
+          "utredningsmetodeFjernmet": {
+            "$ref": "#/components/schemas/UtredningsmetodeFjernmet"
+          }
+        }
+      },
+      "VevsproverUS": {
+        "type": "object",
+        "properties": {
+          "biopsiVevsprover": {
+            "type": "boolean"
+          },
+          "annetVevsprover": {
+            "type": "boolean"
+          },
+          "annetVevsproverSpesifiser2": {
+            "type": "string"
+          },
+          "turpvevsprover": {
+            "type": "boolean"
+          }
+        }
+      }
+    }
+  }
+}
