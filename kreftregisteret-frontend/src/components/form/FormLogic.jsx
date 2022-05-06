@@ -29,6 +29,9 @@ const FormLogic = ({FormType}) => {
     // Registrerer "sv-dropdown-react" som en type render for spørsmål hvor "type" er "dropdown" og "renderAs" er "dropdown-react"
     SurveyReact.RendererFactory.Instance.registerRenderer("dropdown", "dropdown-react", "sv-dropdown-react");
 
+    // Setter riktig format for dato til feltet meldeFato.
+    const datoQuestion = survey.getQuestionByName('meldeDato');
+    datoQuestion.dateFormat = "dd/mm/yy";
 
     // Templister for array
     let checkboxes = [];
@@ -89,7 +92,7 @@ const FormLogic = ({FormType}) => {
         for (const key in flattenedJSON) {
             if (key === "sykehusnavnRHF") {
                 flattenedJSON["sykehusnavnRHF"] = ""; // Fjerner region fra dataen
-                data.stdInfo.pasientInstitusjon.sykehusnavnRHF = ""
+                data.stdInfo.pasientInstitusjon.sykehusnavnRHF = "";
             }
             else  if (key === "sykehusnavnHFSorOst" || key === "sykehusnavnHFVest" || key === "sykehusnavnHFMidt" || key === "sykehusnavnHFNord" || key === "sykehusnavnSpesSenter") {
                 if (flattenedJSON[key]) {
@@ -116,7 +119,7 @@ const FormLogic = ({FormType}) => {
             }
             if (StringJSONType !== JSONType.name) { // Hvis data blir lastet inn i feil type skjema
                 setIsModalOpen(true);
-                setPostError("Innlastet data i feil skjema")
+                setPostError("Innlasting feil");
             } else {
                 setSykehusKode();
                 survey.data = flattenedJSON;

@@ -20,13 +20,13 @@ const Dashboard = () => {
                         Velg nytt skjema
                     </DropdownToggle>
                     <DropdownMenu>
-                        <DropdownItem onClick={() => navigate(EnumRoutes.utredning.url + "0")}>
+                        <DropdownItem onClick={() => navigate(EnumRoutes.utredning.url + 0)}>
                             {EnumRoutes.utredning.skjemanavn}
                         </DropdownItem>
-                        <DropdownItem onClick={() => navigate(EnumRoutes.kirurgi.url + "0")}>
+                        <DropdownItem onClick={() => navigate(EnumRoutes.kirurgi.url + 0)}>
                             {EnumRoutes.kirurgi.skjemanavn}
                         </DropdownItem>
-                        <DropdownItem onClick={() => navigate(EnumRoutes.straalebehandling.url + "0")}>
+                        <DropdownItem onClick={() => navigate(EnumRoutes.straalebehandling.url + 0)}>
                             {EnumRoutes.straalebehandling.skjemanavn}
                         </DropdownItem>
                     </DropdownMenu>
