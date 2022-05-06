@@ -42,7 +42,7 @@ Font colors: #21314d dark/royal blue
     margin: auto;
 }
 
-/*Survey header text*/
+/*START -- Survey header text*/
 .sv_main .sv_header {
     border:none;
     color: #21314d;
@@ -63,6 +63,8 @@ h3 .sv-string-viewer {
     font-weight: 500;
     color: #21314d;
 }
+
+/* END -- Survey header text*/
 
 /*Removing border-bottom header*/
 .sv_main .sv_body {
@@ -93,6 +95,10 @@ textarea {
     min-height: 2em;
     max-height: 10em;
     height: 3em;
+}
+
+.sv_main .sv_container .sv_body .sv_p_root .sv_q textarea {
+    border: 1px solid #e7e7e7;
 }
 
 /*question container*/
@@ -130,21 +136,22 @@ textarea {
     padding: 0.8em 0 0.2em 0.7em;
     color: #21314d;
 }
-
 /*END Title in survey*/
 
 
-/*Input border color*/
-.sv_main .sv_container .sv_body .sv_p_root .sv_q input[type=radio]:focus, .sv_main .sv_container .sv_body .sv_p_root .sv_q input[type=checkbox]:focus {
+/*Input and textarea border color*/
+.sv_main .sv_container .sv_body .sv_p_root .sv_q input[type=radio]:focus, .sv_main .sv_container .sv_body .sv_p_root .sv_q input[type=checkbox]:focus, .sv_main .sv_container .sv_body .sv_p_root .sv_q textarea:focus {
     outline: 2px solid #46658A;
 }
 
 .sv_main .sv_container .sv_body .sv_p_root .sv_q input:not([type=button]):not([type=reset]):not([type=submit]):not([type=image]):not([type=checkbox]):not([type=radio]):focus {
     border: 2px solid #46658A;
 }
-/* END -- Input border color*/
+/* END -- Input and textarea border color*/
 
 /* END -- Title and content in survey*/
+
+
 
 /*Scroller design*/
 
