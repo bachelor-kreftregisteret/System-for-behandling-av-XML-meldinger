@@ -31,6 +31,7 @@ public class MeldingManager {
         //er formatet
         String formattedDate = getDate();
         melding.setEndrettidspunkt(formattedDate);
+        melding.setId(createNewID());
         meldingList.add(melding);
     }
 
