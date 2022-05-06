@@ -69,6 +69,8 @@ public class MessageManager {
         System.out.println("Melding: " + melding);
         System.out.println("Melding skjemanavn 2: " + melding.getSkjemaNavn());
         melding.setLastChangedTime(getDate());
+        // Pga frontend ikke bruker id, men item.id
+        melding.setId(id);
         meldingMap.put(melding, createNewID());
         System.out.println("I write: " + meldingMap);
     }
@@ -79,8 +81,11 @@ public class MessageManager {
             File file = StreamUtil.stream2file(is);
 
             Melding melding = convertFileToMelding(file);
-            meldingMap.put(melding, createNewID());
-
+            // Pga frontend ikke bruker id, men item.id
+            if (melding != null) {
+                melding.setId(id);
+                meldingMap.put(melding, createNewID());
+            }
         }catch(Exception e){
             e.printStackTrace();
         }
