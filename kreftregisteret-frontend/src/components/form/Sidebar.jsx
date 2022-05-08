@@ -22,7 +22,7 @@ const Sidebar = (props) => {
     const scrollToTitle = (title) => {
         for (let index = 0; index < titles.length; index++) {
             if (titles && titles[index].innerText === title.innerText) {
-                document.querySelectorAll("h4")[index].scrollIntoView({behavior: "smooth"});
+                document.querySelectorAll("h4")[index].scrollIntoView({behavior: "smooth", block:"center"});
                 if (index === 0) {
                     document.getElementById("root").scrollIntoView();
                 }
