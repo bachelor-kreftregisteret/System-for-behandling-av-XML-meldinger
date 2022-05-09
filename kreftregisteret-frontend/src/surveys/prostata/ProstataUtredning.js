@@ -1309,7 +1309,7 @@ const SurveyJsonUtredning = {
                     type: "text",
                     name: "prostatavolum",
                     title: {
-                        no: "Prostatavolum"
+                        no: "Prostatavolum (mL)"
                     },
                     maxWidth: "30%",
                     enableIf: "{prostatavolumUkjent} empty",
