@@ -23,7 +23,7 @@ const MeldingList = () => {
 
     const tableOfMeldinger = (data) => {
         //data.replaceAll('\\', '')
-        msgList = data
+        msgList = data;
         const rows = msgList.sort((a, b) => a.id > b.id ? 1 : -1).map((item, index) => (
                 <tr key={index}>
                     <td>{item.id}</td>
