@@ -1994,6 +1994,7 @@ const SurveyJSONStraale = {
                 {
                     type: "text",
                     name: "preStraalePSAVerdi",
+                    maxWidth: "30%",
                     title: {
                         no: "PSA før strålebehandling og eventuell neoadjuvant endokrin behandling"
                     },
@@ -2525,7 +2526,7 @@ const SurveyJSONStraale = {
                 {
                     type: "text",
                     name: "meldersNavn",
-                    startWithNewLine: false,
+                    startWithNewLine: true,
                     title: {
                         no: "Melders navn"
                     },
