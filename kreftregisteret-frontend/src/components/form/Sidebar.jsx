@@ -92,11 +92,14 @@ const Sidebar = (props) => {
         !props.loading ?
             <div className={"sidebarContainer"}>
                 <button
-                    className={showSidebar ? "hideSidebarBtn" : "showSidebarBtn"}
+                    className={showSidebar ?
+                        "hideSidebarBtn" : "showSidebarBtn"}
                     onClick={() => {
                         setShowSidebar(!showSidebar)
                     }}
-                    aria-label={showSidebar ? "Hide sidebar" : "Show sidebar"}
+                    aria-label={showSidebar ?
+                        "Hide sidebar" : "Show sidebar"}
+                    autoFocus
                 >
                     {showSidebar ? ">" : "<"}
                 </button>
