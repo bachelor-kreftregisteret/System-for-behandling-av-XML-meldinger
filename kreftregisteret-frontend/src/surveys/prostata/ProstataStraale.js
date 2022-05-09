@@ -1,7 +1,7 @@
 const SurveyJSONStraale = {
     name: "KliniskProstataStraale",
     locale: "no",
-    title: "STRÅLEBEHANDLING",
+    title: "Strålebehandling",
     pages: [
         {
             name: "pasientInstitusjon",
