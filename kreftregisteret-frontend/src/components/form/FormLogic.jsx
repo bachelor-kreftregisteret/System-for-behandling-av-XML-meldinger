@@ -29,10 +29,6 @@ const FormLogic = ({FormType}) => {
     // Registrerer "sv-dropdown-react" som en type render for spørsmål hvor "type" er "dropdown" og "renderAs" er "dropdown-react"
     SurveyReact.RendererFactory.Instance.registerRenderer("dropdown", "dropdown-react", "sv-dropdown-react");
 
-    // Setter riktig format for dato til feltet meldeFato.
-    const datoQuestion = survey.getQuestionByName('meldeDato');
-    datoQuestion.dateFormat = "dd/mm/yy";
-
     // Templister for array
     let checkboxes = [];
     let flattenedJSON = [];
