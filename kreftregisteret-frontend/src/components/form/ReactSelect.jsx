@@ -59,6 +59,8 @@ export class ReactSelect extends SurveyReact.SurveyQuestionDropdown {
                                 ...base,
                                 minHeight: "25px",
                                 maxHeight: "30px",
+                                maxWidth: "450px",
+                                minWidth: "fit-content",
                                 borderColor: "#e7e7e7",
                             }),
                             valueContainer: (base) => ({

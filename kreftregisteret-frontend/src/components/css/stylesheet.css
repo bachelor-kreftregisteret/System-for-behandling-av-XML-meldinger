@@ -125,6 +125,12 @@ textarea {
 }
 /* END -- Background for only body of title*/
 
+/* inputfields for date and number */
+.sv_main .sv_container .sv_body .sv_p_root .sv_q input[type=date], .sv_main .sv_container .sv_body .sv_p_root .sv_q input[type=number]  {
+    max-width: 130px;
+}
+
+/* Description text below titles*/
 .sv_main .sv_container .sv_body .sv_p_root .sv_q_description {
     margin-top: 0;
     font-size: smaller;

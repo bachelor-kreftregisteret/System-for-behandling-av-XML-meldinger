@@ -9,6 +9,7 @@ const SurveyJSONKirugi = {
                 {
                     type: "text",
                     name: "fodselsnummerHF",
+                    maxWidth: "400px",
                     title: {
                         no: "Fødselsnummer"
                     },
@@ -29,6 +30,8 @@ const SurveyJSONKirugi = {
                 {
                     type: "checkbox",
                     name: "fodselnummerUtland",
+                    maxWidth: "200px",
+                    minWidth: "200px",
                     startWithNewLine: false,
                     titleLocation: "hidden",
                     choices: [
@@ -43,6 +46,7 @@ const SurveyJSONKirugi = {
                 {
                     type: "text",
                     name: "navnPasient",
+                    maxWidth: "471px",
                     title: {
                         no: "Navn"
                     },
@@ -1041,6 +1045,7 @@ const SurveyJSONKirugi = {
                 {
                     type: "comment",
                     name: "sykehusnavnHFSpesifiser",
+
                     visible: false,
                     visibleIf: "{sykehuskode} = 9998",
                     startWithNewLine: true,
@@ -1227,7 +1232,7 @@ const SurveyJSONKirugi = {
                 {
                     type: "dropdown",
                     name: "palpatoriskTumorVenstre",
-                    startWithNewLine: true,
+                    startWithNewLine: false,
                     title: {
                         no: "Palpatorisk T-stadium venstre side (laveste stadium velges ved tvil)"
                     },
@@ -1315,6 +1320,8 @@ const SurveyJSONKirugi = {
                 {
                     type: "text",
                     name: "datoMRDiagnostikk",
+                    maxWidth: "140px",
+                    minWidth: "unset",
                     visible: false,
                     visibleIf: "{mrdiagnostikk} = 1",
                     startWithNewLine: true,
@@ -1336,6 +1343,8 @@ const SurveyJSONKirugi = {
                 {
                     type: "checkbox",
                     name: "datoMRDiagnostikkUkjent",
+                    maxWidth: "100px",
+                    minWidth: "100px",
                     visible: false,
                     visibleIf: "{mrdiagnostikk} = 1",
                     startWithNewLine: false,
@@ -1406,7 +1415,7 @@ const SurveyJSONKirugi = {
                     name: "piradsvenstre",
                     visible: false,
                     visibleIf: "{mrdiagnostikk} = 1",
-                    startWithNewLine: true,
+                    startWithNewLine: false,
                     title: {
                         no: "PI-RADS venstre side (laveste stadium velges ved tvil)"
                     },
@@ -1952,6 +1961,7 @@ const SurveyJSONKirugi = {
                 {
                     type: "text",
                     name: "preoprPSAVerdi",
+                    maxWidth: "30%",
                     title: {
                         no: "PSA før prostatektomi og eventuell neoadjuvant endokrin behandling"
                     },
@@ -1969,6 +1979,8 @@ const SurveyJSONKirugi = {
                 {
                     type: "checkbox",
                     name: "preoprPSAVerdiUkjent",
+                    maxWidth: "100px",
+                    minWidth: "100px",
                     startWithNewLine: false,
                     titleLocation: "hidden",
                     choices: [
@@ -2012,6 +2024,8 @@ const SurveyJSONKirugi = {
                 {
                     type: "text",
                     name: "datoOppstartNeoadjBeh",
+                    maxWidth: "140px",
+                    minWidth: "unset",
                     visible: false,
                     visibleIf: "{neoadjuvantEndokrinBehandling} = 1",
                     title: {
@@ -2241,6 +2255,8 @@ const SurveyJSONKirugi = {
                 {
                     type: "checkbox",
                     name: "labnavnHFIkkeRelevant",
+                    maxWidth: "150px",
+                    minWidth: "150px",
                     startWithNewLine: false,
                     titleLocation: "hidden",
                     choices: [
@@ -2263,6 +2279,8 @@ const SurveyJSONKirugi = {
                 },
                 {
                     type: "text",
+                    maxWidth: "30%",
+                    minWidth: "unset",
                     name: "preparatnummer",
                     visible: false,
                     visibleIf: "{labnavnHF} notempty",
@@ -2297,6 +2315,8 @@ const SurveyJSONKirugi = {
                 {
                     type: "text",
                     name: "meldeDato",
+                    maxWidth: "140px",
+                    minWidth: "unset",
                     title: {
                         no: "Meldedato"
                     },
@@ -2307,7 +2327,7 @@ const SurveyJSONKirugi = {
                 {
                     type: "text",
                     name: "meldersNavn",
-                    startWithNewLine: false,
+                    startWithNewLine: true,
                     title: {
                         no: "Melders navn"
                     },

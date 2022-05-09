@@ -9,6 +9,7 @@ const SurveyJSONStraale = {
                 {
                     type: "text",
                     name: "fodselsnummerHF",
+                    maxWidth: "400px",
                     title: {
                         no: "Fødselsnummer"
                     },
@@ -29,6 +30,8 @@ const SurveyJSONStraale = {
                 {
                     type: "checkbox",
                     name: "fodselnummerUtland",
+                    maxWidth: "200px",
+                    minWidth: "200px",
                     startWithNewLine: false,
                     titleLocation: "hidden",
                     choices: [
@@ -43,6 +46,7 @@ const SurveyJSONStraale = {
                 {
                     type: "text",
                     name: "navnPasient",
+                    maxWidth: "471px",
                     title: {
                         no: "Navn"
                     },
@@ -1259,7 +1263,7 @@ const SurveyJSONStraale = {
                 {
                     type: "dropdown",
                     name: "palpatoriskTumorVenstre",
-                    startWithNewLine: true,
+                    startWithNewLine: false,
                     title: {
                         no: "Palpatorisk T-stadium venstre side (laveste stadium velges ved tvil)"
                     },
@@ -1347,6 +1351,8 @@ const SurveyJSONStraale = {
                 {
                     type: "text",
                     name: "datoMRDiagnostikk",
+                    maxWidth: "140px",
+                    minWidth: "unset",
                     visible: false,
                     visibleIf: "{mrdiagnostikk} = 1",
                     startWithNewLine: true,
@@ -1368,6 +1374,8 @@ const SurveyJSONStraale = {
                 {
                     type: "checkbox",
                     name: "datoMRDiagnostikkUkjent",
+                    maxWidth: "100px",
+                    minWidth: "100px",
                     visible: false,
                     visibleIf: "{mrdiagnostikk} = 1",
                     startWithNewLine: false,
@@ -1438,7 +1446,7 @@ const SurveyJSONStraale = {
                     name: "piradsvenstre",
                     visible: false,
                     visibleIf: "{mrdiagnostikk} = 1",
-                    startWithNewLine: true,
+                    startWithNewLine: false,
                     title: {
                         no: "PI-RADS venstre side (laveste stadium velges ved tvil)"
                     },
@@ -2003,6 +2011,8 @@ const SurveyJSONStraale = {
                 {
                     type: "checkbox",
                     name: "preStraalePSAVerdiUkjent",
+                    maxWidth: "100px",
+                    minWidth: "100px",
                     startWithNewLine: false,
                     titleLocation: "hidden",
                     choices: [
@@ -2046,6 +2056,8 @@ const SurveyJSONStraale = {
                 {
                     type: "text",
                     name: "datoOppstartEndokrinBeh",
+                    maxWidth: "140px",
+                    minWidth: "unset",
                     visible: false,
                     visibleIf: "{endokrinBehandling} = 1",
                     title: {
@@ -2066,6 +2078,8 @@ const SurveyJSONStraale = {
                 {
                     type: "checkbox",
                     name: "datoOppstartEndokrinBehUkjent",
+                    maxWidth: "100px",
+                    minWidth: "100px",
                     visible: false,
                     visibleIf: "{endokrinBehandling} = 1",
                     startWithNewLine: false,
@@ -2082,6 +2096,8 @@ const SurveyJSONStraale = {
                 {
                     type: "text",
                     name: "varighetEndokrinBehandling",
+                    maxWidth: "140px",
+                    minWidth: "unset",
                     visible: false,
                     visibleIf: "{endokrinBehandling} = 1",
                     title: {
@@ -2106,6 +2122,8 @@ const SurveyJSONStraale = {
                 {
                     type: "checkbox",
                     name: "varighetEndokrinBehUkjent",
+                    maxWidth: "100px",
+                    minWidth: "100px",
                     visible: false,
                     visibleIf: "{endokrinBehandling} = 1",
                     startWithNewLine: false,
@@ -2130,6 +2148,8 @@ const SurveyJSONStraale = {
                 {
                     type: "text",
                     name: "datoOppstartStraale",
+                    maxWidth: "140px",
+                    minWidth: "unset",
                     title: {
                         no: "Dato for oppstart av strålebehandling"
                     },
@@ -2162,7 +2182,9 @@ const SurveyJSONStraale = {
                 {
                     type: "text",
                     name: "prostataFRDoseGY",
+                    maxWidth: "200px",
                     visible: false,
+
                     visibleIf: "{eksternStraalebehandling} = 1",
                     title: {
                         no: "Dose per fraksjon, prostata"
@@ -2181,6 +2203,8 @@ const SurveyJSONStraale = {
                 {
                     type: "checkbox",
                     name: "prostataFRDoseUkjent",
+                    maxWidth: "100px",
+                    minWidth: "100px",
                     visible: false,
                     visibleIf: "{eksternStraalebehandling} = 1",
                     startWithNewLine: false,
@@ -2197,6 +2221,8 @@ const SurveyJSONStraale = {
                 {
                     type: "text",
                     name: "prostataAntFR",
+                    maxWidth: "140px",
+                    minWidth: "unset",
                     visible: false,
                     visibleIf: "{eksternStraalebehandling} = 1",
                     startWithNewLine: true,
@@ -2222,6 +2248,8 @@ const SurveyJSONStraale = {
                 {
                     type: "checkbox",
                     name: "prostataAntFRUkjent",
+                    maxWidth: "100px",
+                    minWidth: "100px",
                     visible: false,
                     visibleIf: "{eksternStraalebehandling} = 1",
                     startWithNewLine: false,
@@ -2289,6 +2317,7 @@ const SurveyJSONStraale = {
                 {
                     type: "text",
                     name: "hdbrachyterapiFRDoseGY",
+                    maxWidth: "200px",
                     visible: false,
                     visibleIf: "{hdbrachyterapi} = 1",
                     title: {
@@ -2308,6 +2337,8 @@ const SurveyJSONStraale = {
                 {
                     type: "checkbox",
                     name: "hdbrachyterapiFRDoseUkjent",
+                    maxWidth: "100px",
+                    minWidth: "100px",
                     visible: false,
                     visibleIf: "{hdbrachyterapi} = 1",
                     startWithNewLine: false,
@@ -2324,6 +2355,8 @@ const SurveyJSONStraale = {
                 {
                     type: "text",
                     name: "hdbrachyterapiAntFR",
+                    maxWidth: "140px",
+                    minWidth: "unset",
                     visible: false,
                     visibleIf: "{hdbrachyterapi} = 1",
                     startWithNewLine: true,
@@ -2349,6 +2382,8 @@ const SurveyJSONStraale = {
                 {
                     type: "checkbox",
                     name: "hdbrachyterapiAntFRUkjent",
+                    maxWidth: "100px",
+                    minWidth: "100px",
                     visible: false,
                     visibleIf: "{hdbrachyterapi} = 1",
                     startWithNewLine: false,
@@ -2388,6 +2423,7 @@ const SurveyJSONStraale = {
                 {
                     type: "text",
                     name: "behandlingssted",
+                    maxWidth: "200px",
                     visible: false,
                     visibleIf: "{ldbrachyterapi} = 1",
                     title: {
@@ -2399,6 +2435,8 @@ const SurveyJSONStraale = {
                 },
                 {
                     type: "checkbox",
+                    maxWidth: "100px",
+                    minWidth: "100px",
                     name: "behandlingsstedUkjent",
                     visible: false,
                     visibleIf: "{ldbrachyterapi} = 1",
@@ -2416,6 +2454,7 @@ const SurveyJSONStraale = {
                 {
                     type: "text",
                     name: "ldbrachyterapiFRDoseGY",
+                    maxWidth: "200px",
                     visible: false,
                     visibleIf: "{ldbrachyterapi} = 1",
                     startWithNewLine: true,
@@ -2436,6 +2475,8 @@ const SurveyJSONStraale = {
                 {
                     type: "checkbox",
                     name: "ldbrachyterapiFRDoseUkjent",
+                    maxWidth: "100px",
+                    minWidth: "100px",
                     visibleIf: "{ldbrachyterapi} = 1",
                     startWithNewLine: false,
                     titleLocation: "hidden",

@@ -9,6 +9,7 @@ const SurveyJsonUtredning = {
                 {
                     type: "text",
                     name: "fodselsnummerHF",
+                    maxWidth: "400px",
                     title: {
                         no: "Fødselsnummer"
                     },
@@ -29,6 +30,8 @@ const SurveyJsonUtredning = {
                 {
                     type: "checkbox",
                     name: "fodselnummerUtland",
+                    maxWidth: "200px",
+                    minWidth: "200px",
                     startWithNewLine: false,
                     titleLocation: "hidden",
                     choices: [
@@ -43,6 +46,7 @@ const SurveyJsonUtredning = {
                 {
                     type: "text",
                     name: "navnPasient",
+                    maxWidth: "471px",
                     title: {
                         no: "Navn"
                     },
@@ -1176,6 +1180,8 @@ const SurveyJsonUtredning = {
                 {
                     type: "checkbox",
                     name: "spsa",
+                    maxWidth: "140px",
+                    minWidth: "unset",
                     startWithNewLine: false,
                     titleLocation: "hidden",
                     choices: [
@@ -1311,7 +1317,8 @@ const SurveyJsonUtredning = {
                     title: {
                         no: "Prostatavolum (mL)"
                     },
-                    maxWidth: "30%",
+                    maxWidth: "140px",
+                    minWidth: "unset",
                     enableIf: "{prostatavolumUkjent} empty",
                     isRequired: true,
                     requiredIf: "{prostatavolumUkjent} empty",
@@ -1374,6 +1381,8 @@ const SurveyJsonUtredning = {
                 {
                     type: "text",
                     name: "datoMRDiagnostikk",
+                    maxWidth: "140px",
+                    minWidth: "unset",
                     visible: false,
                     visibleIf: "{mrdiagnostikk} = 1",
                     startWithNewLine: true,
@@ -1590,7 +1599,7 @@ const SurveyJsonUtredning = {
                     type: "dropdown",
                     name: "palpatoriskTumorVenstre",
                     visibleIf: "{funnUtredning} = 1",
-                    startWithNewLine: true,
+                    startWithNewLine: false,
                     title: {
                         no: "Palpatorisk T-stadium venstre side (laveste stadium velges ved tvil)"
                     },
@@ -1710,7 +1719,7 @@ const SurveyJsonUtredning = {
                     name: "piradsvenstre",
                     visible: false,
                     visibleIf: "{mrdiagnostikk} = 1",
-                    startWithNewLine: true,
+                    startWithNewLine: false,
                     title: {
                         no: "PI-RADS venstre side (laveste stadium velges ved tvil)"
                     },
@@ -1809,7 +1818,7 @@ const SurveyJsonUtredning = {
                     name: "mrbasertKliniskTVenstre",
                     visible: false,
                     visibleIf: "{piradsvenstre} = 4 or {piradsvenstre} = 5",
-                    startWithNewLine: true,
+                    startWithNewLine: false,
                     title: {
                         no: "MR-basert T-stadium venstre side (laveste stadium velges ved tvil)"
                     },
@@ -2400,7 +2409,7 @@ const SurveyJsonUtredning = {
                     visible: false,
                     maxWidth: "30%",
                     visibleIf: "{labnavnHF} notempty",
-                    startWithNewLine: false,
+                    startWithNewLine: true,
                     title: {
                         no: "Preparatnummer"
                     }
@@ -2585,7 +2594,7 @@ const SurveyJsonUtredning = {
                 {
                     type: "text",
                     name: "meldersNavn",
-                    startWithNewLine: false,
+                    startWithNewLine: true,
                     title: {
                         no: "Melders navn"
                     },
