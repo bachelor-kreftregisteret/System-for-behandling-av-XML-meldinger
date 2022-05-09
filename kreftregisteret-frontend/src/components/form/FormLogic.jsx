@@ -209,7 +209,7 @@ const FormLogic = ({FormType}) => {
     }, [setDataValues]); // Venter på setValues så den ikke triggrer mens data blir lastet inn
 
     const submit = () => {
-        const URL = '/api/v1/meldinger'; // 'http://localhost:8080/api/v1/meldinger'
+        const URL = 'http://localhost:8080/api/v1/meldinger'; // 'http://localhost:8080/api/v1/meldinger'
 
         replaceUndefined(data);
         // Funksjon for å scrolle til spørsmål med error

@@ -11,6 +11,7 @@ Font colors: #21314d dark/royal blue
     padding: 0;
     margin: 0;
     flex-direction: row-reverse;
+    background-color: #F7F6F5;
 }
 
 .errorContainer {
@@ -24,7 +25,7 @@ Font colors: #21314d dark/royal blue
 }
     /*Ensures that the last fields does not hide behind the footer*/
 .sv_main .sv_container .sv_body {
-    padding: 1em 5em 5em 5em;
+    margin: 1em 8em 5em 8em;
 }
 
 /*Removing default lines*/
@@ -38,7 +39,7 @@ Font colors: #21314d dark/royal blue
     display: flex;
     place-items: center;
     flex-direction: column;
-    width: 90%;
+    width: 100%;
     margin: auto;
 }
 
@@ -54,7 +55,7 @@ Font colors: #21314d dark/royal blue
 }
 
 .sv_main .sv_container .sv_header {
-    padding: 1em 0 0 5em;
+    padding: 1em 0 0 9em;
     width: 100%;
 }
 
@@ -111,7 +112,7 @@ textarea {
 /*Background for title in each "card"*/
 .sv_main .sv_container .sv_body .sv_p_root > .sv_row:nth-child(n) {
     background-color: #F7F6F5;
-    margin:15px 0 0 0;
+    margin-bottom:1em;
     box-shadow: rgba(60, 64, 67, 0.17) 0 1px 2px 0, rgba(60, 64, 67, 0.07) 0 1px 3px 1px;
     border-radius: 2px ;
     padding: 0.5em 2em;
