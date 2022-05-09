@@ -1404,6 +1404,8 @@ const SurveyJsonUtredning = {
                 {
                     type: "checkbox",
                     name: "datoMRDiagnostikkUkjent",
+                    maxWidth: "140px",
+                    minWidth: "unset",
                     visible: false,
                     visibleIf: "{mrdiagnostikk} = 1",
                     startWithNewLine: false,
@@ -1453,6 +1455,8 @@ const SurveyJsonUtredning = {
                 {
                     type: "radiogroup",
                     name: "vevsprover",
+                    maxWidth: "200px",
+                    minWidth: "unset",
                     title: {
                         no: "Celle-/vevsprøver"
                     },
