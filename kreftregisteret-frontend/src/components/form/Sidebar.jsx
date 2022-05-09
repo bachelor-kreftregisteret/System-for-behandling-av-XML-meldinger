@@ -66,15 +66,23 @@ const Sidebar = (props) => {
             <div className={showSidebar ? "sidebar" : "hide"}>
                 {titles && titles.map((title, index) => {
                     return (
-                        <span id={`${index}`} className={"sidebarNav"} key={index}
+                        <div id={`${index}`}
+                              className={"sidebarNav"}
+                              key={index}
                               onClick={() => {
                                   scrollToTitle(title);
                               }}
                         >
-                            <button aria-label={`${title.innerText}`} className={activeId === index ?
-                                "titleBtn activeTitleBtn" : "titleBtn"}/>
-                            <span className={"sidebarTitle"}> {title.innerText} </span>
-                        </span>)
+                            <button aria-label={`${title.innerText}`}
+                                    className={activeId === index ?
+                                "titleBtn activeTitleBtn" : "titleBtn"}
+                            />
+                            <span className={"sidebarTitle"}
+                                  role={"button"}
+                            >
+                                {title.innerText}
+                            </span>
+                        </div>)
                 })}
             </div>
         )
@@ -87,7 +95,9 @@ const Sidebar = (props) => {
                     className={showSidebar ? "hideSidebarBtn" : "showSidebarBtn"}
                     onClick={() => {
                         setShowSidebar(!showSidebar)
-                    }}>
+                    }}
+                    aria-label={showSidebar ? "Hide sidebar" : "Show sidebar"}
+                >
                     {showSidebar ? ">" : "<"}
                 </button>
                 {listOfTitles(titles)}  </div>

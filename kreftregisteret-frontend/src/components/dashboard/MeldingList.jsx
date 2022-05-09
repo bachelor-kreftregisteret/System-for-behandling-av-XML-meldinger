@@ -18,7 +18,7 @@ const MeldingList = () => {
     const formatJsonDate = (date) => {
             const newDate = new Date(date)
         return `${newDate.getFullYear()}-${addZero(newDate.getMonth() + 1)}-${addZero(newDate.getDate())} 
-        kl.${addZero(newDate.getUTCHours())}:${addZero(newDate.getMinutes())} `;
+        kl.${addZero(newDate.getUTCHours())}:${addZero(newDate.getMinutes())}` || date;
     }
 
     const tableOfMeldinger = (data) => {
@@ -81,8 +81,10 @@ const MeldingList = () => {
         !loading && data !== null ?
         tableOfMeldinger(data) :
         error !== null ?
-            <div><h4>`${error.toString()}`</h4>
-            <p>Noe gikk galt ved innlasting</p></div> :
+            <div>
+                <h4>{error.toString()}</h4>
+                <p>Noe gikk galt ved innlasting</p>
+            </div> :
             <h4>Laster inn meldinger...</h4>);
 }
 
