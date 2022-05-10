@@ -9,6 +9,7 @@ import Sidebar from "./Sidebar";
 import Footer from "./Footer";
 import ReactSelect from "./ReactSelect";
 import GetMeldinger from "../../api/getMeldinger";
+import PostMeldinger from "../../api/postMeldinger";
 
 const FormLogic = ({FormType}) => {
     // Henter data fra backend
@@ -209,8 +210,6 @@ const FormLogic = ({FormType}) => {
     }, [setDataValues]); // Venter på setValues så den ikke triggrer mens data blir lastet inn
 
     const submit = () => {
-        const URL = 'http://localhost:8080/api/v1/meldinger'; // 'http://localhost:8080/api/v1/meldinger'
-
         replaceUndefined(data);
         // Funksjon for å scrolle til spørsmål med error
         if (survey.isCurrentPageHasErrors) {
@@ -226,18 +225,8 @@ const FormLogic = ({FormType}) => {
             }
             setIsModalOpen(false);
         } else {
-            //Lag en component under api for post
             setIsModalOpen(true);
-            const headers = {
-                'Content-Type': 'application/json'
-            };
-            axios.post(URL, data, {headers})
-                .then(_ => {
-                    setPostError("")
-                })
-                .catch(error => {
-                    setPostError(error.toString())
-                })
+            PostMeldinger(data);
         }
     };
 

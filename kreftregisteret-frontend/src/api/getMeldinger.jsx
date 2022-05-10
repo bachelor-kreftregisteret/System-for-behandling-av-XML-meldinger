@@ -1,7 +1,6 @@
 import {useState, useEffect} from "react";
 import axios from 'axios';
-
-const BASE_URL = '/api/v1/meldinger/'; // 'http://localhost:8080/api/v1/meldinger/'
+import {URL} from "../utils/utils";
 
 //Inspired by https://www.youtube.com/watch?v=Vspeudp-M9k
 const GetMeldinger = (id = "") => {
@@ -15,7 +14,7 @@ const GetMeldinger = (id = "") => {
             setLoading(true);
             setError(null);
             try {
-                const response = await axios.get(BASE_URL + id);
+                const response = await axios.get(URL.url + id);
                 response && setData(response.data);
             } catch (err) {
                 console.log(err);
