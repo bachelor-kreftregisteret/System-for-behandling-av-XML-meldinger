@@ -4,7 +4,7 @@ import "../css/footer.css"
 import React from "react";
 
 const ConfirmationModal = (props) => {
-    const navigate = useNavigate()
+    const navigate = useNavigate();
 
     //Errormessage er noe tregt når det kommer til network errors
 return (
@@ -50,6 +50,6 @@ return (
 
 )
 
-}
+};
 
 export default ConfirmationModal;

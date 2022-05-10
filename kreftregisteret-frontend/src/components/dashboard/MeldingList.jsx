@@ -10,16 +10,16 @@ const MeldingList = () => {
     const navigate = useNavigate();
 
     const {data, loading, error} = GetMeldinger();
-    let msgList = []
+    let msgList = [];
 
     // https://dd.engineering/blog/a-guide-to-handling-date-and-time-for-full-stack-javascript-developers 31.03
     const addZero = (num) => `${num}`.padStart(2, '0');
 
     const formatJsonDate = (date) => {
-            const newDate = new Date(date)
+            const newDate = new Date(date);
         return `${newDate.getFullYear()}-${addZero(newDate.getMonth() + 1)}-${addZero(newDate.getDate())} 
         kl.${addZero(newDate.getUTCHours())}:${addZero(newDate.getMinutes())}` || date;
-    }
+    };
 
     const tableOfMeldinger = (data) => {
         //data.replaceAll('\\', '')
@@ -44,7 +44,7 @@ const MeldingList = () => {
                                     }
                                 }}> Endre </Button></td>
                 </tr>
-            ))
+            ));
 
             return (
                 <Table hover
@@ -75,7 +75,7 @@ const MeldingList = () => {
                     </tbody>
                 </Table>
             );
-    }
+    };
 
     return (
         !loading && data !== null ?
@@ -86,6 +86,6 @@ const MeldingList = () => {
                 <p>Noe gikk galt ved innlasting</p>
             </div> :
             <h4>Laster inn meldinger...</h4>);
-}
+};
 
 export default MeldingList;

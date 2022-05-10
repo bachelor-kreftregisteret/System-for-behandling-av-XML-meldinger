@@ -41,6 +41,6 @@ const Footer = (props) => {
            <ConfirmationModal isModalOpen={props.isModalOpen} setIsModalOpen={props.setIsModalOpen} postError={props.postError}/>
         </>
     )
-}
+};
 
 export default Footer;
