@@ -4,7 +4,6 @@ import {URL} from "../utils/utils";
 
 //Inspired by https://www.youtube.com/watch?v=Vspeudp-M9k
 const GetMeldinger = (id = "") => {
-
     const [data, setData] = useState(null);
     const [loading, setLoading] = useState(true);
     const [error, setError] = useState(null);
@@ -26,7 +25,7 @@ const GetMeldinger = (id = "") => {
 
         getData();
 
-    }, []);
+    }, [id]);
 
     return {
         data, loading, error

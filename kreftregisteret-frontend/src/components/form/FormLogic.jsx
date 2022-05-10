@@ -3,7 +3,6 @@ import 'survey-react/survey.css';
 import {Model, Survey} from "survey-react";
 import * as SurveyReact from "survey-react";
 import '../css/stylesheet.css';
-import axios from "axios";
 import {useParams} from "react-router-dom";
 import Sidebar from "./Sidebar";
 import Footer from "./Footer";
@@ -20,7 +19,6 @@ const FormLogic = ({FormType}) => {
     const survey = new Model(FormType);
 
     const [isModalOpen, setIsModalOpen] = useState(false);
-
     const [postError, setPostError] = useState("");
 
     // Registrerer CustomSelect komponenten som en render type under navnet "sv-dropdown-react"
@@ -226,7 +224,7 @@ const FormLogic = ({FormType}) => {
             setIsModalOpen(false);
         } else {
             setIsModalOpen(true);
-            PostMeldinger(data);
+            setPostError(PostMeldinger(data));
         }
     };
 
