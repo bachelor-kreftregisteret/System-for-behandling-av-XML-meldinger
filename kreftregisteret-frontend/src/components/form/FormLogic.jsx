@@ -8,7 +8,7 @@ import Sidebar from "./Sidebar";
 import Footer from "./Footer";
 import ReactSelect from "./ReactSelect";
 import GetMeldinger from "../../api/getMeldinger";
-import {URL} from "../utils/utils";
+import {URL} from "../../utils/utils";
 import axios from "axios";
 
 const FormLogic = ({FormType}) => {
