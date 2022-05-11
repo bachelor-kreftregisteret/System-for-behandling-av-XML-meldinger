@@ -8,7 +8,8 @@ import Sidebar from "./Sidebar";
 import Footer from "./Footer";
 import ReactSelect from "./ReactSelect";
 import GetMeldinger from "../../api/getMeldinger";
-import PostMeldinger from "../../api/postMeldinger";
+import {URL} from "../../utils/utils";
+import axios from "axios";
 
 const FormLogic = ({FormType}) => {
     // Henter data fra backend
@@ -223,8 +224,17 @@ const FormLogic = ({FormType}) => {
             }
             setIsModalOpen(false);
         } else {
+            const headers = {
+                'Content-Type': 'application/json'
+            };
+            axios.post(URL.url, data, {headers})
+                .then(_ => {
+                    setPostError("")
+                })
+                .catch(error => {
+                    setPostError(error.toString())
+                });
             setIsModalOpen(true);
-            setPostError(PostMeldinger(data));
         }
     };
 
