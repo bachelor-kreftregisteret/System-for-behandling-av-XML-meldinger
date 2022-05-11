@@ -29,11 +29,11 @@ const Footer = (props) => {
                 >Lagre utkast
                 </button>
                 <button
-                    aria-label={"Avslutt"}
-                    type={"reset"}
+                    aria-label={"Avbryt"}
+                    type={"button"}
                     className={"bttn cancelBtn"}
                     onClick={() => navigate("/")}
-                >Avslutt
+                >Avbryt
                 </button>
 
             </div>
