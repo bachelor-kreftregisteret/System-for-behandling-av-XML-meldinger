@@ -1972,9 +1972,10 @@ const SurveyJSONKirugi = {
                         {
                             type: "regex",
                             text: "Må være mellom 0 og 1000000 med maks ett desimal",
-                            regex: "^([1-9]\\d{0,5}|\\d{1,6},\\d)$"
+                            regex: "^([1-9]\\d{0,5}|\\d{1,5}.\\d)$"
                         }
-                    ]
+                    ],
+                    inputType: "number"
                 },
                 {
                     type: "checkbox",
