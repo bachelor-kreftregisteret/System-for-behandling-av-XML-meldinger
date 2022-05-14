@@ -1962,6 +1962,7 @@ const SurveyJSONKirugi = {
                     type: "text",
                     name: "preoprPSAVerdi",
                     maxWidth: "30%",
+                    minWidth: "150px",
                     title: {
                         no: "PSA før prostatektomi og eventuell neoadjuvant endokrin behandling"
                     },

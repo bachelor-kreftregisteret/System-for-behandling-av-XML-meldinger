@@ -1159,10 +1159,11 @@ const SurveyJsonUtredning = {
                 {
                     type: "text",
                     name: "psaverdi",
-                    maxWidth: "30%",
+                    maxWidth: "10%",
+                    minWidth: "150px",
                     startWithNewLine: false,
                     title: {
-                        no: "PSA-verdi ved diagnosetidspunkt"
+                        no: "PSA ved diagnosetidspunkt"
                     },
                     enableIf: "{spsa} empty",
                     isRequired: true,
