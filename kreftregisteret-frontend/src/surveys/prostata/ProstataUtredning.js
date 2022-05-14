@@ -1455,8 +1455,6 @@ const SurveyJsonUtredning = {
                 {
                     type: "radiogroup",
                     name: "vevsprover",
-                    maxWidth: "200px",
-                    minWidth: "unset",
                     title: {
                         no: "Celle-/vevsprøver"
                     },
@@ -1482,7 +1480,7 @@ const SurveyJsonUtredning = {
                     name: "vevsproverUS",
                     visible: false,
                     visibleIf: "{vevsprover} = 1",
-                    startWithNewLine: false,
+                    startWithNewLine: true,
                     title: {
                         no: "Undersøkelser"
                     },
@@ -2045,7 +2043,7 @@ const SurveyJsonUtredning = {
                             }
                         }
                     ],
-                    colCount: 3
+                    rowCount: 3
                 },
                 {
                     type: "radiogroup",
@@ -2094,7 +2092,7 @@ const SurveyJsonUtredning = {
                             }
                         }
                     ],
-                    colCount: 3
+                    rowCount: 3
                 },
                 {
                     type: "comment",
@@ -2136,7 +2134,7 @@ const SurveyJsonUtredning = {
                             }
                         }
                     ],
-                    colCount: 3
+                    rowCount: 3
                 },
                 {
                     type: "checkbox",
@@ -2188,6 +2186,12 @@ const SurveyJsonUtredning = {
                     },
                     isRequired: true,
                     choices: [
+                        {
+                            value: "utredningsmetodeFjernmetUkjent",
+                            text: {
+                                no: "Ukjent"
+                            }
+                        },
                         {
                             value: "ctmet",
                             text: {
@@ -2242,14 +2246,8 @@ const SurveyJsonUtredning = {
                                 no: "Annet"
                             }
                         },
-                        {
-                            value: "utredningsmetodeFjernmetUkjent",
-                            text: {
-                                no: "Ukjent"
-                            }
-                        }
                     ],
-                    colCount: 4
+                    colCount: 1,
                 },
                 {
                     type: "comment",

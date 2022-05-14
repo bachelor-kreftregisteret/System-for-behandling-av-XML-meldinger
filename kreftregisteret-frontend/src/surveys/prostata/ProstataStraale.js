@@ -1766,7 +1766,7 @@ const SurveyJSONStraale = {
                             }
                         }
                     ],
-                    colCount: 3
+                    rowCount: 3
                 },
                 {
                     type: "radiogroup",
@@ -1815,7 +1815,7 @@ const SurveyJSONStraale = {
                             }
                         }
                     ],
-                    colCount: 3
+                    rowCount: 3
                 },
                 {
                     type: "comment",
@@ -1857,7 +1857,7 @@ const SurveyJSONStraale = {
                             }
                         }
                     ],
-                    colCount: 3
+                    rowCount: 3
                 },
                 {
                     type: "checkbox",
@@ -1909,6 +1909,12 @@ const SurveyJSONStraale = {
                     },
                     isRequired: true,
                     choices: [
+                        {
+                            value: "utredningsmetodeFjernmetUkjent",
+                            text: {
+                                no: "Ukjent"
+                            }
+                        },
                         {
                             value: "ctmet",
                             text: {
@@ -1963,14 +1969,9 @@ const SurveyJSONStraale = {
                                 no: "Annet"
                             }
                         },
-                        {
-                            value: "utredningsmetodeFjernmetUkjent",
-                            text: {
-                                no: "Ukjent"
-                            }
-                        }
+
                     ],
-                    colCount: 4
+                    colCount: 1
                 },
                 {
                     type: "comment",
