@@ -1748,6 +1748,12 @@ const SurveyJSONKirugi = {
                     isRequired: true,
                     choices: [
                         {
+                            value: "99",
+                            text: {
+                                no: "Ukjent"
+                            }
+                        },
+                        {
                             value: "1",
                             text: {
                                 no: "CT"
@@ -1777,12 +1783,6 @@ const SurveyJSONKirugi = {
                                 no: "Annet"
                             }
                         },
-                        {
-                            value: "99",
-                            text: {
-                                no: "Ukjent"
-                            }
-                        }
                     ],
                     rowCount: 3
                 },

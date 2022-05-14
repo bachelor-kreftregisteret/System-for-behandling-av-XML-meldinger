@@ -2056,6 +2056,12 @@ const SurveyJsonUtredning = {
                     isRequired: true,
                     choices: [
                         {
+                            value: "99",
+                            text: {
+                                no: "Ukjent"
+                            }
+                        },
+                        {
                             value: "1",
                             text: {
                                 no: "CT"
@@ -2085,12 +2091,7 @@ const SurveyJsonUtredning = {
                                 no: "Annet"
                             }
                         },
-                        {
-                            value: "99",
-                            text: {
-                                no: "Ukjent"
-                            }
-                        }
+
                     ],
                     rowCount: 3
                 },
