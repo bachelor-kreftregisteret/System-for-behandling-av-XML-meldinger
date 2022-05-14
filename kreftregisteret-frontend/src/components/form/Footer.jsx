@@ -13,7 +13,9 @@ const Footer = (props) => {
         <>
         <footer
             className="surveyFooter">
+            <p className={"asterixMeaning"} aria-label={"Asteriks er obligatorisk"}>* Obligatorisk</p>
             <div className={"actionBtnContainer "}>
+
                 <button
                     aria-label={"Lagre"}
                     type={"submit"}
