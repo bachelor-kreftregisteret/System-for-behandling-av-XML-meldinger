@@ -2597,6 +2597,7 @@ const SurveyJsonUtredning = {
                 {
                     type: "text",
                     name: "meldersNavn",
+                    maxWidth: "400px",
                     startWithNewLine: true,
                     title: {
                         no: "Melders navn"
@@ -2604,9 +2605,11 @@ const SurveyJsonUtredning = {
                     isRequired: true
                 },
                 {
-                    type: "number",
+                    type: "text",
                     name: "melderID",
-                    startWithNewLine: true,
+                    maxWidth: "250px",
+                    minWidth: "50px",
+                    startWithNewLine: false,
                     title: {
                         no: "Melder ID"
                     }

@@ -2329,6 +2329,7 @@ const SurveyJSONKirugi = {
                 {
                     type: "text",
                     name: "meldersNavn",
+                    maxWidth: "400px",
                     startWithNewLine: true,
                     title: {
                         no: "Melders navn"
@@ -2338,6 +2339,8 @@ const SurveyJSONKirugi = {
                 {
                     type: "text",
                     name: "melderID",
+                    maxWidth: "250px",
+                    minWidth: "50px",
                     startWithNewLine: false,
                     title: {
                         no: "Melder ID"
