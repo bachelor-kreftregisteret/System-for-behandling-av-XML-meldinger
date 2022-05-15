@@ -158,6 +158,10 @@ textarea {
 
 /* END -- Title and content in survey*/
 
+/*Alert div*/
+.sv_main .sv_q_erbox:not([style*="display: none"]):not([style*="display:none"]) {
+    color: #21314d;
+}
 
 
 /*Scroller design*/

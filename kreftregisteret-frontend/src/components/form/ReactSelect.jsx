@@ -27,13 +27,14 @@ export class ReactSelect extends SurveyReact.SurveyQuestionDropdown {
     }
 
 
-
     renderElement() {
         // If the question is non-editable, render a stylized div
         if (this.isDisplayMode) {
             return (<div
                 id={this.question.inputId}
                 className={this.question.getControlClass()}
+                role={this.question.getType()}
+                aria-label={this.question.ariaLabel}
                 disabled="disabled"
             >
                 {(this.question.displayValue || this.question.optionsCaption)}
@@ -43,6 +44,8 @@ export class ReactSelect extends SurveyReact.SurveyQuestionDropdown {
         // Otherwise, render the React Select component
         return (<Select id={this.question.inputId}
                         value={this.selectedOption}
+                        role={this.question.getType()}
+                        aria-label={this.question.ariaLabel}
                         onChange={this.onSelectChange}
                         options={this.options}
                         required={this.question.isRequired}
@@ -69,7 +72,7 @@ export class ReactSelect extends SurveyReact.SurveyQuestionDropdown {
                                 maxHeight: "30px",
                                 padding: "2px 8px",
                                 alignItems: "center",
-                                alignContent: "center",
+                                alignContent: "center"
 
                             }),
                             singleValue: (base) => ({
@@ -79,7 +82,7 @@ export class ReactSelect extends SurveyReact.SurveyQuestionDropdown {
                             input: (base) => ({
                                 ...base,
                                 marginTop: "2px",
-                                maxHeight: "30px",
+                                maxHeight: "30px"
                             }),
                             indicatorsContainer: (base) => ({
                                 ...base,

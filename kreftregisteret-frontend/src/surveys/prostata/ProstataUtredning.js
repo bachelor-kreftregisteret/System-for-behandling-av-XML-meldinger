@@ -2604,9 +2604,9 @@ const SurveyJsonUtredning = {
                     isRequired: true
                 },
                 {
-                    type: "text",
+                    type: "number",
                     name: "melderID",
-                    startWithNewLine: false,
+                    startWithNewLine: true,
                     title: {
                         no: "Melder ID"
                     }
