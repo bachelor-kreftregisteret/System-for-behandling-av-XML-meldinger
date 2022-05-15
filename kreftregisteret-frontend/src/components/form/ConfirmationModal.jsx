@@ -24,7 +24,7 @@ return (
                 : props.postError.includes("500") ? <p>Det ser ut til at noe gikk galt på serveren. <br/> {props.postError}</p>
                 : <p>{props.postError}</p>) : <p>En ny melding med endringene er lagret.</p>}
         </ModalBody>
-        <ModalFooter>
+        <ModalFooter className={"modalFooter"}>
             {props.postError !== "" ?
                <>
                    <button

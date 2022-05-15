@@ -10,6 +10,10 @@
     background-color: #21314d;
     z-index: 1000;
 }
+
+.modalFooter {
+    background-color: #21314d;
+}
 .asterixMeaning {
     color: #F2F0EA;
     margin: 0.3em 1em;
