@@ -1,5 +1,5 @@
 import {useEffect, useState} from "react";
-import "../css/sidebar.css"
+import "../../css/sidebar.css"
 
 const Sidebar = (props) => {
     const [activeId, setActiveId] = useState(0);

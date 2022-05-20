@@ -2,7 +2,7 @@ import React, {useEffect, useState, createElement} from "react";
 import 'survey-react/survey.css';
 import {Model, Survey} from "survey-react";
 import * as SurveyReact from "survey-react";
-import '../css/stylesheet.css';
+import '../../css/stylesheet.css';
 import {useParams} from "react-router-dom";
 import Sidebar from "./Sidebar";
 import Footer from "./Footer";

@@ -1,5 +1,5 @@
 import React from "react";
-import "../css/footer.css"
+import "../../css/footer.css"
 import {useNavigate} from "react-router-dom";
 import ConfirmationModal from "./ConfirmationModal";
 
