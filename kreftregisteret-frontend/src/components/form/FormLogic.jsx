@@ -224,8 +224,8 @@ const FormLogic = ({FormType}) => {
             }
             setIsModalOpen(false);
         } else {
-            let checkLabValueURL = "https://metadata.kreftregisteret.no/rest/v1/variables/validate/:variable/m_labAngittAvKliniker?value_codes[]=";
-            checkLabValueURL += data.laboratorium.labnavnHF;
+            const checkLabValueURL = "https://metadata.kreftregisteret.no/rest/v1/variables/" +
+                "validate/:variable/m_labAngittAvKliniker?value_codes[]=" + data.laboratorium.labnavnHF;
             fetch(checkLabValueURL)
                 .then(response => response.json())
                 .then(StatusData => {
@@ -240,7 +240,8 @@ const FormLogic = ({FormType}) => {
                             .catch(error => {
                                 setPostError(error.toString())
                             });
-                    } else {
+                    }
+                    else {
                         setPostError(StatusData.status);
                     }
                 })
