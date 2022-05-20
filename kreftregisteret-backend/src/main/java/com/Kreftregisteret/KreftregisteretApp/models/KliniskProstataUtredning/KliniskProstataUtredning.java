@@ -1,4 +1,3 @@
-
 package com.Kreftregisteret.KreftregisteretApp.models.KliniskProstataUtredning;
 
 import com.Kreftregisteret.KreftregisteretApp.models.*;
@@ -13,9 +12,9 @@ import java.io.Serializable;
 
 /**
  * <p>Java class for anonymous complex type.
- * 
+ *
  * <p>The following schema fragment specifies the expected content contained within this class.
- * 
+ *
  * <pre>
  * &lt;complexType&gt;
  *   &lt;complexContent&gt;
@@ -32,18 +31,18 @@ import java.io.Serializable;
  *   &lt;/complexContent&gt;
  * &lt;/complexType&gt;
  * </pre>
- * 
- * 
+ *
+ *
  */
 
 @XmlAccessorType(XmlAccessType.FIELD)
 @XmlType(name = "", propOrder = {
-    "meldingsinformasjon",
-    "navigering",
-    "stdInfo",
-    "laboratorium",
-    "infiltrerendeKreft",
-    "utredning"
+        "meldingsinformasjon",
+        "navigering",
+        "stdInfo",
+        "laboratorium",
+        "infiltrerendeKreft",
+        "utredning"
 })
 @XmlRootElement(name = "KliniskProstataUtredning", namespace = "http://www.kreftregisteret.no/kremt/KliniskProstataUtredning/v4_0")
 public class KliniskProstataUtredning extends Melding implements Serializable {
@@ -67,11 +66,11 @@ public class KliniskProstataUtredning extends Melding implements Serializable {
 
     /**
      * Gets the value of the meldingsinformasjon property.
-     * 
+     *
      * @return
      *     possible object is
      *     {@link Meldingsinformasjon }
-     *     
+     *
      */
     public Meldingsinformasjon getMeldingsinformasjon() {
         return meldingsinformasjon;
@@ -79,11 +78,11 @@ public class KliniskProstataUtredning extends Melding implements Serializable {
 
     /**
      * Sets the value of the meldingsinformasjon property.
-     * 
+     *
      * @param value
      *     allowed object is
      *     {@link Meldingsinformasjon }
-     *     
+     *
      */
     public void setMeldingsinformasjon(Meldingsinformasjon value) {
         this.meldingsinformasjon = value;
@@ -91,11 +90,11 @@ public class KliniskProstataUtredning extends Melding implements Serializable {
 
     /**
      * Gets the value of the navigering property.
-     * 
+     *
      * @return
      *     possible object is
      *     {@link Navigering }
-     *     
+     *
      */
     public Navigering getNavigering() {
         return navigering;
@@ -103,11 +102,11 @@ public class KliniskProstataUtredning extends Melding implements Serializable {
 
     /**
      * Sets the value of the navigering property.
-     * 
+     *
      * @param value
      *     allowed object is
      *     {@link Navigering }
-     *     
+     *
      */
     public void setNavigering(Navigering value) {
         this.navigering = value;
@@ -115,11 +114,11 @@ public class KliniskProstataUtredning extends Melding implements Serializable {
 
     /**
      * Gets the value of the stdInfo property.
-     * 
+     *
      * @return
      *     possible object is
      *     {@link StdInfo }
-     *     
+     *
      */
     public StdInfo getStdInfo() {
         return stdInfo;
@@ -127,11 +126,11 @@ public class KliniskProstataUtredning extends Melding implements Serializable {
 
     /**
      * Sets the value of the stdInfo property.
-     * 
+     *
      * @param value
      *     allowed object is
      *     {@link StdInfo }
-     *     
+     *
      */
     public void setStdInfo(StdInfo value) {
         this.stdInfo = value;
@@ -139,11 +138,11 @@ public class KliniskProstataUtredning extends Melding implements Serializable {
 
     /**
      * Gets the value of the laboratorium property.
-     * 
+     *
      * @return
      *     possible object is
      *     {@link Laboratorium }
-     *     
+     *
      */
     public Laboratorium getLaboratorium() {
         return laboratorium;
@@ -151,11 +150,11 @@ public class KliniskProstataUtredning extends Melding implements Serializable {
 
     /**
      * Sets the value of the laboratorium property.
-     * 
+     *
      * @param value
      *     allowed object is
      *     {@link Laboratorium }
-     *     
+     *
      */
     public void setLaboratorium(Laboratorium value) {
         this.laboratorium = value;
@@ -163,11 +162,11 @@ public class KliniskProstataUtredning extends Melding implements Serializable {
 
     /**
      * Gets the value of the infiltrerendeKreft property.
-     * 
+     *
      * @return
      *     possible object is
      *     {@link InfiltrerendeKreft }
-     *     
+     *
      */
     public InfiltrerendeKreft getInfiltrerendeKreft() {
         return infiltrerendeKreft;
@@ -175,11 +174,11 @@ public class KliniskProstataUtredning extends Melding implements Serializable {
 
     /**
      * Sets the value of the infiltrerendeKreft property.
-     * 
+     *
      * @param value
      *     allowed object is
      *     {@link InfiltrerendeKreft }
-     *     
+     *
      */
     public void setInfiltrerendeKreft(InfiltrerendeKreft value) {
         this.infiltrerendeKreft = value;
@@ -187,11 +186,11 @@ public class KliniskProstataUtredning extends Melding implements Serializable {
 
     /**
      * Gets the value of the utredning property.
-     * 
+     *
      * @return
      *     possible object is
      *     {@link Utredning }
-     *     
+     *
      */
     public Utredning getUtredning() {
         return utredning;
@@ -199,24 +198,24 @@ public class KliniskProstataUtredning extends Melding implements Serializable {
 
     /**
      * Sets the value of the utredning property.
-     * 
+     *
      * @param value
      *     allowed object is
      *     {@link Utredning }
-     *     
+     *
      */
     public void setUtredning(Utredning value) {
         this.utredning = value;
     }
 
     @Override
-    public String getSkjemaNavn() {
+    public String getSkjemanavn() {
         return this.meldingsinformasjon.getSkjema();
     }
 
     @Override
     public String getMetaData() {
-        return this.meldingsinformasjon.getTidspunktSubmit() + this.meldingsinformasjon.getVersjonsNr();
+        return this.meldingsinformasjon.getTidspunktSubmit();
     }
 
     @Override

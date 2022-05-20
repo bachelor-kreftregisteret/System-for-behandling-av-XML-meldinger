@@ -11,9 +11,9 @@ import jakarta.xml.bind.annotation.XmlType;
 
 /**
  * <p>Java class for anonymous complex type.
- * 
+ *
  * <p>The following schema fragment specifies the expected content contained within this class.
- * 
+ *
  * <pre>
  * &lt;complexType&gt;
  *   &lt;complexContent&gt;
@@ -28,15 +28,15 @@ import jakarta.xml.bind.annotation.XmlType;
  *   &lt;/complexContent&gt;
  * &lt;/complexType&gt;
  * </pre>
- * 
- * 
+ *
+ *
  */
 @XmlAccessorType(XmlAccessType.FIELD)
 @XmlType(name = "", propOrder = {
-    "meldingsinformasjon",
-    "navigering",
-    "stdInfo",
-    "behandling"
+        "meldingsinformasjon",
+        "navigering",
+        "stdInfo",
+        "behandling"
 })
 @XmlRootElement(name = "KliniskProstataStraale", namespace = "http://www.kreftregisteret.no/kremt/KliniskProstataStraale/v4_0")
 public class KliniskProstataStraale extends Melding {
@@ -52,11 +52,11 @@ public class KliniskProstataStraale extends Melding {
 
     /**
      * Gets the value of the meldingsinformasjon property.
-     * 
+     *
      * @return
      *     possible object is
      *     {@link Meldingsinformasjon }
-     *     
+     *
      */
     public Meldingsinformasjon getMeldingsinformasjon() {
         return meldingsinformasjon;
@@ -64,11 +64,11 @@ public class KliniskProstataStraale extends Melding {
 
     /**
      * Sets the value of the meldingsinformasjon property.
-     * 
+     *
      * @param value
      *     allowed object is
      *     {@link Meldingsinformasjon }
-     *     
+     *
      */
     public void setMeldingsinformasjon(Meldingsinformasjon value) {
         this.meldingsinformasjon = value;
@@ -76,11 +76,11 @@ public class KliniskProstataStraale extends Melding {
 
     /**
      * Gets the value of the navigering property.
-     * 
+     *
      * @return
      *     possible object is
      *     {@link Navigering }
-     *     
+     *
      */
     public Navigering getNavigering() {
         return navigering;
@@ -88,11 +88,11 @@ public class KliniskProstataStraale extends Melding {
 
     /**
      * Sets the value of the navigering property.
-     * 
+     *
      * @param value
      *     allowed object is
      *     {@link Navigering }
-     *     
+     *
      */
     public void setNavigering(Navigering value) {
         this.navigering = value;
@@ -100,11 +100,11 @@ public class KliniskProstataStraale extends Melding {
 
     /**
      * Gets the value of the stdInfo property.
-     * 
+     *
      * @return
      *     possible object is
      *     {@link StdInfo }
-     *     
+     *
      */
     public StdInfo getStdInfo() {
         return stdInfo;
@@ -112,11 +112,11 @@ public class KliniskProstataStraale extends Melding {
 
     /**
      * Sets the value of the stdInfo property.
-     * 
+     *
      * @param value
      *     allowed object is
      *     {@link StdInfo }
-     *     
+     *
      */
     public void setStdInfo(StdInfo value) {
         this.stdInfo = value;
@@ -124,11 +124,11 @@ public class KliniskProstataStraale extends Melding {
 
     /**
      * Gets the value of the behandling property.
-     * 
+     *
      * @return
      *     possible object is
      *     {@link Behandling }
-     *     
+     *
      */
     public Behandling getBehandling() {
         return behandling;
@@ -136,24 +136,24 @@ public class KliniskProstataStraale extends Melding {
 
     /**
      * Sets the value of the behandling property.
-     * 
+     *
      * @param value
      *     allowed object is
      *     {@link Behandling }
-     *     
+     *
      */
     public void setBehandling(Behandling value) {
         this.behandling = value;
     }
 
     @Override
-    public String getSkjemaNavn() {
+    public String getSkjemanavn() {
         return this.meldingsinformasjon.getSkjema();
     }
 
     @Override
     public String getMetaData() {
-        return this.meldingsinformasjon.getTidspunktSubmit() + this.meldingsinformasjon.getVersjonsNr();
+        return this.meldingsinformasjon.getTidspunktSubmit();
     }
 
     @Override

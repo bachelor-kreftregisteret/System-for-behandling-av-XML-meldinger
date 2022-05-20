@@ -2,6 +2,7 @@ package com.Kreftregisteret.KreftregisteretApp.utils.xml;
 
 import com.Kreftregisteret.KreftregisteretApp.KreftregisteretAppApplication;
 import com.Kreftregisteret.KreftregisteretApp.models.Melding;
+import com.Kreftregisteret.KreftregisteretApp.models.MeldingDTO;
 import com.Kreftregisteret.KreftregisteretApp.utils.JAXBContextManager;
 import com.Kreftregisteret.KreftregisteretApp.utils.StreamUtil;
 import jakarta.xml.bind.*;
@@ -17,7 +18,7 @@ import java.util.*;
 //er det bedre å ha EN jaxbcontext instance her? dvs ha en felles for alle metodene også injecte message manager istedenfor public static?
 @Service
 public class MessageManager {
-    HashMap<Melding, Long> meldingMap = new HashMap<>();
+    private final ArrayList<Melding> meldingList = new ArrayList<>();
 
     private static Long id = 1L;
 
@@ -28,8 +29,27 @@ public class MessageManager {
         return id++;
     }
 
-    public HashMap<Melding, Long> getMeldingMap() {
-        return meldingMap;
+    private void updateMsgList(Melding melding) {
+        //oppdater tidspunktendret
+        // "2001-12-17T09:30:47Z"
+        //er formatet
+        String formattedDate = getDate();
+        melding.setEndrettidspunkt(formattedDate);
+        melding.setId(createNewID());
+        meldingList.add(melding);
+    }
+
+    public ArrayList<MeldingDTO> getMeldingListDTO() {
+        ArrayList<MeldingDTO> meldingDTOList = new ArrayList<>();
+        for(Melding melding: meldingList){
+            MeldingDTO dto = new MeldingDTO(melding.getId(), melding.getEndrettidspunkt(), melding.getSkjemanavn(), melding.getFilnavn());
+            meldingDTOList.add(dto);
+        }
+        return new ArrayList<MeldingDTO>(meldingDTOList);
+    }
+
+    public ArrayList<Melding> getMeldingList() {
+        return meldingList;
     }
     //kanskje legg til Optional<Melding> her istedenfor å kanskje returnere null (?)
     private Melding convertFileToMelding(File file) {
@@ -41,7 +61,7 @@ public class MessageManager {
             melding = (Melding) jaxbUnmarshaller.unmarshal(file);
             if (melding != null) {
                 melding.setId(id);
-                melding.setLastChangedTime(melding.getMetaData());
+                melding.setEndrettidspunkt(melding.getMetaData());
                 melding.setFilnavn(file.getName());
             }
             return melding;
@@ -61,18 +81,18 @@ public class MessageManager {
 
         // Validate against schema, throws SAXParseException if not valid
         XMLValidator.validate(schema, jaxbSource);
-        System.out.println("Melding skjemanavn: " + melding.getSkjemaNavn());
+        System.out.println("Melding skjemanavn: " + melding.getSkjemanavn());
 
         // Set filnavn
-        String newFilnavn = getFileDate() + melding.getSkjemaNavn() + ".xml";
+        String newFilnavn = getFileDate() + melding.getSkjemanavn() + ".xml";
         melding.setFilnavn(newFilnavn);
         System.out.println("Melding: " + melding);
-        System.out.println("Melding skjemanavn 2: " + melding.getSkjemaNavn());
-        melding.setLastChangedTime(getDate());
+        System.out.println("Melding skjemanavn 2: " + melding.getSkjemanavn());
+        melding.setEndrettidspunkt(getDate());
         // Pga frontend ikke bruker id, men item.id
         melding.setId(id);
-        meldingMap.put(melding, createNewID());
-        System.out.println("I write: " + meldingMap);
+        updateMsgList(melding);
+        System.out.println("I write: " + meldingList);
     }
 
     public void addMeldingerFromUtFolderToMsgList() {
@@ -84,7 +104,7 @@ public class MessageManager {
             // Pga frontend ikke bruker id, men item.id
             if (melding != null) {
                 melding.setId(id);
-                meldingMap.put(melding, createNewID());
+                updateMsgList(melding);
             }
         }catch(Exception e){
             e.printStackTrace();
@@ -92,10 +112,8 @@ public class MessageManager {
     }
 
     public Melding findMeldingById(Long idIn) {
-        for (Map.Entry<Melding, Long> entry : meldingMap.entrySet()) {
-            Melding melding = entry.getKey();
-            Long value = entry.getValue();
-            if(Objects.equals(value, idIn)){
+        for(Melding melding: meldingList){
+            if(Objects.equals(melding.getId(), idIn)){
                 return melding;
             }
         }

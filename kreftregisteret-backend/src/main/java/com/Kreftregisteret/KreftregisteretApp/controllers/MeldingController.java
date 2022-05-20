@@ -3,6 +3,7 @@ package com.Kreftregisteret.KreftregisteretApp.controllers;
 
 import com.Kreftregisteret.KreftregisteretApp.models.KliniskProstataKirurgi.KliniskProstataKirurgi;
 import com.Kreftregisteret.KreftregisteretApp.models.Melding;
+import com.Kreftregisteret.KreftregisteretApp.models.MeldingDTO;
 import com.Kreftregisteret.KreftregisteretApp.utils.error.ErrorUtils;
 import com.Kreftregisteret.KreftregisteretApp.utils.xml.MessageManager;
 import com.fasterxml.jackson.core.JacksonException;
@@ -20,6 +21,7 @@ import org.xml.sax.SAXException;
 
 import javax.servlet.http.HttpServletRequest;
 import java.io.IOException;
+import java.util.ArrayList;
 import java.util.HashMap;
 
 
@@ -71,8 +73,8 @@ public class MeldingController {
                     @ApiResponse(description = "Internal error", responseCode = "500", content = @Content)
             }
     )
-    public HashMap<Melding, Long> getAllMeldinger() throws IOException {
-        return messageManager.getMeldingMap();
+    public ArrayList<MeldingDTO> getAllMeldinger() throws IOException {
+        return messageManager.getMeldingListDTO();
     }
 
     @CrossOrigin(origins = {"https://demokrg.herokuapp.com", "http://localhost:8080", "http://localhost:3000", "http://localhost:3001"})

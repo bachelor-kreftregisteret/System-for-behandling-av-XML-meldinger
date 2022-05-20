@@ -5,7 +5,6 @@ import com.Kreftregisteret.KreftregisteretApp.models.KliniskProstataStraale.Klin
 import com.Kreftregisteret.KreftregisteretApp.models.KliniskProstataUtredning.KliniskProstataUtredning;
 import com.fasterxml.jackson.annotation.JsonSubTypes;
 import com.fasterxml.jackson.annotation.JsonTypeInfo;
-import com.fasterxml.jackson.databind.annotation.JsonDeserialize;
 import jakarta.xml.bind.annotation.XmlSeeAlso;
 import jakarta.xml.bind.annotation.XmlTransient;
 
@@ -21,7 +20,7 @@ public abstract class Melding {
     //Denne tostringen vises i listen over meldinger som klienten har på landingpage
     @Override
     public String toString() {
-        return "{\"id\" : " + getId() + ", \"Filnavn\" :" + "\"" + getFilnavn() + "\"" + ",  \"Skjemanavn\": " + "\"" + getSkjemaNavn() + "\"" + ", \"Endrettidspunkt\": " + "\"" + lastChangedTime + "\"" + "}";
+        return "{\"id\" : " + getId() + ", \"Filnavn\" :" + "\"" + getFilnavn() + "\"" + ",  \"Skjemanavn\": " + "\"" + getSkjemanavn() + "\"" + ", \"Endrettidspunkt\": " + "\"" + Endrettidspunkt + "\"" + "}";
     }
 
     public Long getId() {
@@ -32,21 +31,21 @@ public abstract class Melding {
         this.id = id;
     }
 
-    public String getLastChangedTime() {
-        return lastChangedTime;
+    public String getEndrettidspunkt() {
+        return Endrettidspunkt;
     }
 
-    public void setLastChangedTime(String lastChangedTime) {
-        this.lastChangedTime = lastChangedTime;
+    public void setEndrettidspunkt(String endrettidspunkt) {
+        this.Endrettidspunkt = endrettidspunkt;
     }
 
     @XmlTransient
     private Long id;
 
     @XmlTransient
-    public String lastChangedTime;
+    public String Endrettidspunkt;
 
-    public abstract String getSkjemaNavn();
+    public abstract String getSkjemanavn();
 
     public abstract String getMetaData();
 

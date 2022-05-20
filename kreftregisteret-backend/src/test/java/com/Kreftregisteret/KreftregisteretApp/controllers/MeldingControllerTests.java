@@ -73,7 +73,7 @@ public class MeldingControllerTests {
                 .andDo(print())
                 .andExpect(status().isOk());
 
-        System.out.println(messageManager.getMeldingMap());
+        System.out.println(messageManager.getMeldingList());
     }
 
     @Test
