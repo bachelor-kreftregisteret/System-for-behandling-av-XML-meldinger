@@ -1048,7 +1048,6 @@ const SurveyJSONKirugi = {
 
                     visible: false,
                     visibleIf: "{sykehuskode} = 9998",
-                    startWithNewLine: true,
                     title: {
                         no: "Spesifiser"
                     },
@@ -1112,7 +1111,6 @@ const SurveyJSONKirugi = {
                     name: "avdelingsnavnHFSpesifiser",
                     visible: false,
                     visibleIf: "{avdelingsnavn} = '1'",
-                    startWithNewLine: true,
                     title: {
                         no: "Spesifiser"
                     }
@@ -1324,7 +1322,6 @@ const SurveyJSONKirugi = {
                     minWidth: "unset",
                     visible: false,
                     visibleIf: "{mrdiagnostikk} = 1",
-                    startWithNewLine: true,
                     title: {
                         no: "Utført dato"
                     },
@@ -1791,7 +1788,6 @@ const SurveyJSONKirugi = {
                     name: "annenDiagnostikkLKSpesifiser",
                     visible: false,
                     visibleIf: "{utredningsmetodeLK} = 5",
-                    startWithNewLine: true,
                     title: {
                         no: "Spesifiser"
                     }
@@ -1864,7 +1860,6 @@ const SurveyJSONKirugi = {
                     name: "annetFjernmetSpesifiser",
                     visible: false,
                     visibleIf: "{lokalisasjonFjernmet} contains 'annetFjernmet'",
-                    startWithNewLine: true,
                     title: {
                         no: "Spesifiser"
                     }
@@ -2286,7 +2281,6 @@ const SurveyJSONKirugi = {
                     name: "preparatnummer",
                     visible: false,
                     visibleIf: "{labnavnHF} notempty",
-                    startWithNewLine: true,
                     title: {
                         no: "Preparatnummer"
                     }
@@ -2330,7 +2324,6 @@ const SurveyJSONKirugi = {
                     type: "text",
                     name: "meldersNavn",
                     maxWidth: "400px",
-                    startWithNewLine: true,
                     title: {
                         no: "Melders navn"
                     },

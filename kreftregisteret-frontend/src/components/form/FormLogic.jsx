@@ -22,7 +22,7 @@ const FormLogic = ({FormType}) => {
     const [isModalOpen, setIsModalOpen] = useState(false);
     const [postError, setPostError] = useState("");
 
-    // Registrerer CustomSelect komponenten som en render type under navnet "sv-dropdown-react"
+    // Registrerer ReactSelect komponenten som en render type under navnet "sv-dropdown-react"
     SurveyReact.ReactQuestionFactory.Instance.registerQuestion("sv-dropdown-react", (props) => {
         return createElement(ReactSelect, props);
     });
