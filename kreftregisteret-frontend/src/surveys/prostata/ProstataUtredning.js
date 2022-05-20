@@ -1047,7 +1047,6 @@ const SurveyJsonUtredning = {
                     name: "sykehusnavnHFSpesifiser",
                     visible: false,
                     visibleIf: "{sykehuskode} = 9998",
-                    startWithNewLine: true,
                     title: {
                         no: "Spesifiser"
                     },
@@ -1111,7 +1110,6 @@ const SurveyJsonUtredning = {
                     name: "avdelingsnavnHFSpesifiser",
                     visible: false,
                     visibleIf: "{avdelingsnavn} = '1'",
-                    startWithNewLine: true,
                     title: {
                         no: "Spesifiser"
                     }
@@ -1385,7 +1383,6 @@ const SurveyJsonUtredning = {
                     minWidth: "unset",
                     visible: false,
                     visibleIf: "{mrdiagnostikk} = 1",
-                    startWithNewLine: true,
                     title: {
                         no: "Utført dato"
                     },
@@ -1447,7 +1444,6 @@ const SurveyJsonUtredning = {
                     name: "annetBildediagnostikkSpesifiser2",
                     visible: false,
                     visibleIf: "{annetBildediagnostikk} = 1",
-                    startWithNewLine: true,
                     title: {
                         no: "Spesifiser"
                     }
@@ -1480,7 +1476,6 @@ const SurveyJsonUtredning = {
                     name: "vevsproverUS",
                     visible: false,
                     visibleIf: "{vevsprover} = 1",
-                    startWithNewLine: true,
                     title: {
                         no: "Undersøkelser"
                     },
@@ -1512,7 +1507,6 @@ const SurveyJsonUtredning = {
                     name: "annetVevsproverSpesifiser2",
                     visible: false,
                     visibleIf: "{vevsproverUS} contains 'annetVevsprover'",
-                    startWithNewLine: true,
                     title: {
                         no: "Spesifiser"
                     }
@@ -2100,7 +2094,6 @@ const SurveyJsonUtredning = {
                     name: "annenDiagnostikkLKSpesifiser",
                     visible: false,
                     visibleIf: "{utredningsmetodeLK} = 5",
-                    startWithNewLine: true,
                     title: {
                         no: "Spesifiser"
                     }
@@ -2173,7 +2166,6 @@ const SurveyJsonUtredning = {
                     name: "annetFjernmetSpesifiser",
                     visible: false,
                     visibleIf: "{lokalisasjonFjernmet} contains 'annetFjernmet'",
-                    startWithNewLine: true,
                     title: {
                         no: "Spesifiser"
                     }
@@ -2412,7 +2404,6 @@ const SurveyJsonUtredning = {
                     visible: false,
                     maxWidth: "30%",
                     visibleIf: "{labnavnHF} notempty",
-                    startWithNewLine: true,
                     title: {
                         no: "Preparatnummer"
                     }
@@ -2598,7 +2589,6 @@ const SurveyJsonUtredning = {
                     type: "text",
                     name: "meldersNavn",
                     maxWidth: "400px",
-                    startWithNewLine: true,
                     title: {
                         no: "Melders navn"
                     },

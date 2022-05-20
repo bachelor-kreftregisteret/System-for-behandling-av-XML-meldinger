@@ -1047,7 +1047,6 @@ const SurveyJSONStraale = {
                     name: "sykehusnavnHFSpesifiser",
                     visible: false,
                     visibleIf: "{sykehuskode} = 9998",
-                    startWithNewLine: true,
                     title: {
                         no: "Spesifiser"
                     },
@@ -1111,7 +1110,6 @@ const SurveyJSONStraale = {
                     name: "avdelingsnavnHFSpesifiser",
                     visible: false,
                     visibleIf: "{avdelingsnavn} = '1'",
-                    startWithNewLine: true,
                     title: {
                         no: "Spesifiser"
                     }
@@ -1355,7 +1353,6 @@ const SurveyJSONStraale = {
                     minWidth: "unset",
                     visible: false,
                     visibleIf: "{mrdiagnostikk} = 1",
-                    startWithNewLine: true,
                     title: {
                         no: "Utført dato"
                     },
@@ -1822,7 +1819,6 @@ const SurveyJSONStraale = {
                     name: "annenDiagnostikkLKSpesifiser",
                     visible: false,
                     visibleIf: "{utredningsmetodeLK} = 5",
-                    startWithNewLine: true,
                     title: {
                         no: "Spesifiser"
                     }
@@ -1895,7 +1891,6 @@ const SurveyJSONStraale = {
                     name: "annetFjernmetSpesifiser",
                     visible: false,
                     visibleIf: "{lokalisasjonFjernmet} contains 'annetFjernmet'",
-                    startWithNewLine: true,
                     title: {
                         no: "Spesifiser"
                     }
@@ -2229,7 +2224,6 @@ const SurveyJSONStraale = {
                     minWidth: "unset",
                     visible: false,
                     visibleIf: "{eksternStraalebehandling} = 1",
-                    startWithNewLine: true,
                     title: {
                         no: "Antall fraksjoner"
                     },
@@ -2363,7 +2357,6 @@ const SurveyJSONStraale = {
                     minWidth: "unset",
                     visible: false,
                     visibleIf: "{hdbrachyterapi} = 1",
-                    startWithNewLine: true,
                     title: {
                         no: "Antall fraksjoner"
                     },
@@ -2461,7 +2454,6 @@ const SurveyJSONStraale = {
                     maxWidth: "200px",
                     visible: false,
                     visibleIf: "{ldbrachyterapi} = 1",
-                    startWithNewLine: true,
                     title: {
                         no: "Dose (foreskreven dose, prostata)"
                     },
@@ -2530,7 +2522,6 @@ const SurveyJSONStraale = {
                     type: "text",
                     name: "meldersNavn",
                     maxWidth: "400px",
-                    startWithNewLine: true,
                     title: {
                         no: "Melders navn"
                     },
