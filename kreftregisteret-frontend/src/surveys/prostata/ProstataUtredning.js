@@ -2671,7 +2671,9 @@ const SurveyJsonUtredning = {
     calculatedValues: [
         {
             name: "sykdomsutbredelseTitle",
-            expression: "iif({funnUtredning} = 1, 'Sykdomsutbredelse etter ferdig primærutredning og før primærbehandling', 'Sykdomsutbredelse ved utredning av metastase(r)')"
+            expression: "iif({funnUtredning} = 1, " +
+                "'Sykdomsutbredelse etter ferdig primærutredning og før primærbehandling', " +
+                "'Sykdomsutbredelse ved utredning av metastase(r)')"
         }
     ],
     showQuestionNumbers: "off",

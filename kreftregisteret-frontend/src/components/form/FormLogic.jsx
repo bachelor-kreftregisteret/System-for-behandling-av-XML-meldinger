@@ -224,15 +224,25 @@ const FormLogic = ({FormType}) => {
             }
             setIsModalOpen(false);
         } else {
-            const headers = {
-                'Content-Type': 'application/json'
-            };
-            axios.post(URL.url, data, {headers})
-                .then(_ => {
-                    setPostError("")
-                })
-                .catch(error => {
-                    setPostError(error.toString())
+            let checkLabValueURL = "https://metadata.kreftregisteret.no/rest/v1/variables/validate/:variable/m_labAngittAvKliniker?value_codes[]=";
+            checkLabValueURL += data.laboratorium.labnavnHF;
+            fetch(checkLabValueURL)
+                .then(response => response.json())
+                .then(StatusData => {
+                    if (StatusData.status === "OK") {
+                        const headers = {
+                            'Content-Type': 'application/json'
+                        };
+                        axios.post(URL.url, data, {headers})
+                            .then(_ => {
+                                setPostError("")
+                            })
+                            .catch(error => {
+                                setPostError(error.toString())
+                            });
+                    } else {
+                        setPostError(StatusData.status);
+                    }
                 });
             setIsModalOpen(true);
         }
