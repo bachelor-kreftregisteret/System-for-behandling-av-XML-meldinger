@@ -22,6 +22,7 @@ return (
                 <p>Serveren kan eller vil ikke behandle forespørselen på grunn av noe som oppfattes som en klientfeil, (f.eks. ugyldig data). <br/> {props.postError} </p>
                 : props.postError.includes("404") ? <p>Serveren finner ikke den forespurte ressursen. Endepunktet er gyldig, men selve ressursen eksisterer ikke. <br/> {props.postError}</p>
                 : props.postError.includes("500") ? <p>Det ser ut til at noe gikk galt på serveren. <br/> {props.postError}</p>
+                : props.postError.includes("FAIL") ? <p>Ugyldig kode for laboratorium. <br/> {props.postError}</p>
                 : <p>{props.postError}</p>) : <p>En ny melding med endringene er lagret.</p>}
         </ModalBody>
         <ModalFooter className={"modalFooter"}>
