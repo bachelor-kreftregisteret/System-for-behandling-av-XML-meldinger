@@ -243,6 +243,9 @@ const FormLogic = ({FormType}) => {
                     } else {
                         setPostError(StatusData.status);
                     }
+                })
+                .catch(error => {
+                    setPostError(error.toString())
                 });
             setIsModalOpen(true);
         }
