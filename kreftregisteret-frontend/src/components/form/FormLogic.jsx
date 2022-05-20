@@ -253,11 +253,7 @@ const FormLogic = ({FormType}) => {
     };
 
     return (
-        /*Render skjema*/
-
-        //Because of easy tabbing, the footer is above the survey that has autofocus/tabindex 0. Making it easy accessible through backwards tab
         <>
-
             {error === null ?
                 <div className={"surveyContainer"}>
                     <Sidebar
@@ -266,14 +262,11 @@ const FormLogic = ({FormType}) => {
                         isModalOpen={isModalOpen}
                         postError={postError}
                     />
-
                     <Survey
                         model={survey}
-
                         showCompletedPage={false}
                         showNavigationButtons={false}
                     />
-
                     <Footer
                         onSubmit={submit}
                         isModalOpen={isModalOpen}
@@ -288,7 +281,6 @@ const FormLogic = ({FormType}) => {
                 </div>
             }
         </>
-
     )
 
 };

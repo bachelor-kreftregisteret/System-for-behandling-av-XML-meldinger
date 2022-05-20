@@ -10,9 +10,9 @@ const MeldingList = () => {
     const navigate = useNavigate();
 
     const {data, loading, error} = GetMeldinger();
-    let msgList = [];
 
-    // https://dd.engineering/blog/a-guide-to-handling-date-and-time-for-full-stack-javascript-developers 31.03
+
+    // Hentet fra https://dd.engineering/blog/a-guide-to-handling-date-and-time-for-full-stack-javascript-developers 31.03
     const addZero = (num) => `${num}`.padStart(2, '0');
 
     const formatJsonDate = (date) => {
@@ -22,9 +22,7 @@ const MeldingList = () => {
     };
 
     const tableOfMeldinger = (data) => {
-        //data.replaceAll('\\', '')
-        msgList = data;
-        const rows = msgList.sort((a, b) => a.id > b.id ? 1 : -1).map((item, index) => (
+        const rows = data.sort((a, b) => a.id > b.id ? 1 : -1).map((item, index) => (
                 <tr key={index}>
                     <td>{item.id}</td>
                     <td>{item.skjemanavn}</td>
