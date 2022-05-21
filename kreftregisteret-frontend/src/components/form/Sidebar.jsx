@@ -41,10 +41,6 @@ const Sidebar = (props) => {
     };
 
     const setTitleSideBar = () => {
-        const topPosY = document.getElementsByClassName("surveyContainer")[0].getBoundingClientRect().top;
-        if (topPosY > 0) {
-            return;
-        }
         const posX = window.innerWidth / 2;
         const posY = window.innerHeight / 2;
         const elem = document.elementFromPoint(posX, posY);
