@@ -228,20 +228,18 @@ const FormLogic = ({FormType}) => {
                 "validate/:variable/m_labAngittAvKliniker?value_codes[]=" + data.laboratorium.labnavnHF;
             fetch(checkLabValueURL)
                 .then(response => response.json())
-                .then(StatusData => {
+                .then(async StatusData => {
                     if (StatusData.status === "OK") {
-                        const headers = {
-                            'Content-Type': 'application/json'
-                        };
-                        axios.post(URL.url, data, {headers})
-                            .then(_ => {
-                                setPostError("")
-                            })
-                            .catch(error => {
-                                setPostError(error.toString())
-                            });
-                    }
-                    else {
+                        try {
+                            const headers = {
+                                'Content-Type': 'application/json'
+                            };
+                            await axios.post(URL.url, data, {headers})
+                            setPostError("")
+                        } catch (err) {
+                            setPostError(err.toString())
+                        }
+                    } else {
                         setPostError(StatusData.status);
                     }
                 })
