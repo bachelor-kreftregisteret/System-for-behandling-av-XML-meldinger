@@ -32,7 +32,7 @@ const Sidebar = (props) => {
             const titleFromElement = parent.children[0].children[0];
             for (const title in titles) {
                 if (titleFromElement === titles[title]) {
-                    setActiveIndex(title - 0); // Minus 0 for å prase til tall
+                    setActiveIndex(parseInt(title));
                     return;
                 }}
         } else if (parent) {
@@ -40,7 +40,7 @@ const Sidebar = (props) => {
         }
     };
 
-    const setTitleSideBar = () => {
+    const setTitleSidebar = () => {
         const posX = window.innerWidth / 2;
         const posY = window.innerHeight / 2;
         const elem = document.elementFromPoint(posX, posY);
@@ -48,9 +48,9 @@ const Sidebar = (props) => {
     };
 
     useEffect(() => {
-        document.addEventListener("scroll", setTitleSideBar);
-        return() => document.removeEventListener("scroll", setTitleSideBar);
-    }, [setTitleSideBar]);
+        document.addEventListener("scroll", setTitleSidebar);
+        return() => document.removeEventListener("scroll", setTitleSidebar);
+    }, [setTitleSidebar]);
 
     const listOfTitles = (titles) => {
         return (
