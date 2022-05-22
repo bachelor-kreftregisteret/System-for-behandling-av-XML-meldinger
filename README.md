@@ -11,7 +11,8 @@ For å starte react dev server:
 
 fra terminal:
 2. cd inn til mappen der “package.json” ligger 
-3. kjør ´´´npm start´´´
+3. kjør 
+  npm start
 
 Hvis alt fungerer som det skal vil browseren åpne localhost:3000 og vise React startpage.
 
@@ -29,7 +30,7 @@ eller fra kommandolinje:
 
 3b. cd inn til mappen der “pom.xml” ligger og kjør
 
-´´´mvn spring-boot:run´´´
+  mvn spring-boot:run
 
 
 Hvis alt fungerer skal man kunne besøke backendserveren på localhost:8080 for å se en “Whitelabel Error page”
