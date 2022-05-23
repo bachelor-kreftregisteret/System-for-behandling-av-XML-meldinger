@@ -11,7 +11,6 @@ const MeldingList = () => {
 
     const {data, loading, error} = GetMeldinger();
 
-
     // Hentet fra https://dd.engineering/blog/a-guide-to-handling-date-and-time-for-full-stack-javascript-developers 31.03
     const addZero = (num) => `${num}`.padStart(2, '0');
 
@@ -80,10 +79,11 @@ const MeldingList = () => {
         tableOfMeldinger(data) :
         error !== null ?
             <div>
-                <h4>{error.toString()}</h4>
+                <h2>{error.toString()}</h2>
                 <p>Noe gikk galt ved innlasting</p>
             </div> :
-            <h4>Laster inn meldinger...</h4>);
+            <h2>Laster inn meldinger...</h2>
+    );
 };
 
 export default MeldingList;
