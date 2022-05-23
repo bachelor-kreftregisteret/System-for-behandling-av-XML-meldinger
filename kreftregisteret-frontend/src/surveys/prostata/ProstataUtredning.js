@@ -2599,7 +2599,7 @@ const SurveyJsonUtredning = {
                     name: "melderID",
                     maxWidth: "250px",
                     minWidth: "50px",
-                    startWithNewLine: false,
+                    startWithNewLine: true,
                     title: {
                         no: "Melder ID"
                     }

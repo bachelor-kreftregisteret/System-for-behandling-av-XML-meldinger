@@ -1,4 +1,4 @@
-import {useEffect, useState} from "react";
+import {useCallback, useEffect, useState} from "react";
 import "../../css/sidebar.css"
 
 const Sidebar = (props) => {
@@ -40,12 +40,12 @@ const Sidebar = (props) => {
         }
     };
 
-    const setTitleSidebar = () => {
+    const setTitleSidebar = useCallback(() => { 
         const posX = window.innerWidth / 2;
         const posY = window.innerHeight / 2;
         const elem = document.elementFromPoint(posX, posY);
         getTitle(elem);
-    };
+    }, [getTitle]);
 
     useEffect(() => {
         document.addEventListener("scroll", setTitleSidebar);
