@@ -1853,7 +1853,6 @@ const SurveyJSONKirugi = {
                             }
                         }
                     ],
-                    colCount: 3
                 },
                 {
                     type: "comment",
@@ -2334,7 +2333,6 @@ const SurveyJSONKirugi = {
                     name: "melderID",
                     maxWidth: "250px",
                     minWidth: "50px",
-                    startWithNewLine: false,
                     title: {
                         no: "Melder ID"
                     }

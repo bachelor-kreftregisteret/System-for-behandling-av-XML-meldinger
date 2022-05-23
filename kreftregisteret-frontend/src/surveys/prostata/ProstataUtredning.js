@@ -1500,7 +1500,6 @@ const SurveyJsonUtredning = {
                             }
                         }
                     ],
-                    colCount: 3
                 },
                 {
                     type: "comment",
@@ -2159,7 +2158,6 @@ const SurveyJsonUtredning = {
                             }
                         }
                     ],
-                    colCount: 3
                 },
                 {
                     type: "comment",
