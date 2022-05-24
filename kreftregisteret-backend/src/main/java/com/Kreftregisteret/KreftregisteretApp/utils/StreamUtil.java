@@ -15,7 +15,7 @@ public class StreamUtil {
         SimpleDateFormat formatter = new SimpleDateFormat("ddMMyyyy_'kl'HHmmss");
         Date date = new Date();
         String formattedDate = formatter.format(date);
-        return formattedDate + "KliniskProstataUtredning" + "_";
+        return formattedDate + "Melding" + "_";
     }
 
     /**
