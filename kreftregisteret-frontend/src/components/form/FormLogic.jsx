@@ -190,6 +190,19 @@ const FormLogic = ({FormType}) => {
         }
     };
 
+    // Funksjon for å sjekke om labnavnHF eksisterer og har verdi
+    const checkIfLabnavnHF = () => {
+        try {
+            const labValue = data.laboratorium.labnavnHF;
+            if (labValue === "") {
+                return "";
+            }
+            return labValue;
+        } catch (e) {
+            return "";
+        }
+    };
+
     useEffect(() => {
         setDataValues(data, FormType, flattenedJSON);
     }, [data, FormType, flattenedJSON]);
@@ -208,7 +221,7 @@ const FormLogic = ({FormType}) => {
         }); // Gjør slik at hvis en page blir gjem så tømmes de gjemte veridene i pagen
     }, [setDataValues]); // Venter på setValues så den ikke triggrer mens data blir lastet inn
 
-    const submit = () => {
+    const submit = async () => {
         replaceUndefined(data);
         // Funksjon for å scrolle til spørsmål med error
         if (survey.isCurrentPageHasErrors) {
@@ -224,28 +237,42 @@ const FormLogic = ({FormType}) => {
             }
             setIsModalOpen(false);
         } else {
-            const checkLabValueURL = "https://metadata.kreftregisteret.no/rest/v1/variables/" +
-                "validate/:variable/m_labAngittAvKliniker?value_codes[]=" + data.laboratorium.labnavnHF;
-            fetch(checkLabValueURL)
-                .then(response => response.json())
-                .then(async StatusData => {
-                    if (StatusData.status === "OK") {
-                        try {
-                            const headers = {
-                                'Content-Type': 'application/json'
-                            };
-                            await axios.post(URL.url, data, {headers})
-                            setPostError("")
-                        } catch (err) {
-                            setPostError(err.toString())
+            const labValue = checkIfLabnavnHF();
+            if (labValue !== "") {
+                const checkLabValueURL = "https://metadata.kreftregisteret.no/rest/v1/variables/" +
+                    "validate/:variable/m_labAngittAvKliniker?value_codes[]=" + labValue;
+                fetch(checkLabValueURL)
+                    .then(response => response.json())
+                    .then(async StatusData => {
+                        if (StatusData.status === "OK") {
+                            try {
+                                const headers = {
+                                    'Content-Type': 'application/json'
+                                };
+                                await axios.post(URL.url, data, {headers})
+                                setPostError("")
+                            } catch (err) {
+                                setPostError(err.toString())
+                            }
+                        } else {
+                            setPostError(StatusData.status);
                         }
-                    } else {
-                        setPostError(StatusData.status);
-                    }
-                })
-                .catch(error => {
-                    setPostError(error.toString())
-                });
+                    })
+                    .catch(error => {
+                        setPostError(error.toString())
+                    });
+            } else {
+                try {
+                    const headers = {
+                        'Content-Type': 'application/json'
+                    };
+                    await axios.post(URL.url, data, {headers})
+                    setPostError("")
+                } catch (err) {
+                    setPostError(err.toString())
+                }
+            }
+
             setIsModalOpen(true);
         }
     };
