@@ -97,14 +97,18 @@ public class MessageManager {
 
     public void addMeldingerFromUtFolderToMsgList() {
         try {
-            InputStream is = KreftregisteretAppApplication.class.getClassLoader().getResourceAsStream("Ut/VALID_07032022_kl141937KliniskProstataUtredning.xml");
-            File file = StreamUtil.stream2file(is);
+            String[] files = {"KliniskProstataKirurgi.xml", "KliniskProstataStraale.xml", "KliniskProstataUtredning.xml"};
 
-            Melding melding = convertFileToMelding(file);
-            // Pga frontend ikke bruker id, men item.id
-            if (melding != null) {
-                melding.setId(id);
-                updateMsgList(melding);
+            for (String name : files) {
+                InputStream is = KreftregisteretAppApplication.class.getClassLoader().getResourceAsStream("Ut/" + name);
+                File file = StreamUtil.stream2file(is);
+                System.out.println(file.getName());
+                Melding melding = convertFileToMelding(file);
+                // Pga frontend ikke bruker id, men item.id
+                if (melding != null) {
+                    melding.setId(id);
+                    updateMsgList(melding);
+                }
             }
         }catch(Exception e){
             e.printStackTrace();

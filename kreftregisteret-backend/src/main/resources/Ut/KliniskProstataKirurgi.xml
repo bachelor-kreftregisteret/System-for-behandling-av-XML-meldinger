@@ -25,7 +25,7 @@
             <ns2:FodselsnummerHF></ns2:FodselsnummerHF>
             <ns2:FodselnummerUtland>true</ns2:FodselnummerUtland>
             <ns2:FodselsnummerUtlandSpesifiser>String</ns2:FodselsnummerUtlandSpesifiser>
-            <ns2:NavnPasient>Tester Test</ns2:NavnPasient>
+            <ns2:NavnPasient>Pasientnavn</ns2:NavnPasient>
             <ns2:Sykehuskode>6052</ns2:Sykehuskode>
             <ns2:SykehusnavnRHF></ns2:SykehusnavnRHF>
             <ns2:SykehusnavnHFSorOst></ns2:SykehusnavnHFSorOst>
