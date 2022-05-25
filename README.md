@@ -1,6 +1,8 @@
 # System-for-behandling-av-XML-meldinger
 [![Build and run Maven tests](https://github.com/bachelor-kreftregisteret/System-for-behandling-av-XML-meldinger/actions/workflows/spring_test.yaml/badge.svg)](https://github.com/bachelor-kreftregisteret/System-for-behandling-av-XML-meldinger/actions/workflows/spring_test.yaml)
 
+## Systemet kan prøves ut på [demokrg.herokuapp.com](https://demokrg.herokuapp.com/)
+
 For å starte localhost server:
 
 1. Du trenger Java JDK 17
