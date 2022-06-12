@@ -3,6 +3,8 @@
 
 ## Systemet kan prøves ut på [demokrg.herokuapp.com](https://demokrg.herokuapp.com/)
 
+## [Dokumentasjon](https://github.com/bachelor-kreftregisteret/System-for-behandling-av-XML-meldinger/blob/main/sluttrapport.pdf)
+
 For å starte localhost server:
 
 1. Du trenger Java JDK 17
